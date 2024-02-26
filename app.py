@@ -204,16 +204,16 @@ with st.container():
   
     with col2:
         st.dataframe(
-        flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'pop', 'pop_pct']].style.format(thousands=","),
+        flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'pop', 'pop_pct']],
         use_container_width = use_container_width,
         hide_index = True,
         column_config = {
             'År': st.column_config.NumberColumn(format="%.0f"),
             'pop': st.column_config.NumberColumn(
-             'Antall', format='%.0f', step=".01"
+                'Antall', format='%.0f', step=".01"
              ),
-        'pop_pct': st.column_config.NumberColumn(
-             'Andel', format='%.1f %%'
+            'pop_pct': st.column_config.NumberColumn(
+                'Andel', format='%.1f %%'
              )}
         )
         
