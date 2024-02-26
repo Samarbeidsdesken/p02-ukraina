@@ -75,7 +75,7 @@ oppsummert_komm_year = oppsummert_komm[oppsummert_komm['År'] == select_year]
 with st.sidebar:
 
     st.markdown("""
-        ### Lag toppliste for heler perioden (2022-2024)                    
+        ### Lag toppliste for hele perioden (2022-2024)                    
     """)
 
     select_group = st.selectbox(
@@ -210,9 +210,9 @@ with st.container():
         
 ukr_text = """
         ##### Ukrainske flyktninger (kollektiv beskyttelse)
-        Tabellen viser antall ukrainske flyktninger som har fått innvilget opphold i {kommune}. 
-        I {year:.0f} kom det {sum_year:.0f} ukrainske flyktninger til kommunen. 
-        I hele perioden har kommunen tatt i mot {sum_total:.0f} ukrainske flyktninger.
+        Tabellen viser antall bosatte ukrainske flyktninger i {kommune}. 
+        I {year:.0f} ble det bosatt {sum_year:.0f} ukrainske flyktninger. 
+        I hele perioden har kommunen bosatt {sum_total:.0f} ukrainske flyktninger.
         """.format(
             kommune = unike_kommuner.get(select_kommune), 
             year = select_year, 
@@ -247,7 +247,7 @@ ema_text = """
         ##### Bosatte enslige mindreårige (EMA) fra Ukraina
         I {year:.0f} bosatte {kommune} {sum_year:.0f} EMA. I hele perioden (2022 til så langt i 2024) har kommunen bosatt {sum_total:.0f} EMA.
                 
-        Merk at antall EMA ikke kan plusses på antall ukrainske flyktninger i tabellen over. Tabellen over medregner EMA. 
+        Merk at antall EMA ikke kan plusses på antall bosatte ukrainske flyktninger i tabellen over. Tabellen over medregner EMA. 
         
         Les mer om EMA [her](https://www.imdi.no/planlegging-og-bosetting/slik-bosettes-flyktninger/enslige-mindrearige-flyktninger/).
         """.format(
@@ -280,8 +280,8 @@ with st.container():
           
 ovr_text = """
         ##### Øvrige flyktninger (ikke kollektiv beskyttelse)
-        Tabellen viser antall øvrige flyktninger som har fått innvilget opphold i {kommune}, men uten kollektiv beskyttelse (ikke fra Ukraina). 
-        I {year:.0f} kom det {sum_year:.0f} øvrige flyktninger til kommunen. 
+        Tabellen viser antall øvrige flyktninger som også er bosatt i {kommune}, men uten kollektiv beskyttelse (ikke fra Ukraina). 
+        I {year:.0f} ble {sum_year:.0f} bosatt flyktninger til kommunen. 
         I hele perioden har kommunen tatt i mot {sum_total:.0f} flyktninger uten kollektiv beskyttelse.
         """.format(
             kommune = unike_kommuner.get(select_kommune), 
