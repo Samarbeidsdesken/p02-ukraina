@@ -1,8 +1,9 @@
 import streamlit as st
 import pandas as pd
 import streamlit.components.v1 as components
-
-
+from datetime import date
+import time
+import functions
 apptitle = 'Ukrainske flyktninger i norske kommuner'
 
 
@@ -12,21 +13,18 @@ st.set_page_config(
     )
 
 
-st.markdown(
-    """
-    #### Under utvikling
-    <p style='color:red;font-weight:bold;'>Applikasjonen er under utvikling. Bruk den for å gjøre case-research, og for å bli kjent tallgrunnlaget. Feil kan forekomme.</p>
-    <p style='color:red;font-weight:bold;'>Kjente feil:<p>
-    <ul style='color:red;font-weight:bold;'>
-    <li>Noe usikker rundt tallgrunnlaget fra IMDi, særlig rundt prikking av i kommuner med mindre enn fem flyktninger per aldersgruppe.</li>
-    </ul>
-    """,
-    unsafe_allow_html=True
-)
+end_time = date(2024, 4, 22)
+
 
 with st.sidebar:
     
     st.title(apptitle) 
+    
+    sperrefrist = """
+    ##### Sperrefrist
+    {time}
+    """.format(time = functions.countdown(end_time))
+    st.markdown(sperrefrist.format('%d'))
 
     st.markdown(
         """
@@ -170,179 +168,227 @@ with st.sidebar:
 use_container_width = False #st.checkbox("Full tabellbredde", value=True)
 
 
-
-
 # PAGE CONTENT
 
-summarized = """
-#### Oppsummert
-
-{kommune} har mottatt {sum_total_ukr:,.0f} ukrainske flyktninger i perioden 2022 til starten av 2024. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen i kommunen, 
-og {ukr_pct_ovr:.1f} prosent av alle innvandere som har blitt bosatt i kommunen i samme periode. 
-
-""".format(
-            kommune = unike_kommuner.get(select_kommune), 
-            year = select_year, 
-            sum_total_ukr = oppsummert_komm['ukrainere'].sum(),  
-            #sum_total_pop = oppsummert_komm['pop'].sum(),
-            ukr_pct_pop = oppsummert_komm_year['ukr_pct_pop'].sum(),
-            ukr_pct_ovr = oppsummert_komm_year['ukr_pct_innvandr'].sum()
-            )
 
 
-st.markdown(summarized)
 
-#st.markdown("""
-##### Prikking 
+underdev_col1, underdev_col2 = st.columns([5, 4])
+national_col1, national_col2 = st.columns([5, 4])
+munn_col1, munn_col2 = st.columns([5, 4])
 
-#Hvis det står *Prikket (<5)*, betyr det at kommunen mottok mindre enn fem flyktninger det året. IMDi tilbakeholder eksakt antall av personvernhensyn. 
-#Summeringer inkluderer bare oppgitte tall, og tar ikke hensyn til prikking. Summeringer må derfor sees på som et minimum antall bosatte flyktninger i kommunen. 
-#""")
+with underdev_col1:
+    
+    st.markdown(
+        """
+        #### Under utvikling
+        <p style='color:red;font-weight:bold;'>Applikasjonen er under utvikling. Bruk den for å gjøre case-research, og for å bli kjent tallgrunnlaget. Feil kan forekomme.</p>
+        <p style='color:red;font-weight:bold;'>Kjente feil:<p>
+        <ul style='color:red;font-weight:bold;'>
+        <li>Noe usikker rundt tallgrunnlaget fra IMDi, særlig rundt prikking av i kommuner med mindre enn fem flyktninger per aldersgruppe.</li>
+        </ul>
+        """,
+        unsafe_allow_html=True
+    )
+    
+with underdev_col2:
+    pass
 
 
-col1, col2 = st.columns([4, 5])
-col3, col4 = st.columns([4, 5])
-col5, col6 = st.columns([4, 5])
-col7, col8 = st.columns([4, 5])
+with national_col1:
+    
+    st.markdown(
+        """
+        #### Dette er saken
+        Tekst som forklarer den nasjonale saken. 
+        """
+    )
 
-pop_text = """
-        ##### Befolkningen i  {kommune}
-        Tabellen viser befolkningen i kommunen, etter kjønn og alder. 
-        I {year:.0f} bodde det {sum_year:,.0f} personer i {kommune}. 
+with national_col2:
+    with st.expander("Faktaboks"):
         
-        """.format(
-            kommune = unike_kommuner.get(select_kommune), 
-            year = select_year, 
-            sum_year = flyktninger_komm_year['pop'].sum(),  
-            sum_total = flyktninger_komm['pop'].sum()
-            )
-
-with st.container():
-    with col1:
-        st.markdown(pop_text)
-  
-    with col2:
-        st.dataframe(
-        flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'pop', 'pop_pct']],
-        use_container_width = use_container_width,
-        hide_index = True,
-        column_config = {
-            'År': st.column_config.NumberColumn(format="%.0f"),
-            'pop': st.column_config.NumberColumn(
-                'Antall', format='%.0f', step=".01"
-             ),
-            'pop_pct': st.column_config.NumberColumn(
-                'Andel', format='%.1f %%'
-             )}
+        st.markdown(
+            """
+            Her kommer det en faktaboks om ukrainske innvandrere.
+            """
         )
-        
-ukr_text = """
-        ##### Ukrainske flyktninger (kollektiv beskyttelse)
-        Tabellen viser antall bosatte ukrainske flyktninger i {kommune}. 
-        I {year:.0f} ble det bosatt {sum_year:.0f} ukrainske flyktninger. 
-        I hele perioden har kommunen bosatt {sum_total:.0f} ukrainske flyktninger.
-        """.format(
-            kommune = unike_kommuner.get(select_kommune), 
-            year = select_year, 
-            sum_year = flyktninger_komm_year['ukrainere'].sum(),  
-            sum_total = flyktninger_komm['ukrainere'].sum()
-            )
 
-with st.container():
-    with col3:
-        st.markdown(ukr_text)
-  
-    with col4:
-        st.dataframe(
-        flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'ukrainere', 'ukr_pct', 'ukr_prikket']],
-        use_container_width = use_container_width,
-        hide_index = True,
-        column_config = {
-            'År': st.column_config.NumberColumn(format="%.0f"),
-            'ukrainere': st.column_config.NumberColumn(
-                'Antall', format='%.0f'
-             ),
-            'ukr_pct': st.column_config.NumberColumn(
-                'Andel', format='%.1f %%'
-             ),
-            'ukr_prikket': st.column_config.TextColumn(
-                'Prikket', 
-                help = 'Prikkede data betyr at kommunen har tatt i mot mindre enn fem EMA. Data tilbakeholdes av IMDi av personvernhensyn.'
-                )}
-        )
-        
-ema_text = """
-        ##### Bosatte enslige mindreårige (EMA) fra Ukraina
-        I {year:.0f} bosatte {kommune} {sum_year:.0f} EMA. I hele perioden (2022 til så langt i 2024) har kommunen bosatt {sum_total:.0f} EMA.
-                
-        Merk at antall EMA ikke kan plusses på antall bosatte ukrainske flyktninger i tabellen over. Tabellen over medregner EMA. 
-        
-        Les mer om EMA [her](https://www.imdi.no/planlegging-og-bosetting/slik-bosettes-flyktninger/enslige-mindrearige-flyktninger/).
-        """.format(
-            kommune = unike_kommuner.get(select_kommune), 
-            year = select_year, 
-            sum_year = ema_komm_year['ema'].sum(),  
-            sum_total = ema_komm['ema'].sum()
-            )
 
-with st.container():
-    with col5:
-        st.markdown(ema_text)
-  
-    with col6:
-        st.dataframe(
-        ema_komm[['År', 'ema', 'prikket']],
-        use_container_width = use_container_width,
-        hide_index = True,
-         column_config = {
-            'År': st.column_config.NumberColumn(format="%.0f"),
-            'ema': st.column_config.NumberColumn(
-                'Enslige mindreårige (EMA)', 
+with munn_col1:
+
+    summarized = """
+    #### Slik er det i din kommune
+
+    {kommune} har mottatt {sum_total_ukr:,.0f} ukrainske flyktninger i perioden 2022 til starten av 2024. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen i kommunen, 
+    og {ukr_pct_ovr:.1f} prosent av alle innvandere som har blitt bosatt i kommunen i samme periode. 
+
+    """.format(
+                kommune = unike_kommuner.get(select_kommune), 
+                year = select_year, 
+                sum_total_ukr = oppsummert_komm['ukrainere'].sum(),  
+                #sum_total_pop = oppsummert_komm['pop'].sum(),
+                ukr_pct_pop = oppsummert_komm_year['ukr_pct_pop'].sum(),
+                ukr_pct_ovr = oppsummert_komm_year['ukr_pct_innvandr'].sum()
+                )
+
+
+
+    st.markdown(summarized)
+
+
+with st.expander("Se tallgrunnlag"):
+
+    #st.markdown("""
+    ##### Prikking 
+
+    #Hvis det står *Prikket (<5)*, betyr det at kommunen mottok mindre enn fem flyktninger det året. IMDi tilbakeholder eksakt antall av personvernhensyn. 
+    #Summeringer inkluderer bare oppgitte tall, og tar ikke hensyn til prikking. Summeringer må derfor sees på som et minimum antall bosatte flyktninger i kommunen. 
+    #""")
+
+
+    tablecol1, tablecol2 = st.columns([4, 5])
+    tablecol3, tablecol4 = st.columns([4, 5])
+    tablecol5, tablecol6 = st.columns([4, 5])
+    tablecol7, tablecol8 = st.columns([4, 5])
+
+    pop_text = """
+            ##### Befolkningen i  {kommune}
+            Tabellen viser befolkningen i kommunen, etter kjønn og alder. 
+            I {year:.0f} bodde det {sum_year:,.0f} personer i {kommune}. 
+            
+            """.format(
+                kommune = unike_kommuner.get(select_kommune), 
+                year = select_year, 
+                sum_year = flyktninger_komm_year['pop'].sum(),  
+                sum_total = flyktninger_komm['pop'].sum()
+                )
+
+    with st.container():
+        with tablecol1:
+            st.markdown(pop_text)
+    
+        with tablecol2:
+            st.dataframe(
+            flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'pop', 'pop_pct']],
+            use_container_width = use_container_width,
+            hide_index = True,
+            column_config = {
+                'År': st.column_config.NumberColumn(format="%.0f"),
+                'pop': st.column_config.NumberColumn(
+                    'Antall', format='%.0f', step=".01"
                 ),
-            'prikket': st.column_config.TextColumn(
-                'Prikket', 
-                help = 'Prikkede data betyr at kommunen har tatt i mot mindre enn fem EMA. Data tilbakeholdes av IMDi av personvernhensyn.'
+                'pop_pct': st.column_config.NumberColumn(
+                    'Andel', format='%.1f %%'
                 )}
-        )
-
-          
-ovr_text = """
-        ##### Øvrige flyktninger (ikke kollektiv beskyttelse)
-        Tabellen viser antall øvrige flyktninger som også er bosatt i {kommune}, men uten kollektiv beskyttelse (ikke fra Ukraina). 
-        I {year:.0f} ble {sum_year:.0f} bosatt flyktninger til kommunen. 
-        I hele perioden har kommunen tatt i mot {sum_total:.0f} flyktninger uten kollektiv beskyttelse.
-        """.format(
-            kommune = unike_kommuner.get(select_kommune), 
-            year = select_year, 
-            sum_year = flyktninger_komm_year['ovrige'].sum(),  
-            sum_total = flyktninger_komm['ovrige'].sum()
             )
-        
+            
+    ukr_text = """
+            ##### Ukrainske flyktninger (kollektiv beskyttelse)
+            Tabellen viser antall bosatte ukrainske flyktninger i {kommune}. 
+            I {year:.0f} ble det bosatt {sum_year:.0f} ukrainske flyktninger. 
+            I hele perioden har kommunen bosatt {sum_total:.0f} ukrainske flyktninger.
+            """.format(
+                kommune = unike_kommuner.get(select_kommune), 
+                year = select_year, 
+                sum_year = flyktninger_komm_year['ukrainere'].sum(),  
+                sum_total = flyktninger_komm['ukrainere'].sum()
+                )
+
+    with st.container():
+        with tablecol3:
+            st.markdown(ukr_text)
+    
+        with tablecol4:
+            st.dataframe(
+            flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'ukrainere', 'ukr_pct', 'ukr_prikket']],
+            use_container_width = use_container_width,
+            hide_index = True,
+            column_config = {
+                'År': st.column_config.NumberColumn(format="%.0f"),
+                'ukrainere': st.column_config.NumberColumn(
+                    'Antall', format='%.0f'
+                ),
+                'ukr_pct': st.column_config.NumberColumn(
+                    'Andel', format='%.1f %%'
+                ),
+                'ukr_prikket': st.column_config.TextColumn(
+                    'Prikket', 
+                    help = 'Prikkede data betyr at kommunen har tatt i mot mindre enn fem EMA. Data tilbakeholdes av IMDi av personvernhensyn.'
+                    )}
+            )
+            
+    ema_text = """
+            ##### Bosatte enslige mindreårige (EMA) fra Ukraina
+            I {year:.0f} bosatte {kommune} {sum_year:.0f} EMA. I hele perioden (2022 til så langt i 2024) har kommunen bosatt {sum_total:.0f} EMA.
+                    
+            Merk at antall EMA ikke kan plusses på antall bosatte ukrainske flyktninger i tabellen over. Tabellen over medregner EMA. 
+            
+            Les mer om EMA [her](https://www.imdi.no/planlegging-og-bosetting/slik-bosettes-flyktninger/enslige-mindrearige-flyktninger/).
+            """.format(
+                kommune = unike_kommuner.get(select_kommune), 
+                year = select_year, 
+                sum_year = ema_komm_year['ema'].sum(),  
+                sum_total = ema_komm['ema'].sum()
+                )
+
+    with st.container():
+        with tablecol5:
+            st.markdown(ema_text)
+    
+        with tablecol6:
+            st.dataframe(
+            ema_komm[['År', 'ema', 'prikket']],
+            use_container_width = use_container_width,
+            hide_index = True,
+            column_config = {
+                'År': st.column_config.NumberColumn(format="%.0f"),
+                'ema': st.column_config.NumberColumn(
+                    'Enslige mindreårige (EMA)', 
+                    ),
+                'prikket': st.column_config.TextColumn(
+                    'Prikket', 
+                    help = 'Prikkede data betyr at kommunen har tatt i mot mindre enn fem EMA. Data tilbakeholdes av IMDi av personvernhensyn.'
+                    )}
+            )
+
+            
+    ovr_text = """
+            ##### Øvrige flyktninger (ikke kollektiv beskyttelse)
+            Tabellen viser antall øvrige flyktninger som også er bosatt i {kommune}, men uten kollektiv beskyttelse (ikke fra Ukraina). 
+            I {year:.0f} ble {sum_year:.0f} bosatt flyktninger til kommunen. 
+            I hele perioden har kommunen tatt i mot {sum_total:.0f} flyktninger uten kollektiv beskyttelse.
+            """.format(
+                kommune = unike_kommuner.get(select_kommune), 
+                year = select_year, 
+                sum_year = flyktninger_komm_year['ovrige'].sum(),  
+                sum_total = flyktninger_komm['ovrige'].sum()
+                )
+            
 
 
-with st.container():
-    with col7:
-        
-        st.markdown(ovr_text)
-  
-    with col8:
-        st.dataframe(
-        flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'ovrige', 'ovr_pct', 'ovr_prikket']],
-        use_container_width = use_container_width,
-        hide_index = True,
-        column_config = {
-            'År': st.column_config.NumberColumn(format="%.0f"),
-            'ovrige': st.column_config.NumberColumn(
-                'Antall', format='%.0f'
-             ),
-            'ovr_pct': st.column_config.NumberColumn(
-                'Andel', format='%.1f %%'
-             ),
-            'ovr_prikket': st.column_config.TextColumn(
-                'Prikket', 
-                help = 'Prikkede data betyr at kommunen har tatt i mot mindre enn fem EMA. Data tilbakeholdes av IMDi av personvernhensyn.'
-                )}
-        )
+    with st.container():
+        with tablecol7:
+            
+            st.markdown(ovr_text)
+    
+        with tablecol8:
+            st.dataframe(
+            flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'ovrige', 'ovr_pct', 'ovr_prikket']],
+            use_container_width = use_container_width,
+            hide_index = True,
+            column_config = {
+                'År': st.column_config.NumberColumn(format="%.0f"),
+                'ovrige': st.column_config.NumberColumn(
+                    'Antall', format='%.0f'
+                ),
+                'ovr_pct': st.column_config.NumberColumn(
+                    'Andel', format='%.1f %%'
+                ),
+                'ovr_prikket': st.column_config.TextColumn(
+                    'Prikket', 
+                    help = 'Prikkede data betyr at kommunen har tatt i mot mindre enn fem EMA. Data tilbakeholdes av IMDi av personvernhensyn.'
+                    )}
+            )
 
 
 
