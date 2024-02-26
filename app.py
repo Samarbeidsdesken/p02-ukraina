@@ -105,9 +105,9 @@ with st.sidebar:
         )
         
     if select_group == 'SSBs sentralitetsindeks':
-        select_paper = st.selectbox(
+        select_centrality = st.selectbox(
             'Velg indeks',
-            options=['TBA']
+            options=['1 - Mest sentrale', '2', '3', '4', '5', '6 - Minst sentrale']
         )
         
     if select_group == 'Norge':
@@ -131,6 +131,25 @@ with st.sidebar:
     if select_group == 'Fylke':
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
+        oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
+        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+
+        st.sidebar.dataframe(
+            oppsummert_sidebar.head(50),
+            hide_index = True,
+            use_container_width = True,
+            column_config = {
+                'ukrainere': st.column_config.NumberColumn(
+                'Antall', format='%.0f'
+                ),
+            'ukr_pct_pop': st.column_config.NumberColumn(
+                'Andel av befolkning', format='%.1f %%'
+                )}
+            )
+        
+    if select_group == 'SSBs sentralitetsindeks':
+        oppsummert_sidebar = oppsummert[oppsummert['sentralitet'] == int(select_centrality[:1])]
+        #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
 
