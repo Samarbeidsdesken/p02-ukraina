@@ -95,7 +95,7 @@ with st.sidebar:
 
     select_group = st.selectbox(
         'Velg gruppering',
-        options=['Norge', 'Fylke', 'Lokalavis', 'SSBs sentralitetsindeks']
+        options=['Norge', unike_fylker.get(select_fylke), 'Lokalavis', 'SSBs sentralitetsindeks']
     )
 
     if select_group == 'Lokalavis':
@@ -116,34 +116,34 @@ with st.sidebar:
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
 
         st.dataframe(
-            oppsummert_sidebar.head(50),
+            oppsummert_sidebar.head(25),
             hide_index = True,
             use_container_width = True,
             column_config = {
                 'ukrainere': st.column_config.NumberColumn(
-                'Antall', format='%.0f'
+                    'Antall ukrainere', format='%.0f'
                 ),
-            'ukr_pct_pop': st.column_config.NumberColumn(
-                'Andel av befolkning', format='%.1f %%'
+                'ukr_pct_pop': st.column_config.NumberColumn(
+                    'Andel av befolkning', format='%.1f %%'
                 )}
             )
 
-    if select_group == 'Fylke':
+    if select_group == unike_fylker.get(select_fylke):
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
 
         st.sidebar.dataframe(
-            oppsummert_sidebar.head(50),
+            oppsummert_sidebar.head(25),
             hide_index = True,
             use_container_width = True,
             column_config = {
                 'ukrainere': st.column_config.NumberColumn(
-                'Antall', format='%.0f'
+                    'Antall ukrainere', format='%.0f'
                 ),
-            'ukr_pct_pop': st.column_config.NumberColumn(
-                'Andel av befolkning', format='%.1f %%'
+                'ukr_pct_pop': st.column_config.NumberColumn(
+                    'Andel av befolkning', format='%.1f %%'
                 )}
             )
         
@@ -154,15 +154,15 @@ with st.sidebar:
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
 
         st.sidebar.dataframe(
-            oppsummert_sidebar.head(50),
+            oppsummert_sidebar.head(25),
             hide_index = True,
             use_container_width = True,
             column_config = {
                 'ukrainere': st.column_config.NumberColumn(
-                'Antall', format='%.0f'
+                    'Antall ukrainere', format='%.0f'
                 ),
-            'ukr_pct_pop': st.column_config.NumberColumn(
-                'Andel av befolkning', format='%.1f %%'
+                'ukr_pct_pop': st.column_config.NumberColumn(
+                    'Andel av befolkning', format='%.1f %%'
                 )}
             )
 
