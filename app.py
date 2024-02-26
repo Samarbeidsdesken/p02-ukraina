@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import streamlit.components.v1 as components
+
 
 apptitle = 'Ukrainske flyktninger i norske kommuner'
 
@@ -9,6 +11,18 @@ st.set_page_config(
     layout='wide'
     )
 
+
+st.markdown(
+    """
+    #### Under utvikling
+    <p style='color:red;font-weight:bold;'>Applikasjonen er under utvikling. Bruk den for å gjøre case-research, og for å bli kjent tallgrunnlaget. Feil kan forekomme.</p>
+    <p style='color:red;font-weight:bold;'>Kjente feil:<p>
+    <ul style='color:red;font-weight:bold;'>
+    <li>Noe usikker rundt tallgrunnlaget fra IMDi, særlig rundt prikking av i kommuner med mindre enn fem flyktninger per aldersgruppe.</li>
+    </ul>
+    """,
+    unsafe_allow_html=True
+)
 
 with st.sidebar:
     
@@ -73,10 +87,11 @@ oppsummert_komm = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
 oppsummert_komm_year = oppsummert_komm[oppsummert_komm['År'] == select_year] 
 
 with st.sidebar:
-
-    st.markdown("""
-        ### Lag toppliste for hele perioden (2022-2024)                    
-    """)
+    
+    toplist = """
+    ### Lag toppliste for {year}
+    """.format(year = select_year)
+    st.markdown(toplist)
 
     select_group = st.selectbox(
         'Velg gruppering',
