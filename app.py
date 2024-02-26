@@ -96,11 +96,10 @@ with st.sidebar:
         )
         
     if select_group == 'Norge':
-        #pass
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
-        #print(oppsummert_sidebar)
+
         st.dataframe(
             oppsummert_sidebar.head(50),
             hide_index = True,
@@ -115,12 +114,11 @@ with st.sidebar:
             )
 
     if select_group == 'Fylke':
-        #pass
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
-        oppsummert_sidebar = oppsummert[oppsummert['Fylkenummer'] == select_fylke]
+        oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
-        #print(oppsummert_sidebar)
+
         st.sidebar.dataframe(
             oppsummert_sidebar.head(50),
             hide_index = True,
@@ -134,10 +132,6 @@ with st.sidebar:
                 )}
             )
 
-        
-
-#print(oppsummert_komm_year.head())
-
 
 use_container_width = False #st.checkbox("Full tabellbredde", value=True)
 
@@ -149,7 +143,7 @@ use_container_width = False #st.checkbox("Full tabellbredde", value=True)
 summarized = """
 #### Oppsummert
 
-{kommune} har mottatt {sum_total_ukr:.0f} ukrainske flyktninger i perioden 2022 til starten av 2024. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen i kommunen, 
+{kommune} har mottatt {sum_total_ukr:,.0f} ukrainske flyktninger i perioden 2022 til starten av 2024. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen i kommunen, 
 og {ukr_pct_ovr:.1f} prosent av alle innvandere som har blitt bosatt i kommunen i samme periode. 
 
 """.format(
@@ -195,13 +189,13 @@ with st.container():
   
     with col2:
         st.dataframe(
-        flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'pop', 'pop_pct']],
+        flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'pop', 'pop_pct']].style.format(thousands=","),
         use_container_width = use_container_width,
         hide_index = True,
         column_config = {
             'År': st.column_config.NumberColumn(format="%.0f"),
             'pop': st.column_config.NumberColumn(
-             'Antall', format='%.0f'
+             'Antall', format='%.0f', step=".01"
              ),
         'pop_pct': st.column_config.NumberColumn(
              'Andel', format='%.1f %%'
