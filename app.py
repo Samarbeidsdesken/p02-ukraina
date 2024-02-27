@@ -242,9 +242,16 @@ with munn_col1:
     I {year} ble det bosatt {sum_total_ukr_year} ukrainere i kommunen. I {year} utgjorde det {ukr_pct_pop_year:.1f} prosent av befolkningen.  
 
     Fra 2022 til starten av 2024 har {kommune} bosatt {sum_total_ukr:,.0f} ukrainske flyktninger. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen i kommunen, 
-    og {ukr_pct_ovr:.1f} prosent av alle innvandere som har blitt bosatt i kommunen i samme periode. 
+    og {ukr_pct_ovr:.1f} prosent av alle innvandere bosatt i kommunen i samme periode. 
     
     I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
+    
+    ##### Fastlegekapasitet i {kommune} per 2022
+    
+    Merk: 2022 er siste publiserte tall fra SSB.
+    
+    I {kommune} var det {legeliste_n:,.0f} personer på venteliste i 2022. Det utgjør {legeliste_pct:.1f} av antall pasienter på fastlegeliste totalt (les om indikatoren hos [SSB](https://www.ssb.no/kompis/statbank/?id=a1b62e7f-aaf5-4db5-9e46-ef70a93c695f&ver=75680&val=KOSandelpasiente0000&lang=no)). 
+    Tallene er hentet fra [SSBs tabell 12005](https://www.ssb.no/statbank/table/12005).
 
     """.format(
                 kommune = unike_kommuner.get(select_kommune), 
@@ -256,7 +263,9 @@ with munn_col1:
                 ukr_pct_pop = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm_year['pop'].sum())*100,
                 ukr_pct_ovr = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm['innvandr'].sum())*100,
                 fylke_rank = oppsummert_komm_year['fylke_rank'].sum(),
-                national_rank = oppsummert_komm_year['national_rank'].sum()
+                national_rank = oppsummert_komm_year['national_rank'].sum(),
+                legeliste_n = oppsummert_komm_year['legeliste_n'].sum(),
+                legeliste_pct = oppsummert_komm_year['legeliste_pct'].sum()
                 )
 
 
