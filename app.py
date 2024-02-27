@@ -203,14 +203,19 @@ with national_col1:
     st.markdown(
         """
         #### Dette er saken
-        Over 33 0000 flyktninger ble bosatt over hele landet i 2023. 29,000 av flyktningene var ukrainske. Det er det høyeste antall flyktninger i løpet av ett år, og myndighetene har anmodet norske kommuner om å bosette 37,000 flyktninger i 2024 (Regjeringen, 08.01.2024). 
-        Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina (OsloMet, 17.04.2023).
+        29,000 ukrainske flyktninger ble bosatt over hele landet i 2023, i tillegg til 4,000 øvrige flyktninger. 
         
+        Det er det høyeste antall flyktninger i løpet av ett år, og myndighetene har anmodet norske kommuner om å bosette 37,000 flyktninger i 2024 (Regjeringen, 08.01.2024). 
+        Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina (OsloMet, 17.04.2023).
+        """
+    )
+    
+    with st.expander("Kilder"):
+        st.markdown("""
         Kilder:  
         * [Regjeringen, 08.01.2024](https://www.regjeringen.no/no/aktuelt/rekordmange-flykninger-bosatt-i-2023/id3021169/) - hentet 27.02.2024
         * [OsloMet, 17.04.2023](https://www.oslomet.no/om/nyheter/undersoker-ukraineres-liv-norge) - hentet 27.02.2024
-        """
-    )
+        """)
 
 with national_col2:
     with st.expander("Faktaboks"):
@@ -233,19 +238,20 @@ with munn_col1:
 
     summarized = """
     #### Slik er det i {kommune}
-
-    {kommune} har mottatt {sum_total_ukr:,.0f} ukrainske flyktninger i perioden 2022 til starten av 2024. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen i kommunen, 
-    og {ukr_pct_ovr:.1f} prosent av alle innvandere som har blitt bosatt i kommunen i samme periode. 
     
-    I {year} ble det bosatt {sum_total_ukr_year} i kommunen. 
+    I {year} ble det bosatt {sum_total_ukr_year} ukrainere i kommunen. I {year} utgjorde det {ukr_pct_pop_year:.1f} prosent av befolkningen.  
+
+    Fra 2022 til starten av 2024 har {kommune} bosatt {sum_total_ukr:,.0f} ukrainske flyktninger. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen i kommunen, 
+    og {ukr_pct_ovr:.1f} prosent av alle innvandere som har blitt bosatt i kommunen i samme periode. 
     
     I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
 
     """.format(
                 kommune = unike_kommuner.get(select_kommune), 
                 year = select_year, 
-                sum_total_ukr = oppsummert_komm['ukrainere'].sum(),  
+                sum_total_ukr = oppsummert_komm['ukrainere'].sum(),
                 sum_total_ukr_year = oppsummert_komm_year['ukrainere'].sum(),  
+                ukr_pct_pop_year = oppsummert_komm_year['ukr_pct_pop'].sum(),  
                 #sum_total_pop = oppsummert_komm['pop'].sum(),
                 ukr_pct_pop = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm_year['pop'].sum())*100,
                 ukr_pct_ovr = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm['innvandr'].sum())*100,
