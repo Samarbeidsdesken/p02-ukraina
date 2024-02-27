@@ -62,10 +62,15 @@ select_fylke = st.sidebar.selectbox(
 )
 
 select_kommune = st.sidebar.selectbox(
-    'Velg kommune',
+    'Velg kommune (2024)',
     options = sorted(list({k for (k, v) in unike_kommuner.items() if k[:2] ==  select_fylke})),
     format_func = lambda x: unike_kommuner.get(x)
 )
+
+if select_kommune == '1508' or select_kommune == '1580':
+        st.sidebar.markdown("""
+        Merk: Ålesund ble delt i Ålesund og Haram kommuner 01.01.2024. Tallene for 2022 og 2023 er forbundet med 1507-Ålesund.
+        """)
 
 select_year = st.sidebar.selectbox(
     'Velg år',
@@ -85,6 +90,7 @@ ema_komm_year = ema_komm[ema_komm['År'] == select_year]
 
 oppsummert_komm = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
 oppsummert_komm_year = oppsummert_komm[oppsummert_komm['År'] == select_year] 
+oppsummert_year = oppsummert[oppsummert['År'] == 2023] 
 
 with st.sidebar:
     
@@ -199,15 +205,20 @@ with underdev_col2:
 
 
 with national_col1:
+    national_text = """
+    #### Dette er saken
+    29,000 ukrainske flyktninger ble bosatt over hele landet i 2023, i tillegg til 4,000 øvrige flyktninger. 
+        
+    I 2023 ble det bosatt ukrainere i {munn_count} av 357 norske kommuner.
+        
+    Det er det høyeste antall flyktninger i løpet av ett år, og myndighetene har anmodet norske kommuner om å bosette 37,000 flyktninger i 2024 (Regjeringen, 08.01.2024). 
+    Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina (OsloMet, 17.04.2023).
+    """.format(
+        munn_count = str(len(oppsummert_year[oppsummert_year['ukrainere'] > 0]))
+    )
     
     st.markdown(
-        """
-        #### Dette er saken
-        29,000 ukrainske flyktninger ble bosatt over hele landet i 2023, i tillegg til 4,000 øvrige flyktninger. 
-        
-        Det er det høyeste antall flyktninger i løpet av ett år, og myndighetene har anmodet norske kommuner om å bosette 37,000 flyktninger i 2024 (Regjeringen, 08.01.2024). 
-        Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina (OsloMet, 17.04.2023).
-        """
+        national_text
     )
     
     with st.expander("Kilder"):
@@ -267,7 +278,7 @@ with munn_col1:
                 legeliste_n = oppsummert_komm_year['legeliste_n'].sum(),
                 legeliste_pct = oppsummert_komm_year['legeliste_pct'].sum()
                 )
-
+    print(select_kommune)
 
 
     st.markdown(summarized)
