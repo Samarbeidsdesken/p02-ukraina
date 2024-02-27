@@ -74,6 +74,8 @@ select_year = st.sidebar.selectbox(
 
 #FILTER DATA FRAME BASED ON SELECTORS
 
+flyktninger_fylke = flyktninger[flyktninger['Fylkenummer'].isin([select_fylke])] 
+
 flyktninger_komm = flyktninger[flyktninger['Kommunenummer'].isin([select_kommune])] 
 flyktninger_komm_year = flyktninger_komm[flyktninger_komm['År'] == select_year] 
 flyktninger_cols = ['Kommune', 'År', 'Kjønn', 'Aldersgruppe', 'ukrainere', 'ukr_pct', 'ukr_prikket', 'ovrige', 'ovr_pct', 'ovr_prikket', 'pop', 'pop_pct']
@@ -93,7 +95,7 @@ with st.sidebar:
 
     select_group = st.selectbox(
         'Velg gruppering',
-        options=['Norge', unike_fylker.get(select_fylke), 'Lokalavis', 'SSBs sentralitetsindeks']
+        options=[unike_fylker.get(select_fylke), 'Norge', 'Lokalavis', 'SSBs sentralitetsindeks']
     )
 
     if select_group == 'Lokalavis':
@@ -176,6 +178,7 @@ use_container_width = False #st.checkbox("Full tabellbredde", value=True)
 underdev_col1, underdev_col2 = st.columns([5, 4])
 national_col1, national_col2 = st.columns([5, 4])
 munn_col1, munn_col2 = st.columns([5, 4])
+recipe_col1, recipe_col2 = st.columns([5, 4])
 
 with underdev_col1:
     
@@ -200,7 +203,7 @@ with national_col1:
     st.markdown(
         """
         #### Dette er saken
-        Over 33 0000 flyktninger ble bosatt over hele landet i 2023. Det er det høyeste antallet i løpet av ett år, og myndighetene har anmodet norske kommuner om å bosette 37,000 flyktninger i 2024 (Regjeringen, 08.01.2024). 
+        Over 33 0000 flyktninger ble bosatt over hele landet i 2023. 29,000 av flyktningene var ukrainske. Det er det høyeste antall flyktninger i løpet av ett år, og myndighetene har anmodet norske kommuner om å bosette 37,000 flyktninger i 2024 (Regjeringen, 08.01.2024). 
         Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina (OsloMet, 17.04.2023).
         
         Kilder:  
@@ -233,19 +236,35 @@ with munn_col1:
 
     {kommune} har mottatt {sum_total_ukr:,.0f} ukrainske flyktninger i perioden 2022 til starten av 2024. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen i kommunen, 
     og {ukr_pct_ovr:.1f} prosent av alle innvandere som har blitt bosatt i kommunen i samme periode. 
+    
+    I {year} ble det bosatt {sum_total_ukr_year} i kommunen. 
+    
+    I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
 
     """.format(
                 kommune = unike_kommuner.get(select_kommune), 
                 year = select_year, 
                 sum_total_ukr = oppsummert_komm['ukrainere'].sum(),  
+                sum_total_ukr_year = oppsummert_komm_year['ukrainere'].sum(),  
                 #sum_total_pop = oppsummert_komm['pop'].sum(),
-                ukr_pct_pop = oppsummert_komm_year['ukr_pct_pop'].sum(),
-                ukr_pct_ovr = oppsummert_komm_year['ukr_pct_innvandr'].sum()
+                ukr_pct_pop = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm_year['pop'].sum())*100,
+                ukr_pct_ovr = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm['innvandr'].sum())*100,
+                fylke_rank = oppsummert_komm_year['fylke_rank'].sum(),
+                national_rank = oppsummert_komm_year['national_rank'].sum()
                 )
 
 
 
     st.markdown(summarized)
+
+with recipe_col1:
+    st.markdown("""
+    #### Slik gjør du det
+    
+    Slik går man fram...
+    
+    * Ring flyktningkontoret
+    """)
 
 
 with st.expander("Se tallgrunnlag"):
