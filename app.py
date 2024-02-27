@@ -21,7 +21,6 @@ with st.sidebar:
     st.title(apptitle) 
     
     sperrefrist = """
-    ##### Sperrefrist
     {time}
     """.format(time = functions.countdown(end_time))
     st.markdown(sperrefrist.format('%d'))
@@ -91,6 +90,10 @@ ema_komm_year = ema_komm[ema_komm['År'] == select_year]
 oppsummert_komm = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
 oppsummert_komm_year = oppsummert_komm[oppsummert_komm['År'] == select_year] 
 oppsummert_year = oppsummert[oppsummert['År'] == 2023] 
+
+anmodninger = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
+anmodninger = anmodninger[anmodninger['År'] == 2024] 
+anmodninger = anmodninger[['Kommune', 'Kommunenummer', 'ema_anmodet_2024', 'ema_vedtak_2024', 'innvandr_anmodet', 'innvandr_vedtak', 'innvandr_vedtak_string', 'innvandr_avtalt_bosatt', 'ukr_avtalt_bosatt']]
 
 with st.sidebar:
     
@@ -209,10 +212,10 @@ with national_col1:
     #### Dette er saken
     29,000 ukrainske flyktninger ble bosatt over hele landet i 2023, i tillegg til 4,000 øvrige flyktninger. 
         
-    I 2023 ble det bosatt ukrainere i {munn_count} av 357 norske kommuner.
-        
     Det er det høyeste antall flyktninger i løpet av ett år, og myndighetene har anmodet norske kommuner om å bosette 37,000 flyktninger i 2024 (Regjeringen, 08.01.2024). 
     Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina (OsloMet, 17.04.2023).
+    
+    Kommunene har sentral rolle i bosetting og integrering av flyktningene. I 2023 ble det bosatt ukrainere i {munn_count} av 357 norske kommuner.
     """.format(
         munn_count = str(len(oppsummert_year[oppsummert_year['ukrainere'] > 0]))
     )
@@ -257,9 +260,11 @@ with munn_col1:
     
     I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
     
+    I 2024 er {kommune} anmodet av Integrerings- og mangfoldsdirektoratet (IMDi) å bosette {innvandr_anmodet:,.0f} innvandrere. Kommunen {innvandr_vedtak_string} innvandrere.
+    
     ##### Fastlegekapasitet i {kommune} per 2022
     
-    Merk: 2022 er siste publiserte tall fra SSB.
+    Merk: 2022 er siste publiserte tall fra SSB. SSB publiserer foreløpige 2023-tall 15. mars.
     
     I {kommune} var det {legeliste_n:,.0f} personer på venteliste i 2022. Det utgjør {legeliste_pct:.1f} av antall pasienter på fastlegeliste totalt (les om indikatoren hos [SSB](https://www.ssb.no/kompis/statbank/?id=a1b62e7f-aaf5-4db5-9e46-ef70a93c695f&ver=75680&val=KOSandelpasiente0000&lang=no)). 
     Tallene er hentet fra [SSBs tabell 12005](https://www.ssb.no/statbank/table/12005).
@@ -276,11 +281,11 @@ with munn_col1:
                 fylke_rank = oppsummert_komm_year['fylke_rank'].sum(),
                 national_rank = oppsummert_komm_year['national_rank'].sum(),
                 legeliste_n = oppsummert_komm_year['legeliste_n'].sum(),
-                legeliste_pct = oppsummert_komm_year['legeliste_pct'].sum()
+                legeliste_pct = oppsummert_komm_year['legeliste_pct'].sum(),
+                innvandr_anmodet = anmodninger['innvandr_anmodet'].iloc[0],
+                innvandr_vedtak_string = anmodninger['innvandr_vedtak_string'].iloc[0]
                 )
-    print(select_kommune)
-
-
+    print(anmodninger['innvandr_vedtak'].iloc[0])
     st.markdown(summarized)
 
 with recipe_col1:
