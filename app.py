@@ -200,7 +200,12 @@ with national_col1:
     st.markdown(
         """
         #### Dette er saken
-        Tekst som forklarer den nasjonale saken. 
+        Over 33 0000 flyktninger ble bosatt over hele landet i 2023. Det er det høyeste antallet i løpet av ett år, og myndighetene har anmodet norske kommuner om å bosette 37,000 flyktninger i 2024 (Regjeringen, 08.01.2024). 
+        Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina (OsloMet, 17.04.2023).
+        
+        Kilder:  
+        * [Regjeringen, 08.01.2024](https://www.regjeringen.no/no/aktuelt/rekordmange-flykninger-bosatt-i-2023/id3021169/) - hentet 27.02.2024
+        * [OsloMet, 17.04.2023](https://www.oslomet.no/om/nyheter/undersoker-ukraineres-liv-norge) - hentet 27.02.2024
         """
     )
 
@@ -209,7 +214,14 @@ with national_col2:
         
         st.markdown(
             """
-            Her kommer det en faktaboks om ukrainske innvandrere.
+            Ukrainere som kommer til Norge blir gitt kollektiv beskyttelse. Det innebærer at en asylsøker gis tillatelse til opphold, basert på gruppetilhørighet, ikke etter en individuell vurdering. 
+            Oppholdstillatelsen gir ikke permanent opphold, men for ett år. Tillatelsen kan fornyes dersom situasjonen i Ukraina vedvarer. Ordningen ble innført 11. mars 2022, og har blitt videreført i både 2023 og 2024. (Regjeringen, pressemelding nr. 13-2024)
+            
+            I en normalsituasjon blir alle søknader om beskyttelse (asyl) behandlet individuelt. Det innebærer blant annet asylintervju. (UDI)
+            
+            Kilder: 
+            * [Regjeringen, pressemelding nr. 13-2024,  16.02.2024](https://www.regjeringen.no/no/aktuelt/fordrevne-fra-ukraina-far-forlenget-oppholdstillatelsen-i-norge-med-ytterligere-ett-ar/id3025954/)  
+            * [UDI, hentet 27.02.24](https://www.udi.no/informasjon-ukraina-russland/krisen-i-ukraina/vare-i-norge/vanlige-sporsmal-og-svar/#link-30184)
             """
         )
 
@@ -217,7 +229,7 @@ with national_col2:
 with munn_col1:
 
     summarized = """
-    #### Slik er det i din kommune
+    #### Slik er det i {kommune}
 
     {kommune} har mottatt {sum_total_ukr:,.0f} ukrainske flyktninger i perioden 2022 til starten av 2024. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen i kommunen, 
     og {ukr_pct_ovr:.1f} prosent av alle innvandere som har blitt bosatt i kommunen i samme periode. 
