@@ -116,7 +116,7 @@ with st.sidebar:
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
 
         st.dataframe(
-            oppsummert_sidebar.head(25),
+            oppsummert_sidebar,
             hide_index = True,
             use_container_width = True,
             column_config = {
@@ -135,7 +135,7 @@ with st.sidebar:
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
 
         st.sidebar.dataframe(
-            oppsummert_sidebar.head(25),
+            oppsummert_sidebar,
             hide_index = True,
             use_container_width = True,
             column_config = {
@@ -154,7 +154,7 @@ with st.sidebar:
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
 
         st.sidebar.dataframe(
-            oppsummert_sidebar.head(25),
+            oppsummert_sidebar,
             hide_index = True,
             use_container_width = True,
             column_config = {
