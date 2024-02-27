@@ -93,7 +93,7 @@ oppsummert_year = oppsummert[oppsummert['År'] == 2023]
 
 anmodninger = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
 anmodninger = anmodninger[anmodninger['År'] == 2024] 
-anmodninger = anmodninger[['Kommune', 'Kommunenummer', 'ema_anmodet_2024', 'ema_vedtak_2024', 'innvandr_anmodet', 'innvandr_vedtak', 'innvandr_vedtak_string', 'innvandr_avtalt_bosatt', 'ukr_avtalt_bosatt']]
+anmodninger = anmodninger[['Kommune', 'Kommunenummer', 'ema_anmodet_2024', 'ema_vedtak_2024', 'innvandr_anmodet', 'innvandr_vedtak', 'innvandr_vedtak_string', 'innvandr_bosatt', 'ukr_bosatt',  'innvandr_avtalt_bosatt', 'ukr_avtalt_bosatt']]
 
 with st.sidebar:
     
@@ -256,18 +256,20 @@ with munn_col1:
     I {year} ble det bosatt {sum_total_ukr_year} ukrainere i kommunen. I {year} utgjorde det {ukr_pct_pop_year:.1f} prosent av befolkningen.  
 
     Fra 2022 til starten av 2024 har {kommune} bosatt {sum_total_ukr:,.0f} ukrainske flyktninger. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen i kommunen, 
-    og {ukr_pct_ovr:.1f} prosent av alle innvandere bosatt i kommunen i samme periode. 
+    og {ukr_pct_ovr:.1f} prosent av alle flyktninger bosatt i kommunen i samme periode. 
     
     I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
     
-    I 2024 er {kommune} anmodet av Integrerings- og mangfoldsdirektoratet (IMDi) å bosette {innvandr_anmodet:,.0f} innvandrere. Kommunen {innvandr_vedtak_string} innvandrere.
+    I 2024 er {kommune} anmodet av Integrerings- og mangfoldsdirektoratet (IMDi) å bosette {innvandr_anmodet:,.0f} flyktninger. Kommunen {innvandr_vedtak_string} i 2024.
     
     ##### Fastlegekapasitet i {kommune} per 2022
     
     Merk: 2022 er siste publiserte tall fra SSB. SSB publiserer foreløpige 2023-tall 15. mars.
     
-    I {kommune} var det {legeliste_n:,.0f} personer på venteliste i 2022. Det utgjør {legeliste_pct:.1f} av antall pasienter på fastlegeliste totalt (les om indikatoren hos [SSB](https://www.ssb.no/kompis/statbank/?id=a1b62e7f-aaf5-4db5-9e46-ef70a93c695f&ver=75680&val=KOSandelpasiente0000&lang=no)). 
+    I {kommune} var det {legeliste_n:,.0f} personer på venteliste i 2022. Det utgjør {legeliste_pct:.1f} prosent av antall pasienter på fastlegeliste totalt (les om indikatoren hos [SSB](https://www.ssb.no/kompis/statbank/?id=a1b62e7f-aaf5-4db5-9e46-ef70a93c695f&ver=75680&val=KOSandelpasiente0000&lang=no)). 
     Tallene er hentet fra [SSBs tabell 12005](https://www.ssb.no/statbank/table/12005).
+    
+    Hvis vi sidestiller personer på venteliste og SSBs oppgitt mål på [reservekapasitet](https://www.ssb.no/kompis/statbank/?id=a1b62e7f-aaf5-4db5-9e46-ef70a93c695f&ver=75680&val=KOSreservekapasi0000&lang=no), har kommunen {lege_category} når det gjelder kapasitet hos fastlegene.
 
     """.format(
                 kommune = unike_kommuner.get(select_kommune), 
@@ -282,6 +284,7 @@ with munn_col1:
                 national_rank = oppsummert_komm_year['national_rank'].sum(),
                 legeliste_n = oppsummert_komm_year['legeliste_n'].sum(),
                 legeliste_pct = oppsummert_komm_year['legeliste_pct'].sum(),
+                lege_category = oppsummert_komm_year['lege_category'].iloc[0],
                 innvandr_anmodet = anmodninger['innvandr_anmodet'].iloc[0],
                 innvandr_vedtak_string = anmodninger['innvandr_vedtak_string'].iloc[0]
                 )
@@ -300,12 +303,12 @@ with recipe_col1:
 
 with st.expander("Se tallgrunnlag"):
 
-    #st.markdown("""
+    st.markdown("""
     ##### Prikking 
 
-    #Hvis det står *Prikket (<5)*, betyr det at kommunen mottok mindre enn fem flyktninger det året. IMDi tilbakeholder eksakt antall av personvernhensyn. 
-    #Summeringer inkluderer bare oppgitte tall, og tar ikke hensyn til prikking. Summeringer må derfor sees på som et minimum antall bosatte flyktninger i kommunen. 
-    #""")
+    Hvis det står *Prikket (<5)*, betyr det at antallet er mindre enn fem. IMDi tilbakeholder eksakt antall av personvernhensyn. 
+    Summeringer inkluderer bare oppgitte tall, og tar ikke hensyn til prikking. Summeringer må derfor sees på som et minimum antall bosatte flyktninger i kommunen. 
+    """)
 
 
     tablecol1, tablecol2 = st.columns([4, 5])
