@@ -213,7 +213,7 @@ with underdev_col1:
     st.markdown(
         """
         <p style='color:red;font-weight:bold;'>Ikke publiser saker basert på denne researchen før 22. april 2024. </p>
-        <p style='color:red;font-weight:bold;'>Siden er under utvikling. Bruk den for å undersøke egen kommune, og for å bli kjent tallgrunnlaget. Feil kan forekomme.</p>
+        <p style='color:red;font-weight:bold;'>Siden er under utvikling. Bruk den for å undersøke egen kommune, og for å bli kjent med tallgrunnlaget. Feil kan forekomme.</p>
         """,
         unsafe_allow_html=True
     )
