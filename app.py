@@ -43,6 +43,7 @@ def format_selection(_dict, option):
 flyktninger = load_data('app_flyktninger')
 oppsummert = load_data('app_flyktninger_oppsummert')
 ema = load_data('ema')
+ukr_mottak = load_data('ukrainere_mottak_310124')
 #folketall = load_data('app_flyktninger_folketall')
 
 
@@ -94,6 +95,17 @@ oppsummert_year = oppsummert[oppsummert['År'] == 2023]
 anmodninger = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
 anmodninger = anmodninger[anmodninger['År'] == 2024] 
 anmodninger = anmodninger[['Kommune', 'Kommunenummer', 'ema_anmodet_2024', 'ema_vedtak_2024', 'innvandr_anmodet', 'innvandr_vedtak', 'innvandr_vedtak_string', 'innvandr_bosatt', 'ukr_bosatt',  'innvandr_avtalt_bosatt', 'ukr_avtalt_bosatt']]
+
+ukr_mottak_komm = ukr_mottak[ukr_mottak['Kommunenummer'].isin([select_kommune])]
+ukr_mottak_komm = ukr_mottak_komm[['mottak_navn', 'ukr_mottak']]
+
+
+ukr_mottak_bool = False
+ukr_mottak_string = 'Per 31.01.2024 bor det også ukrainere på asylmottak i kommunen, som venter på å bli bosatt i en norsk kommune: \n'
+for mottak, ukr in ukr_mottak_komm.itertuples(index=False):
+    ukr_mottak_bool = True
+    ukr_mottak_string += '* ' + mottak + ': ' + str(ukr) + ' ukrainere  \n'
+
 
 with st.sidebar:
     
@@ -158,9 +170,16 @@ with st.sidebar:
         
     if select_group == 'SSBs sentralitetsindeks':
         oppsummert_sidebar = oppsummert[oppsummert['sentralitet'] == int(select_centrality[:1])]
+        oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['År'] == select_year]
         #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+        
+        st.sidebar.markdown("""
+        Sentralitetsindeksen er en måte å måle hvor sentral en kommune er med grunnlag i befolkning, arbeidsplasser og servicetilbud. Indeksen er utviklet av SSB.
+        
+        Mest sentrale kommuner er Oslo og omkringliggende kommuner. Større byer som Bergen, Trondheim  og Tromsø har verdien 2. De minst sentrale kommunene i Norge, er blant annet Eidfjord, Frøya, Folldal, Gratangen, mfl.        
+        """)
 
         st.sidebar.dataframe(
             oppsummert_sidebar,
@@ -210,12 +229,12 @@ with underdev_col2:
 with national_col1:
     national_text = """
     #### Dette er saken
-    29,000 ukrainske flyktninger ble bosatt over hele landet i 2023, i tillegg til 4,000 øvrige flyktninger. 
+    29,000 ukrainske flyktninger ble bosatt over hele landet i 2023, i tillegg til 4,000 flyktninger fra andre land. 
         
-    Det er det høyeste antall flyktninger i løpet av ett år, og myndighetene har anmodet norske kommuner om å bosette 37,000 flyktninger i 2024 (Regjeringen, 08.01.2024). 
+    Det er det høyeste antall flyktninger i løpet av ett år, og myndighetene har anmodet norske kommuner om å bosette ytterligere 37,000 flyktninger i 2024 (Regjeringen, 08.01.2024). 
     Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina (OsloMet, 17.04.2023).
     
-    Kommunene har sentral rolle i bosetting og integrering av flyktningene. I 2023 ble det bosatt ukrainere i {munn_count} av 357 norske kommuner.
+    Kommunene har en sentral rolle i bosetting og integrering av flyktningene. I 2023 ble det bosatt ukrainere i {munn_count} av 357 norske kommuner.
     """.format(
         munn_count = str(len(oppsummert_year[oppsummert_year['ukrainere'] > 0]))
     )
@@ -258,18 +277,9 @@ with munn_col1:
     Fra 2022 til starten av 2024 har {kommune} bosatt {sum_total_ukr:,.0f} ukrainske flyktninger. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen i kommunen, 
     og {ukr_pct_ovr:.1f} prosent av alle flyktninger bosatt i kommunen i samme periode. 
     
-    I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
+    I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse i {year}, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
     
     I 2024 er {kommune} anmodet av Integrerings- og mangfoldsdirektoratet (IMDi) å bosette {innvandr_anmodet:,.0f} flyktninger. Kommunen {innvandr_vedtak_string} i 2024.
-    
-    ##### Fastlegekapasitet i {kommune} per 2022
-    
-    Merk: 2022 er siste publiserte tall fra SSB. SSB publiserer foreløpige 2023-tall 15. mars.
-    
-    I {kommune} var det {legeliste_n:,.0f} personer på venteliste i 2022. Det utgjør {legeliste_pct:.1f} prosent av antall pasienter på fastlegeliste totalt (les om indikatoren hos [SSB](https://www.ssb.no/kompis/statbank/?id=a1b62e7f-aaf5-4db5-9e46-ef70a93c695f&ver=75680&val=KOSandelpasiente0000&lang=no)). 
-    Tallene er hentet fra [SSBs tabell 12005](https://www.ssb.no/statbank/table/12005).
-    
-    Hvis vi sidestiller personer på venteliste og SSBs oppgitt mål på [reservekapasitet](https://www.ssb.no/kompis/statbank/?id=a1b62e7f-aaf5-4db5-9e46-ef70a93c695f&ver=75680&val=KOSreservekapasi0000&lang=no), har kommunen {lege_category} når det gjelder kapasitet hos fastlegene.
 
     """.format(
                 kommune = unike_kommuner.get(select_kommune), 
@@ -282,14 +292,33 @@ with munn_col1:
                 ukr_pct_ovr = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm['innvandr'].sum())*100,
                 fylke_rank = oppsummert_komm_year['fylke_rank'].sum(),
                 national_rank = oppsummert_komm_year['national_rank'].sum(),
-                legeliste_n = oppsummert_komm_year['legeliste_n'].sum(),
-                legeliste_pct = oppsummert_komm_year['legeliste_pct'].sum(),
-                lege_category = oppsummert_komm_year['lege_category'].iloc[0],
                 innvandr_anmodet = anmodninger['innvandr_anmodet'].iloc[0],
                 innvandr_vedtak_string = anmodninger['innvandr_vedtak_string'].iloc[0]
                 )
     print(anmodninger['innvandr_vedtak'].iloc[0])
     st.markdown(summarized)
+    
+    
+    if ukr_mottak_bool:
+        st.markdown(ukr_mottak_string)
+        
+    fastlege = """
+    ##### Fastlegekapasitet i {kommune} per 2022
+    
+    Merk: 2022 er siste publiserte tall fra SSB. SSB publiserer foreløpige 2023-tall 15. mars.
+    
+    I {kommune} var det {legeliste_n:,.0f} personer på venteliste i 2022. Det utgjør {legeliste_pct:.1f} prosent av antall pasienter på fastlegeliste totalt (les mer om indikatoren hos [SSB](https://www.ssb.no/kompis/statbank/?id=a1b62e7f-aaf5-4db5-9e46-ef70a93c695f&ver=75680&val=KOSandelpasiente0000&lang=no)). 
+    Tallene er hentet fra [SSBs tabell 12005](https://www.ssb.no/statbank/table/12005).
+    
+    Ved å samtidig se på personer på ventelise og SSBs mål på [reservekapasitet](https://www.ssb.no/kompis/statbank/?id=a1b62e7f-aaf5-4db5-9e46-ef70a93c695f&ver=75680&val=KOSreservekapasi0000&lang=no) blant fastlegene, har kommunen {lege_category} når det gjelder fastlegekapasitet.
+    """.format(
+        kommune = unike_kommuner.get(select_kommune), 
+        legeliste_n = oppsummert_komm_year['legeliste_n'].sum(),
+        legeliste_pct = oppsummert_komm_year['legeliste_pct'].sum(),
+        lege_category = oppsummert_komm_year['lege_category'].iloc[0]
+    )
+    
+    st.markdown(fastlege)
 
 with recipe_col1:
     st.markdown("""
