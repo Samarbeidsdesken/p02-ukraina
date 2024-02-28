@@ -212,9 +212,8 @@ with underdev_col1:
     pass    
     st.markdown(
         """
-        #### Under utvikling
         <p style='color:red;font-weight:bold;'>Sperrefrist: 22. april 2024.</p>
-        <p style='color:red;font-weight:bold;'>Applikasjonen er under utvikling. Bruk den for å gjøre case-research, og for å bli kjent tallgrunnlaget. Mindre feil kan forekomme.</p>
+        <p style='color:red;font-weight:bold;'>Applikasjonen er under utvikling. Bruk den for å gjøre case-research, og for å bli kjent tallgrunnlaget. Feil kan forekomme.</p>
         """,
         unsafe_allow_html=True
     )
