@@ -288,7 +288,7 @@ with national_col2:
         
         st.markdown(
             """
-            UUkrainere som kommer til Norge blir gitt kollektiv beskyttelse,  de trenger ingen individuell vurdering eller intervju. Oppholdstillatelsen gir ikke permanent opphold, men for ett år. Tillatelsen kan fornyes dersom situasjonen i Ukraina vedvarer.
+            Ukrainere som kommer til Norge blir gitt kollektiv beskyttelse,  de trenger ingen individuell vurdering eller intervju. Oppholdstillatelsen gir ikke permanent opphold, men for ett år. Tillatelsen kan fornyes dersom situasjonen i Ukraina vedvarer.
  
             Tre steg frem mot bosetting:  
             * Registrering på Råde mottakssenter.  
