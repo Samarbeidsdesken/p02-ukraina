@@ -101,7 +101,7 @@ ukr_mottak_komm = ukr_mottak_komm[['mottak_navn', 'ukr_mottak']]
 
 
 ukr_mottak_bool = False
-ukr_mottak_string = 'Per 31.01.2024 bor det også ukrainere på asylmottak i kommunen, som venter på å bli bosatt i en norsk kommune: \n'
+ukr_mottak_string = 'Per 31.01.2024 bor det også ukrainere på asylmottak i kommunen. Disse har kommunen også ansvar for mens de venter på å bli bosatt.\n'
 for mottak, ukr in ukr_mottak_komm.itertuples(index=False):
     ukr_mottak_bool = True
     ukr_mottak_string += '* ' + mottak + ': ' + str(ukr) + ' ukrainere  \n'
@@ -229,12 +229,45 @@ with underdev_col2:
 with national_col1:
     national_text = """
     #### Dette er saken
-    29,000 ukrainske flyktninger ble bosatt over hele landet i 2023, i tillegg til 4,000 flyktninger fra andre land. 
-        
-    Det er det høyeste antall flyktninger i løpet av ett år, og myndighetene har anmodet norske kommuner om å bosette ytterligere 37,000 flyktninger i 2024 (Regjeringen, 08.01.2024). 
-    Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina (OsloMet, 17.04.2023).
+    Siden krigen startet i februar 2022 har 60,134 ukrainske flyktninger blitt bosatt i Norge. I samme periode har det kommet 8,465 flyktninger fra andre land. 
+
+    Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015-bølgen, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina.
+ 
+    I 2023 ble det bosatt ukrainere i {munn_count} av 357 norske kommuner.
     
-    Kommunene har en sentral rolle i bosetting og integrering av flyktningene. I 2023 ble det bosatt ukrainere i {munn_count} av 357 norske kommuner.
+    ##### Ikke problemfritt  
+    
+    Forsker ved NIBR, Vilde Hernes, sier dette ikke er den suksesshistorien som mange hadde ventet (Se her for fullt intervju med sitater, og lenke til forskningsrapporten)
+    
+    * Kun 10 prosent av ukrainerne snakker engelsk.  
+    * Andelen som kommer ut i jobb etter introduksjonsprogrammet ligger helt likt med øvrige flyktninger.  
+    * Flyktningene som kom i starten hadde høy utdannelse, men dette har endret seg over tid. Nå er det flere ressurssvake som kommer.  
+    * Varierende tilbud til dem over 55 år. 
+    
+    Flyktninger Norge er vant til å ta i mot er menn i arbeidsdyktig alder. Men 13% av ukrainerne som er bosatt er over 55 år, og 30 prosent er under 18 år. 
+    
+    ##### Høy andel eldre, få tilbud  
+    
+    På grunn av det store antallet ukrainske flyktninger utgjør dette en betydelig gruppe med eldre mennesker. Disse skal ha helt andre tjenester i kommunen enn friske flyktninger i arbeidsdyktig alder. Dette var ikke kommunene rigget for, og mange har fortsatt store utfordringer.
+
+    De over 55 år har ikke rett på et introduksjonsprogram. Dette er et program for å raskt komme ut i arbeid eller utdanning. Kommunene kan likevel tilby introduksjonsprogram, ved kapasitet. Det er derfor variasjon i tilbudet til denne gruppen fra kommune til kommune. 
+
+    ##### Sykere enn nordmenn  
+    
+    Ifølge en rapport fra FHI er ukrainerne sykere enn nordmenn, med særlig dårlig tannhelse. (Se her for fullt intervju med FHI, og lenke til rapport)
+    
+    Ingen sitter med en oversikt over hvor mange ukrainere som har mottatt behandling via primær- eller spesialisthelsetjenesten, men dette er noe FHI jobber med. Det kan være utfordrende for kommunen å ikke kjenne til helsehistorikken til flyktningene de skal bosette. 
+
+    Overlege ved OUS, xx, forteller at de har evakuert over 350 pasienter fra ukrainske sykehus siden krigen startet. Han sier tallet på ukrainere som har vært innom sykehus i Norge trolig er ti ganger så høyt, og at mange har kreft. (Se her for fullt intervju med sitater)
+
+    Vi har snakket med flyktningtjenesten i xx kommuner. De trekker frem helsetjenesten som en av de største utfordringene i kommunen. Eldreomsorgen og helsetjenesten var presset fra før. I tillegg til ukrainerne som er bosatt, har kommunen også ansvar for helsetjenesten til asylsøkerne som sitter på mottak. (Se oversikt over hvem vi har hatt bakgrunnsamtaler med)
+
+    ##### Midlertidighet fører til usikkerhet
+    
+    Siden ingen vet om ukrainerne skal være her i tre måneder, tre år eller resten av livet, er det mange kommuner som ikke tør å oppskalere tjenestetilbudet, spesielt innenfor helse, skole, barnehage og NAV. Å ansette sykepleiere og lærere i faste stillinger er risikabelt. De vil tape penger når ukrainerne må dra og de slutter å få tilskudd fra Imdi. 
+    
+    Noen kommuner sier de skal ri av seg stormen, andre prøver å kjøpe private tjenester som de kan de nedskalere fort. 
+
     """.format(
         munn_count = str(len(oppsummert_year[oppsummert_year['ukrainere'] > 0]))
     )
@@ -243,12 +276,12 @@ with national_col1:
         national_text
     )
     
-    with st.expander("Kilder"):
-        st.markdown("""
-        Kilder:  
-        * [Regjeringen, 08.01.2024](https://www.regjeringen.no/no/aktuelt/rekordmange-flykninger-bosatt-i-2023/id3021169/) - hentet 27.02.2024
-        * [OsloMet, 17.04.2023](https://www.oslomet.no/om/nyheter/undersoker-ukraineres-liv-norge) - hentet 27.02.2024
-        """)
+    #with st.expander("Kilder"):
+    #    st.markdown("""
+    #    Kilder:  
+    #    * [Regjeringen, 08.01.2024](https://www.regjeringen.no/no/aktuelt/rekordmange-flykninger-bosatt-i-2023/id3021169/) - hentet 27.02.2024
+    #    * [OsloMet, 17.04.2023](https://www.oslomet.no/om/nyheter/undersoker-ukraineres-liv-norge) - hentet 27.02.2024
+    #    """)
 
 with national_col2:
     with st.expander("Faktaboks"):
@@ -295,7 +328,7 @@ with munn_col1:
                 innvandr_anmodet = anmodninger['innvandr_anmodet'].iloc[0],
                 innvandr_vedtak_string = anmodninger['innvandr_vedtak_string'].iloc[0]
                 )
-    print(anmodninger['innvandr_vedtak'].iloc[0])
+    
     st.markdown(summarized)
     
     
@@ -322,11 +355,36 @@ with munn_col1:
 
 with recipe_col1:
     st.markdown("""
-    #### Slik gjør du det
+    #### Dette kan du gjøre i din kommune
     
-    Slik går man fram...
+    Flyktninger fra Ukraina er betydelig flere, aldre og sykere enn flyktninger norske kommuner har bosatt tidligere. Forventningen var at de skulle gli inn i samfunnet. De skulle være som arbeidsinnvandrere som hoppet ut i jobb. Erfaringene viser at det har vært flere utfordringer. 
     
-    * Ring flyktningkontoret
+    * Ta kontakt med flyktningkontoret:  
+        * Hva er deres erfaring med å ta imot ukrainske flyktninger?  
+        * Hvilke utfordringer møter dere?  
+        * Hvordan har det vært å få de i jobb?  
+        * Hvor mange er på sykehjem?  
+        * Hvor mange får hjemmesykepleie?  
+        * Hvor mange får oppfølging innen spesialisthelsetjenesten?  
+        * Hvilket tilbud for de over 55 år?  
+        * Har dere gladhistorier som viser hvordan dette har fungert godt å ta imot ukrainske flyktninger?  
+        * Hva betyr andelen barn og unge for barnehagene og skolene?  
+        * Hvordan vedtar kommunen hvor mange flyktninger de skal ta i mot? Hvilke vurderinger blir gjort.  
+        * Hvordan har kommunen organisert seg for å ta i mot flyktningene?  
+        
+    * Ta kontakt med kommuneoverlegen:  
+        * Hvordan er fastlegesituasjonen i kommunene?  
+        * Hva betyr de ukrainske flyktningene for denne situasjonen?  
+        * FHI sin rapport sier at ukrainere er sykere enn nordmenn. Hva er ditt inntrykk? Hvordan ser sykdomsbildet ut?  
+        * Har dere tall på ukrainere som har benyttet seg av primær - og spesialisthelsetjenesten?  
+        * Hvordan vil den ukrainske flyktningbølgen påvirke kommunen fremover?  
+    
+    * Andre mulige kilder:  
+        * Sykepleiere som jobber på sykehjem med ukrainske flyktninger.  
+        * Lærer på introduksjonsprogram.  
+        * Rektor på skole der de har ukrainske elever.  
+        * Asylmottak i de kommunene som har.  
+
     """)
 
 
