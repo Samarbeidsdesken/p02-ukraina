@@ -210,17 +210,14 @@ recipe_col1, recipe_col2 = st.columns([5, 4])
 
 with underdev_col1:
     pass    
-    #st.markdown(
-    #    """
-    #    #### Under utvikling
-    #    <p style='color:red;font-weight:bold;'>Applikasjonen er under utvikling. Bruk den for å gjøre case-research, og for å bli kjent tallgrunnlaget. Feil kan forekomme.</p>
-    #    <p style='color:red;font-weight:bold;'>Kjente feil:<p>
-    #    <ul style='color:red;font-weight:bold;'>
-    #    <li>Noe usikker rundt tallgrunnlaget fra IMDi, særlig rundt prikking av i kommuner med mindre enn fem flyktninger per aldersgruppe.</li>
-    #    </ul>
-    #    """,
-    #    unsafe_allow_html=True
-    #)
+    st.markdown(
+        """
+        #### Under utvikling
+        <p style='color:red;font-weight:bold;'>Sperrefrist: 22. april 2024.</p>
+        <p style='color:red;font-weight:bold;'>Applikasjonen er under utvikling. Bruk den for å gjøre case-research, og for å bli kjent tallgrunnlaget. Mindre feil kan forekomme.</p>
+        """,
+        unsafe_allow_html=True
+    )
     
 with underdev_col2:
     pass
@@ -231,7 +228,7 @@ with national_col1:
     #### Dette er saken
     Siden krigen startet i februar 2022 har 60,134 ukrainske flyktninger blitt bosatt i Norge. I samme periode har det kommet 8,465 flyktninger fra andre land. 
 
-    Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015-bølgen, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina.
+    Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina.
  
     I 2023 ble det bosatt ukrainere i {munn_count} av 357 norske kommuner.
     
@@ -244,7 +241,7 @@ with national_col1:
     * Flyktningene som kom i starten hadde høy utdannelse, men dette har endret seg over tid. Nå er det flere ressurssvake som kommer.  
     * Varierende tilbud til dem over 55 år. 
     
-    Flyktninger Norge er vant til å ta i mot er menn i arbeidsdyktig alder. Men 13% av ukrainerne som er bosatt er over 55 år, og 30 prosent er under 18 år. 
+    Flyktninger Norge er vant til å ta i mot er menn i arbeidsdyktig alder. Men 13 prosent av ukrainerne som er bosatt er over 55 år, og 30 prosent er under 18 år. 
     
     ##### Høy andel eldre, få tilbud  
     
