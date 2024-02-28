@@ -209,18 +209,18 @@ munn_col1, munn_col2 = st.columns([5, 4])
 recipe_col1, recipe_col2 = st.columns([5, 4])
 
 with underdev_col1:
-    
-    st.markdown(
-        """
-        #### Under utvikling
-        <p style='color:red;font-weight:bold;'>Applikasjonen er under utvikling. Bruk den for å gjøre case-research, og for å bli kjent tallgrunnlaget. Feil kan forekomme.</p>
-        <p style='color:red;font-weight:bold;'>Kjente feil:<p>
-        <ul style='color:red;font-weight:bold;'>
-        <li>Noe usikker rundt tallgrunnlaget fra IMDi, særlig rundt prikking av i kommuner med mindre enn fem flyktninger per aldersgruppe.</li>
-        </ul>
-        """,
-        unsafe_allow_html=True
-    )
+    pass    
+    #st.markdown(
+    #    """
+    #    #### Under utvikling
+    #    <p style='color:red;font-weight:bold;'>Applikasjonen er under utvikling. Bruk den for å gjøre case-research, og for å bli kjent tallgrunnlaget. Feil kan forekomme.</p>
+    #    <p style='color:red;font-weight:bold;'>Kjente feil:<p>
+    #    <ul style='color:red;font-weight:bold;'>
+    #    <li>Noe usikker rundt tallgrunnlaget fra IMDi, særlig rundt prikking av i kommuner med mindre enn fem flyktninger per aldersgruppe.</li>
+    #    </ul>
+    #    """,
+    #    unsafe_allow_html=True
+    #)
     
 with underdev_col2:
     pass
@@ -288,15 +288,24 @@ with national_col2:
         
         st.markdown(
             """
-            Ukrainere som kommer til Norge blir gitt kollektiv beskyttelse. Det innebærer at en asylsøker gis tillatelse til opphold, basert på gruppetilhørighet, ikke etter en individuell vurdering. 
-            Oppholdstillatelsen gir ikke permanent opphold, men for ett år. Tillatelsen kan fornyes dersom situasjonen i Ukraina vedvarer. Ordningen ble innført 11. mars 2022, og har blitt videreført i både 2023 og 2024. (Regjeringen, pressemelding nr. 13-2024)
+            UUkrainere som kommer til Norge blir gitt kollektiv beskyttelse,  de trenger ingen individuell vurdering eller intervju. Oppholdstillatelsen gir ikke permanent opphold, men for ett år. Tillatelsen kan fornyes dersom situasjonen i Ukraina vedvarer.
+ 
+            Tre steg frem mot bosetting:  
+            * Registrering på Råde mottakssenter.  
+            * Plassering på mottak. Her venter de i snitt xxx måneder.
+            * Bosetting i kommune - her blir de enten plassert tilfeldig, eller de kan selv søke seg til en kommune hvor de har familie/venner de skal bo sammen med - da er det opp til kommunen om de har kapasitet til å bosette. 
             
-            I en normalsituasjon blir alle søknader om beskyttelse (asyl) behandlet individuelt. Det innebærer blant annet asylintervju. (UDI)
+            Tilskudd til kommunen: 
+ 
+            Introduksjonsstønad: 
+            Enslig mindreårig asylsøker: 
+            Tilskudd for eldre:
+            Tilskudd for flyktninger med funksjonsnedsetting:
             
-            Kilder: 
-            * [Regjeringen, pressemelding nr. 13-2024,  16.02.2024](https://www.regjeringen.no/no/aktuelt/fordrevne-fra-ukraina-far-forlenget-oppholdstillatelsen-i-norge-med-ytterligere-ett-ar/id3025954/)  
-            * [UDI, hentet 27.02.24](https://www.udi.no/informasjon-ukraina-russland/krisen-i-ukraina/vare-i-norge/vanlige-sporsmal-og-svar/#link-30184)
-            """
+            <img src="https://www.imdi.no/globalassets/illustrasjoner/bosettingsprosess---infografikk/bosetting_mottaksbeboere_web_forenklet.jpg" width="100%">
+            
+            """,
+            unsafe_allow_html=True
         )
 
 
