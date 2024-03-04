@@ -102,7 +102,7 @@ oppsummert_year = oppsummert[oppsummert['År'] == 2023]
 
 anmodninger = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
 anmodninger = anmodninger[anmodninger['År'] == 2024] 
-anmodninger = anmodninger[['Kommune', 'Kommunenummer', 'ema_anmodet_2024', 'ema_vedtak_2024', 'innvandr_anmodet', 'innvandr_vedtak', 'innvandr_vedtak_string', 'innvandr_bosatt', 'ukr_bosatt',  'innvandr_avtalt_bosatt', 'ukr_avtalt_bosatt']]
+anmodninger = anmodninger[['Kommune', 'Kommunenummer', 'ema_anmodet_2024', 'ema_vedtak_2024', 'ema_vedtak_2024_string', 'innvandr_anmodet', 'innvandr_vedtak', 'innvandr_vedtak_string', 'innvandr_bosatt', 'ukr_bosatt',  'innvandr_avtalt_bosatt', 'ukr_avtalt_bosatt']]
 
 ukr_mottak_komm = ukr_mottak[ukr_mottak['Kommunenummer'].isin([select_kommune])]
 ukr_mottak_komm = ukr_mottak_komm[['mottak_navn', 'ukr_mottak']]
@@ -340,6 +340,8 @@ with tab2:
     I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse i {year}, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
     
     I 2024 er {kommune} anmodet av Integrerings- og mangfoldsdirektoratet (IMDi) å bosette {innvandr_anmodet:,.0f} flyktninger. Kommunen {innvandr_vedtak_string} i 2024.
+    
+    {kommune} {ema_vedtak_2024_string}
 
     """.format(
                 kommune = unike_kommuner.get(select_kommune), 
@@ -353,7 +355,9 @@ with tab2:
                 fylke_rank = oppsummert_komm_year['fylke_rank'].sum(),
                 national_rank = oppsummert_komm_year['national_rank'].sum(),
                 innvandr_anmodet = anmodninger['innvandr_anmodet'].iloc[0],
-                innvandr_vedtak_string = anmodninger['innvandr_vedtak_string'].iloc[0]
+                innvandr_vedtak_string = anmodninger['innvandr_vedtak_string'].iloc[0],
+                ema_vedtak_2024_string = anmodninger['ema_vedtak_2024_string'].iloc[0],
+                
                 )
     
     st.markdown(summarized)
