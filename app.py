@@ -417,7 +417,14 @@ with tab2:
 with tab3: 
     
     st.markdown("""
-    ##### Prikking 
+    ##### Om tallene
+    Befolkningstall er hentet fra[ SSB-tabell 07459](https://www.ssb.no/statbank/table/07459).
+    
+    Fakta om venteliste hos fastlege og reservekapasitet er hentet fra [SSB-tabell 12005](https://www.ssb.no/statbank/table/12005).
+    
+    Flyktningtall er hentet fra Integrerings- og mangfolksdirektaret (IMDi).
+                
+    ###### Prikking 
 
     Hvis det står *Prikket (<5)*, betyr det at antallet er mindre enn fem. IMDi tilbakeholder eksakt antall av personvernhensyn. 
     Summeringer inkluderer bare oppgitte tall, og tar ikke hensyn til prikking. Summeringer må derfor sees på som et minimum antall bosatte flyktninger i kommunen. 
