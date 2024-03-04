@@ -24,6 +24,14 @@ with st.sidebar:
     {time}
     """.format(time = functions.countdown(end_time))
     st.markdown(sperrefrist.format('%d'))
+    
+    st.markdown(
+        """
+        <p style='color:red;font-weight:bold;'>Ikke publiser saker basert på denne researchen før sperrefristen. </p>
+        <p style='color:red;font-weight:bold;'>Siden er under utvikling. Bruk den for å undersøke egen kommune, og for å bli kjent med tallgrunnlaget. Feil kan forekomme.</p>
+        """,
+        unsafe_allow_html=True
+    )
 
     st.markdown(
         """
@@ -198,114 +206,128 @@ with st.sidebar:
 use_container_width = False #st.checkbox("Full tabellbredde", value=True)
 
 
-# PAGE CONTENT
+# DETTE ER SAKEN
 
+tab1, tab2, tab3, tab4 = st.tabs(['Dette er saken', 'Slik er det i {kommune}'.format(kommune = unike_kommuner.get(select_kommune)), 'Tallgrunnlag', 'Ekspertintervju'])
 
-
-
-underdev_col1, underdev_col2 = st.columns([5, 4])
-national_col1, national_col2 = st.columns([5, 4])
-munn_col1, munn_col2 = st.columns([5, 4])
-recipe_col1, recipe_col2 = st.columns([5, 4])
-
-with underdev_col1:
-    pass    
-    st.markdown(
-        """
-        <p style='color:red;font-weight:bold;'>Ikke publiser saker basert på denne researchen før 22. april 2024. </p>
-        <p style='color:red;font-weight:bold;'>Siden er under utvikling. Bruk den for å undersøke egen kommune, og for å bli kjent med tallgrunnlaget. Feil kan forekomme.</p>
-        """,
-        unsafe_allow_html=True
-    )
+with tab1:
     
-with underdev_col2:
-    pass
+    underdev_col1, underdev_col2 = st.columns([5, 4])
+    national_col1, national_col2 = st.columns([5, 4])
+    munn_col1, munn_col2 = st.columns([5, 4])
+    recipe_col1, recipe_col2 = st.columns([5, 4])
+
+        
+    with underdev_col2:
+        pass
 
 
-with national_col1:
-    national_text = """
-    #### Dette er saken
-    Siden krigen startet i februar 2022 har 60,134 ukrainske flyktninger blitt bosatt i Norge. I samme periode har det kommet 8,465 flyktninger fra andre land. 
+    with national_col1:
+        national_text = """
 
-    Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina.
- 
-    I 2023 ble det bosatt ukrainere i {munn_count} av 357 norske kommuner.
-    
-    ##### Ikke problemfritt  
-    
-    Forsker ved NIBR, Vilde Hernes, sier dette ikke er den suksesshistorien som mange hadde ventet (Se her for fullt intervju med sitater, og lenke til forskningsrapporten)
-    
-    * Kun 10 prosent av ukrainerne snakker engelsk.  
-    * Andelen som kommer ut i jobb etter introduksjonsprogrammet ligger helt likt med øvrige flyktninger.  
-    * Flyktningene som kom i starten hadde høy utdannelse, men dette har endret seg over tid. Nå er det flere ressurssvake som kommer.  
-    * Varierende tilbud til dem over 55 år. 
-    
-    Flyktninger Norge er vant til å ta i mot er menn i arbeidsdyktig alder. Men 13 prosent av ukrainerne som er bosatt er over 55 år, og 30 prosent er under 18 år. 
-    
-    ##### Høy andel eldre, få tilbud  
-    
-    På grunn av det store antallet ukrainske flyktninger utgjør dette en betydelig gruppe med eldre mennesker. Disse skal ha helt andre tjenester i kommunen enn friske flyktninger i arbeidsdyktig alder. Dette var ikke kommunene rigget for, og mange har fortsatt store utfordringer.
+        Siden krigen startet i februar 2022 har 60,134 ukrainske flyktninger blitt bosatt i Norge. I samme periode har det kommet 8,465 flyktninger fra andre land. 
 
-    De over 55 år har ikke rett på et introduksjonsprogram. Dette er et program for å raskt komme ut i arbeid eller utdanning. Kommunene kan likevel tilby introduksjonsprogram, ved kapasitet. Det er derfor variasjon i tilbudet til denne gruppen fra kommune til kommune. 
-
-    ##### Sykere enn nordmenn  
+        Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina.
     
-    Ifølge en rapport fra FHI er ukrainerne sykere enn nordmenn, med særlig dårlig tannhelse. (Se her for fullt intervju med FHI, og lenke til rapport)
-    
-    Ingen sitter med en oversikt over hvor mange ukrainere som har mottatt behandling via primær- eller spesialisthelsetjenesten, men dette er noe FHI jobber med. Det kan være utfordrende for kommunen å ikke kjenne til helsehistorikken til flyktningene de skal bosette. 
+        I 2023 ble det bosatt ukrainere i {munn_count} av 357 norske kommuner.
+        
+        ##### Ikke problemfritt  
+        
+        Forsker ved NIBR, Vilde Hernes, sier dette ikke er den suksesshistorien som mange hadde ventet (Se her for fullt intervju med sitater, og lenke til forskningsrapporten)
+        
+        * Kun 10 prosent av ukrainerne snakker engelsk.  
+        * Andelen som kommer ut i jobb etter introduksjonsprogrammet ligger helt likt med øvrige flyktninger.  
+        * Flyktningene som kom i starten hadde høy utdannelse, men dette har endret seg over tid. Nå er det flere ressurssvake som kommer.  
+        * Varierende tilbud til dem over 55 år. 
+        
+        Flyktninger Norge er vant til å ta i mot er menn i arbeidsdyktig alder. Men 13 prosent av ukrainerne som er bosatt er over 55 år, og 30 prosent er under 18 år. 
+        
+        ##### Høy andel eldre, få tilbud  
+        
+        På grunn av det store antallet ukrainske flyktninger utgjør dette en betydelig gruppe med eldre mennesker. Disse skal ha helt andre tjenester i kommunen enn friske flyktninger i arbeidsdyktig alder. Dette var ikke kommunene rigget for, og mange har fortsatt store utfordringer.
 
-    Overlege ved OUS, xx, forteller at de har evakuert over 350 pasienter fra ukrainske sykehus siden krigen startet. Han sier tallet på ukrainere som har vært innom sykehus i Norge trolig er ti ganger så høyt, og at mange har kreft. (Se her for fullt intervju med sitater)
+        De over 55 år har ikke rett på et introduksjonsprogram. Dette er et program for å raskt komme ut i arbeid eller utdanning. Kommunene kan likevel tilby introduksjonsprogram, ved kapasitet. Det er derfor variasjon i tilbudet til denne gruppen fra kommune til kommune. 
 
-    Vi har snakket med flyktningtjenesten i xx kommuner. De trekker frem helsetjenesten som en av de største utfordringene i kommunen. Eldreomsorgen og helsetjenesten var presset fra før. I tillegg til ukrainerne som er bosatt, har kommunen også ansvar for helsetjenesten til asylsøkerne som sitter på mottak. (Se oversikt over hvem vi har hatt bakgrunnsamtaler med)
+        ##### Sykere enn nordmenn  
+        
+        Ifølge en rapport fra FHI er ukrainerne sykere enn nordmenn, med særlig dårlig tannhelse. (Se her for fullt intervju med FHI, og lenke til rapport)
+        
+        Ingen sitter med en oversikt over hvor mange ukrainere som har mottatt behandling via primær- eller spesialisthelsetjenesten, men dette er noe FHI jobber med. Det kan være utfordrende for kommunen å ikke kjenne til helsehistorikken til flyktningene de skal bosette. 
 
-    ##### Midlertidighet fører til usikkerhet
-    
-    Siden ingen vet om ukrainerne skal være her i tre måneder, tre år eller resten av livet, er det mange kommuner som ikke tør å oppskalere tjenestetilbudet, spesielt innenfor helse, skole, barnehage og NAV. Å ansette sykepleiere og lærere i faste stillinger er risikabelt. De vil tape penger når ukrainerne må dra og de slutter å få tilskudd fra Imdi. 
-    
-    Noen kommuner sier de skal ri av seg stormen, andre prøver å kjøpe private tjenester som de kan de nedskalere fort. 
+        Overlege ved OUS, xx, forteller at de har evakuert over 350 pasienter fra ukrainske sykehus siden krigen startet. Han sier tallet på ukrainere som har vært innom sykehus i Norge trolig er ti ganger så høyt, og at mange har kreft. (Se her for fullt intervju med sitater)
 
-    """.format(
-        munn_count = str(len(oppsummert_year[oppsummert_year['ukrainere'] > 0]))
-    )
-    
-    st.markdown(
-        national_text
-    )
-    
-    #with st.expander("Kilder"):
-    #    st.markdown("""
-    #    Kilder:  
-    #    * [Regjeringen, 08.01.2024](https://www.regjeringen.no/no/aktuelt/rekordmange-flykninger-bosatt-i-2023/id3021169/) - hentet 27.02.2024
-    #    * [OsloMet, 17.04.2023](https://www.oslomet.no/om/nyheter/undersoker-ukraineres-liv-norge) - hentet 27.02.2024
-    #    """)
+        Vi har snakket med flyktningtjenesten i xx kommuner. De trekker frem helsetjenesten som en av de største utfordringene i kommunen. Eldreomsorgen og helsetjenesten var presset fra før. I tillegg til ukrainerne som er bosatt, har kommunen også ansvar for helsetjenesten til asylsøkerne som sitter på mottak. (Se oversikt over hvem vi har hatt bakgrunnsamtaler med)
 
-with national_col2:
-    with st.expander("Faktaboks"):
+        ##### Midlertidighet fører til usikkerhet
+        
+        Siden ingen vet om ukrainerne skal være her i tre måneder, tre år eller resten av livet, er det mange kommuner som ikke tør å oppskalere tjenestetilbudet, spesielt innenfor helse, skole, barnehage og NAV. Å ansette sykepleiere og lærere i faste stillinger er risikabelt. De vil tape penger når ukrainerne må dra og de slutter å få tilskudd fra Imdi. 
+        
+        Noen kommuner sier de skal ri av seg stormen, andre prøver å kjøpe private tjenester som de kan de nedskalere fort. 
+
+        """.format(
+            munn_count = str(len(oppsummert_year[oppsummert_year['ukrainere'] > 0]))
+        )
         
         st.markdown(
-            """
-            Ukrainere som kommer til Norge blir gitt kollektiv beskyttelse,  de trenger ingen individuell vurdering eller intervju. Oppholdstillatelsen gir ikke permanent opphold, men for ett år. Tillatelsen kan fornyes dersom situasjonen i Ukraina vedvarer.
- 
-            Tre steg frem mot bosetting:  
-            * Registrering på Råde mottakssenter.  
-            * Plassering på mottak. Her venter de i snitt xxx måneder.
-            * Bosetting i kommune - her blir de enten plassert tilfeldig, eller de kan selv søke seg til en kommune hvor de har familie/venner de skal bo sammen med - da er det opp til kommunen om de har kapasitet til å bosette. 
-            
-            Tilskudd til kommunen: 
- 
-            Introduksjonsstønad: 
-            Enslig mindreårig asylsøker: 
-            Tilskudd for eldre:
-            Tilskudd for flyktninger med funksjonsnedsetting:
-            
-            <img src="https://www.imdi.no/globalassets/illustrasjoner/bosettingsprosess---infografikk/bosetting_mottaksbeboere_web_forenklet.jpg" width="100%">
-            
-            """,
-            unsafe_allow_html=True
+            national_text
         )
+        
+        #with st.expander("Kilder"):
+        #    st.markdown("""
+        #    Kilder:  
+        #    * [Regjeringen, 08.01.2024](https://www.regjeringen.no/no/aktuelt/rekordmange-flykninger-bosatt-i-2023/id3021169/) - hentet 27.02.2024
+        #    * [OsloMet, 17.04.2023](https://www.oslomet.no/om/nyheter/undersoker-ukraineres-liv-norge) - hentet 27.02.2024
+        #    """)
+
+    with national_col2:
+        with st.expander("Faktaboks"):
+            
+            st.markdown(
+                """
+                Ukrainere som kommer til Norge blir gitt kollektiv beskyttelse,  de trenger ingen individuell vurdering eller intervju. Oppholdstillatelsen gir ikke permanent opphold, men for ett år. Tillatelsen kan fornyes dersom situasjonen i Ukraina vedvarer.
+    
+                Tre steg frem mot bosetting:  
+                * Registrering på Råde mottakssenter.  
+                * Plassering på mottak. Per 01.02.24 er ventetiden på mottak omtrent 100 dager.
+                * Bosetting i kommune - her blir de enten plassert tilfeldig, eller de kan selv søke seg til en kommune hvor de har familie/venner de skal bo sammen med - da er det opp til kommunen om de har kapasitet til å bosette. 
+                
+                <img src="https://www.imdi.no/globalassets/illustrasjoner/bosettingsprosess---infografikk/bosetting_mottaksbeboere_web_forenklet.jpg" width="100%"><br>
+                
+                Kommunen mottar automatisk integreringstilskudd. Satsene under er for det første året.  
+                * Enslig voksen: 241,100 kroner
+                * Voksen i familie: 194,400
+                * Tilskudd for enslige mindreåriget: 187,000
+                    * blir utbetalt til kommuner som bosetter enslige mindreåriget flyktninger under 18 år. 
+                
+                
+                Engangstilskudd første år:
+                * Eldretilskudd: 180,600 kroner 
+                    * Utbetalt for personer som har fylt 60 år ved bosetting
+                * Barnetilskudd: 27,800
+                    * Utbetalt for barn mellom 0 og fem år. Inkluderer også barn som er født inntil seks måneder etter at mor er bosatt i en kommune. 
+                
+                Tilskudd til opplæring i norsk for voksne personer med kollektiv beskyttelse. Kommunene som har 150 personer eller færre i målgruppen, får også et grunntilskudd.
+                * Personstilskudd § 37 d år 1 (2024): 48,400 kroner
+                
+                Tilskudd for bosetting av personer med nedsatt funksjonsevne og/eller atferdsvansker. 
+                Tilskudd 1 er et engangstilskudd og kan tildeles i enten første eller andre bosettingsår. Tilskudd 2 kan tildeles årlig i integreringstilskuddsperioden, det vil si i maksimalt 5 år. 
+                * Tilskudd 1: 196,400
+                * Tilskudd 2: 1,608,000
+                
+                Tilskuddet skal dekke de gjennomsnittlige utgiftene kommunen har i bosettingsåret. Kommunen får tilskudd for hver person de bosetter. Tilskuddet skal blant annet dekke innvandrer- og flyktningskontortjenester, bolig, introduksjonsprogram,
+                sysselsettingstiltak, yrkeskvalifisering og arbeidstrening, sosialkontor/sosialtjenester, barne- og ungdomsverntenester, tolketjenester, barnehagetjenester, integreringstiltak i grunnskolen, kultur- og ungdomstiltak, 
+                utgifter til kommunehelsetjenesten, omsorg for personer med rusproblem.
+                
+                Det første året blir hele integreringstilskuddet utbetalt når personen er bosatt i kommunen. Påfølgende utbetalinger (år 2-5) blir utbetalt fire ganger i året. 
+                
+                Dersom en flyktning flytter til en annen kommune, må vedkommende melde endring til folkeregisteret innen åtte dager etter flytting. Tilskuddet i flytteåret blir fordelt mellom de to kommunene. 
+                Fraflyttingskommunen mottar tilskuddet inneværende og påfølgende måned.
+                """,
+                unsafe_allow_html=True
+            )
 
 
-with munn_col1:
+with tab2:
 
     summarized = """
     #### Slik er det i {kommune}
@@ -358,7 +380,7 @@ with munn_col1:
     
     st.markdown(fastlege)
 
-with recipe_col1:
+with tab2:
     st.markdown("""
     #### Dette kan du gjøre i din kommune
     
@@ -392,9 +414,8 @@ with recipe_col1:
 
     """)
 
-
-with st.expander("Se tallgrunnlag"):
-
+with tab3: 
+    
     st.markdown("""
     ##### Prikking 
 
@@ -548,4 +569,17 @@ with st.expander("Se tallgrunnlag"):
             )
 
 
-
+with tab4:
+    fhi_string = """
+    ##### FHI
+    Intervju med FHI. 
+    """
+    
+    st.markdown(fhi_string)
+    
+    ous_string = """
+    ##### OUS
+    Intervju med OUS. 
+    """
+    
+    st.markdown(ous_string)
