@@ -330,18 +330,15 @@ with tab1:
 with tab2:
 
     summarized = """
-    #### Slik er det i {kommune}
     
-    I {year} ble det bosatt {sum_total_ukr_year} ukrainere i kommunen. I {year} utgjorde det {ukr_pct_pop_year:.1f} prosent av befolkningen.  
+    I {year} ble det bosatt {sum_total_ukr_year} ukrainere i kommunen, og det utgjorde {ukr_pct_pop_year:.1f} prosent av befolkningen.  
 
-    Fra 2022 til starten av 2024 har {kommune} bosatt {sum_total_ukr:,.0f} ukrainske flyktninger. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen i kommunen, 
-    og {ukr_pct_ovr:.1f} prosent av alle flyktninger bosatt i kommunen i samme periode. 
+    Siden krigen i Ukraina startet, er det bosatt {sum_total_ukr:,.0f} ukrainere i  {kommune}. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen, 
+    og {ukr_pct_ovr:.1f} av alle bosatte flyktninger i samme periode. 
     
     I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse i {year}, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
     
-    I 2024 er {kommune} anmodet av Integrerings- og mangfoldsdirektoratet (IMDi) å bosette {innvandr_anmodet:,.0f} flyktninger. Kommunen {innvandr_vedtak_string} i 2024.
-    
-    {kommune} {ema_vedtak_2024_string}
+    Integrerings- og mangfoldsdirektoratet har anmodet kommunen å bosette {innvandr_anmodet:,.0f} ukrainske flyktninger i  2024. Kommunen {innvandr_vedtak_string}. {kommune} {ema_vedtak_2024_string}
 
     """.format(
                 kommune = unike_kommuner.get(select_kommune), 
@@ -368,13 +365,12 @@ with tab2:
         
     fastlege = """
     ##### Fastlegekapasitet i {kommune} per 2022
+        
+    I henhold til tall fra SSB, har kommunen {lege_category} når det gjelder fastlegekapasitet.
     
-    Merk: 2022 er siste publiserte tall fra SSB. SSB publiserer foreløpige 2023-tall 15. mars.
+    I {kommune} var det {legeliste_n:,.0f} personer på venteliste i 2022. Det utgjør {legeliste_pct:.1f} prosent av alle som står på fastlegeliste. 
+
     
-    I {kommune} var det {legeliste_n:,.0f} personer på venteliste i 2022. Det utgjør {legeliste_pct:.1f} prosent av antall pasienter på fastlegeliste totalt (les mer om indikatoren hos [SSB](https://www.ssb.no/kompis/statbank/?id=a1b62e7f-aaf5-4db5-9e46-ef70a93c695f&ver=75680&val=KOSandelpasiente0000&lang=no)). 
-    Tallene er hentet fra [SSBs tabell 12005](https://www.ssb.no/statbank/table/12005).
-    
-    Ved å samtidig se på personer på ventelise og SSBs mål på [reservekapasitet](https://www.ssb.no/kompis/statbank/?id=a1b62e7f-aaf5-4db5-9e46-ef70a93c695f&ver=75680&val=KOSreservekapasi0000&lang=no) blant fastlegene, har kommunen {lege_category} når det gjelder fastlegekapasitet.
     """.format(
         kommune = unike_kommuner.get(select_kommune), 
         legeliste_n = oppsummert_komm_year['legeliste_n'].sum(),
@@ -388,7 +384,9 @@ with tab2:
     st.markdown("""
     #### Dette kan du gjøre i din kommune
     
-    Flyktninger fra Ukraina er betydelig flere, aldre og sykere enn flyktninger norske kommuner har bosatt tidligere. Forventningen var at de skulle gli inn i samfunnet. De skulle være som arbeidsinnvandrere som hoppet ut i jobb. Erfaringene viser at det har vært flere utfordringer. 
+    Flyktninger fra Ukraina er betydelig flere, eldre og sykere enn flyktninger norske kommuner har bosatt tidligere. 
+    Forventningen var at de skulle gli inn i samfunnet. De skulle være som arbeidsinnvandrere som hoppet ut i jobb. 
+    Erfaringene viser at det har vært flere utfordringer. 
     
     * Ta kontakt med flyktningkontoret:  
         * Hva er deres erfaring med å ta imot ukrainske flyktninger?  
@@ -424,7 +422,7 @@ with tab3:
     ##### Om tallene
     Befolkningstall er hentet fra[ SSB-tabell 07459](https://www.ssb.no/statbank/table/07459).
     
-    Fakta om venteliste hos fastlege og reservekapasitet er hentet fra [SSB-tabell 12005](https://www.ssb.no/statbank/table/12005).
+    Fakta om venteliste hos fastlege og reservekapasitet er hentet fra [SSB-tabell 12005](https://www.ssb.no/statbank/table/12005). Merk: 2022 er siste publiserte tall fra SSB. SSB publiserer foreløpige 2023-tall 15. mars.
     
     Flyktningtall er hentet fra Integrerings- og mangfolksdirektaret (IMDi).
                 
