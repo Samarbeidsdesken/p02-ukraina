@@ -388,23 +388,28 @@ with tab2:
     Forventningen var at de skulle gli inn i samfunnet. De skulle være som arbeidsinnvandrere som hoppet ut i jobb. 
     Erfaringene viser at det har vært flere utfordringer. 
     
+    Situasjonsforståelsen vil variere fra kommune til kommune. Noen håndterer det godt, andre opplever situasjonen som utfordrende. 
+    
     * Ta kontakt med flyktningkontoret:  
-        * Hva er deres erfaring med å ta imot ukrainske flyktninger?  
-        * Hvilke utfordringer møter dere?  
-        * Hvordan har det vært å få de i jobb?  
-        * Hvor mange er på sykehjem?  
-        * Hvor mange får hjemmesykepleie?  
-        * Hvor mange får oppfølging innen spesialisthelsetjenesten?  
-        * Hvilket tilbud for de over 55 år?  
-        * Har dere gladhistorier som viser hvordan dette har fungert godt å ta imot ukrainske flyktninger?  
-        * Hva betyr andelen barn og unge for barnehagene og skolene?  
         * Hvordan vedtar kommunen hvor mange flyktninger de skal ta i mot? Hvilke vurderinger blir gjort.  
         * Hvordan har kommunen organisert seg for å ta i mot flyktningene?  
-        
+            * Midlertidighet - ukrainere har ikke permanent opphold
+            * Tilgang på ressurser (sykepleiere, leger, lærere, mm)  
+        * Hva er deres erfaring med å ta imot ukrainske flyktninger?  
+            * Hvilke utfordringer møter dere?  
+            * Har dere gladhistorier som viser hvordan det har fungert å ta imot ukrainske flyktninger?  
+        * Hvordan har det vært å få de i jobb?  
+            * Samarbeid med næringsliv  
+        * Sykdom og pleie
+            * Hvor mange er på sykehjem?  
+            * Hvor mange får hjemmesykepleie?  
+            * Hvor mange får oppfølging innen spesialisthelsetjenesten?  
+        * Hvilket tilbud for de over 55 år?  
+        * Hva betyr andelen barn og unge for barnehagene og skolene? 
+
     * Ta kontakt med kommuneoverlegen:  
-        * Hvordan er fastlegesituasjonen i kommunene?  
-        * Hva betyr de ukrainske flyktningene for denne situasjonen?  
-        * FHI sin rapport sier at ukrainere er sykere enn nordmenn. Hva er ditt inntrykk? Hvordan ser sykdomsbildet ut?  
+        * Hvordan er fastlegesituasjonen i kommunen, og hvordan påvirkes den av ukrainske flyktninger?  
+        * FHI sin rapport sier at ukrainere er sykere enn nordmenn. Hva er inntrykket til kommuneoverlegen? Hvordan ser sykdomsbildet ut?  
         * Har dere tall på ukrainere som har benyttet seg av primær - og spesialisthelsetjenesten?  
         * Hvordan vil den ukrainske flyktningbølgen påvirke kommunen fremover?  
     
