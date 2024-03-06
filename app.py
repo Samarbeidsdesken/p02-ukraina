@@ -63,7 +63,6 @@ ukr_mottak = load_data('ukrainere_mottak_310124')
 kommuner = pd.Series(oppsummert.Kommune.values,index=oppsummert.Kommunenummer).to_dict()
 fylker = pd.Series(oppsummert.Fylke.values,index=oppsummert.Fylkenummer).to_dict()
 
-
 # Use tuples to alphabetically sort the municipalities and counties 
 kommuner_sorted = sorted(kommuner.items(), key=lambda kv: (kv[1], kv[0]))
 fylker_sorted = sorted(fylker.items(), key=lambda kv: (kv[1], kv[0]))
@@ -94,36 +93,45 @@ select_year = st.sidebar.selectbox(
     options = [2022, 2023, 2024]
 )
 
-#FILTER DATA FRAMES BASED ON SELECTORS
+# ------------------------------------------- #
+# Filter data and create different dataframes #
+# ------------------------------------------- # 
 
-flyktninger_fylke = flyktninger[flyktninger['Fylkenummer'].isin([select_fylke])] 
-
-flyktninger_komm = flyktninger[flyktninger['Kommunenummer'].isin([select_kommune])] 
-flyktninger_komm_year = flyktninger_komm[flyktninger_komm['År'] == select_year] 
-flyktninger_cols = ['Kommune', 'År', 'Kjønn', 'Aldersgruppe', 'ukrainere', 'ukr_pct', 'ukr_prikket', 'ovrige', 'ovr_pct', 'ovr_prikket', 'pop', 'pop_pct']
-
-ema_komm = ema[ema['Kommunenummer'].isin([select_kommune])]
-ema_komm_year = ema_komm[ema_komm['År'] == select_year] 
-
+# dataframe with one line per year, per municipality. 
 oppsummert_komm = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
 oppsummert_komm_year = oppsummert_komm[oppsummert_komm['År'] == select_year] 
 oppsummert_year = oppsummert[oppsummert['År'] == 2023] 
 
+# Dataframe with 4 lines (gender x age) per year, per municipality
+flyktninger_fylke = flyktninger[flyktninger['Fylkenummer'].isin([select_fylke])] 
+flyktninger_komm = flyktninger[flyktninger['Kommunenummer'].isin([select_kommune])] 
+flyktninger_komm_year = flyktninger_komm[flyktninger_komm['År'] == select_year] 
+flyktninger_cols = ['Kommune', 'År', 'Kjønn', 'Aldersgruppe', 'ukrainere', 'ukr_pct', 'ukr_prikket', 'ovrige', 'ovr_pct', 'ovr_prikket', 'pop', 'pop_pct']
+
+# Dataframe with enslige mindreårige. Both ukrainians and other refugees. 
+ema_komm = ema[ema['Kommunenummer'].isin([select_kommune])]
+ema_komm_year = ema_komm[ema_komm['År'] == select_year] 
+
+# Dataframe with anmodningstall for the seelcted kommune.
+# Note: Only available for 2024
 anmodninger = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
 anmodninger = anmodninger[anmodninger['År'] == 2024] 
 anmodninger = anmodninger[['Kommune', 'Kommunenummer', 'ema_anmodet_2024', 'ema_vedtak_2024', 'ema_vedtak_2024_string', 'innvandr_anmodet', 'innvandr_vedtak', 'innvandr_vedtak_string', 'innvandr_bosatt', 'ukr_bosatt',  'innvandr_avtalt_bosatt', 'ukr_avtalt_bosatt']]
 
+# dataframe with asylmottak in selected kommune
 ukr_mottak_komm = ukr_mottak[ukr_mottak['Kommunenummer'].isin([select_kommune])]
 ukr_mottak_komm = ukr_mottak_komm[['mottak_navn', 'ukr_mottak']]
 
-
+# Create bullet points of asylmottak in the selected municipality
 ukr_mottak_bool = False
 ukr_mottak_string = 'Per 31.01.2024 bor det også ukrainere på asylmottak i kommunen. Disse har kommunen også ansvar for mens de venter på å bli bosatt.\n'
 for mottak, ukr in ukr_mottak_komm.itertuples(index=False):
     ukr_mottak_bool = True
     ukr_mottak_string += '* ' + mottak + ': ' + str(ukr) + ' ukrainere  \n'
 
-
+# ------------------------------------------------------ #
+# In the sidebar, make a top list for the selected group #
+# ------------------------------------------------------ #
 with st.sidebar:
     
     toplist = """
@@ -141,13 +149,14 @@ with st.sidebar:
             'Velg lokalavis',
             options=['TBA']
         )
-        
+    
     if select_group == 'SSBs sentralitetsindeks':
         select_centrality = st.selectbox(
             'Velg indeks',
             options=['1 - Mest sentrale', '2', '3', '4', '5', '6 - Minst sentrale']
         )
         
+    # If the user wants a top list for the whole country
     if select_group == 'Norge':
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
@@ -165,7 +174,8 @@ with st.sidebar:
                     'Andel av befolkning', format='%.1f %%'
                 )}
             )
-
+    
+    # If the user wants a top list by county
     if select_group == fylker.get(select_fylke):
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
@@ -184,7 +194,8 @@ with st.sidebar:
                     'Andel av befolkning', format='%.1f %%'
                 )}
             )
-        
+    
+    # If the user wants a top list by SSBs centrality index
     if select_group == 'SSBs sentralitetsindeks':
         oppsummert_sidebar = oppsummert[oppsummert['sentralitet'] == int(select_centrality[:1])]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['År'] == select_year]
@@ -215,21 +226,17 @@ with st.sidebar:
 use_container_width = False #st.checkbox("Full tabellbredde", value=True)
 
 
-# DETTE ER SAKEN
+# ----------------------- #
+# Main content of the app #
+# ----------------------- # 
 
+# create different tabs for the content
 tab1, tab2, tab3, tab4, tab5 = st.tabs(['Dette er saken', 'Slik er det i {kommune}'.format(kommune = kommuner.get(select_kommune)), 'Slik går du fram', 'Tallgrunnlag', 'Ekspertintervju'])
 
+# In tab 1: Dette er saken
 with tab1:
     
-    underdev_col1, underdev_col2 = st.columns([5, 4])
     national_col1, national_col2 = st.columns([5, 4])
-    munn_col1, munn_col2 = st.columns([5, 4])
-    recipe_col1, recipe_col2 = st.columns([5, 4])
-
-        
-    with underdev_col2:
-        pass
-
 
     with national_col1:
         national_text = """
@@ -280,13 +287,6 @@ with tab1:
         st.markdown(
             national_text
         )
-        
-        #with st.expander("Kilder"):
-        #    st.markdown("""
-        #    Kilder:  
-        #    * [Regjeringen, 08.01.2024](https://www.regjeringen.no/no/aktuelt/rekordmange-flykninger-bosatt-i-2023/id3021169/) - hentet 27.02.2024
-        #    * [OsloMet, 17.04.2023](https://www.oslomet.no/om/nyheter/undersoker-ukraineres-liv-norge) - hentet 27.02.2024
-        #    """)
 
     with national_col2:
         with st.expander("Faktaboks"):
@@ -336,6 +336,7 @@ with tab1:
             )
 
 
+# Tab 2: Statistical description of the municipality
 with tab2:
 
     summarized = """
@@ -389,6 +390,7 @@ with tab2:
     
     st.markdown(fastlege)
 
+# Tab 3: Suggestions for how the local journalists can proceed
 with tab3:
     st.markdown("""
     #### Dette kan du gjøre i din kommune
@@ -430,6 +432,7 @@ with tab3:
 
     """)
 
+# Tab 4: Source data for the municipality
 with tab4: 
     
     st.markdown("""
@@ -591,7 +594,7 @@ with tab4:
                     )}
             )
 
-
+# Tab 5: Expert interviews
 with tab5:
     fhi_string = """
     ##### FHI
