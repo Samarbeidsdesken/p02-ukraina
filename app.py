@@ -36,6 +36,8 @@ with st.sidebar:
     st.markdown(
         """
         Velg først fylke, deretter kommune og årstall. 
+        
+        Se fanen 'Tallgrunnlag' for datakilder og detaljert tallgrunnlag.
         """
     )
 
@@ -57,22 +59,29 @@ ukr_mottak = load_data('ukrainere_mottak_310124')
 
 #CREATE MUNICIPALITY SELECTORS
 
-kommuner = pd.Series(flyktninger.Kommune.values,index=flyktninger.Kommunenummer).to_dict()
-fylker = pd.Series(flyktninger.Fylke.values,index=flyktninger.Fylkenummer).to_dict()
+# Create a dictionary of unique municipalities
+kommuner = pd.Series(oppsummert.Kommune.values,index=oppsummert.Kommunenummer).to_dict()
+fylker = pd.Series(oppsummert.Fylke.values,index=oppsummert.Fylkenummer).to_dict()
 
-unike_kommuner = {key: val for key, val in kommuner.items()}
-unike_fylker = {key: val for key, val in fylker.items()}
+
+# Use tuples to alphabetically sort the municipalities and counties 
+kommuner_sorted = sorted(kommuner.items(), key=lambda kv: (kv[1], kv[0]))
+fylker_sorted = sorted(fylker.items(), key=lambda kv: (kv[1], kv[0]))
 
 select_fylke = st.sidebar.selectbox(
     'Velg fylke',
-    options = sorted(list(unike_fylker.keys())),
-    format_func = lambda x: unike_fylker.get(x)
+    # using lambda in order to get the first element (municipality code) in tuple
+    options = map(lambda x: x[0], fylker_sorted), 
+    # display the names of the counties, not the codes
+    format_func = lambda x: fylker.get(x)
 )
 
 select_kommune = st.sidebar.selectbox(
     'Velg kommune (2024)',
-    options = sorted(list({k for (k, v) in unike_kommuner.items() if k[:2] ==  select_fylke})),
-    format_func = lambda x: unike_kommuner.get(x)
+    # get the municipalities for the selected county
+    options = [j for i in kommuner_sorted for j in i if j[:2] == select_fylke],
+    # display the names of the municipalities, not the codes
+    format_func = lambda x: kommuner.get(x)
 )
 
 if select_kommune == '1508' or select_kommune == '1580':
@@ -85,7 +94,7 @@ select_year = st.sidebar.selectbox(
     options = [2022, 2023, 2024]
 )
 
-#FILTER DATA FRAME BASED ON SELECTORS
+#FILTER DATA FRAMES BASED ON SELECTORS
 
 flyktninger_fylke = flyktninger[flyktninger['Fylkenummer'].isin([select_fylke])] 
 
@@ -124,7 +133,7 @@ with st.sidebar:
 
     select_group = st.selectbox(
         'Velg gruppering',
-        options=[unike_fylker.get(select_fylke), 'Norge', 'Lokalavis', 'SSBs sentralitetsindeks']
+        options=[fylker.get(select_fylke), 'Norge', 'Lokalavis', 'SSBs sentralitetsindeks']
     )
 
     if select_group == 'Lokalavis':
@@ -157,7 +166,7 @@ with st.sidebar:
                 )}
             )
 
-    if select_group == unike_fylker.get(select_fylke):
+    if select_group == fylker.get(select_fylke):
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
@@ -208,7 +217,7 @@ use_container_width = False #st.checkbox("Full tabellbredde", value=True)
 
 # DETTE ER SAKEN
 
-tab1, tab2, tab3, tab4 = st.tabs(['Dette er saken', 'Slik er det i {kommune}'.format(kommune = unike_kommuner.get(select_kommune)), 'Tallgrunnlag', 'Ekspertintervju'])
+tab1, tab2, tab3, tab4 = st.tabs(['Dette er saken', 'Slik er det i {kommune}'.format(kommune = kommuner.get(select_kommune)), 'Tallgrunnlag', 'Ekspertintervju'])
 
 with tab1:
     
@@ -341,7 +350,7 @@ with tab2:
     Integrerings- og mangfoldsdirektoratet har anmodet kommunen å bosette {innvandr_anmodet:,.0f} ukrainske flyktninger i  2024. Kommunen {innvandr_vedtak_string}. {kommune} {ema_vedtak_2024_string}
 
     """.format(
-                kommune = unike_kommuner.get(select_kommune), 
+                kommune = kommuner.get(select_kommune), 
                 year = select_year, 
                 sum_total_ukr = oppsummert_komm['ukrainere'].sum(),
                 sum_total_ukr_year = oppsummert_komm_year['ukrainere'].sum(),  
@@ -372,7 +381,7 @@ with tab2:
 
     
     """.format(
-        kommune = unike_kommuner.get(select_kommune), 
+        kommune = kommuner.get(select_kommune), 
         legeliste_n = oppsummert_komm_year['legeliste_n'].sum(),
         legeliste_pct = oppsummert_komm_year['legeliste_pct'].sum(),
         lege_category = oppsummert_komm_year['lege_category'].iloc[0]
@@ -449,7 +458,7 @@ with tab3:
             I {year:.0f} bodde det {sum_year:,.0f} personer i {kommune}. 
             
             """.format(
-                kommune = unike_kommuner.get(select_kommune), 
+                kommune = kommuner.get(select_kommune), 
                 year = select_year, 
                 sum_year = flyktninger_komm_year['pop'].sum(),  
                 sum_total = flyktninger_komm['pop'].sum()
@@ -480,7 +489,7 @@ with tab3:
             I {year:.0f} ble det bosatt {sum_year:.0f} ukrainske flyktninger. 
             I hele perioden har kommunen bosatt {sum_total:.0f} ukrainske flyktninger.
             """.format(
-                kommune = unike_kommuner.get(select_kommune), 
+                kommune = kommuner.get(select_kommune), 
                 year = select_year, 
                 sum_year = flyktninger_komm_year['ukrainere'].sum(),  
                 sum_total = flyktninger_komm['ukrainere'].sum()
@@ -517,7 +526,7 @@ with tab3:
             
             Les mer om EMA [her](https://www.imdi.no/planlegging-og-bosetting/slik-bosettes-flyktninger/enslige-mindrearige-flyktninger/).
             """.format(
-                kommune = unike_kommuner.get(select_kommune), 
+                kommune = kommuner.get(select_kommune), 
                 year = select_year, 
                 sum_year = ema_komm_year['ema'].sum(),  
                 sum_total = ema_komm['ema'].sum()
@@ -550,7 +559,7 @@ with tab3:
             I {year:.0f} ble {sum_year:.0f} bosatt flyktninger til kommunen. 
             I hele perioden har kommunen tatt i mot {sum_total:.0f} flyktninger uten kollektiv beskyttelse.
             """.format(
-                kommune = unike_kommuner.get(select_kommune), 
+                kommune = kommuner.get(select_kommune), 
                 year = select_year, 
                 sum_year = flyktninger_komm_year['ovrige'].sum(),  
                 sum_total = flyktninger_komm['ovrige'].sum()
