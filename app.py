@@ -217,7 +217,7 @@ use_container_width = False #st.checkbox("Full tabellbredde", value=True)
 
 # DETTE ER SAKEN
 
-tab1, tab2, tab3, tab4 = st.tabs(['Dette er saken', 'Slik er det i {kommune}'.format(kommune = kommuner.get(select_kommune)), 'Tallgrunnlag', 'Ekspertintervju'])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(['Dette er saken', 'Slik er det i {kommune}'.format(kommune = kommuner.get(select_kommune)), 'Slik går du fram', 'Tallgrunnlag', 'Ekspertintervju'])
 
 with tab1:
     
@@ -389,7 +389,7 @@ with tab2:
     
     st.markdown(fastlege)
 
-with tab2:
+with tab3:
     st.markdown("""
     #### Dette kan du gjøre i din kommune
     
@@ -430,7 +430,7 @@ with tab2:
 
     """)
 
-with tab3: 
+with tab4: 
     
     st.markdown("""
     ##### Om tallene
@@ -592,7 +592,7 @@ with tab3:
             )
 
 
-with tab4:
+with tab5:
     fhi_string = """
     ##### FHI
     Intervju med FHI. 
