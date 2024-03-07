@@ -54,10 +54,22 @@ flyktninger = load_data('app_flyktninger')
 oppsummert = load_data('app_flyktninger_oppsummert')
 ema = load_data('ema')
 ukr_mottak = load_data('ukrainere_mottak_310124')
+
 #folketall = load_data('app_flyktninger_folketall')
 
+# ------------------------------------------------------------------- # 
+# Create a dictionary describing the coverage area of each news paper #
+# ------------------------------------------------------------------- #
 
-#CREATE MUNICIPALITY SELECTORS
+lla = load_data('lla')
+coverage = {g: d['kommnr'].values for g, d in lla.groupby('avis')}
+
+#print(pd.isna(coverage['Akers Avis Groruddalen'][0]))
+
+
+# ----------------------------- #
+# Municipality selectors #
+# ----------------------------- #
 
 # Create a dictionary of unique municipalities
 kommuner = pd.Series(oppsummert.Kommune.values,index=oppsummert.Kommunenummer).to_dict()
@@ -147,7 +159,7 @@ with st.sidebar:
     if select_group == 'Lokalavis':
         select_paper = st.selectbox(
             'Velg lokalavis',
-            options=['TBA']
+            options = coverage.keys()
         )
     
     if select_group == 'SSBs sentralitetsindeks':
@@ -209,6 +221,32 @@ with st.sidebar:
         Mest sentrale kommuner er Oslo og omkringliggende kommuner. Større byer som Bergen, Trondheim  og Tromsø har verdien 2. De minst sentrale kommunene i Norge, er blant annet Eidfjord, Frøya, Folldal, Gratangen, mfl.        
         """)
 
+        st.sidebar.dataframe(
+            oppsummert_sidebar,
+            hide_index = True,
+            use_container_width = True,
+            column_config = {
+                'ukrainere': st.column_config.NumberColumn(
+                    'Antall ukrainere', format='%.0f'
+                ),
+                'ukr_pct_pop': st.column_config.NumberColumn(
+                    'Andel av befolkning', format='%.1f %%'
+                )}
+            )
+        
+    if select_group == 'Lokalavis':
+        if pd.isna(coverage['Akers Avis Groruddalen'][0]):
+            st.markdown('''
+                        Dekningsområdet for denne avisen er ikke klar. Hvis avisen er riksdekkende, velg "Norge" i stedet for "Lokalavis" i velgeren.
+                        Hvis avisens dekningsområdet må defineres med postnummer eller andre geografiske kjennetegn (feks kyst), arbeider vi med å sammenstille dette. 
+                        ''')
+        
+        oppsummert_sidebar = oppsummert[oppsummert['Kommunenummer'].isin(coverage[select_paper])]
+        oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['År'] == select_year]
+        #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
+        oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
+        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+    
         st.sidebar.dataframe(
             oppsummert_sidebar,
             hide_index = True,
