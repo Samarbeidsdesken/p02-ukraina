@@ -629,21 +629,22 @@ with tab4:
     
         with tablecol4:
             st.dataframe(
-            flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'ukrainere', 'ukr_pct', 'ukr_prikket']],
+            flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'ukrainere_string', 'ukr_pct']],
             use_container_width = use_container_width,
             hide_index = True,
             column_config = {
                 'År': st.column_config.NumberColumn(format="%.0f"),
-                'ukrainere': st.column_config.NumberColumn(
-                    'Antall', format='%.0f'
+                'ukrainere_string': st.column_config.TextColumn(
+                    'Antall'
                 ),
                 'ukr_pct': st.column_config.NumberColumn(
                     'Andel', format='%.1f %%'
-                ),
-                'ukr_prikket': st.column_config.TextColumn(
-                    'Prikket', 
-                    help = 'Prikkede data betyr at kommunen har tatt i mot mindre enn fem EMA. Data tilbakeholdes av IMDi av personvernhensyn.'
-                    )}
+                )#,
+                #'ukr_prikket': st.column_config.TextColumn(
+                #    'Prikket', 
+                #    help = 'Prikkede data betyr at kommunen har tatt i mot mindre enn fem EMA. Data tilbakeholdes av IMDi av personvernhensyn.'
+                #   )
+            }
             )
             
     ema_text = """
@@ -702,7 +703,7 @@ with tab4:
     
         with tablecol8:
             st.dataframe(
-            flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'ovrige', 'ovr_pct', 'ovr_prikket']],
+            flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'ovrige_string', 'ovr_pct']],
             use_container_width = use_container_width,
             hide_index = True,
             column_config = {
