@@ -653,7 +653,7 @@ with tab3:
         
         Sortland kommunes erfaringer med flyktninger fra Ukraina
 
-        1. Kan dere si noe om sykdomsbildet til ukrainerne som kommer til kommunene deres?
+        ##### 1. Kan dere si noe om sykdomsbildet til ukrainerne som kommer til kommunene deres?
 
         Svar: 
         <p style='background-color:yellow'>Sykdomsbildet blant ukrainske flyktninger i Sortland kommune viser et høyt antall barn og unge med dårlig tannhelse. Kommunen har også bosatt 
@@ -671,26 +671,26 @@ with tab3:
         
         <p>Vi ser også at ukrainske barn ofte har fulgt vaksinasjonsprogrammet mens det er lavere trend blant foresatte å ta vaksiner, for eksempel covid vaksiner.</p>
 
-        <p>2. Hvordan skiller dette seg fra erfaringen dere har fra tidligere flyktninger?</p>
+        ##### 2. Hvordan skiller dette seg fra erfaringen dere har fra tidligere flyktninger?
 
         <p>Svar:</br>
         Sammenlignet med tidligere flyktninger, har ukrainske flyktninger generelt bedre fysisk og psykisk helse. De har generelt mindre oppfølgingsbehov enn 
         kvoteflyktninger, og har høyere helsemessig tilstand ved ankomst sammenlignet med kvoteflyktninger som har bodd lenge i leir.</p>
         
-        <p>3. Hvordan opplever dere situasjonen i helsesektoren? Er det økt trykk? Hvilke utfordringer har dere? Har dere nok bemanning til å takle situasjonen?</p>
+        ##### 3. Hvordan opplever dere situasjonen i helsesektoren? Er det økt trykk? Hvilke utfordringer har dere? Har dere nok bemanning til å takle situasjonen?
 
         <p>Svar:</br>
         Vi opplever et økt trykk i helsesektoren, spesielt med hensyn til helsekartleggingssamtaler i regi av helsestasjonen og oppfølging i skolehelsetjenesten.
         Mangelen på personell har også ført til utfordringer med å gjennomføre nødvendige blodprøver i henhold til veilederen. For å møte utfordringene 
         etableres det blant annet i år et ekstra legekontor i kommunen.</br>
         
-        <p>4. Hvor mange ukrainere bor på sykehjem? Hvor mange mottar hjemmesykepleie? Hvor mange mottar behandling - både psykisk og somatisk?</p>
+        ##### 4. Hvor mange ukrainere bor på sykehjem? Hvor mange mottar hjemmesykepleie? Hvor mange mottar behandling - både psykisk og somatisk?
 
         <p>Svar:</br>
         Per nå er det ingen økning i behov for sykehjemsplasser eller hjemmesykepleietjenester siden 2022, da det ikke har vært en betydelig tilstrømning 
         av eldre fra IMDi.</p>
         
-        <p>5. Er det andre sektorer som påvirkes av at flyktningene er eldre og sykere?</p>
+        ##### 5. Er det andre sektorer som påvirkes av at flyktningene er eldre og sykere?
 
         <p>Svar:</br>
         I forhold til eldre er det ingen erfart belastning mot denne gruppen enn øvrige befolkning.</p>
@@ -700,12 +700,12 @@ with tab3:
         nasjonalt for barn og unge nasjonalt som også øker bevisstheten til dette arbeidet. <span style='background-color:yellow;'>I forhold til rusmisbruk er det også flere foresatte fra Ukraina som 
         har en lavere terskel for rusmisbruk enn hva som er erfart av andre bosatte flyktninger.</span></p>
         
-        <p>6. Hvordan ser dere for dere situasjonen fremover - kan dere ta imot flere syke og eldre?</p>
+        ##### 6. Hvordan ser dere for dere situasjonen fremover - kan dere ta imot flere syke og eldre?
 
         <p>Svar: </br>
         Sortland kommune vurderer kapasiteten kontinuerlig for å kunne imøtekomme behovene til bosatte med ulike behov, uavhengig av alder eller opprinnelsesland.</p>
         
-        <p>7. Er det andre utfordringer dere tenker vi burde se på i forbindelse med flyktningstrømmen fra Ukraina?</p>
+        ##### 7. Er det andre utfordringer dere tenker vi burde se på i forbindelse med flyktningstrømmen fra Ukraina?
         
         <p>Svar: </br>
         Det gis tilbakemelding på fra helsesektoren at det bør være økt fokus på forebyggede arbeid knyttet til hjerte/kar sykdommer, røykavvenning, tannhelse, 
