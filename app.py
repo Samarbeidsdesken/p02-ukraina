@@ -41,7 +41,10 @@ with st.sidebar:
         """
     )
 
-# IMPORT DATA
+
+# --------- #
+# Functions #
+# --------- #
 
 @st.cache_data
 def load_data(file):
@@ -50,6 +53,16 @@ def load_data(file):
 def format_selection(_dict, option):
     return _dict[option]
 
+def check_ano(vec):
+        x = vec.str.contains('<5').sum()
+        if x > 0:
+            return 'Merk at det er {count} celler som er anonymisert (mindre enn fem flyktninger.)'.format(count= x)
+        else:
+            return ''
+
+# ----------- #
+# IMPORT DATA #
+# ----------- #
 flyktninger = load_data('app_flyktninger')
 oppsummert = load_data('app_flyktninger_oppsummert')
 ema = load_data('ema')
@@ -164,7 +177,7 @@ with st.sidebar:
 
     select_group = st.selectbox(
         'Velg gruppering',
-        options=[fylker.get(select_fylke), kommuner_valgdistrikt[select_kommune], 'SSBs sentralitetsindeks', 'KOSTRA-gruppe', 'Hele landet', 'Lokalavis (dekningsområde)']
+        options=[fylker.get(select_fylke), kommuner_valgdistrikt[select_kommune], 'SSBs sentralitetsindeks', 'KOSTRA-gruppe', 'Hele landet', 'Lokalavis (dekningsområde)', 'ROBEK']
     )
 
     if select_group == 'Lokalavis (dekningsområde)':
@@ -335,6 +348,48 @@ with st.sidebar:
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
     
         st.sidebar.dataframe(
+            oppsummert_sidebar,
+            hide_index = True,
+            use_container_width = True,
+            column_config = {
+                'ukrainere': st.column_config.NumberColumn(
+                    'Antall ukrainere', format='%.0f'
+                ),
+                'ukr_pct_pop': st.column_config.NumberColumn(
+                    'Andel av befolkning', format='%.1f %%'
+                )}
+            )
+        
+    if select_group == 'ROBEK':
+        oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
+        oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['robek'] == 'robek']
+        oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
+        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+        
+        if oppsummert_komm_year['robek'].str.contains('ikke robek').iloc[0]:
+            robek_string = """
+            Liste med alle ROBEK-kommuner. {kommune} er ikke en ROBEK-kommune.
+            
+            """.format(
+                kommune = kommuner.get(select_kommune)
+            )
+        else:
+            robek_string = """
+            Liste med alle ROBEK-kommuner. {kommune} er en ROBEK-kommune.
+            
+            """.format(
+                kommune = kommuner.get(select_kommune)
+            )
+        
+        st.markdown(robek_string)
+        
+        st.markdown('''
+                    ROBEK er et register over kommuner som er i økonomisk ubalanse eller som ikke har vedtatt økonomiplanen, årsbudsjettet eller årsregnskapet innenfor de fristene som gjelder.
+                    
+                    Kommuner i ROBEK er underlagt statlig kontroll. Les mer om ROBEK [her](https://www.regjeringen.no/no/tema/kommuner-og-regioner/kommuneokonomi/robek-2/id449305/).
+                    ''')
+
+        st.dataframe(
             oppsummert_sidebar,
             hide_index = True,
             use_container_width = True,
@@ -568,10 +623,9 @@ with tab4:
     
     Flyktningtall er hentet fra Integrerings- og mangfolksdirektaret (IMDi).
                 
-    ###### Prikking 
-
-    Hvis det står *Prikket (<5)*, betyr det at antallet er mindre enn fem. IMDi tilbakeholder eksakt antall av personvernhensyn. 
-    Summeringer inkluderer bare oppgitte tall, og tar ikke hensyn til prikking. Summeringer må derfor sees på som et minimum antall bosatte flyktninger i kommunen. 
+    ###### Anonymisering 
+    Hvis det står *<5* i en eller flere celler, betyr det at antall bosatte flyktninger er mindre enn fem. IMDi tilbakeholder eksakt antall for å unngå identifisering. 
+    Summeringer tar ikke hensyn til anonymisering. Summeringer må derfor sees på som et minimum antall bosatte flyktninger, hvis det står <5 i en eller flere celler. 
     """)
 
 
@@ -610,17 +664,22 @@ with tab4:
                     'Andel', format='%.1f %%'
                 )}
             )
-            
+        
+    
     ukr_text = """
             ##### Ukrainske flyktninger (kollektiv beskyttelse)
             Tabellen viser antall bosatte ukrainske flyktninger i {kommune}. 
             I {year:.0f} ble det bosatt {sum_year:.0f} ukrainske flyktninger. 
+            
+            {prikking}
+            
             I hele perioden har kommunen bosatt {sum_total:.0f} ukrainske flyktninger.
             """.format(
                 kommune = kommuner.get(select_kommune), 
                 year = select_year, 
                 sum_year = flyktninger_komm_year['ukrainere'].sum(),  
-                sum_total = flyktninger_komm['ukrainere'].sum()
+                sum_total = flyktninger_komm['ukrainere'].sum(),
+                prikking = check_ano(flyktninger_komm_year['ukrainere_string'])
                 )
 
     with st.container():
@@ -723,15 +782,71 @@ with tab4:
 # Tab 5: Expert interviews
 with tab5:
     fhi_string = """
-    ##### FHI
     Intervju med FHI. 
     """
     
-    st.markdown(fhi_string)
+    with st.expander('Intervju med Folkehelseinstituttet'):
+        st.markdown(fhi_string)
+    
+    nibr_string = """
+    Hvem er ukrainerne som kommer? 
+    * Tilstrømningen er veldig forskjellig fra 2015. Da var det en klar overvekt av menn som kom. Med ukrainerne var det i starten en stor overvekt kvinner, men etter de første månedene har andelen menn og kvinner vært mer lik, og holdt seg stabil.  
+    * I stor grad har ukrainerne høy utdannelse. 75 prosent har høyere utdannelse. Men her ser vi litt utvikling over tid. Større andel av de som kom i den første fasen hadde høyere utdannelse enn dem som har kommet i senere tid. Det samme gjelder engelskkunnskapene.  
+    * **Dette er vanlig dynamikk. At de som kommer i første fase ofte er ressurssterke, mens etter hvert så kommer det mindre ressurssterke.**  
+    
+    En stor andel av de ukrainske flyktningene er eldre. Hvilke utfordringer byr dette på?
+    * 5 prosent av de som kommer er over 66 år. Dette er mye høyere enn tidligere år når tallet har lagt på 1-2 prosent. Men de prosentene høres jo ikke så mye ut. Det viktige er at det totale antallet er utrolig mye høyere enn tidligere, og integreringsapparatet trenger helt annen kompetanse og et helt annet tilbud enn man har for folk i arbeidsdyktig alder som skal ut i et introduksjonsprogram.  
+    * Det er en stor omveltning å skulle ta imot en så stor andel med eldre flyktninger.  Det trengs andre tjenester enn det man har vært vant til tidligere.  
+    
+    Hvordan har dette vært for kommunene?
+    * Generelt har kommunene press på eldreomsorg og helsetjenester, og når det over natten kommer veldig mange flere, så blir det naturlig nok enda større press.  
+    * Flyktningtjenesten og introduksjonsprogrammet er ikke de eneste som skal ta imot flyktninger. Hele kommunen bosetter med hele tjenesteapparatet. Å skulle oppskalere alle tjenester er krevende.  
+    * Veldig mange har 2015 i tankene. De husker at de oppskalerte, men så stoppet det å komme folk. Da taper kommunene penger, for de slutter å få tilskudd for personer. Veldig mange kommuner har akkurat rukket å nedskalere etter 2015 når ukrainerne begynte å komme i 2022. 
+    * Normalt når vi tar imot flyktninger, tar vi for gitt at de skal bli. Man tror ikke at de skal returnere. Men denne gruppen har bare midlertidig opphold.  
+    * Å oppskalere tjenester innenfor skole, barnehage og helsetjenester er en veldig stor risiko for kommunene fordi ukrainere har midlertidig tillatelse.  Hadde kommunene visst at disse skulle bli i all overskuelig framtid kunne de ansatt mye leger, sykepleiere og lærere i faste stillinger fordi de hadde fått en større befolkning. Men siden man ikke vet om de skal være her i tre måneder, tre år eller resten av livet, så er det mange kommuner som ikke tør å oppskalere. I tillegg er det mangel på folk til å fylle slike stillinger som sykepleiere, lærere, leger etc. 
+
+    På hvilke tjenester er det størst press i kommunen? 
+    * Helsevesenet og Nav er veldig presset. Lokalt NAV-personell sier at de ikke har kapasitet til å følge opp denne gruppen. De er rett og slett ikke nok ansatte til å følge opp en så stor økning av mennesker på kort tid.  
+    * Mitt inntrykk har vært at skole og barnehage har gått bra hittil, mens helse er et generelt problem fra før av.  
+    
+    Hvordan løser kommunene dette?  
+    * Det er veldig forskjellig hvordan kommunene løser det. Noen har unntak for midlertidige stillinger, noen tenker at de skal ri av seg stormen og håper at det skal fungere, men tør ikke å ansette. Andre prøver å bruke private tjenester i større grad, da kan de eventuelt nedskalere fort. Men det er et helt reelt dilemma som kommunene uttrykker veldig sterkt, at det er krevende. 
+
+    Har bosettingen av ukrainere vært forskjellig fra bosetting av andre flyktninger?
+    
+    * Det har kanskje vært flere likhetstrekk enn forskjeller i arbeidet med å ta imot ukrainere og andre flyktninger. Det var nok nokså urealistiske forventinger om i starten at dette skulle være helt annerledes.  
+    * Ukrainerne skulle bare gli inn, dette skulle bare være som arbeidsinnvandrere som skulle hoppe ut i jobb, helt problemfritt. Det har vist seg at denne gruppen også trenger støtte og hjelp for å komme seg ut i jobb og arbeid. Selv om de har høy utdanning får de ikke nødvendigvis brukt det i Norge når de ikke kan engelsk, og ikke norsk.
+    * Ukrainere har generelt ikke gode engelskkunnskaper. Det er en myte som må avkreftes gang på gang, på gang.  
+    * Kun 11 prosent snakker flytende engelsk, og rundt 60 prosent kan nesten ikke engelsk i det hele tatt. Av de som kommer nå, er det en enda lavere andel som snakker engelsk.  
+    
+    Så det har ikke vært enklere å få en ukrainer ut i jobb enn øvrige flyktninger? 
+    * Ukrainere som har gått introduksjonstilbudet har cirka samme resultater som andre flyktninggrupper har hatt når det kommer til å komme seg ut i arbeid.  
+    * Når du ikke kan språket og har et annet alfabet så er det ikke nødvendigvis enkelt å få dem ut i jobb. Det er en helt urealistisk forventning.  
+    * I vår rapport finner vi at flere arbeidsgivere i utgangspunktet var mer positivt innstilt til å ansette ukrainske flyktninger enn øvrige flyktninger da krigen startet, men at de på en annen side sier at den midlertidig tillatelse gjør at de er mer skeptiske til å ansette dem. Det å ansette noen, og lære dem opp, tar tid og koster penger.  
+    * Det er en stor vilje for å lære seg norsk og komme ut i arbeidslivet, men det er veldig mange som møter på utfordringer. Språk trekkes frem som den største barrieren.
+    
+    Hvilke tilbud gir kommunene til de over 55 år?
+    
+    * Det er veldig forskjellig om kommunen tilbyr norskopplæring og introduksjonsprogram til denne gruppen. Det handler om kapasitet. Små kommuner tilbyr i større grad. Det handler nok om at når de først har opprettet en klasse, kan de like gjerne fylle den opp. I større kommuner er det færre som tilbyr norskopplæring til denne gruppen som de ikke har plikt til å tilby.  
+    * Halvparten av kommunene opplyser at de ukrainske flyktningene har fått mindre norskundervisning og introduksjonsprogram enn hva de har hatt rett til. De har ikke hatt klasserom, de har ikke hatt nok lærere, de har ikke hatt mulighet til å oppskalere så raskt som behovet var.  
+    * Mange påpeker at dette er en gruppe vi ikke har vært vant til å ha en så høy andel av. Dette er en gruppe som blir litt glemt med at man ikke har så mye tilbud.  
+    * En del av de frivillige organisasjonene sier at de eldre er glemt, det er ikke noe tilbud for dem.
+    
+    Hva vet dere om helsesituasjonen til de som kommer? 
+    * Ukrainerne gir helsetjenesten mye dårligere score enn for eksempel skole og barnehage.  
+    * Det er en kulturkræsj på hva man er vant til i helsevesenet.  
+    * I Ukraina er de mye mer vant til å bli sendt til en spesialist direkte, de har ingen fastlegeordning. Det er også mye mer vanlig å få utskrevet medisiner for ting vi her i Norge er mer restriktive på.  
+    * Det var noen som ble sjokkert da de ble bedt om å drikke Cola fordi de hadde feber og vondt i magen. De ville ha medisin.  
+
+
+    """
+    
+    with st.expander('Intervju med Vilde Hernes, forsker ved NIBR.'):
+        st.markdown(nibr_string)
     
     ous_string = """
-    ##### OUS
     Intervju med OUS. 
     """
     
-    st.markdown(ous_string)
+    with st.expander('Intervju med Oslo universitetssykehus'):
+        st.markdown(ous_string)
