@@ -54,6 +54,7 @@ flyktninger = load_data('app_flyktninger')
 oppsummert = load_data('app_flyktninger_oppsummert')
 ema = load_data('ema')
 ukr_mottak = load_data('ukrainere_mottak_310124')
+kostra_about = load_data('kostra_description')
 
 #folketall = load_data('app_flyktninger_folketall')
 
@@ -71,13 +72,21 @@ coverage = {g: d['kommnr'].values for g, d in lla.groupby('avis')}
 # Municipality selectors #
 # ----------------------------- #
 
-# Create a dictionary of unique municipalities
+# Create a dictionary of unique municipalities, counties, electional districts
 kommuner = pd.Series(oppsummert.Kommune.values,index=oppsummert.Kommunenummer).to_dict()
 fylker = pd.Series(oppsummert.Fylke.values,index=oppsummert.Fylkenummer).to_dict()
+valgdistrikt = pd.Series(oppsummert.Valgdistrikt.values, index = oppsummert.Valgdistriktnummer).to_dict()
+kommuner_valgdistrikt = pd.Series(oppsummert.Valgdistrikt.values, index = oppsummert.Kommunenummer).to_dict()
+kommuner_sentralitet = pd.Series(oppsummert.sentralitet.values, index = oppsummert.Kommunenummer).to_dict()
+kommuner_kostra = pd.Series(oppsummert.kostranavn.values, index = oppsummert.Kommunenummer).to_dict()
+
+
 
 # Use tuples to alphabetically sort the municipalities and counties 
 kommuner_sorted = sorted(kommuner.items(), key=lambda kv: (kv[1], kv[0]))
 fylker_sorted = sorted(fylker.items(), key=lambda kv: (kv[1], kv[0]))
+valgdistrikt_sorted = sorted(valgdistrikt.items(), key=lambda kv: (kv[1], kv[0]))
+
 
 select_fylke = st.sidebar.selectbox(
     'Velg fylke',
@@ -94,6 +103,8 @@ select_kommune = st.sidebar.selectbox(
     # display the names of the municipalities, not the codes
     format_func = lambda x: kommuner.get(x)
 )
+
+#print()
 
 if select_kommune == '1508' or select_kommune == '1580':
         st.sidebar.markdown("""
@@ -153,23 +164,23 @@ with st.sidebar:
 
     select_group = st.selectbox(
         'Velg gruppering',
-        options=[fylker.get(select_fylke), 'Norge', 'Lokalavis', 'SSBs sentralitetsindeks']
+        options=[fylker.get(select_fylke), kommuner_valgdistrikt[select_kommune], 'SSBs sentralitetsindeks', 'KOSTRA-gruppe', 'Hele landet', 'Lokalavis (dekningsområde)']
     )
 
-    if select_group == 'Lokalavis':
+    if select_group == 'Lokalavis (dekningsområde)':
         select_paper = st.selectbox(
             'Velg lokalavis',
             options = coverage.keys()
         )
     
-    if select_group == 'SSBs sentralitetsindeks':
-        select_centrality = st.selectbox(
-            'Velg indeks',
-            options=['1 - Mest sentrale', '2', '3', '4', '5', '6 - Minst sentrale']
-        )
+    #if select_group == 'SSBs sentralitetsindeks':
+    #    select_centrality = st.selectbox(
+    ##        'Velg indeks',
+     #       options=['1 - Mest sentrale', '2', '3', '4', '5', '6 - Minst sentrale']
+     #   )
         
     # If the user wants a top list for the whole country
-    if select_group == 'Norge':
+    if select_group == 'Hele landet':
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
@@ -186,6 +197,28 @@ with st.sidebar:
                     'Andel av befolkning', format='%.1f %%'
                 )}
             )
+    
+    # If the user wants a top list by county
+    if select_group == kommuner_valgdistrikt[select_kommune]:
+        oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
+        oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Valgdistrikt'] == kommuner_valgdistrikt[select_kommune]]
+        oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
+        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+
+        st.sidebar.dataframe(
+            oppsummert_sidebar,
+            hide_index = True,
+            use_container_width = True,
+            column_config = {
+                'ukrainere': st.column_config.NumberColumn(
+                    'Antall ukrainere', format='%.0f'
+                ),
+                'ukr_pct_pop': st.column_config.NumberColumn(
+                    'Andel av befolkning', format='%.1f %%'
+                )}
+            )
+    
+        
     
     # If the user wants a top list by county
     if select_group == fylker.get(select_fylke):
@@ -209,17 +242,70 @@ with st.sidebar:
     
     # If the user wants a top list by SSBs centrality index
     if select_group == 'SSBs sentralitetsindeks':
-        oppsummert_sidebar = oppsummert[oppsummert['sentralitet'] == int(select_centrality[:1])]
+        oppsummert_sidebar = oppsummert[oppsummert['sentralitet'] == kommuner_sentralitet[select_kommune]]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['År'] == select_year]
         #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
         
-        st.sidebar.markdown("""
+        sentralitet_description = """
         Sentralitetsindeksen er en måte å måle hvor sentral en kommune er med grunnlag i befolkning, arbeidsplasser og servicetilbud. Indeksen er utviklet av SSB.
         
-        Mest sentrale kommuner er Oslo og omkringliggende kommuner. Større byer som Bergen, Trondheim  og Tromsø har verdien 2. De minst sentrale kommunene i Norge, er blant annet Eidfjord, Frøya, Folldal, Gratangen, mfl.        
-        """)
+        Indeksen går fra 1 (mest sentral) til 6 (minst sentral). Kommuner med sentralitet 4, 5 og 5 forstås som distriktskommuner. 
+        
+        {kommune} har sentralitet {sentralitet}.
+        """.format(
+            kommune = kommuner.get(select_kommune),
+            sentralitet = kommuner_sentralitet[select_kommune]
+        )
+        
+        st.sidebar.markdown(sentralitet_description)
+
+        st.sidebar.dataframe(
+            oppsummert_sidebar,
+            hide_index = True,
+            use_container_width = True,
+            column_config = {
+                'ukrainere': st.column_config.NumberColumn(
+                    'Antall ukrainere', format='%.0f'
+                ),
+                'ukr_pct_pop': st.column_config.NumberColumn(
+                    'Andel av befolkning', format='%.1f %%'
+                )}
+            )
+    
+    # If the user wants a top list by SSBs centrality index
+    if select_group == 'KOSTRA-gruppe':
+        
+        #print(kommuner_kostra[select_kommune])
+        oppsummert_sidebar = oppsummert[oppsummert['kostranavn'] == kommuner_kostra[select_kommune]]
+        oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['År'] == select_year]
+        #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
+        oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
+        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+        
+        kostra_about_komm = kostra_about[kostra_about['kostragruppe'] == kommuner_kostra[select_kommune]]
+        
+        print(kostra_about_komm)
+        
+        sentralitet_description = """
+        KOSTRA-gruppene er utviklet av SSB for å enklere sammenligne like kommuner. Gruppene er satt sammen basert på folkemengde og økonomiske rammebetingelser. 
+        
+        Les mer om KOSTRA-gruppene [her](https://www.ssb.no/offentlig-sektor/kostra/statistikk/kostra-kommune-stat-rapportering/om-kostra/kostra-gruppene).
+        
+        {kommune} er i Kostra-gruppe {kostra_gruppe}, som innebærer:  
+        * Folkemengde: {folkemengde}  
+        * Bundne kostnader: {kostnader}
+        * Frie disponible inntekter: {inntekter}
+        """.format(
+            kommune = kommuner.get(select_kommune),
+            kostra_gruppe = kommuner_kostra[select_kommune],
+            folkemengde = kostra_about_komm['folkemengde'].iloc[0],
+            kostnader = kostra_about_komm['bundekostnader'].iloc[0],
+            inntekter = kostra_about_komm['frie_disponible_inntekter'].iloc[0]
+        )
+        
+        st.sidebar.markdown(sentralitet_description)
 
         st.sidebar.dataframe(
             oppsummert_sidebar,
@@ -234,10 +320,11 @@ with st.sidebar:
                 )}
             )
         
-    if select_group == 'Lokalavis':
-        if pd.isna(coverage['Akers Avis Groruddalen'][0]):
+    
+    if select_group == 'Lokalavis (dekningsområde)':
+        if pd.isna(coverage[select_paper][0]):
             st.markdown('''
-                        Dekningsområdet for denne avisen er ikke klar. Hvis avisen er riksdekkende, velg "Norge" i stedet for "Lokalavis" i velgeren.
+                        Dekningsområdet for denne avisen er ikke klart. Hvis avisen er riksdekkende, velg "Norge" i stedet for "Lokalavis" i velgeren.
                         Hvis avisens dekningsområdet må defineres med postnummer eller andre geografiske kjennetegn (feks kyst), arbeider vi med å sammenstille dette. 
                         ''')
         
