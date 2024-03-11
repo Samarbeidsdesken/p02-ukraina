@@ -411,7 +411,7 @@ use_container_width = False #st.checkbox("Full tabellbredde", value=True)
 # ----------------------- # 
 
 # create different tabs for the content
-tab1, tab2, tab3, tab4, tab5 = st.tabs(['Dette er saken', 'Slik er det i {kommune}'.format(kommune = kommuner.get(select_kommune)), 'Slik går du fram', 'Tallgrunnlag', 'Ekspertintervju'])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(['Dette er saken', 'Slik er det i {kommune}'.format(kommune = kommuner.get(select_kommune)), 'Slik går du fram', 'Tallgrunnlag', 'Ekspertkilder og rapporter'])
 
 # In tab 1: Dette er saken
 with tab1:
@@ -420,49 +420,73 @@ with tab1:
 
     with national_col1:
         national_text = """
+        Norge har bosatt 60.134 ukrainske flyktninger fordelt på 355 kommuner siden krigen startet i 2022. I samme periode bosatte vi 8.465 flyktninger fra øvrige land.
+        
+        Til sammenligning ble det bosatt i overkant av 15.000 flyktninger i 2015, og i underkant av 10.000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina.
+        
+        #### Hvordan har den ukrainske flyktingbølgen truffet kommunene? 
+        
+        — Det var nokså urealistiske forventninger i starten, sier forsker ved NIBR, Vilde Hernes.
 
-        Siden krigen startet i februar 2022 har 60,134 ukrainske flyktninger blitt bosatt i Norge. I samme periode har det kommet 8,465 flyktninger fra andre land. 
+        — Ukrainerne skulle bare være som arbeidsinnvandrere som skulle hoppe ut i jobb, helt problemfritt, sier hun. (Se her for fullt intervju med sitater, og lenke til forskningsrapport)
 
-        Til sammenligning ble det bosatt i overkant av 15,000 flyktninger i 2015, og i underkant av 10,000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina.
-    
-        I 2023 ble det bosatt ukrainere i {munn_count} av 357 norske kommuner.
-        
-        ##### Ikke problemfritt  
-        
-        Forsker ved NIBR, Vilde Hernes, sier dette ikke er den suksesshistorien som mange hadde ventet (Se her for fullt intervju med sitater, og lenke til forskningsrapporten)
-        
-        * Kun 10 prosent av ukrainerne snakker engelsk.  
-        * Andelen som kommer ut i jobb etter introduksjonsprogrammet ligger helt likt med øvrige flyktninger.  
-        * Flyktningene som kom i starten hadde høy utdannelse, men dette har endret seg over tid. Nå er det flere ressurssvake som kommer.  
-        * Varierende tilbud til dem over 55 år. 
-        
-        Flyktninger Norge er vant til å ta i mot er menn i arbeidsdyktig alder. Men 13 prosent av ukrainerne som er bosatt er over 55 år, og 30 prosent er under 18 år. 
-        
-        ##### Høy andel eldre, få tilbud  
-        
-        På grunn av det store antallet ukrainske flyktninger utgjør dette en betydelig gruppe med eldre mennesker. Disse skal ha helt andre tjenester i kommunen enn friske flyktninger i arbeidsdyktig alder. Dette var ikke kommunene rigget for, og mange har fortsatt store utfordringer.
 
-        De over 55 år har ikke rett på et introduksjonsprogram. Dette er et program for å raskt komme ut i arbeid eller utdanning. Kommunene kan likevel tilby introduksjonsprogram, ved kapasitet. Det er derfor variasjon i tilbudet til denne gruppen fra kommune til kommune. 
-
-        ##### Sykere enn nordmenn  
+        ##### Her er mulige nyhetspoeng: 
         
-        Ifølge en rapport fra FHI er ukrainerne sykere enn nordmenn, med særlig dårlig tannhelse. (Se her for fullt intervju med FHI, og lenke til rapport)
+        - Andelen ukrainere som kommer ut i jobb etter introduksjonsprogrammet ligger helt likt med øvrige flyktninger.  
+        - Kun 11 prosent av ukrainerne snakker flytende engelsk.  
+        - Ukrainerne som kom da krigen startet hadde høy utdannelse. De som kommer nå har lavere utdannelse og snakker dårligere engelsk.  
+        - Flyktningene Norge er vant til å bosette er menn i arbeidsdyktig alder. Ukrainske flyktninger er mer variert i alder: 30 prosent er under 18 år, og 13 prosent er over 55 år. Disse krever andre tilbud fra kommunen.
+
+        #### De ensomme eldre
+        — Ukrainske eldre er ensomme i Norge. Det er utfordrende for denne gruppen som står uten noe særlig tilbud, sier  Nataliya Yeremeyeva.
+
+        ##### Her er mulige nyhetspoeng: 
+        - Aldri før har Norge tatt imot så mange eldre flyktninger. I overkant av 7800 ukrainere er over 55 år.  
+        - Xx er over 80 år.  
+        - Kommunen må ikke gi ukrainere over 55 plass på et introduksjonsprogram, men kan likevel velge å tilby dem plass ved kapasitet.  Hvilke tilbud får de eldre i din kommune? 
+        - Eldre som kommer alene til Norge er ensomme, og lærer seg ikke språket. 
+
+        #### Ukrainere er sykere enn nordmenn
         
-        Ingen sitter med en oversikt over hvor mange ukrainere som har mottatt behandling via primær- eller spesialisthelsetjenesten, men dette er noe FHI jobber med. Det kan være utfordrende for kommunen å ikke kjenne til helsehistorikken til flyktningene de skal bosette. 
-
-        Overlege ved OUS, xx, forteller at de har evakuert over 350 pasienter fra ukrainske sykehus siden krigen startet. Han sier tallet på ukrainere som har vært innom sykehus i Norge trolig er ti ganger så høyt, og at mange har kreft. (Se her for fullt intervju med sitater)
-
-        Vi har snakket med flyktningtjenesten i xx kommuner. De trekker frem helsetjenesten som en av de største utfordringene i kommunen. Eldreomsorgen og helsetjenesten var presset fra før. I tillegg til ukrainerne som er bosatt, har kommunen også ansvar for helsetjenesten til asylsøkerne som sitter på mottak. (Se oversikt over hvem vi har hatt bakgrunnsamtaler med)
-
-        ##### Midlertidighet fører til usikkerhet
+        — Seks av ti ukrainere rapporterte at de hadde langvarig sykdommer eller plager, sier forsker ved Folkehelseinstituttet, Angela Susan Labberton. (Se her for fullt intervju med FHI, og lenke til rapport)  
         
-        Siden ingen vet om ukrainerne skal være her i tre måneder, tre år eller resten av livet, er det mange kommuner som ikke tør å oppskalere tjenestetilbudet, spesielt innenfor helse, skole, barnehage og NAV. Å ansette sykepleiere og lærere i faste stillinger er risikabelt. De vil tape penger når ukrainerne må dra og de slutter å få tilskudd fra Imdi. 
-        
-        Noen kommuner sier de skal ri av seg stormen, andre prøver å kjøpe private tjenester som de kan de nedskalere fort. 
+        — 373 ukrainerne har kommet via medisinsk evakuerte. To tredeler hadde kreft og en tredel skader. Disse er mer krevende for helsevesenet enn en gjennomsnittlig pasient, sier Anders Holtan, overlege ved koordineringsenheten for medisinsk evakuerte ved Oslo universitetssykehus. 
 
-        """.format(
-            munn_count = str(len(oppsummert_year[oppsummert_year['ukrainere'] > 0]))
-        )
+        — Likevel tror jeg arbeidsbyrden, både for kommunehelsetjenesten og spesialisthelsetjenesten er vesentlig større med de andre ukrainerne som kommer, sier Holtan (Se her for fullt intervju med sitater)  
+
+        Vi har snakket med flyktningtjenesten i seks forskjellige kommuner. Flere trekker frem helsetjenesten som en av de største utfordringene. 
+
+        ##### Her er mulig nyhetspoeng:
+
+        - Rapporten til FHI viser at Ukrainerne er sykere enn nordmenn, med særlig dårlig tannhelse.  
+        - Ingen sitter med en oversikt over hvor mange ukrainere som har mottatt behandling via primær- eller spesialisthelsetjenesten. 
+        - En stor andel av ukrainerne har følt et behov for å snakke med noen om sine opplevelser og psykiske reaksjoner siden ankomst til Norge, men 70 % av disse ikke har fått et tilbud viser forskningsrapport fra NKVTS (Se her for fullt intervju med sitater og forskningsrapport)
+        - Forventet levealder for en ukrainsk mann før krigen var 67 år, en norsk mann er forventet å leve til han er 81. 
+        - Flere kommuner har bosatt 80 og 90 åringer som bor på sykehjem. 
+        - Utfordringer med hiv og syfilis blant ukrainske flykninger. 
+        - Kommunen har ansvar for helsetjenesten til asylsøkerne som venter på mottak i tillegg til de som er bosatt. 
+        - Økt press på eldreomsorgen og helsetjenester i kommunene. 
+        - Tannhelsen til ukrainske barn og ungdom er dårlig. 
+        - Vanskelig å rekruttere sykepleiere og leger, må ofte benytte dyre vikarbyrå.
+
+        #### Midlertidighet = usikkerhet
+
+        Ukrainerne er her på ubestemt tid. 
+
+        — Arbeidsgivere var svært positive til å ansette ukrainere da krigen startet. Nå er de mer skeptisk, sier Vilde Hernes, forsker i NIBR. 
+
+        ##### Mulige nyhetspoeng: 
+        
+        - Kommunene har akkurat skaler ned siden flyktningbølgen i 2015, nå må de mobilisere igjen.  
+        - Det er risikabelt for kommunene å ansetter lærere og sykepleiere i faste stillinger. De kan tape mye penger hvis ukrainerne plutselig må reise hjem og kommunen slutter å motta tilskudd fra Imdi. 
+        - Arbeidsgivere vegrer seg for å ansette ukrainere. Det er dyrt å gi dem opplæring.  
+        - Noen kommuner sier de skal ri av seg stormen, andre prøver å kjøpe private tjenester som de kan de nedskalere fort.
+
+        Følg pengene.
+
+
+        """
         
         st.markdown(
             national_text
@@ -515,7 +539,7 @@ with tab2:
     
     I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse i {year}, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
     
-    Integrerings- og mangfoldsdirektoratet har anmodet kommunen å bosette {innvandr_anmodet:,.0f} ukrainske flyktninger i  2024. Kommunen {innvandr_vedtak_string}. {kommune} {ema_vedtak_2024_string}
+    Integrerings- og mangfoldsdirektoratet har anmodet kommunen å bosette {innvandr_anmodet:,.0f} flyktninger i  2024. Det inkluderer både ukrainske og øvrige flyktninger. Kommunen {innvandr_vedtak_string}. {kommune} {ema_vedtak_2024_string}
 
     """.format(
                 kommune = kommuner.get(select_kommune), 
@@ -564,57 +588,57 @@ with tab3:
     
     Noen kommuner mener de håndterer flyktningstrømmen godt, andre opplever situasjonen som utfordrende.
     
-    Finn ut hvordan det står til i din kommune:
-    * Få kontakt med det ukrainske miljøet
-        * Den ukrainske foreningen i Norge har Facebook-grupper knyttet til forskjellige kommuner. Skriv at du vil komme i kontakt med ukrainere som vil fortelle om sine erfaringer ved å bli bosatt i Norge.
-        * Hør med ditt eget nettverk. Er det noen som kjenner ukrainere?
-        * Kontakt frivillige organisasjoner (Røde kors, SEIF), kirken, flyktningkontoret og be om å bli satt i kontakt med ukrainere. 
-        * Tolk: Husk at mange ukrainere ikke prater engelsk. Du kan enten bruke tolk via telefon (se Nasjonalt tolkeregister), eller venner/bekjente av kilden som prater engelsk. I noen tilfeller kan flyktningkontoret bistå.
-    * Politikere/rådmann: 
-        * Hvordan bestemmer kommunen hvor mange flyktninger de skal ta i mot?
-            * Hvorfor tar dere imot færre/flere enn IMDi har anmodet? (sjekk tall for din kommune i talloversikten)
-        * Har dere vært nødt til å ansette (lærere, sykepleiere, saksbehandlere) flere for å opprettholde et godt tjenestetilbud? Er det utfordrende å ansette folk i faste stillinger da det er uvisst hvor lenge ukrainere blir i Norge. 
-        * Vi ønsker en oversikt over hvordan tilskuddene fra IMDi er brukt.
-    * Ta kontakt med flyktningtjenesten i kommunen. 
-        * Hva er deres erfaring med å ta imot ukrainske flyktninger?
-            * Hvilke utfordringer møter dere? Og har det endret seg fra krigen startet?
-            * Er det forskjell på ukrainere som ankom rett etter krigen brøt ut, sammenlignet med de som kommer nå?
-            * Er det økt press på noen av tjenestene i kommunen som følge av pågangen av ukrainske flyktninger? Hvordan løser dere dette? Økt bemanning/vikarbruk
-            * Hvis økt trykk på tjenestene i kommunen, klarer å sørge for at alle mottar den hjelpen de trenger?
-            * Hvor høy andel av ukrainere har kommet ut i jobb eller utdanning? Hvordan er det sammenlignet med øvrige flyktninger?
-        * Kan du si noe om sykdomsbildet blant ukrainere i din kommune?
-            * Hvor mange er på sykehjem?
-            * Hvor mange får hjemmesykepleie?
-            * Hvor mange får oppfølging innen spesialisthelsetjenesten?
-            * Hvordan skiller dette seg fra erfaringene dere har fra tidligere flyktninger?
-            * Hvilken oppfølging får de som har tjenestegjort i krigen?
-        * Hvilket tilbud får de over 55 år?
-        * Hva betyr andelen barn og unge for barnehagene og skolene? Har dere ansatt flere lærere? Hvordan blir tolkebehovet dekket?
-    * Ta kontakt med kommuneoverlegen:
-        * Kan du si noe om sykdomsbildet blant ukrainere i din kommune?
-            * Hvor mange er på sykehjem?
-            * Hvor mange får hjemmesykepleie?
-            * Hvor mange får oppfølging innen spesialisthelsetjenesten?
-            * Hvordan skiller dette seg fra erfaringene dere har fra tidligere flyktninger?
-            * Hvilken oppfølging får de som har tjenestegjort i krigen?
-        * Hvordan er fastlegesituasjonen i kommunen, og hvordan påvirkes den av ukrainske flyktninger? Hvilke tiltak har dere satt inn?
-        * En rapport fra NIBR viser at ukrainere har en lavere terskel for å oppsøke fastlege, enn nordmenn. Er dette noe dere opplever? 
-        * Har dere tall på ukrainere som har benyttet seg av primær - og spesialisthelsetjenesten?
-        * Hvordan vil pågangen av ukrainske flyktninger påvirke helsetjenestene fremover? Hvilke konsekvenser vil dette få?
-    * Hvis din kommune har asylmottak: 
-        * Hvordan har det store antallet ukrainere påvirket deres arbeid?
-        * Hvilke utfordringer møter dere?
-        * Er det lenger ventetid for flyktninger fra andre land?
-        * Hvordan er helsen til ukrainere sammenlignet med andre flyktninger?
-        * Har pågangen fra Ukraina fått konsekvenser for flyktninger fra andre land?
-    * Tips til case:
-        * Finner dere gladhistorier som viser hvordan det har fungert å ta imot ukrainske flyktninger? Jobber det ukrainere på sykehjem, på den lokale matbutikken, i barnehager/skoler? Er det noen ukrainere som selv hjelper til med å få hjulene til å gå rundt i kommunen? 
-        * Har det kommet noen som har tjenestegjort i krigen? Hvilken historie har de å fortelle? Hvem er han? Hvordan ble han rekruttert? Hvorfor endte han opp i din kommune?
-        * Er det noen eldre som bor på sykehjem, sammen med nordmenn med erfaring fra andre verdenskrig?
-        * Finn en sykepleiere som kjenner på det økte presset i kommunen. 
-        * Finn en rektor/lærer som har fått en ukrainsk elev i klasserommet. 
-        * Lærer på introduksjonsprogram.
-        * Hvis din kommune har asylmottak, 
+    ##### Få kontakt med det ukrainske miljøet
+    * Den ukrainske foreningen i Norge har Facebook-grupper knyttet til forskjellige kommuner. Skriv at du vil komme i kontakt med ukrainere som vil fortelle om sine erfaringer ved å bli bosatt i Norge.
+    * Hør med ditt eget nettverk. Er det noen som kjenner ukrainere?
+    * Kontakt frivillige organisasjoner (Røde kors, SEIF), kirken, flyktningkontoret og be om å bli satt i kontakt med ukrainere. 
+    * Tolk: Husk at mange ukrainere ikke prater engelsk. Du kan enten bruke tolk via telefon (se Nasjonalt tolkeregister), eller venner/bekjente av kilden som prater engelsk. I noen tilfeller kan flyktningkontoret bistå.
+    
+    ##### Politikere/rådmann: 
+    * Hvordan bestemmer kommunen hvor mange flyktninger de skal ta i mot?
+        * Hvorfor tar dere imot færre/flere enn IMDi har anmodet? (sjekk tall for din kommune i talloversikten)
+    * Har dere vært nødt til å ansette (lærere, sykepleiere, saksbehandlere) flere for å opprettholde et godt tjenestetilbud? Er det utfordrende å ansette folk i faste stillinger da det er uvisst hvor lenge ukrainere blir i Norge. 
+    * Vi ønsker en oversikt over hvordan tilskuddene fra IMDi er brukt.
+    ##### Ta kontakt med flyktningtjenesten i kommunen. 
+    * Hva er deres erfaring med å ta imot ukrainske flyktninger?
+        * Hvilke utfordringer møter dere? Og har det endret seg fra krigen startet?
+        * Er det forskjell på ukrainere som ankom rett etter krigen brøt ut, sammenlignet med de som kommer nå?
+        * Er det økt press på noen av tjenestene i kommunen som følge av pågangen av ukrainske flyktninger? Hvordan løser dere dette? Økt bemanning/vikarbruk
+        * Hvis økt trykk på tjenestene i kommunen, klarer å sørge for at alle mottar den hjelpen de trenger?
+        * Hvor høy andel av ukrainere har kommet ut i jobb eller utdanning? Hvordan er det sammenlignet med øvrige flyktninger?
+    * Kan du si noe om sykdomsbildet blant ukrainere i din kommune?
+        * Hvor mange er på sykehjem?
+        * Hvor mange får hjemmesykepleie?
+        * Hvor mange får oppfølging innen spesialisthelsetjenesten?
+        * Hvordan skiller dette seg fra erfaringene dere har fra tidligere flyktninger?
+        * Hvilken oppfølging får de som har tjenestegjort i krigen?
+    * Hvilket tilbud får de over 55 år?
+    * Hva betyr andelen barn og unge for barnehagene og skolene? Har dere ansatt flere lærere? Hvordan blir tolkebehovet dekket?
+    ##### Ta kontakt med kommuneoverlegen:
+    * Kan du si noe om sykdomsbildet blant ukrainere i din kommune?
+        * Hvor mange er på sykehjem?
+        * Hvor mange får hjemmesykepleie?
+        * Hvor mange får oppfølging innen spesialisthelsetjenesten?
+        * Hvordan skiller dette seg fra erfaringene dere har fra tidligere flyktninger?
+        * Hvilken oppfølging får de som har tjenestegjort i krigen?
+    * Hvordan er fastlegesituasjonen i kommunen, og hvordan påvirkes den av ukrainske flyktninger? Hvilke tiltak har dere satt inn?
+    * En rapport fra NIBR viser at ukrainere har en lavere terskel for å oppsøke fastlege, enn nordmenn. Er dette noe dere opplever? 
+    * Har dere tall på ukrainere som har benyttet seg av primær - og spesialisthelsetjenesten?
+    * Hvordan vil pågangen av ukrainske flyktninger påvirke helsetjenestene fremover? Hvilke konsekvenser vil dette få?
+    ##### Hvis din kommune har asylmottak: 
+    * Hvordan har det store antallet ukrainere påvirket deres arbeid?
+    * Hvilke utfordringer møter dere?
+    * Er det lenger ventetid for flyktninger fra andre land?
+    * Hvordan er helsen til ukrainere sammenlignet med andre flyktninger?
+    * Har pågangen fra Ukraina fått konsekvenser for flyktninger fra andre land?
+    ##### Tips til case:
+    * Finner dere gladhistorier som viser hvordan det har fungert å ta imot ukrainske flyktninger? Jobber det ukrainere på sykehjem, på den lokale matbutikken, i barnehager/skoler? Er det noen ukrainere som selv hjelper til med å få hjulene til å gå rundt i kommunen? 
+    * Har det kommet noen som har tjenestegjort i krigen? Hvilken historie har de å fortelle? Hvem er han? Hvordan ble han rekruttert? Hvorfor endte han opp i din kommune?
+    * Er det noen eldre som bor på sykehjem, sammen med nordmenn med erfaring fra andre verdenskrig?
+    * Finn en sykepleiere som kjenner på det økte presset i kommunen. 
+    * Finn en rektor/lærer som har fått en ukrainsk elev i klasserommet. 
+    * Lærer på introduksjonsprogram.
+    * Hvis din kommune har asylmottak, 
 
     """)
     
@@ -884,45 +908,50 @@ with tab5:
         """
     )
     fhi_string = """
-##### Hva viser deres studie om helsesituasjonen til de ukrainske flyktningene? 
-— <span style='background-color:yellow;'>Seks av ti rapporterte at de hadde langvarig sykdommer eller plager. Omtrent en tredjedel rapporterte symptomer den siste uken som indikerer psykiske plager.</span>  
-— Folkehelseinstituttet gjennomførte en spørreundersøkelse blant voksne flyktninger fra Ukraina som kom til Norge i 2022 der deltakerne vurderte sin egen helse. Det kom 731 svar, hvorav flesteparten var kvinner. Omtrent halvparten vurderte sin helse alt i alt som god eller svært god mens seks av ti rapporterte at de hadde langvarig sykdommer eller plager. Omtrent en tredjedel rapporterte symptomer den siste uken som indikerer psykiske plager. Funnene viser den selvurderte helsen til dem som har valgt å svare på undersøkelsen, og må tolkes noe forsiktig.
- 
-##### Hva viser deres studie om helsesituasjonen til ukrainske flyktninger sammenlignet med den norske befolkningen?
-— <span style='background-color:yellow;'>Det overordnete bildet viser at flyktningene rapporterte dårligere helse og betydelig dårligere tannhelse sammenlignet med den øvrige befolkningen.</span> 
+    
+    Angela Labberton med flere har undersøkt selv-rapportert helse og helsetjenestebehov blant voksne ukrainere fra Ukraina. 
+    
+    Rapporten er tilgjengelig [her](https://www.fhi.no/nyheter/2023/ukrainske-flyktninger-darligere-helse-og-betydelig-darligere-tannhelse/).
+    
+    ##### Hva viser deres studie om helsesituasjonen til de ukrainske flyktningene? 
+    — <span style='background-color:yellow;'>Seks av ti rapporterte at de hadde langvarig sykdommer eller plager. Omtrent en tredjedel rapporterte symptomer den siste uken som indikerer psykiske plager.</span>  
+    — Folkehelseinstituttet gjennomførte en spørreundersøkelse blant voksne flyktninger fra Ukraina som kom til Norge i 2022 der deltakerne vurderte sin egen helse. Det kom 731 svar, hvorav flesteparten var kvinner. Omtrent halvparten vurderte sin helse alt i alt som god eller svært god mens seks av ti rapporterte at de hadde langvarig sykdommer eller plager. Omtrent en tredjedel rapporterte symptomer den siste uken som indikerer psykiske plager. Funnene viser den selvurderte helsen til dem som har valgt å svare på undersøkelsen, og må tolkes noe forsiktig.
+    
+    ##### Hva viser deres studie om helsesituasjonen til ukrainske flyktninger sammenlignet med den norske befolkningen?
+    — <span style='background-color:yellow;'>Det overordnete bildet viser at flyktningene rapporterte dårligere helse og betydelig dårligere tannhelse sammenlignet med den øvrige befolkningen.</span> 
 
 
-Svarene fra undersøkelsen ble sammenlignet med svar fra fem befolkningsundersøkelser i Norge. Sammenligningen viser at flyktningene vurderte sin generelle helse og tannhelse som dårligere, og at en høyere andel rapportere om psykiske plager og langvarig sykdommer eller plager, enn blant den norske befolkningen.
- 
-##### Hvordan er tannhelsen? 
-— <span style='background-color:yellow;'>Tannhelsetjenester kan være et stort helsebehov blant flyktningene.</span>
+    Svarene fra undersøkelsen ble sammenlignet med svar fra fem befolkningsundersøkelser i Norge. Sammenligningen viser at flyktningene vurderte sin generelle helse og tannhelse som dårligere, og at en høyere andel rapportere om psykiske plager og langvarig sykdommer eller plager, enn blant den norske befolkningen.
+    
+    ##### Hvordan er tannhelsen? 
+    — <span style='background-color:yellow;'>Tannhelsetjenester kan være et stort helsebehov blant flyktningene.</span>
 
-Undersøkelsen viser at flere enn åtte av ti av flyktningene, like mange som blant den norske befolkningen, oppga at de hadde vært til tannlege i løpet av de siste to årene. 
-Likevel oppga under en tredjedel at de vurderte sin tannhelse som god eller veldig god, sammenlignet med tre fjerdedeler av den norske befolkningen. 
+    Undersøkelsen viser at flere enn åtte av ti av flyktningene, like mange som blant den norske befolkningen, oppga at de hadde vært til tannlege i løpet av de siste to årene. 
+    Likevel oppga under en tredjedel at de vurderte sin tannhelse som god eller veldig god, sammenlignet med tre fjerdedeler av den norske befolkningen. 
 
- 
-##### Hvorfor er helsen til ukrainere dårligere enn helsen til den norske befolkningen?
-— Undersøkelsen kan ikke si noe om årsaken til dårligere helse, men det kan være flere årsaker til at helsen til flyktningene kan være dårligere enn den norske befolkningen, og bildet er sammensatt. Fra før vet vi at flyktninger er en gruppe med dårligere helse sammenlignet med personer som har innvandret av andre grunner. Situasjonen i hjemlandet, samt hendelser før og under migrasjonen, kan påvirke en persons helse, i tillegg til levekår, livstils- og miljøfaktorer, og bruk av helsetjenester.
-I Europa sammenheng skårer Ukraina dårligere på flere helseindikatorer, også før fullskala invasjonen. Det er rapportert om regionale forskjeller i tilgang og kvaliteten på helsetjenester i Ukraina og pågående reformer har mål om å forbedre helsetjenesten. <span style='background-color:yellow;'>Fullskala invasjonen i Ukraina har i tillegg ført til redusert tilgang til helsehjelp og medisiner som kan ha resultert i behandlingsavbrudd.</span>
-Til slutt har geografiske og juridiske faktorer noe å si om helsen til de som ankommer. De som flykter ofte er friskere og yngre enn den øvrige befolkningen i opprinnelseslandet. Imidlertid kan den korte reiseveien fra Ukraina og færre juridiske hindringer bidra til at flere ukrainske flyktninger med dårligere helse ankommer, sammenlignet med flyktninger fra andre land.
- 
-##### Hvilke utfordringer byr dette på?
-— Vi har ikke undersøkt dette spesifikt. Det har kommet særlig mange kvinner og barn fra Ukraina og de kan ha ulike behov enn andre flyktninggrupper Norge tidligere har erfaring med å motta. Så det har nok vært en bratt læringskurve bare på grunn av den annerledes demografien. <span style='background-color:yellow;'>Undersøkelsen vår, samt erfaringer fra mottaksapparat og kommunen, viser at en andel av flyktningene har behov for oppfølging av ulike typer helseplager, inkludert langvarige sykdommer, tannhelse og psykiske plager. Så det kan være behov for ulike type helsetjenester. I tillegg er det et stort behov for oversettelser og tolk fordi kun en mindre del av ukrainere kan engelsk (eller norsk) ved ankomst.</p>
- 
-##### Hvilke sykdommer/plager er de mest utbredte hos ukrainerne? 
-— Når det gjelder spesifikke sykdommer eller tilstander, har vi kun undersøkt noen utvalgte tilstander som også ble spurt om i tidligere befolkningsundersøkelser i Norge. Blant disse var de meste hyppigste rapporterte tilstander rygglidelser, depresjon, høyt blodtrykk og allergi. Mellom 18-23% av respondenter - cirka en av fem - rapporterte å ha vært plaget av en eller flere av disse tilstandene i løpte av det siste året. Sammenlignet med de norske svarerne rapporterte en større andel av flyktningene om høyt blodtrykk og hjertekramper, og kronisk bronkitt, kols eller emfysem. På den andre siden rapporterte en lavere andel av flyktningene astma, allergi og artrose/slitasjegikt enn den norske befolkningen.
- 
-##### Hva betyr dette for kommunehelsetjenesten? Hva betyr dette for spesialisthelsetjenesten? 
-— Kommunehelsetjenesten og fastlegen har en nøkkelrolle i helsetjenesten i Norge og håndterer den største andelen av helsehjelpen som gis. <span style='background-color:yellow;'>En grov modellering gjort av FHI tidlig i 2022 viser at det vil være en større økning i allmennlegebruk enn liggedøgn på sykehus. Samtidig vil noen av flyktningene har behov for vurdering, behandling og/eller oppfølging i spesialisthelsetjenesten. Som nevnte over vil det også være økt behov for bruk av tolk.</span>
- 
-##### Er norske kommuner rigget for dette? 
-— Det er andre etater i helseforvaltningen som har bedre oversikt på dette enn FHI. Hvordan situasjonen er vil nok variere fra kommune til kommune og kan avhenge av faktorer som hvor robust tjenestetilbudet var fra før, antall nye innbyggere i kommunen og hvor godt tjenestene har lyktes med å bli stryket som følge av økt behov. <span style='background-color:yellow;'>Flere kommuner melder om at deres tjenester er under press.</span>
- 
-##### Finnes det en oversikt over trykket Ukrainske flyktninger legger på helsevesenet?
-— <span style='background-color:yellow;'>Det finnes ingen samlet nasjonal oversikt over faktisk helsetjenestebruk blant ukrainske flyktninger. Folkehelseinstitutt jobber med å skaffe kunnskap om dette ved bruk av registerkoblinger, men dette er arbeid som tar lengre tid.</span>
- 
-##### Andre funn du tenker er viktig å få frem? 
-— Det er veldig viktig å formidle god informasjon om helsetjenesten i Norge på en forståelig måte til de nyankomne flyktningene. Særlig de mest nyankomne flyktningene rapporterte i større grad at de ikke hadde fått forståelig informasjon om helsetjenester, visste hvordan de skulle kontakte helsevesenet, eller hadde fått den helsehjelpen de følte de hadde hatt behov for i Norge. Det norske helsevesenet er organisert noe annerledes enn i mange andre land og dette kan føre til at tilgang, bruk og/eller forventningene blant flyktninger er nokså annerledes.
+    
+    ##### Hvorfor er helsen til ukrainere dårligere enn helsen til den norske befolkningen?
+    — Undersøkelsen kan ikke si noe om årsaken til dårligere helse, men det kan være flere årsaker til at helsen til flyktningene kan være dårligere enn den norske befolkningen, og bildet er sammensatt. Fra før vet vi at flyktninger er en gruppe med dårligere helse sammenlignet med personer som har innvandret av andre grunner. Situasjonen i hjemlandet, samt hendelser før og under migrasjonen, kan påvirke en persons helse, i tillegg til levekår, livstils- og miljøfaktorer, og bruk av helsetjenester.
+    I Europa sammenheng skårer Ukraina dårligere på flere helseindikatorer, også før fullskala invasjonen. Det er rapportert om regionale forskjeller i tilgang og kvaliteten på helsetjenester i Ukraina og pågående reformer har mål om å forbedre helsetjenesten. <span style='background-color:yellow;'>Fullskala invasjonen i Ukraina har i tillegg ført til redusert tilgang til helsehjelp og medisiner som kan ha resultert i behandlingsavbrudd.</span>
+    Til slutt har geografiske og juridiske faktorer noe å si om helsen til de som ankommer. De som flykter ofte er friskere og yngre enn den øvrige befolkningen i opprinnelseslandet. Imidlertid kan den korte reiseveien fra Ukraina og færre juridiske hindringer bidra til at flere ukrainske flyktninger med dårligere helse ankommer, sammenlignet med flyktninger fra andre land.
+    
+    ##### Hvilke utfordringer byr dette på?
+    — Vi har ikke undersøkt dette spesifikt. Det har kommet særlig mange kvinner og barn fra Ukraina og de kan ha ulike behov enn andre flyktninggrupper Norge tidligere har erfaring med å motta. Så det har nok vært en bratt læringskurve bare på grunn av den annerledes demografien. <span style='background-color:yellow;'>Undersøkelsen vår, samt erfaringer fra mottaksapparat og kommunen, viser at en andel av flyktningene har behov for oppfølging av ulike typer helseplager, inkludert langvarige sykdommer, tannhelse og psykiske plager. Så det kan være behov for ulike type helsetjenester. I tillegg er det et stort behov for oversettelser og tolk fordi kun en mindre del av ukrainere kan engelsk (eller norsk) ved ankomst.</p>
+    
+    ##### Hvilke sykdommer/plager er de mest utbredte hos ukrainerne? 
+    — Når det gjelder spesifikke sykdommer eller tilstander, har vi kun undersøkt noen utvalgte tilstander som også ble spurt om i tidligere befolkningsundersøkelser i Norge. Blant disse var de meste hyppigste rapporterte tilstander rygglidelser, depresjon, høyt blodtrykk og allergi. Mellom 18-23% av respondenter - cirka en av fem - rapporterte å ha vært plaget av en eller flere av disse tilstandene i løpte av det siste året. Sammenlignet med de norske svarerne rapporterte en større andel av flyktningene om høyt blodtrykk og hjertekramper, og kronisk bronkitt, kols eller emfysem. På den andre siden rapporterte en lavere andel av flyktningene astma, allergi og artrose/slitasjegikt enn den norske befolkningen.
+    
+    ##### Hva betyr dette for kommunehelsetjenesten? Hva betyr dette for spesialisthelsetjenesten? 
+    — Kommunehelsetjenesten og fastlegen har en nøkkelrolle i helsetjenesten i Norge og håndterer den største andelen av helsehjelpen som gis. <span style='background-color:yellow;'>En grov modellering gjort av FHI tidlig i 2022 viser at det vil være en større økning i allmennlegebruk enn liggedøgn på sykehus. Samtidig vil noen av flyktningene har behov for vurdering, behandling og/eller oppfølging i spesialisthelsetjenesten. Som nevnte over vil det også være økt behov for bruk av tolk.</span>
+    
+    ##### Er norske kommuner rigget for dette? 
+    — Det er andre etater i helseforvaltningen som har bedre oversikt på dette enn FHI. Hvordan situasjonen er vil nok variere fra kommune til kommune og kan avhenge av faktorer som hvor robust tjenestetilbudet var fra før, antall nye innbyggere i kommunen og hvor godt tjenestene har lyktes med å bli stryket som følge av økt behov. <span style='background-color:yellow;'>Flere kommuner melder om at deres tjenester er under press.</span>
+    
+    ##### Finnes det en oversikt over trykket Ukrainske flyktninger legger på helsevesenet?
+    — <span style='background-color:yellow;'>Det finnes ingen samlet nasjonal oversikt over faktisk helsetjenestebruk blant ukrainske flyktninger. Folkehelseinstitutt jobber med å skaffe kunnskap om dette ved bruk av registerkoblinger, men dette er arbeid som tar lengre tid.</span>
+    
+    ##### Andre funn du tenker er viktig å få frem? 
+    — Det er veldig viktig å formidle god informasjon om helsetjenesten i Norge på en forståelig måte til de nyankomne flyktningene. Særlig de mest nyankomne flyktningene rapporterte i større grad at de ikke hadde fått forståelig informasjon om helsetjenester, visste hvordan de skulle kontakte helsevesenet, eller hadde fått den helsehjelpen de følte de hadde hatt behov for i Norge. Det norske helsevesenet er organisert noe annerledes enn i mange andre land og dette kan føre til at tilgang, bruk og/eller forventningene blant flyktninger er nokså annerledes.
 
     """
     
@@ -931,7 +960,9 @@ Til slutt har geografiske og juridiske faktorer noe å si om helsen til de som a
     
     nibr_string = """
     
-    Vilde Hernes med flere har undersøkt erfaringene til ukrainske flyktninger som har kommet til Norge etter Russlands invasjon i 2022. Rapporten er tilgjengelig [her](https://oda.oslomet.no/oda-xmlui/handle/11250/3029151).
+    Vilde Hernes med flere har undersøkt erfaringene til ukrainske flyktninger som har kommet til Norge etter Russlands invasjon i 2022. 
+    
+    Rapporten er tilgjengelig [her](https://oda.oslomet.no/oda-xmlui/handle/11250/3029151).
     
     ##### Hvem er ukrainerne som kommer? 
     — Tilstrømningen er veldig forskjellig fra 2015. Da var det en klar overvekt av menn som kom. Med ukrainerne var det i starten en stor overvekt kvinner, men etter de første månedene har andelen menn og kvinner vært mer lik, og holdt seg stabil.  
@@ -989,8 +1020,41 @@ Til slutt har geografiske og juridiske faktorer noe å si om helsen til de som a
         st.markdown(nibr_string)
     
     ous_string = """
-    Intervju med OUS. 
+    Anders Holtan, overlege og leder for koordineringssenter for medisinsk evakuering ved Oslo Universitetssykehus.
+          
+    — Vi har evakuert 373 medisinsk evakuerte ukrainere. Andelen er veldig liten, men dette er mennesker vi vet er syke og som er mer krevende for helsevesenet enn en gjennomsnittlig pasient.    
+    — Av de 373 ukrainerne som har kommet via medisinsk evakuerte har to tredeler kreft og en tredel skader.    
+    — Men likevel tror jeg at arbeidsbyrden, både for kommunehelsetjenesten og spesialisthelsetjenesten er vesen tlig større med de andre ukrainerne som kommer.    
+    — Mange av de som er medisinsk evakuert er bosatt i kommunene nå, noen bor fortsatt på asylmottak, mens andre har returnert hjem.    
+    — Det er litt vrient for oss å vite hvem som fortsatt bor her. Hvis de har dratt fra asylmottak, vet nok UDI det. Men om de er bosatt i en kommune, så er det nok ikke så lett for UDI å «snappe» dette opp. Her er det nok litt mørketall, tror jeg.    
+
     """
     
-    with st.expander('Intervju med Oslo universitetssykehus'):
+    with st.expander('Intervju med Anders Holtan, Oslo universitetssykehus'):
         st.markdown(ous_string)
+        
+    with st.expander('Intervju med Nataliya Yeremeyeva'):
+        
+        natyer_string = """
+        
+        Mer om Nataliya Yeremeyeva: https://theewc.org/people/nataliya-yeremeyeva/
+        
+        ##### Hva vet du om de eldre ukrainerne som kommer til Norge?
+        — Eldre mennesker er en spesielt sårbar gruppe. Det er utfordrende for denne gruppen uten noe særlig tilbud. Ukrainske eldre er ensomme i Norge.  
+        — Noen eldre kommer med familien sin, de blir ikke nødvendigvis integrert i Norge, men de har det nok psykisk bedre enn de som kom alene. De som kom alene det ganske vanskelig.  
+        — Om de har eller ikke har mulighet til å lære språket er det likevel alltid vanskeligere for eldre å lære seg et nytt språk.  
+        — Folk pensjonerer seg tidligere i Ukraina, og de har dårligere helse enn nordmenn.  
+
+        ##### Løsning? 
+
+        — Frivillige organisasjoner burde fått mer tilskudd slik at de kunne arrangert sosiale aktiviteter der eldre ukrainere de kan lære seg språket, ha et fellesskap og føle seg som en del av samfunnet.  
+        — Hvis de ikke går på introduksjonsprogram lærer de ikke om det norske samfunnet, og hvis de ikke kan språket kan de ikke snakke med naboen eller med folk på butikken. Det begrenser alle muligheter for deltakelse i samfunnet dramatisk.  
+        — Alle kommuner burde tilby introduksjonsprogram til de som ønsker det som en integreringsstrategi. 
+
+
+        ##### Ekstra: tannlege.
+        — Folk forteller at det tar lang tid å komme til tannlegen.  Når det for eksempel er snakk om tannregulering, drar flere tilbake til Ukraina for å gå til tannlege.  
+        — De få akuttbehandling i Norge, men behandlinger som kan vente blir ikke dekket - som for eksempel implantat eller krone. Flere velger derfor å dra på turer hjem til Ukraina å fikse dette.     
+        """
+
+        st.markdown(natyer_string)
