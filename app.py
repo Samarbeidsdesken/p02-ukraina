@@ -513,29 +513,48 @@ with tab1:
             
             st.markdown(
                 """
-                Ukrainere som kommer til Norge blir gitt kollektiv beskyttelse, de trenger ingen individuell vurdering eller intervju. Oppholdstillatelsen gir ikke permanent opphold, men for ett år. Tillatelsen kan fornyes dersom situasjonen i Ukraina vedvarer.
-    
-                Tre steg frem mot bosetting:  
-                * Ankomst og registrering hos politiet på Råde mottakssenter.
-                * Plassering på asylmottak. Per 01.02.24 er ventetiden på mottak omtrent 100 dager.
-                * Bosetting i kommune - her blir de enten plassert etter avtale mellom IMDi og kommunene, eller de kan selv søke seg til en kommune hvor de har familie/venner de skal bo sammen med - da er det opp til kommunen om de har kapasitet til å bosette. Tredje alternativ er selvbosetting uten avtale med kommunen. Flyktninger frasier seg da forskjellige rettigheter til opplæring og økonomisk støtte. 
+                ###### Kommunene kan selv velge hvem og hvor mange flyktninger de vil bosette: 
                 
-                Dersom en flyktning flytter til en annen kommune, må vedkommende melde endring til folkeregisteret innen åtte dager etter flytting. Tilskuddet i flytteåret blir fordelt mellom de to kommunene.
+                Hvert år får kommunene en forespørsel fra IMDi om å bosette et antall flyktninger i kommunen. De kan selv velge hvor mange de ønsker å ta imot.  
                 
-                Satsene under er for det første året.
-                * Grunntilskudd for kommuner med 150 eller færre ukrainere: 48 400 kroner.  
-                * Enslig voksen: 241 100 kroner  
-                * Voksen i familie: 194 400  
-                * Tilskudd for enslige mindreåriget: 187 000  
+                Ukrainske asylsøkere bor på asylmottak spredt rundt i landet, mens de venter på å bli bosatt i en kommune og få innvilget flyktningstatus. Gjennomsnittligventetid på mottak er per 31.01.24 omtrent 100 dager.
                 
-                I tillegg kan kommunen motta følgende engangstilskudd første år:
+                På mottaket blir asylsøkerne kartlagt. Hvilken oppfølging vil de trenge i kommunen? Basert på denne informasjonen kan kommunen velge å si ja eller nei til å bosette personen. 
+
+                ###### Norskopplæring og introduksjonsprogram for ukrainske flyktninger
+                Alle mellom 18 og 67 år har rett på norskopplæring i kommunen de bor i. Ukrainske flyktninger mellom 18 og 55 år har i tillegg rett på introduksjonsprogram. Det har ikke de mellom 55 og 67 år, men kommunen kan likevel velge å tilby det om de har kapasitet. 
                 
-                * Eldretilskudd: 180 600 kroner  
-                    * Utbetalt for personer som har fylt 60 år ved bosetting.
-                * Barn tilskudd: 27 800 kroner
-                    * Utbetalt for barn mellom 0 og fem år. Inkluderer også barn som er født inntil seks måneder etter at mor er bosatt i en kommune.
-                * Tilskudd for personer med nedsatt funksjonsevne og/eller atferdsvansker: 196 400 kroner
-                    * I tillegg: Årlig tilskudd (maksimalt fem år): 1 608 00 kroner
+                Introduksjonsprogrammet er et opplæringsprogram over seks måneder (maks ett år) som skal forberede flyktningen til deltakelse i arbeid eller utdanning.
+                
+                Foreldre med barn under 18 år får også foreldreveiledning. 
+                
+                ###### Integreringstilskudd ved bosetting av ukrainere
+                Kommunene har rett på integreringstilskudd når de bosetter ukrainske flyktninger.
+                
+                Det skal dekke kommunens utgifter til bosetting og integrering, inkludert introduksjonsprogrammet. 
+                
+                Jo raskere flyktningene kommer ut i arbeid eller utdanning, jo større andel av tilskuddene går rett til kommunene. 
+                
+                I bosettingsåret mottar kommunen følgende satser, alt etter hvem de bosetter:
+                - Enslig voksen: 241 000 kroner
+                - Voksen i familie 187 000 kroner
+                - Barn (0-18 år): 194 400
+                - Enslige mindreårige: 187 000 kroner
+                I tillegg kommer det enkelttilskudd, for:
+                - De over 60 år: 180 000 kroner
+                - Barn mellom 0-5 år: 27 800 kroner. 
+                - Bosetting av personer med nedsatt funksjonsevne eller atferdsvansker:
+                    - Engangstilskudd: 196 400 kroner
+                    - Årlig tilskudd: inntil 1 608 000 kroner
+                    
+                ###### Tilskudd for opplæring i norsk og samfunnskunnskap for ukrainske voksne
+                Kommunene mottar også persontilskudd på 39 700 kroner for voksne ukrainere (18-67 år) som får opplæring i norsk og samfunnskunnskap.  Hvis det er færre enn 150 personer i denne målgruppen, får kommunen et ekstra tilskudd opp mot 694 600 kroner.  
+                ###### Økonomisk støtte til ukrainere
+                Full deltakelse i introduksjonsprogrammet gir økonomisk støtte på omtrent 220 000 kroner i året. Det må skattes av støtten. Eventuell annen økonomisk støtte eller inntekt fra jobb, kan gjøre at flyktningen får mindre utbetalt.
+
+
+
+
 
 
                 """,
