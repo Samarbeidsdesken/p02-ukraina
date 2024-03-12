@@ -551,11 +551,13 @@ with tab2:
     Siden krigen i Ukraina startet, er det bosatt {sum_total_ukr:,.0f} ukrainere i  {kommune}. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen, 
     og {ukr_pct_ovr:.1f} prosent av alle bosatte flyktninger i samme periode. 
     
-    I {year} ble det bosatt {sum_total_ukr_year} ukrainere i kommunen, og det utgjør {ukr_pct_pop_year:.1f} prosent av befolkningen.  
+    I **{year}** ble det bosatt {sum_total_ukr_year} ukrainere i kommunen, og det utgjør {ukr_pct_pop_year:.1f} prosent av befolkningen.  
     
     I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse i {year}, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
     
-    Integrerings- og mangfoldsdirektoratet har anmodet kommunen å bosette {innvandr_anmodet:,.0f} flyktninger i  2024. Det inkluderer både ukrainske og øvrige flyktninger. Kommunen {innvandr_vedtak_string}. {kommune} {ema_vedtak_2024_string}
+    Integrerings- og mangfoldsdirektoratet har anmodet kommunen å bosette {innvandr_anmodet:,.0f} flyktninger i  2024. Det inkluderer både ukrainske og øvrige flyktninger. Kommunen {innvandr_vedtak_string}. 
+    
+    {kommune} {ema_vedtak_2024_string}
 
     """.format(
                 kommune = kommuner.get(select_kommune), 
@@ -912,6 +914,10 @@ with tab4:
             )
     
     st.markdown("""
+                
+    ###### Anonymisering 
+    Hvis det står *<5* i en eller flere tabeller, betyr det at antallet er mellom èn og fem. IMDi tilbakeholder eksakt antall for å unngå identifisering.            
+    
     ##### Om tallene
     Befolkningstall er hentet fra[ SSB-tabell 07459](https://www.ssb.no/statbank/table/07459).
     
@@ -919,11 +925,7 @@ with tab4:
     
     Tall som beskriver antall ukrainere, antall øvrige øvrige og EMA er hentet fra Integrerings- og mangfolksdirektaret (IMDi).
     
-    Anmodningstall er hentet fra IMDis nettsider. Det samme gjelder tilskudd utdelt til den enkelte kommune. ar
-                
-    ###### Anonymisering 
-    Hvis det står *<5* i en eller flere celler, betyr det at antall bosatte flyktninger er mindre enn fem. IMDi tilbakeholder eksakt antall for å unngå identifisering. 
-    Summeringer tar ikke hensyn til anonymisering. Summeringer må derfor sees på som et minimum antall bosatte flyktninger, hvis det står <5 i en eller flere celler. 
+    Anmodningstall er hentet fra IMDis nettsider. Det samme gjelder tilskudd utdelt til den enkelte kommune. ar 
     """)
 
 # Tab 5: Expert interviews
