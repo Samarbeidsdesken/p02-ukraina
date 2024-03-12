@@ -11,3 +11,5 @@ def countdown(end):
     return str((end-today).days) + ' dager til sperrefrist: ' + str(end)
      
  
+def right_align(s, props='text-align: right;'):
+  return props

@@ -68,6 +68,7 @@ oppsummert = load_data('app_flyktninger_oppsummert')
 ema = load_data('ema')
 ukr_mottak = load_data('ukrainere_mottak_310124')
 kostra_about = load_data('kostra_description')
+tilskudd = load_data('tilskudd')
 
 #folketall = load_data('app_flyktninger_folketall')
 
@@ -148,7 +149,7 @@ flyktninger_cols = ['Kommune', 'År', 'Kjønn', 'Aldersgruppe', 'ukrainere', 'uk
 ema_komm = ema[ema['Kommunenummer'].isin([select_kommune])]
 ema_komm_year = ema_komm[ema_komm['År'] == select_year] 
 
-# Dataframe with anmodningstall for the seelcted kommune.
+# Dataframe with anmodningstall for the selcted kommune.
 # Note: Only available for 2024
 anmodninger = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
 anmodninger = anmodninger[anmodninger['År'] == 2024] 
@@ -164,6 +165,20 @@ ukr_mottak_string = 'Per 31.01.2024 bor det også ukrainere på asylmottak i kom
 for mottak, ukr in ukr_mottak_komm.itertuples(index=False):
     ukr_mottak_bool = True
     ukr_mottak_string += '* ' + mottak + ': ' + str(ukr) + ' ukrainere  \n'
+
+
+# Dataframe with tilskudd the municipality has received from IMDi
+tilskudd_komm = tilskudd[tilskudd['Kommunenummer'].isin([select_kommune])]
+tilskudd_komm = tilskudd_komm[['Tilskuddstype', 'Antall']]
+tilskudd_string = 'I 2023 mottok kommunen følgende tilskudd fra IMDi: \n'
+
+tilskudd_komm_total = tilskudd_komm[tilskudd_komm['Tilskuddstype'] == 'Totalt']
+tilskudd_komm_total = tilskudd_komm_total['Antall'].iloc[0]
+print(tilskudd_komm_total)
+#for tilskudd, sum in tilskudd_komm.itertuples(index=False):
+#    tilskudd_string += '* ' + tilskudd + ': ' + str(sum) + '\n'#+ {':,d'.format(sum)}
+    
+#print(tilskudd_string)
 
 # ------------------------------------------------------ #
 # In the sidebar, make a top list for the selected group #
@@ -580,6 +595,23 @@ with tab2:
     )
     
     st.markdown(fastlege)
+    
+    st.markdown('##### I 2023 mottok kommunen følgende tilskudd fra IMDi: ')
+    
+    st.dataframe(
+        tilskudd_komm.style.format(thousands=" ", precision=0),
+        hide_index=True,
+        column_config={
+            'Antall': st.column_config.NumberColumn(
+                'Sum',
+                #format="kr %:,f",
+                #format = None,
+                min_value = 0,
+                max_value = tilskudd_komm_total
+                )
+        },
+        use_container_width= True
+    )
 
 # Tab 3: Suggestions for how the local journalists can proceed
 with tab3:
@@ -836,17 +868,13 @@ with tab4:
     
         with tablecol6:
             st.dataframe(
-            ema_komm[['År', 'ema', 'prikket']],
+            ema_komm[['År', 'ema_string']],
             use_container_width = use_container_width,
             hide_index = True,
             column_config = {
                 'År': st.column_config.NumberColumn(format="%.0f"),
-                'ema': st.column_config.NumberColumn(
+                'ema_string': st.column_config.TextColumn(
                     'Enslige mindreårige (EMA)', 
-                    ),
-                'prikket': st.column_config.TextColumn(
-                    'Prikket', 
-                    help = 'Prikkede data betyr at kommunen har tatt i mot mindre enn fem EMA. Data tilbakeholdes av IMDi av personvernhensyn.'
                     )}
             )
 
@@ -874,16 +902,12 @@ with tab4:
             hide_index = True,
             column_config = {
                 'År': st.column_config.NumberColumn(format="%.0f"),
-                'ovrige': st.column_config.NumberColumn(
-                    'Antall', format='%.0f'
+                'ovrige_string': st.column_config.TextColumn(
+                    'Antall'
                 ),
                 'ovr_pct': st.column_config.NumberColumn(
                     'Andel', format='%.1f %%'
-                ),
-                'ovr_prikket': st.column_config.TextColumn(
-                    'Prikket', 
-                    help = 'Prikkede data betyr at kommunen har tatt i mot mindre enn fem EMA. Data tilbakeholdes av IMDi av personvernhensyn.'
-                    )}
+                )}
             )
     
     st.markdown("""

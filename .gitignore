@@ -1,0 +1,5 @@
+.venv/
+drafts.py
+test.py
+.DS_store
+__pycache__/*
