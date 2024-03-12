@@ -174,7 +174,8 @@ tilskudd_string = 'I 2023 mottok kommunen følgende tilskudd fra IMDi: \n'
 
 tilskudd_komm_total = tilskudd_komm[tilskudd_komm['Tilskuddstype'] == 'Totalt']
 tilskudd_komm_total = tilskudd_komm_total['Antall'].iloc[0]
-print(tilskudd_komm_total)
+
+#print(tilskudd_komm_total)
 #for tilskudd, sum in tilskudd_komm.itertuples(index=False):
 #    tilskudd_string += '* ' + tilskudd + ': ' + str(sum) + '\n'#+ {':,d'.format(sum)}
     
@@ -616,7 +617,7 @@ with tab2:
 # Tab 3: Suggestions for how the local journalists can proceed
 with tab3:
     st.markdown("""
-    Flyktninger fra Ukraina er betydelig flere og eldre enn flyktninger Norge har bosatt tidligere. Forskning viser at de er sykere enn nordmenn. Forventningen var at de skulle gli inn i samfunnet, de skulle være som arbeidsinnvandrere som hoppet ut i jobb. Men erfaringene viser at det har vært flere utfordringer.
+    Flyktninger fra Ukraina er betydelig flere og og er eldre enn flyktninger Norge har bosatt tidligere. Forskning viser at de er sykere enn nordmenn. Forventningen var at de skulle gli inn i samfunnet, de skulle være som arbeidsinnvandrere som hoppet ut i jobb. Men erfaringene viser at det har vært flere utfordringer.
     
     Noen kommuner mener de håndterer flyktningstrømmen godt, andre opplever situasjonen som utfordrende.
     
@@ -934,6 +935,8 @@ with tab5:
     fhi_string = """
     
     Angela Labberton med flere har undersøkt selv-rapportert helse og helsetjenestebehov blant voksne ukrainere fra Ukraina. 
+    
+    Det er viktig at nyansene og forbehold kommer frem og at ikke svarene klippes ut på en måte som gjør at meningen blir endret. Også skillet mellom det som er funnet i undersøkelsen versus andre vurderinger.
     
     Rapporten er tilgjengelig [her](https://www.fhi.no/nyheter/2023/ukrainske-flyktninger-darligere-helse-og-betydelig-darligere-tannhelse/).
     
