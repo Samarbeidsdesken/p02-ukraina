@@ -223,7 +223,7 @@ with st.sidebar:
                     'Antall ukrainere', format='%.0f'
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
-                    'Andel av befolkning', format='%.1f %%'
+                    'Andel av befolkning', format='%.2f %%'
                 )}
             )
     
@@ -243,7 +243,7 @@ with st.sidebar:
                     'Antall ukrainere', format='%.0f'
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
-                    'Andel av befolkning', format='%.1f %%'
+                    'Andel av befolkning', format='%.2f %%'
                 )}
             )
     
@@ -265,7 +265,7 @@ with st.sidebar:
                     'Antall ukrainere', format='%.0f'
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
-                    'Andel av befolkning', format='%.1f %%'
+                    'Andel av befolkning', format='%.2f %%'
                 )}
             )
     
@@ -299,7 +299,7 @@ with st.sidebar:
                     'Antall ukrainere', format='%.0f'
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
-                    'Andel av befolkning', format='%.1f %%'
+                    'Andel av befolkning', format='%.2f %%'
                 )}
             )
     
@@ -345,7 +345,7 @@ with st.sidebar:
                     'Antall ukrainere', format='%.0f'
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
-                    'Andel av befolkning', format='%.1f %%'
+                    'Andel av befolkning', format='%.2f %%'
                 )}
             )
         
@@ -372,7 +372,7 @@ with st.sidebar:
                     'Antall ukrainere', format='%.0f'
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
-                    'Andel av befolkning', format='%.1f %%'
+                    'Andel av befolkning', format='%.2f %%'
                 )}
             )
         
@@ -414,7 +414,7 @@ with st.sidebar:
                     'Antall ukrainere', format='%.0f'
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
-                    'Andel av befolkning', format='%.1f %%'
+                    'Andel av befolkning', format='%.2f %%'
                 )}
             )
 
@@ -548,10 +548,10 @@ with tab2:
 
     summarized = """
     
-    I {year} ble det bosatt {sum_total_ukr_year} ukrainere i kommunen, og det utgjorde {ukr_pct_pop_year:.1f} prosent av befolkningen.  
-
     Siden krigen i Ukraina startet, er det bosatt {sum_total_ukr:,.0f} ukrainere i  {kommune}. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen, 
-    og {ukr_pct_ovr:.1f} av alle bosatte flyktninger i samme periode. 
+    og {ukr_pct_ovr:.1f} prosent av alle bosatte flyktninger i samme periode. 
+    
+    I {year} ble det bosatt {sum_total_ukr_year} ukrainere i kommunen, og det utgjør {ukr_pct_pop_year:.1f} prosent av befolkningen.  
     
     I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse i {year}, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
     
@@ -915,9 +915,11 @@ with tab4:
     ##### Om tallene
     Befolkningstall er hentet fra[ SSB-tabell 07459](https://www.ssb.no/statbank/table/07459).
     
-    Fakta om venteliste hos fastlege og reservekapasitet er hentet fra [SSB-tabell 12005](https://www.ssb.no/statbank/table/12005). Merk: 2022 er siste publiserte tall fra SSB. SSB publiserer foreløpige 2023-tall 15. mars.
+    Fakta om venteliste hos fastlege og reservekapasitet er hentet fra [SSB-tabell 12005](https://www.ssb.no/statbank/table/12005). Vi oppdaterer tallene rundt 15. mars, når SSB har publisert tall for 2023.
     
-    Flyktningtall er hentet fra Integrerings- og mangfolksdirektaret (IMDi).
+    Tall som beskriver antall ukrainere, antall øvrige øvrige og EMA er hentet fra Integrerings- og mangfolksdirektaret (IMDi).
+    
+    Anmodningstall er hentet fra IMDis nettsider. Det samme gjelder tilskudd utdelt til den enkelte kommune. ar
                 
     ###### Anonymisering 
     Hvis det står *<5* i en eller flere celler, betyr det at antall bosatte flyktninger er mindre enn fem. IMDi tilbakeholder eksakt antall for å unngå identifisering. 
