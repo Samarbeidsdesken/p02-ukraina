@@ -438,7 +438,7 @@ with tab1:
         national_text = """
         Norge har bosatt 60.134 ukrainske flyktninger fordelt på 355 kommuner siden krigen startet i 2022. I samme periode bosatte vi 8.465 flyktninger fra øvrige land.
         
-        Til sammenligning ble det bosatt i overkant av 15.000 flyktninger i 2015, og i underkant av 10.000 flyktninger i 1993, da mange flyktet fra Bosnia-Hercegovina.
+        Til sammenligning ble det bosatt av 11.342 flyktninger i 2015, og 15.219 i 2016. På 1990-tallet kom det 14.000 flyktninger fra Bosnia-Hercegovina.
         
         #### Hvordan har den ukrainske flyktingbølgen truffet kommunene? 
         
@@ -1083,11 +1083,11 @@ with tab5:
     with st.expander('Intervju med Anders Holtan, Oslo universitetssykehus'):
         st.markdown(ous_string)
         
-    with st.expander('Intervju med Nataliya Yeremeyeva'):
+    with st.expander('Intervju med Nataliya Yeremeyeva, nestleder i ukrainsk forening'):
         
         natyer_string = """
         
-        Mer om Nataliya Yeremeyeva: https://theewc.org/people/nataliya-yeremeyeva/
+        Nataliya Yeremeyeva, nestleder i ukrainsk forening.
         
         ##### Hva vet du om de eldre ukrainerne som kommer til Norge?
         — Eldre mennesker er en spesielt sårbar gruppe. Det er utfordrende for denne gruppen uten noe særlig tilbud. Ukrainske eldre er ensomme i Norge.  
