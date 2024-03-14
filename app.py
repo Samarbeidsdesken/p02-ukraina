@@ -427,7 +427,7 @@ use_container_width = False #st.checkbox("Full tabellbredde", value=True)
 # ----------------------- # 
 
 # create different tabs for the content
-tab1, tab2, tab3, tab4, tab5 = st.tabs(['Dette er saken', 'Slik er det i {kommune}'.format(kommune = kommuner.get(select_kommune)), 'Slik går du fram', 'Tallgrunnlag', 'Ekspertkilder og rapporter'])
+tab1, tab2, tab6, tab3, tab4, tab5 = st.tabs(['Dette er saken', 'Slik er det i {kommune}'.format(kommune = kommuner.get(select_kommune)), 'Mulige nyhetssaker', 'Slik går du fram', 'Tallgrunnlag', 'Ekspertkilder og rapporter'])
 
 # In tab 1: Dette er saken
 with tab1:
@@ -455,7 +455,7 @@ with tab1:
         - Flyktningene Norge er vant til å bosette er menn i arbeidsdyktig alder. Ukrainske flyktninger er mer variert i alder: 30 prosent er under 18 år, og 13 prosent er over 55 år. Disse krever andre tilbud fra kommunen.
 
         #### De ensomme eldre
-        — Ukrainske eldre er ensomme i Norge. Det er utfordrende for denne gruppen som står uten noe særlig tilbud, sier  Nataliya Yeremeyeva.
+        — Ukrainske eldre er ensomme i Norge. Det er utfordrende for denne gruppen som står uten noe særlig tilbud, sier  nestleder i ukrainsk forening Nataliya Yeremeyeva.
 
         ##### Her er mulige nyhetspoeng: 
         - Aldri før har Norge tatt imot så mange eldre flyktninger. I overkant av 7800 ukrainere er over 55 år.  
@@ -634,6 +634,9 @@ with tab2:
         },
         use_container_width= True
     )
+
+with tab6:
+    pass
 
 # Tab 3: Suggestions for how the local journalists can proceed
 with tab3:
