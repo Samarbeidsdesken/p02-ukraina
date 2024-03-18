@@ -560,12 +560,6 @@ with tab2:
     
     I **{year}** ble det bosatt {sum_total_ukr_year} ukrainere i kommunen, og det utgjør {ukr_pct_pop_year:.1f} prosent av befolkningen.  
     
-    I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse i {year}, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
-    
-    Integrerings- og mangfoldsdirektoratet har anmodet kommunen å bosette {innvandr_anmodet:,.0f} flyktninger i  2024. Det inkluderer både ukrainske og øvrige flyktninger. Kommunen {innvandr_vedtak_string}. 
-    
-    {kommune} {ema_vedtak_2024_string}
-
     """.format(
                 kommune = kommuner.get(select_kommune), 
                 year = select_year, 
@@ -574,20 +568,38 @@ with tab2:
                 ukr_pct_pop_year = oppsummert_komm_year['ukr_pct_pop'].sum(),  
                 #sum_total_pop = oppsummert_komm['pop'].sum(),
                 ukr_pct_pop = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm_year['pop'].sum())*100,
-                ukr_pct_ovr = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm['innvandr'].sum())*100,
+                ukr_pct_ovr = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm['innvandr'].sum())*100
+                )
+    summarized_anmodning = """
+    
+    ##### Anmodninger
+     Integrerings- og mangfoldsdirektoratet har anmodet kommunen å bosette {innvandr_anmodet:,.0f} flyktninger i  2024. Det inkluderer både ukrainske og øvrige flyktninger. Kommunen {innvandr_vedtak_string}. 
+     
+     {kommune} {ema_vedtak_2024_string}
+    """.format(
+        kommune = kommuner.get(select_kommune), 
+        innvandr_anmodet = anmodninger['innvandr_anmodet'].iloc[0],
+        innvandr_vedtak_string = anmodninger['innvandr_vedtak_string'].iloc[0],
+        ema_vedtak_2024_string = anmodninger['ema_vedtak_2024_string'].iloc[0],
+    )
+    
+    summarized_rank = """
+    
+    I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse i {year}, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
+
+    """.format(
+                kommune = kommuner.get(select_kommune), 
+                year = select_year, 
                 fylke_rank = oppsummert_komm_year['fylke_rank'].sum(),
-                national_rank = oppsummert_komm_year['national_rank'].sum(),
-                innvandr_anmodet = anmodninger['innvandr_anmodet'].iloc[0],
-                innvandr_vedtak_string = anmodninger['innvandr_vedtak_string'].iloc[0],
-                ema_vedtak_2024_string = anmodninger['ema_vedtak_2024_string'].iloc[0],
-                
+                national_rank = oppsummert_komm_year['national_rank'].sum(),                
                 )
     
     st.markdown(summarized)
-    
-    
+    st.markdown(summarized_rank)
     if ukr_mottak_bool:
         st.markdown(ukr_mottak_string)
+    st.markdown(summarized_anmodning)
+    
         
     if select_year == 2024:
         fastlege = """
