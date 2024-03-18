@@ -585,7 +585,7 @@ with tab2:
     
     summarized_rank = """
     
-    I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse i {year}, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
+    I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse i **{year}**, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
 
     """.format(
                 kommune = kommuner.get(select_kommune), 
@@ -626,7 +626,7 @@ with tab2:
             
         I henhold til tall fra SSB, har kommunen {lege_category} når det gjelder fastlegekapasitet.
         
-        I {kommune} var det {legeliste_n:,.0f} personer på venteliste i {year}. Det utgjør {legeliste_pct:.1f} prosent av alle som står på fastlegeliste. 
+        I {kommune} var det {legeliste_n:,.0f} personer på venteliste i **{year}**. Det utgjør {legeliste_pct:.1f} prosent av alle som står på fastlegeliste. 
 
         
         """.format(
@@ -646,7 +646,7 @@ with tab2:
             
             Merk at enkelte verdier kan være tilbakeholdt av IMDi av anonymiseringshensyn.
             
-            I {year} mottok følgende tilskudd: 
+            I **{year}** mottok følgende tilskudd: 
             '''.format(
                 year = select_year,
                 sum_tilskudd = tilskudd_komm_total
@@ -929,7 +929,7 @@ with tab4:
     
         with tablecol6:
             st.dataframe(
-            ema_komm[['År', 'ema_string']],
+            ema_komm_year[['År', 'ema_string']],
             use_container_width = use_container_width,
             hide_index = True,
             column_config = {
