@@ -79,9 +79,6 @@ tilskudd = load_data('tilskudd')
 lla = load_data('lla')
 coverage = {g: d['kommnr'].values for g, d in lla.groupby('avis')}
 
-#print(pd.isna(coverage['Akers Avis Groruddalen'][0]))
-
-
 # ----------------------------- #
 # Municipality selectors #
 # ----------------------------- #
@@ -117,8 +114,6 @@ select_kommune = st.sidebar.selectbox(
     # display the names of the municipalities, not the codes
     format_func = lambda x: kommuner.get(x)
 )
-
-#print()
 
 if select_kommune == '1508' or select_kommune == '1580':
         st.sidebar.markdown("""
@@ -169,17 +164,13 @@ for mottak, ukr in ukr_mottak_komm.itertuples(index=False):
 
 # Dataframe with tilskudd the municipality has received from IMDi
 tilskudd_komm = tilskudd[tilskudd['Kommunenummer'].isin([select_kommune])]
-tilskudd_komm = tilskudd_komm[['Tilskuddstype', 'Antall']]
-tilskudd_string = 'I 2023 mottok kommunen følgende tilskudd fra IMDi: \n'
+tilskudd_komm_year = tilskudd_komm[tilskudd_komm['År'] == select_year] 
+tilskudd_komm_year = tilskudd_komm_year[['Tilskuddstype', 'Antall', 'Kommentar']]
+tilskudd_string = 'I ' + str(select_year) +' mottok kommunen følgende tilskudd fra IMDi: \n'
 
 tilskudd_komm_total = tilskudd_komm[tilskudd_komm['Tilskuddstype'] == 'Totalt']
-tilskudd_komm_total = tilskudd_komm_total['Antall'].iloc[0]
+tilskudd_komm_total = tilskudd_komm_total['Antall'].sum()
 
-#print(tilskudd_komm_total)
-#for tilskudd, sum in tilskudd_komm.itertuples(index=False):
-#    tilskudd_string += '* ' + tilskudd + ': ' + str(sum) + '\n'#+ {':,d'.format(sum)}
-    
-#print(tilskudd_string)
 
 # ------------------------------------------------------ #
 # In the sidebar, make a top list for the selected group #
@@ -306,7 +297,6 @@ with st.sidebar:
     # If the user wants a top list by SSBs centrality index
     if select_group == 'KOSTRA-gruppe':
         
-        #print(kommuner_kostra[select_kommune])
         oppsummert_sidebar = oppsummert[oppsummert['kostranavn'] == kommuner_kostra[select_kommune]]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['År'] == select_year]
         #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
@@ -314,9 +304,7 @@ with st.sidebar:
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
         
         kostra_about_komm = kostra_about[kostra_about['kostragruppe'] == kommuner_kostra[select_kommune]]
-        
-        print(kostra_about_komm)
-        
+                
         sentralitet_description = """
         KOSTRA-gruppene er utviklet av SSB for å enklere sammenligne like kommuner. Gruppene er satt sammen basert på folkemengde og økonomiske rammebetingelser. 
         
@@ -427,7 +415,7 @@ use_container_width = False #st.checkbox("Full tabellbredde", value=True)
 # ----------------------- # 
 
 # create different tabs for the content
-tab1, tab2, tab6, tab3, tab4, tab5 = st.tabs(['Dette er saken', 'Slik er det i {kommune}'.format(kommune = kommuner.get(select_kommune)), 'Mulige nyhetssaker', 'Slik går du fram', 'Tallgrunnlag', 'Ekspertkilder og rapporter'])
+tab1, tab2, tab6, tab3, tab4, tab5 = st.tabs(['Dette er saken', 'Slik er det i din kommune', 'Mulige nyhetssaker', 'Slik går du fram', 'Tallgrunnlag', 'Ekspertkilder og rapporter'])
 
 # In tab 1: Dette er saken
 with tab1:
@@ -601,36 +589,72 @@ with tab2:
     if ukr_mottak_bool:
         st.markdown(ukr_mottak_string)
         
-    fastlege = """
-    ##### Fastlegekapasitet i {kommune} per 2022
+    if select_year == 2024:
+        fastlege = """
+        ##### Fastlegekapasitet i {kommune} per 2023. 
         
-    I henhold til tall fra SSB, har kommunen {lege_category} når det gjelder fastlegekapasitet.
-    
-    I {kommune} var det {legeliste_n:,.0f} personer på venteliste i 2022. Det utgjør {legeliste_pct:.1f} prosent av alle som står på fastlegeliste. 
+        Det er ikke tilgjengelig tall for 2024. Derfor gjengis tall fra 2023.
+        
+        I henhold til tall fra SSB, har kommunen {lege_category} når det gjelder fastlegekapasitet.
+        
+        I {kommune} var det {legeliste_n:,.0f} personer på venteliste i 2023. Det utgjør {legeliste_pct:.1f} prosent av alle som står på fastlegeliste. 
 
+        """.format(
+            year = select_year,
+            kommune = kommuner.get(select_kommune), 
+            legeliste_n = oppsummert_komm_year['legeliste_n'].iloc[0],
+            legeliste_pct = oppsummert_komm_year['legeliste_pct'].iloc[0],
+            lege_category = oppsummert_komm_year['lege_category'].iloc[0]
+            )
     
-    """.format(
-        kommune = kommuner.get(select_kommune), 
-        legeliste_n = oppsummert_komm_year['legeliste_n'].sum(),
-        legeliste_pct = oppsummert_komm_year['legeliste_pct'].sum(),
-        lege_category = oppsummert_komm_year['lege_category'].iloc[0]
-    )
-    
+    else:
+        
+        fastlege = """
+        ##### Fastlegekapasitet i {kommune} per {year}
+            
+        I henhold til tall fra SSB, har kommunen {lege_category} når det gjelder fastlegekapasitet.
+        
+        I {kommune} var det {legeliste_n:,.0f} personer på venteliste i {year}. Det utgjør {legeliste_pct:.1f} prosent av alle som står på fastlegeliste. 
+
+        
+        """.format(
+            year = select_year,
+            kommune = kommuner.get(select_kommune), 
+            legeliste_n = oppsummert_komm_year['legeliste_n'].iloc[0],
+            legeliste_pct = oppsummert_komm_year['legeliste_pct'].iloc[0],
+            lege_category = oppsummert_komm_year['lege_category'].iloc[0]
+        )
+        
     st.markdown(fastlege)
     
-    st.markdown('##### I 2023 mottok kommunen følgende tilskudd fra IMDi: ')
+    st.markdown('''
+            ##### Tilskudd fra IMDi
+            
+            I 2022 og 2023 har kommunen mottatt totalt {sum_tilskudd:,.0f} kroner i tilskudd fra IMDi. 
+            
+            Merk at enkelte verdier kan være tilbakeholdt av IMDi av anonymiseringshensyn.
+            
+            I {year} mottok følgende tilskudd: 
+            '''.format(
+                year = select_year,
+                sum_tilskudd = tilskudd_komm_total
+                )
+            )
     
     st.dataframe(
-        tilskudd_komm.style.format(thousands=" ", precision=0),
+        tilskudd_komm_year.style.format(thousands=" ", precision=0),
         hide_index=True,
         column_config={
             'Antall': st.column_config.NumberColumn(
                 'Sum',
                 #format="kr %:,f",
                 #format = None,
-                min_value = 0,
-                max_value = tilskudd_komm_total
-                )
+                #min_value = 0,
+                #max_value = tilskudd_komm_total
+                ),
+            'Kommentar': st.column_config.TextColumn(
+                'Kommentar'
+            )
         },
         use_container_width= True
     )
@@ -941,13 +965,15 @@ with tab4:
     Hvis det står *<5* i en eller flere tabeller, betyr det at antallet er mellom èn og fem. IMDi tilbakeholder eksakt antall for å unngå identifisering.            
     
     ##### Om tallene
-    Befolkningstall er hentet fra[ SSB-tabell 07459](https://www.ssb.no/statbank/table/07459).
+    Befolkningstall er hentet fra[ SSB-tabell 07459](https://www.ssb.no/statbank/table/07459). Tall hentet 22.02.2024.
     
-    Fakta om venteliste hos fastlege og reservekapasitet er hentet fra [SSB-tabell 12005](https://www.ssb.no/statbank/table/12005). Vi oppdaterer tallene rundt 15. mars, når SSB har publisert tall for 2023.
+    Fakta om venteliste hos fastlege og reservekapasitet er hentet fra [SSB-tabell 12005](https://www.ssb.no/statbank/table/12005). Tall hentet 18.03.2024.
     
-    Tall som beskriver antall ukrainere, antall øvrige øvrige og EMA er hentet fra Integrerings- og mangfolksdirektaret (IMDi).
+    Tall som beskriver antall ukrainere, antall øvrige øvrige og EMA er hentet fra Integrerings- og mangfolksdirektaret (IMDi). Tall hentet 19.02.2024.
     
-    Anmodningstall er hentet fra IMDis nettsider. Det samme gjelder tilskudd utdelt til den enkelte kommune. ar 
+    Anmodningstall er hentet fra [IMDis nettsider](https://www.imdi.no/planlegging-og-bosetting/bosettingstall/). Tall hentet 08.03.2024 kl. 12:20.
+    
+    Tilskuddstall er hentet fra [IMDis nettsider](https://www.imdi.no/om-integrering-i-norge/statistikk/F00/tilskudd). Tall hentet 11.03.2024.
     """)
 
 # Tab 5: Expert interviews
