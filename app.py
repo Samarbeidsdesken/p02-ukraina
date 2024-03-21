@@ -603,9 +603,6 @@ with tab2:
     summarized_rank = """
     
     I **{year}** kom {kommune} på {fylke_rank:.0f}. plass i fylket, og {national_rank:.0f}. plass i hele landet i en rangering over hvilke kommuner som tar imot flest ukrainske flyktninger etter befolkningsstørrelse. 
-    
-    I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse i **{year}**, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
-
     """.format(
                 kommune = kommuner.get(select_kommune), 
                 year = select_year, 
