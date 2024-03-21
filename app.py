@@ -424,27 +424,45 @@ with tab1:
 
     with national_col1:
         national_text = """
-        Norge har bosatt 60.134 ukrainske flyktninger fordelt på 355 kommuner siden krigen startet i 2022. I samme periode bosatte vi 8.465 flyktninger fra øvrige land.
+        355 kommuner har til sammen bosatt 60.134 ukrainske flyktninger siden krigen startet i 2022. I samme periode ble det bosatt 8.465 flyktninger fra andre land.
         
-        Til sammenligning ble det bosatt av 11.342 flyktninger i 2015, og 15.219 i 2016. På 1990-tallet kom det 14.000 flyktninger fra Bosnia-Hercegovina.
+        Til sammenligning ble det under “flyktningbølgen” i 2015/2016 bosatt i overkant av 26.000.
         
-        #### Hvordan har den ukrainske flyktingbølgen truffet kommunene? 
+        På 1990-tallet kom det 14.000 flyktninger fra Bosnia-Hercegovina.
         
-        — Det var nokså urealistiske forventninger i starten, sier forsker ved NIBR, Vilde Hernes.
+        #### Hvordan har de høye ankomstene av ukrainere truffet kommunene?
+        
+        — Det var nokså urealistiske forventninger i starten, sier forsker ved OsloMet, Vilde Hernes.
 
-        — Ukrainerne skulle bare være som arbeidsinnvandrere som skulle hoppe ut i jobb, helt problemfritt, sier hun. (Se her for fullt intervju med sitater, og lenke til forskningsrapport)
+        — Ukrainerne skulle være som arbeidsinnvandrere som skulle hoppe ut i jobb, helt problemfritt, sier hun. (Forskningsrapport og intervju med sitater ligger tilgjengelig)
 
-
-        ##### Her er mulige nyhetspoeng: 
+        Hernes er prosjektleder for OsloMets studie om ukrainske flyktningen som ble publiserte i januar 2024. De har sett på flyktningenes opplevelse av mottak, bosetting og integrering, samt erfaringene til dem som har tatt dem imot.
         
+        ##### Mulige nyhetspoeng fra Oslo Met sin rapport om ukrainernes første tid i Norge: 
+        
+        - 11 prosent av ukrainerne som kommer snakker flytende engelsk.  
         - Andelen ukrainere som kommer ut i jobb etter introduksjonsprogrammet ligger helt likt med øvrige flyktninger.  
-        - Kun 11 prosent av ukrainerne snakker flytende engelsk.  
-        - Ukrainerne som kom da krigen startet hadde høy utdannelse. De som kommer nå har lavere utdannelse og snakker dårligere engelsk.  
-        - Flyktningene Norge er vant til å bosette er menn i arbeidsdyktig alder. Ukrainske flyktninger er mer variert i alder: 30 prosent er under 18 år, og 13 prosent er over 55 år. Disse krever andre tilbud fra kommunen.
+        - Ukrainerne som kom da krigen startet hadde høy utdannelse. De som kommer nå, har lavere utdannelse og snakker dårligere engelsk.  
+        - 30 prosent av de som er bosatt er under 18 år.  
+        - 13 prosent av de som bosettes er over 55 år. Dette utgjør rundt 7800 mennesker.  
+        - Kommunene har ikke plikt til å gi de over 55 år introduksjonsprogram.  
+        - Flyktningene Norge er vant til å bosette er menn/flyktninger i arbeidsdyktig alder, de eldre ukrainerne krever helt andre tilbud fra kommunen.  
+        - De ukrainske flyktningene er fornøyd tjenester som skole, barnehage, bosetting, mens helsetjenester og tilgang på medisin er det de er minst fornøyd med.  
+        - Flere peker på økt press på kommunale tjenester.  
+        - 37 prosent oppgir at barna fortsatt følger ukrainsk skole online.  
+        - 70 prosent av ukrainerne som kom til Norge i 2022 sier at deres norskkunnskaper enten er dårlig eller ikke-eksisterende.  
 
         #### De ensomme eldre
-        — Ukrainske eldre er ensomme i Norge. Det er utfordrende for denne gruppen som står uten noe særlig tilbud, sier  nestleder i ukrainsk forening Nataliya Yeremeyeva.
+        — Ukrainske eldre er ensomme i Norge. Det er utfordrende for denne gruppen som står uten noe særlig tilbud, sier Nataliya Yeremeyeva. Hun er nestleder i den ukrainske forening i Norge. (Intervju med sitater ligger tilgjengelig)
 
+        Mulige nyhetspoeng om de eldre:
+        - Hjelpeorganisasjoner peker på de eldre flyktningene som «de glemte», ifølge OsloMet sin rapport.  
+        - Eldre som kommer alene til Norge er ensomme, og lærer seg ikke språket, sier Yeremeyeva.  
+        - Flyktningene har ikke rett på introduksjonsprogram når de er over 55 år.  
+        - Norge har bosatt 3000 ukrainske flyktninger over 66 år siden krigen startet, mens bare 32 øvrige flyktninger i samme aldersgruppe.  
+
+        
+        
         ##### Her er mulige nyhetspoeng: 
         - Aldri før har Norge tatt imot så mange eldre flyktninger. I overkant av 7800 ukrainere er over 55 år.  
         - Xx er over 80 år.  
@@ -453,42 +471,42 @@ with tab1:
 
         #### Ukrainere er sykere enn nordmenn
         
-        — Seks av ti ukrainere rapporterte at de hadde langvarig sykdommer eller plager, sier forsker ved Folkehelseinstituttet, Angela Susan Labberton. (Se her for fullt intervju med FHI, og lenke til rapport)  
+        Vi har pratet med flere kommuner. Noen kjenner på et økt press i helsesektoren, andre ikke. Noe av det kommunene rapporterer:
         
-        — 373 ukrainerne har kommet via medisinsk evakuerte. To tredeler hadde kreft og en tredel skader. Disse er mer krevende for helsevesenet enn en gjennomsnittlig pasient, sier Anders Holtan, overlege ved koordineringsenheten for medisinsk evakuerte ved Oslo universitetssykehus. 
+        - 80- og 90 åringer som trenger sykehjemsplass.  
+        - Hiv og syfilis
+        - Lavere terskel for bruk av rus, inkludert barneforeldre.
+        - Flere somatisk syke enn øvrige flyktninger.
+        - Dårlig tannhelse, inkludert barn og unge  
+        - Vanskelig å rekruttere sykepleiere og leger, må ofte benytte dyre vikarbyråer.  
 
-        — Likevel tror jeg arbeidsbyrden, både for kommunehelsetjenesten og spesialisthelsetjenesten er vesentlig større med de andre ukrainerne som kommer, sier Holtan (Se her for fullt intervju med sitater)  
+        — Seks av ti ukrainere rapporterte at de hadde langvarig sykdommer eller plager, sier forsker ved Folkehelseinstituttet, Angela Susan Labberton. (Se fanen «ekspertkilder og Rapporten til FHI og intervju med sitater ligger tilgjengelig)  
+        
+        FHI har sett på selvrapportert helse- og helsetjenestebehov i et utvalg voksne flyktninger fra Ukraina, sammenlignet med den norske befolkningen. 
 
-        Vi har snakket med flyktningtjenesten i seks forskjellige kommuner. Flere trekker frem helsetjenesten som en av de største utfordringene. 
+        ##### Her er mulig nyhetspoeng om helse:
 
-        ##### Her er mulig nyhetspoeng:
+        - Ukrainere har dårligere helse enn nordmenn og betydelig dårligere tannhelse, sier rapporten til FHI.  
+        - Ingen sitter med en oversikt over hvor mange ukrainere som har mottatt behandling via primær- eller spesialisthelsetjenesten, ifølge FHI.  
+        - Helsetjenestene i kommunen er blant de tjenesten ukrainske flyktninger er minst fornøyd med, ifølge OsloMet sin rapport.  
+        - 70 prosent av de ukrainske flyktningene som har ønsket psykisk helsehjelp, har ikke fått det viser en forskningsrapport fra Nasjonalt kunnskapssenter om vold og traumatisk stress (NKVTS)  
+        - Tall fra FN viser at forventet levealder for en ukrainsk mann før krigen var 67 år, en norsk mann er forventet å leve til han er 81.  
+        - Norge har per 8. mars 2024 evakuert 373 syke og skadde ukrainske pasienter.  
+        - Av de 373 ukrainerne som har kommet via medisinsk evakuering har to tredeler kreft og en tredel skader.  (Intervju med Anders Holtan, overlege ved nasjonalt medevac senter ved Oslo Universitetssykehus, ligger tilgjengelig)  
 
-        - Rapporten til FHI viser at Ukrainerne er sykere enn nordmenn, med særlig dårlig tannhelse.  
-        - Ingen sitter med en oversikt over hvor mange ukrainere som har mottatt behandling via primær- eller spesialisthelsetjenesten. 
-        - En stor andel av ukrainerne har følt et behov for å snakke med noen om sine opplevelser og psykiske reaksjoner siden ankomst til Norge, men 70 % av disse ikke har fått et tilbud viser forskningsrapport fra NKVTS (Se her for fullt intervju med sitater og forskningsrapport)
-        - Forventet levealder for en ukrainsk mann før krigen var 67 år, en norsk mann er forventet å leve til han er 81. 
-        - Flere kommuner har bosatt 80 og 90 åringer som bor på sykehjem. 
-        - Utfordringer med hiv og syfilis blant ukrainske flykninger. 
-        - Kommunen har ansvar for helsetjenesten til asylsøkerne som venter på mottak i tillegg til de som er bosatt. 
-        - Økt press på eldreomsorgen og helsetjenester i kommunene. 
-        - Tannhelsen til ukrainske barn og ungdom er dårlig. 
-        - Vanskelig å rekruttere sykepleiere og leger, må ofte benytte dyre vikarbyrå.
 
         #### Midlertidighet = usikkerhet
 
-        Ukrainerne er her på ubestemt tid. 
+        Flyktningene fra Ukraina har kollektiv, midlertidig beskyttelse. De er i Norge på ubestemt tid.
+        
+        Dette kan være krevende for private arbeidsgivere som skal ansette, og kommunen som skal skalere opp sine tjenester. 
 
-        — Arbeidsgivere var svært positive til å ansette ukrainere da krigen startet. Nå er de mer skeptisk, sier Vilde Hernes, forsker i NIBR. 
+        — Arbeidsgivere var svært positive til å ansette ukrainere da krigen startet. Nå er de mer skeptisk, sier Vilde Hernes, forsker hos OsloMet. 
 
         ##### Mulige nyhetspoeng: 
         
-        - Kommunene har akkurat skaler ned siden flyktningbølgen i 2015, nå må de mobilisere igjen.  
-        - Det er risikabelt for kommunene å ansetter lærere og sykepleiere i faste stillinger. De kan tape mye penger hvis ukrainerne plutselig må reise hjem og kommunen slutter å motta tilskudd fra Imdi. 
-        - Arbeidsgivere vegrer seg for å ansette ukrainere. Det er dyrt å gi dem opplæring.  
-        - Noen kommuner sier de skal ri av seg stormen, andre prøver å kjøpe private tjenester som de kan de nedskalere fort.
-
-        Følg pengene.
-
+        - Det er risikabelt for kommunene å ansette lærere og sykepleiere i faste stillinger, når ukrainerne må hjem, slutter kommunene å få tilskudd fra Imdi og taper penger.  
+        - Arbeidsgivere vegrer seg for å ansette ukrainere. Det er dyrt å gi dem opplæring, sier Hernes fra Oslo Met.
 
         """
         
@@ -555,10 +573,9 @@ with tab2:
 
     summarized = """
     
-    Siden krigen i Ukraina startet, er det bosatt {sum_total_ukr:,.0f} ukrainere i  {kommune}. Det utgjør {ukr_pct_pop:.1f} prosent av befolkningen, 
-    og {ukr_pct_ovr:.1f} prosent av alle bosatte flyktninger i samme periode. 
+    {kommune} har bosatt {sum_total_ukr:,.0f} ukrainske flyktninger siden krigen brøt ut. Det utgjør {ukr_pct_pop:.1f} av befolkningen, og {ukr_pct_ovr:.1f} prosent av alle bosatte flyktninger i samme periode. 
     
-    I **{year}** ble det bosatt {sum_total_ukr_year} ukrainere i kommunen, og det utgjør {ukr_pct_pop_year:.1f} prosent av befolkningen.  
+    I **{year}** ble det bosatt {sum_total_ukr_year} ukrainere i kommunen, noe som utgjør {ukr_pct_pop_year:.1f} prosent av befolkningen.  
     
     """.format(
                 kommune = kommuner.get(select_kommune), 
@@ -584,6 +601,8 @@ with tab2:
     )
     
     summarized_rank = """
+    
+    I **{year}** kom {kommune} på {fylke_rank:.0f}. plass i fylket, og {national_rank:.0f}. plass i hele landet i en rangering over hvilke kommuner som tar imot flest ukrainske flyktninger etter befolkningsstørrelse. 
     
     I en rangering over hvilke kommuner som tar i mot mest ukrainere etter befolkningsstørrelse i **{year}**, rangeres {kommune} på {fylke_rank:.0f}. plass i fylket og {national_rank:.0f}. plass i hele landet. 
 
@@ -725,7 +744,7 @@ with tab3:
     * Hvordan er helsen til ukrainere sammenlignet med andre flyktninger?
     * Har pågangen fra Ukraina fått konsekvenser for flyktninger fra andre land?
     ##### Tips til case:
-    * Finner dere gladhistorier som viser hvordan det har fungert å ta imot ukrainske flyktninger? Jobber det ukrainere på sykehjem, på den lokale matbutikken, i barnehager/skoler? Er det noen ukrainere som selv hjelper til med å få hjulene til å gå rundt i kommunen? 
+    * Finner dere løsningsorienterte historier som viser hvordan kommunen har løst sine utfordringer? Jobber det ukrainere på sykehjem, på den lokale matbutikken, i barnehager/skoler? Er det noen ukrainere som selv hjelper til med å få hjulene til å gå rundt i kommunen? 
     * Har det kommet noen som har tjenestegjort i krigen? Hvilken historie har de å fortelle? Hvem er han? Hvordan ble han rekruttert? Hvorfor endte han opp i din kommune?
     * Er det noen eldre som bor på sykehjem, sammen med nordmenn med erfaring fra andre verdenskrig?
     * Finn en sykepleiere som kjenner på det økte presset i kommunen. 
@@ -1047,6 +1066,18 @@ with tab5:
     """
     
     with st.expander('Intervju med Angela S. Labberton ved Folkehelseinstituttet'):
+        _, imgcol = st.columns([5, 1])
+        with imgcol:
+            with open("img/Angela Labberton kredittering Simen Gald.jpg", "rb") as file:
+                btn = st.download_button(
+                    label="Last ned pressebilde",
+                    data=file,
+                    file_name="Angela Labberton kredittering Simen Gald.jpg",
+                    mime="image/jpg"
+                )
+                
+            st.markdown('Foto: Simen Gald')
+
         st.markdown(fhi_string, unsafe_allow_html=True)
     
     nibr_string = """
@@ -1108,20 +1139,40 @@ with tab5:
     """
     
     with st.expander('Intervju med Vilde Hernes, forsker ved NIBR.'):
+        
+        _, imgcol = st.columns([5, 1])
+        with imgcol:
+            with open("img/Vilde Hernes kredittering Sonja Balci.jpg", "rb") as file:
+                btn = st.download_button(
+                    label="Last ned pressebilde",
+                    data=file,
+                    file_name="Vilde Hernes kredittering Sonja Balci.jpg",
+                    mime="image/jpg"
+                )
+            st.markdown('Foto: Sonja Balci')
+                
         st.markdown(nibr_string)
     
     ous_string = """
     Anders Holtan, overlege og leder for koordineringssenter for medisinsk evakuering ved Oslo Universitetssykehus.
           
-    — Vi har evakuert 373 medisinsk evakuerte ukrainere. Andelen er veldig liten, men dette er mennesker vi vet er syke og som er mer krevende for helsevesenet enn en gjennomsnittlig pasient.    
-    — Av de 373 ukrainerne som har kommet via medisinsk evakuerte har to tredeler kreft og en tredel skader.    
-    — Men likevel tror jeg at arbeidsbyrden, både for kommunehelsetjenesten og spesialisthelsetjenesten er vesen tlig større med de andre ukrainerne som kommer.    
-    — Mange av de som er medisinsk evakuert er bosatt i kommunene nå, noen bor fortsatt på asylmottak, mens andre har returnert hjem.    
-    — Det er litt vrient for oss å vite hvem som fortsatt bor her. Hvis de har dratt fra asylmottak, vet nok UDI det. Men om de er bosatt i en kommune, så er det nok ikke så lett for UDI å «snappe» dette opp. Her er det nok litt mørketall, tror jeg.    
-
+    — Norge har per 8. mars 2024 evakuert 373 syke og skadde ukrainske pasienter til Norge. Medevac pasienter utgjør en liten andel ift det totale antallet ukrainske flyktninger som har kommet til Norge, men dette er mennesker vi vet er syke og som er mer krevende for helsevesenet enn en gjennomsnittlig asylsøker.    
+    — Av de 373 ukrainerne som har kommet via medisinsk evakuering har to tredeler kreft og en tredel skader.
+    ##### Pasientene bosettes i de forskjellige kommunene:     
+    — Arbeidsbyrden for helsevesenet, både for kommunehelsetjenesten og spesialisthelsetjenesten, er vesentlig større for medevac pasienter enn for de andre ukrainerne som kommer.  
+    — Dette er som andre kreftpasienter og skadde som bor i kommunen; de kan være i behov av legetjenester, hjemmesykepleie, fysioterapi, pasientreiser, behov resepter, attester etc.  
     """
     
     with st.expander('Intervju med Anders Holtan, Oslo universitetssykehus'):
+        _, imgcol = st.columns([5, 1])
+        with imgcol:
+            with open("img/Anders Holtan.jpg", "rb") as file:
+                btn = st.download_button(
+                    label="Last ned pressebilde",
+                    data=file,
+                    file_name="Anders Holtan.jpg",
+                    mime="image/jpg"
+                )
         st.markdown(ous_string)
         
     with st.expander('Intervju med Nataliya Yeremeyeva, nestleder i ukrainsk forening'):
