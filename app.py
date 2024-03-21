@@ -446,22 +446,23 @@ with tab1:
         - 30 prosent av de som er bosatt er under 18 år.  
         - 13 prosent av de som bosettes er over 55 år. Dette utgjør rundt 7800 mennesker.  
         - Kommunene har ikke plikt til å gi de over 55 år introduksjonsprogram.  
-        - Flyktningene Norge er vant til å bosette er menn/flyktninger i arbeidsdyktig alder, de eldre ukrainerne krever helt andre tilbud fra kommunen.  
+        - Norge er vant til å bosette flyktninger i arbeidsdyktig alder. De eldre ukrainerne krever andre tilbud fra kommunen.  
         - De ukrainske flyktningene er fornøyd tjenester som skole, barnehage, bosetting, mens helsetjenester og tilgang på medisin er det de er minst fornøyd med.  
         - Flere peker på økt press på kommunale tjenester.  
         - 37 prosent oppgir at barna fortsatt følger ukrainsk skole online.  
         - 70 prosent av ukrainerne som kom til Norge i 2022 sier at deres norskkunnskaper enten er dårlig eller ikke-eksisterende.  
 
         #### De ensomme eldre
+        Hvorfor dette er viktig: Norge har bosatt 3000 ukrainske flyktninger over 66 år siden krigen startet. De trenger andre tjenester enn kommunene har vært vant med å tilby flyktninger tidligere. 
+        
+        - Det er en stor omveltning å skulle ta imot en så stor andel med eldre flyktninger, sier Vilde Hernes ved OsloMet
+        
         — Ukrainske eldre er ensomme i Norge. Det er utfordrende for denne gruppen som står uten noe særlig tilbud, sier Nataliya Yeremeyeva. Hun er nestleder i den ukrainske forening i Norge. (Intervju med sitater ligger tilgjengelig)
 
         Mulige nyhetspoeng om de eldre:
         - Hjelpeorganisasjoner peker på de eldre flyktningene som «de glemte», ifølge OsloMet sin rapport.  
         - Eldre som kommer alene til Norge er ensomme, og lærer seg ikke språket, sier Yeremeyeva.  
         - Flyktningene har ikke rett på introduksjonsprogram når de er over 55 år.  
-        - Norge har bosatt 3000 ukrainske flyktninger over 66 år siden krigen startet, mens bare 32 øvrige flyktninger i samme aldersgruppe.  
-
-        
         
         ##### Her er mulige nyhetspoeng: 
         - Aldri før har Norge tatt imot så mange eldre flyktninger. I overkant av 7800 ukrainere er over 55 år.  
@@ -471,7 +472,11 @@ with tab1:
 
         #### Ukrainere er sykere enn nordmenn
         
-        Vi har pratet med flere kommuner. Noen kjenner på et økt press i helsesektoren, andre ikke. Noe av det kommunene rapporterer:
+        — Seks av ti ukrainere rapporterte at de hadde langvarig sykdommer eller plager, sier forsker ved Folkehelseinstituttet, Angela Susan Labberton. (Se fanen «ekspertkilder og Rapporten til FHI og intervju med sitater ligger tilgjengelig)  
+        
+        FHI har sett på selvrapportert helse- og helsetjenestebehov i et utvalg voksne flyktninger fra Ukraina, sammenlignet med den norske befolkningen. 
+
+        Vi har pratet med flere kommuner. Noen kjenner på et økt press i helsesektoren som følge av de høye bosettingstallene, andre ikke. Noe av det kommunene rapporterer:
         
         - 80- og 90 åringer som trenger sykehjemsplass.  
         - Hiv og syfilis
@@ -479,11 +484,7 @@ with tab1:
         - Flere somatisk syke enn øvrige flyktninger.
         - Dårlig tannhelse, inkludert barn og unge  
         - Vanskelig å rekruttere sykepleiere og leger, må ofte benytte dyre vikarbyråer.  
-
-        — Seks av ti ukrainere rapporterte at de hadde langvarig sykdommer eller plager, sier forsker ved Folkehelseinstituttet, Angela Susan Labberton. (Se fanen «ekspertkilder og Rapporten til FHI og intervju med sitater ligger tilgjengelig)  
         
-        FHI har sett på selvrapportert helse- og helsetjenestebehov i et utvalg voksne flyktninger fra Ukraina, sammenlignet med den norske befolkningen. 
-
         ##### Her er mulig nyhetspoeng om helse:
 
         - Ukrainere har dårligere helse enn nordmenn og betydelig dårligere tannhelse, sier rapporten til FHI.  
@@ -496,8 +497,10 @@ with tab1:
 
 
         #### Midlertidighet = usikkerhet
-
+        
         Flyktningene fra Ukraina har kollektiv, midlertidig beskyttelse. De er i Norge på ubestemt tid.
+        
+        — Å oppskalere tjenester innenfor skole, barnehage og helsetjenester er en veldig stor risiko for kommunene fordi ukrainere har midlertidig tillatelse, sier Vilde Hernes fra OsloMet.
         
         Dette kan være krevende for private arbeidsgivere som skal ansette, og kommunen som skal skalere opp sine tjenester. 
 
@@ -506,7 +509,7 @@ with tab1:
         ##### Mulige nyhetspoeng: 
         
         - Det er risikabelt for kommunene å ansette lærere og sykepleiere i faste stillinger, når ukrainerne må hjem, slutter kommunene å få tilskudd fra Imdi og taper penger.  
-        - Arbeidsgivere vegrer seg for å ansette ukrainere. Det er dyrt å gi dem opplæring, sier Hernes fra Oslo Met.
+        - Arbeidsgivere vegrer seg for å ansette ukrainere. Det er dyrt å gi dem opplæring, sier Hernes fra OsloMet.
 
         """
         
@@ -688,12 +691,122 @@ with tab2:
     )
 
 with tab6:
-    pass
+    st.markdown("""
+    ##### Ukrainske flyktninger får sjelden psykisk helsehjelp
+
+    Sak: 70 prosent av de ukrainske flyktningene som har ønsket psykologhjelp har ikke fått det, viser en forskningsrapport fra Nasjonalt kunnskapssenter om vold og traumatisk stress (NKVTS).
+
+    **Case**: Ukrainske flyktninger som har tjenestegjort i krigen. 
+
+    Hva har han opplevd? Hvordan er livet nå?
+    Hvilken helsehjelp har han fått etter han kom til Norge? Traumebehandling?
+
+    Skien kommune opplyser at flyktningene fra Gaza får en helt annen oppfølging. Hvorfor forskjellsbehandles de? 
+
+    ##### Hvor blir det av pengene?
+
+    Sak: Kommuunen har totalt mottatt xxx millioner i 2022 og 2023. Hvordan bruker de pengene?
+    
+    **Case**: Flyktning som ikke har fått tilbudet hen har rett på. 
+    
+    Sitter kommunen med overskudd, og hva gjør de eventuelt med det? 
+
+    Se pengebruken opp mot hvilke tjenester de faktisk har fått i kommunen. Har Statsforvalteren avdekket avvik? Er flyktningene misfornøyd med tilbudene? 
+
+    ##### Vil bosette færre flyktninger enn de er bedt om
+    Ble anmodet om å bosette xx, men har bare sagt ja til xx. Hvorfor? Burde de tatt imot flere? Se opp mot ledig kapasitet fastlegeliste.  
+
+    ##### Vil bosette flere flyktninger enn de er bedt om
+    Saken: Ble anmodet om å bosette xx, men ønsker flere. Har bedt om å få bosette xxx. 
+
+    Hvorfor? Er penger et insentiv til å ta imot mange? Eller klarer de bare å håndtere situasjonen så godt at de har kapasitet? I så fall, hvordan? 
+
+    ##### Sammenligne med andre kommuner: hvor mange har de bosatt? 
+    
+    Hvorfor klarer noen kommuner å bosette flere enn andre? 
+    
+    Sammenlign med nabokommunen. 
+    
+    Sammenlign med sammenlignbare kommuner (folketall, økonomi, sentralitet). Velg relevante grupperinger i venstre marg på nettsiden. 
+
+    ##### Ukrainske flyktninger over 55 år får ikke tilbud om introduksjonsprogram. 
+    
+    Kommunen må ikke gi de over 55 tilbud om å delta på introduksjonsprogram. 
+    
+    I denne kommunen får de ikke tilbud om dette. 
+
+    Hvilke tilbud får de da?  De har jo potensielt mange år igjen i arbeidslivet. 
+    
+    Hva er den langsiktige planen? Skal de leve på sosialstønad? Hvordan skal de integreres? 
+
+    Frivillige organisasjoner i kommunen - har de tilbud for de eldre, ensomme? 
+    
+    **Case**: Ukrainsk flyktning over 55 år som ønsker tilbud, men ikke får det. 
+
+    ##### Kommunen gir tilbud til ukrainske flyktninger over 55 år, selv om de ikke må. 
+
+    Hvorfor har kommunen valgt å gi tilbud til dem over 55 år?
+    
+    Kommer de ut i jobb etter endt kurs? 
+    
+    Takker de fleste som får tilbud ja? 
+    
+    **Case**: en over 55 år på introduksjonsprogram
+    **Case**: en lærer på introduksjonsprogram:  
+
+    ##### Så mange ukrainere har kommet ut i jobb
+    Hvor mange har fått seg arbeid i kommunen etter introduksjonsprogrammet?  Hvilke bransjer/ hvilke bedrifter? Hvordan har dette tallet utviklet seg? Vilde Hernes, forsker ved OsloMet viser til at arbeidsgivere var mer positivt til å ansette uktainere  i starten? 
+
+    Hvor mange er ferdig med introduksjonsprogrammet, men kommer ikke i jobb. Hvorfor ? 
+    
+    En arbeidsgiver/kollega: ekstra tilrettelegging? og hva det har tilført av kompetanse? 
+    
+    **Case**: En ukrainer som er i arbeid
+    
+    ##### Ukrainerne har dårligere helse enn nordmenn, viser FHI-rapport
+    
+    Forventet levealder for ukrainske menn før krigen var 67 år. Forventet levealder for norske menn er 81 år. 
+    
+    Hvordan er sykdomsbildet til ukrainerne kommunen har bosatt, og har det påvirket presset på kommunehelsetjenestene?
+    
+    Hvordan har kommunen løst et eventuelt økt press?
+
+    I denne kommunen får de xxx ekstra i tilskudd for pleietrengende. Hva har pengene gått til? 
+    
+    **Case**: En ukrainsk flyktning som er syk/skadet.
+
+    ##### Ukrainske barn og unge har dårlig tannhelse
+    
+    Hvilken behandling får de, og hvor lenge må de vente?
+    
+    Trekker de tennene for å spare penger?
+    
+    **Case**: En ung med dårlig tannhelse. 
+    
+    ##### Hvordan er ventetiden for ørige flytninger på asylmottaket i kommunen påvirket av de høye ankomsttallene fra Ukraina? 
+    
+    Hvordan er det å ha livet på vent? 
+    
+    Hva er gjennomsnittlig ventetid? Hva føler de om at ukrainere bosettes raskt, mens de må vente? 
+    
+    Hva tenker ukrainske flyktninger om at de får forrang?
+    
+    **Case**: Ikke-ukrainsk flyktning som har ventet lenge på mottak for å få svar på asylsøknaden.    
+    
+    ##### Slik velger kommunen hvilke flyktninger de vil ha, og ikke ha
+    
+    Sorterer kommunen flyktninger basert alder, sykdomsbilde eller annet? 
+    
+    **Case**: Byråkraten som trykker ja og nei.
+    **Case**: Kommunen sier nei til flere som "Piotr"'
+    
+    
+    """)
 
 # Tab 3: Suggestions for how the local journalists can proceed
 with tab3:
     st.markdown("""
-    Flyktninger fra Ukraina er betydelig flere og og er eldre enn flyktninger Norge har bosatt tidligere. Forskning viser at de er sykere enn nordmenn. Forventningen var at de skulle gli inn i samfunnet, de skulle være som arbeidsinnvandrere som hoppet ut i jobb. Men erfaringene viser at det har vært flere utfordringer.
+    Flyktninger fra Ukraina er betydelig flere og er eldre enn flyktninger Norge har bosatt tidligere. Forskning viser at de er sykere enn nordmenn. Forventningen var at de skulle gli inn i samfunnet, de skulle være som arbeidsinnvandrere som hoppet ut i jobb. Men erfaringene viser at det har vært flere utfordringer.
     
     Noen kommuner mener de håndterer flyktningstrømmen godt, andre opplever situasjonen som utfordrende.
     
@@ -1108,9 +1221,9 @@ with tab5:
 
     ##### Har bosettingen av ukrainere vært forskjellig fra bosetting av andre flyktninger?
     
-    — Det har kanskje vært flere likhetstrekk enn forskjeller i arbeidet med å ta imot ukrainere og andre flyktninger. Det var nok nokså urealistiske forventinger om i starten at dette skulle være helt annerledes.  
-    — Ukrainerne skulle bare gli inn, dette skulle bare være som arbeidsinnvandrere som skulle hoppe ut i jobb, helt problemfritt. Det har vist seg at denne gruppen også trenger støtte og hjelp for å komme seg ut i jobb og arbeid. Selv om de har høy utdanning får de ikke nødvendigvis brukt det i Norge når de ikke kan engelsk, og ikke norsk.
-    — Ukrainere har generelt ikke gode engelskkunnskaper. Det er en myte som må avkreftes gang på gang, på gang.  
+    — Det har kanskje vært flere likhetstrekk enn forskjeller i arbeidet med å ta imot ukrainere og andre flyktninger. Det var nok nokså urealistiske forventinger om i starten at dette skulle være helt annerledes.      
+    — Ukrainerne skulle bare gli inn, dette skulle bare være som arbeidsinnvandrere som skulle hoppe ut i jobb, helt problemfritt. Det har vist seg at denne gruppen også trenger støtte og hjelp for å komme seg ut i jobb og arbeid. Selv om de har høy utdanning får de ikke nødvendigvis brukt det i Norge når de ikke kan engelsk, og ikke norsk.    
+    — Ukrainere har generelt ikke gode engelskkunnskaper. Det er en myte som må avkreftes gang på gang, på gang.    
     — Kun 11 prosent snakker flytende engelsk, og rundt 60 prosent kan nesten ikke engelsk i det hele tatt. Av de som kommer nå, er det en enda lavere andel som snakker engelsk.  
     
     ##### Så det har ikke vært enklere å få en ukrainer ut i jobb enn øvrige flyktninger? 
