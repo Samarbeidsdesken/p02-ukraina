@@ -430,10 +430,6 @@ with tab1:
     
     Sist Norge gav en gruppe flyktninger kollektiv beskyttelse var på 1990-tallet. Da kom det 16.000 flyktninger fra Balkan.
     
-    #### Fakta om ukrainske flyktninger
-    - Tall fra IMDi viser at 30 prosent av de som er bosatt er under 18 år.  
-    - Tall fra IMDi viser at 13 prosent av de som bosettes er over 55 år. Dette utgjør rundt 7800 mennesker.
-    
     #### Hvordan har kommunene møtt det høye antallet ukrainere?
     
     — Det var nokså urealistiske forventninger i starten, sier forsker ved OsloMet, Vilde Hernes.
@@ -459,8 +455,9 @@ with tab1:
 
     ##### Her er mulige nyhetspoeng om de eldre flyktningene:
     - Hjelpeorganisasjoner peker på de eldre flyktningene som «de glemte», ifølge Vilde Hernes fra OsloMet.  
-    - Eldre som kommer alene til Norge er ensomme, og lærer seg ikke språket, sier Yeremeyeva.  
-    - Flyktninger over 55 år har ikke rett på introduksjonsprogram.
+    - Eldre som kommer alene til Norge er ensomme, og lærer seg ikke språket, sier Yeremeyeva.
+    - Tall fra IMDi viser at 13 prosent av de som bosettes er over 55 år. Dette utgjør rundt 7800 mennesker. Disse har ikke rett på introduksjonsprogram.
+    
     
     #### Ukrainere er sykere enn nordmenn
     
@@ -482,6 +479,8 @@ with tab1:
     
     Flyktningene fra Ukraina har kollektiv, midlertidig beskyttelse. De er i Norge på ubestemt tid.
     
+    Tall fra IMDi viser at 30 prosent av de som er bosatt er under 18 år.  
+    
     — Å oppskalere tjenester innenfor skole, barnehage og helsetjenester er en veldig stor risiko for kommunene fordi ukrainere har midlertidig tillatelse, sier Vilde Hernes fra OsloMet.
     
     Dette kan være krevende for private arbeidsgivere som skal ansette, og kommunen som skal skalere opp sine tjenester. 
@@ -491,7 +490,7 @@ with tab1:
     ##### Her er mulige nyhetspoeng om midlertidighet: 
     
     - Det er risikabelt for kommunene å ansette lærere og sykepleiere i faste stillinger. Hvis ukrainerne må hjem, slutter kommunene å få tilskudd fra IMDi og taper penger.  
-    - Hvordan påvirker midlertidigheten ukrainerne? SJEKK
+    - 54 prosent av ukrainere er usikker på om de kommer til å returnere til Ukraina når krigen er over, i følge forskningsrapport fra OsloMet. 
 
     """
     
@@ -600,8 +599,7 @@ with tab2:
             
             Merk at enkelte verdier kan være tilbakeholdt av IMDi av anonymiseringshensyn.
             
-            
-            I **{year}** mottok kommunen følgende tilskudd: 
+            Tabellen viser tilskudd gitt i **{year}** for alle flyktninger bosatt i kommunen de siste fem årene.
             '''.format( 
                 year = select_year,
                 sum_tilskudd = tilskudd_komm_total/1000000
@@ -628,115 +626,112 @@ with tab2:
 
 with tab6:
     st.markdown("""
-    ##### Ukrainske flyktninger får sjelden psykisk helsehjelp
+    ##### Ukrainske flyktninger får sjelden psykisk helsehjelp 
 
-    **Mulig sak**: 70 prosent av de ukrainske flyktningene som har ønsket psykologhjelp har ikke fått det, viser en forskningsrapport fra Nasjonalt kunnskapssenter om vold og traumatisk stress (NKVTS). (Forskningsrapport ligger under "Ekspertkilder og rapporter")
+    **Mulig sak**: 70 prosent av de ukrainske flyktningene som har ønsket psykologhjelp har ikke fått det, viser forskningsrapport fra Nasjonalt kunnskapssenter om vold og traumatisk stress (NKVTS). (Forskningsrapport ligger under "Ekspertkilder og rapporter") 
 
-    **Mulig historie**: Ukrainske flyktninger som har tjenestegjort i krigen.
+    **Mulig historie**: Ukrainske flyktninger som har tjenestegjort i krigen. Eller ukrainske flyktninger som har traumer etter krigen.
     
-    Hvilken helsehjelp har de fått i Norge?
+    Hvilken psykisk helsehjelp har de fått i Norge? 
 
-    Skien kommune opplyser at flyktningene fra Gaza får en helt annen oppfølging.  
+    Hvordan er dette sammenlignet med asylsøkerne som kommer fra for eksempel Gaza?  
       
     ##### Hvor blir det av pengene?
-
-    Kommunen har totalt mottatt xxx millioner i 2022 og 2023. Hvordan bruker de pengene?
+    
+    **Mulig sak**: Kommunen har totalt mottatt xxx millioner kroner i 2022 og 2023. Hva har de brukt tilskuddspengene på?
+    
+    **Mulig historie**: En ukrainsk flyktning som ikke har fått tjenestene hen har rett på.  
     
     Tilskuddspengene er ikke øremerket og ikke rapporteringspliktig. 
     
-    Sitter kommunen med overskudd, og hva gjør de eventuelt med det? 
+    Sitter kommunen igjen med økonomisk overskudd, og hva gjør de eventuelt med pengene? 
+    
+    Se pengebruken opp mot hvilke tjenester flyktningene faktisk har fått i kommunen. Er flyktningene misfornøyd med tjenestene? Har Statsforvalter avdekket avvik? 
+    
+    ##### Vil bosette færre flyktninger enn kommunen er anmodet om
+    
+    **Mulig sak**: Kommunen ble anmodet om å bosette x antall flykninger, men har bare sagt ja til x.  
+    
+    **Mulig historie**: En ukrainsk flyktning som sitter på asylmottak og venter på å få tildelt en kommune. Eventuelt en som er bosatt, men som ventet lenge på mottak.
+    
+    Hva er grunnen til at kommunen ikke ønsker å bosette antallet flyktninger de er bedt om? Burde de ta imot flere? Se på kommunens fastlegekapasitet, økonomi etc.
+    
+    ##### Vil bosette flere flyktninger enn kommunen er anmodet om 
+    **Mulig sak**: Kommunen ble anmodet om å bosette x antall flyktninger, men har selv bedt om å ta imot x.
+    
+    Hvorfor ønsker kommunen å ta imot flere flyktninger enn de har blitt anmodet om?  
+    
+    Kommer flyktningene raskt ut i jobb eller utdanning? 
+    
+    Hvor mange flyktninger har flyttet fra kommunen?  
+    
+    Er penger et insentiv for å ta imot flere?  
 
-    Se pengebruken opp mot hvilke tjenester de faktisk har fått i kommunen. Har Statsforvalteren avdekket avvik? Er flyktningene misfornøyd med tilbudene? 
+    ##### Hvor mange flyktninger har kommunen bosatt sammenlignet med nabokommunene? 
     
-    **Mulig historie**: Flyktning som ikke har fått tilbudet hen har rett på. 
+    **Mulig sak**: Kommunen tar imot mange flyktninger i forhold til befolkningstallet.  Kommunen er på x plass i fylket.  
+    
+    Sammenlign din kommune med sammenlignbare kommuner (folketall, økonomi og sentralitet). Velg relevante grupperinger i venstre marg på nettsiden.
+    
+    ##### Ukrainske flyktninger over 55 år får ikke tilbud om introduksjonsprogram
+    
+    **Mulig sak**: Ukrainske flyktninger over 55 år blir ensomme og ikke integrert i det norske samfunnet.  
+    
+    **Mulig historie**: En ukrainsk flyktning over 55 år som står uten tilbud.  
+    
+    Hvorfor gir ikke kommunen dem over 55 år tilbud om deltagelse på introduksjonsprogram? 
+    
+    Hva gjør kommunen for å integrere dem i samfunnet?  Hva gjør frivillige organisasjoner?
+    
+    Hva er den langsiktige planen for denne gruppen?  
+    
+    ##### Kommunen gir tilbud til ukrainske flyktninger over 55 år, selv om de ikke må
+    
+    **Mulig sak**: I denne kommunen får ukrainske flyktninger tilbud om introduksjonsprogram, selv om kommunen ikke er pliktig til å gi dem dette.  
+    
+    **Mulig historie**: En ukrainsk flyktning over 55 år som går på introduksjonsprogram, eller har kommet ut i jobb. Eller en lærer på introduksjonsprogram som underviser flyktninger over 55 år.
+    
+    Hvorfor har kommunen valgt å gi tilbud til dem over 55 år? 
+    
+    Kommer de over 55 år ut i jobb etter endt introduksjonsprogram? 
+    
+    Hvor mange av de over 55 år benytter seg av introduksjonsprogrammet?  
 
-    ##### Vil bosette færre flyktninger enn de er bedt om
-    Ble anmodet om å bosette xx, men har bare sagt ja til xx. Hvorfor? Burde de tatt imot flere? Se opp mot ledig kapasitet fastlegeliste.  
+    ##### Så mange ukrainere har kommet ut i jobb 
+    
+    **Mulig sak**: x antall i kommunen har fått seg arbeid etter fullført introduksjonsprogram.
+    
+    **Mulig historie**: En ukrainsk flyktning som har kommet ut i arbeid, eller en arbeidsgiver som har ansatt en.
+    
+    Hvilke bransjer og bedrifter har ansatt ukrainske flyktninger?
+    
+    Hvor mange har fullført introduksjonsprogrammet, men ikke kommet i jobb? Hva er grunnen til det? 
+    
+    Hvilken tilrettelegging kreves ved ansettelse, og hvilken kunnskap tilfører de eventuelt bedriften?
+    
+    ##### Ukrainerne har dårligere helse enn nordmenn 
+    
+    **Mulig sak**: Ukrainere har dårligere helse enn nordmenn, viser FHI-rapport. Forventet levealder for ukrainere var 70 år. Forventet levealder for nordmenn er 83 år. 
+    
+    **Mulig historie**: En ukrainsk flyktning som er syk/skadet. 
+    
+    Hvordan er sykdomsbildet til ukrainerne som kommunen har bosatt? Har ukrainerne fått den helseoppfølgingen de trenger? 
+    
+    Har det påvirket kommunehelsetjenestene? Hvordan har kommunen løst et eventuelt økt press? 
+    
+    I denne kommunen får de x kroner ekstra i tilskudd for pleietrengende. Hva har pengene gått til? 
 
-    ##### Vil bosette flere flyktninger enn de er bedt om
-    Saken: Ble anmodet om å bosette xx, men ønsker flere. Har bedt om å få bosette xxx. 
-
-    Hvorfor? Er penger et insentiv til å ta imot mange? Eller klarer de bare å håndtere situasjonen så godt at de har kapasitet? I så fall, hvordan? 
-
-    ##### Sammenligne med andre kommuner: hvor mange har de bosatt? 
+    ##### Økt ventetid på mottak for andre asylsøkere  
     
-    Hvorfor klarer noen kommuner å bosette flere enn andre? 
+    **Mulig sak**: Ventetiden på mottak har økt for øvrige flyktninger som et resultat av de ukrainske flyktningene.  
     
-    Sammenlign med nabokommunen. 
+    **Mulig historie**: En asylsøkere fra et annet land som har sittet lenge på mottak og ventet på svar på asylsøknaden sin. 
     
-    Sammenlign med sammenlignbare kommuner (folketall, økonomi, sentralitet). Velg relevante grupperinger i venstre marg på nettsiden. 
-
-    ##### Ukrainske flyktninger over 55 år får ikke tilbud om introduksjonsprogram. 
+    Hva er gjennomsnittlig ventetid på mottok for øvrige flyktninger? 
     
-    Kommunen må ikke gi de over 55 tilbud om å delta på introduksjonsprogram. 
+    Hva tenker øvrige flyktninger om at ukrainere bosettes raskt, mens de selv må vente lenger? 
     
-    I denne kommunen får de ikke tilbud om dette. 
-
-    Hvilke tilbud får de da?  De har jo potensielt mange år igjen i arbeidslivet. 
-    
-    Hva er den langsiktige planen? Skal de leve på sosialstønad? Hvordan skal de integreres? 
-
-    Frivillige organisasjoner i kommunen - har de tilbud for de eldre, ensomme? 
-    
-    **Mulig historie**: Ukrainsk flyktning over 55 år som ønsker tilbud, men ikke får det. 
-
-    ##### Kommunen gir tilbud til ukrainske flyktninger over 55 år, selv om de ikke må. 
-
-    Hvorfor har kommunen valgt å gi tilbud til dem over 55 år?
-    
-    Kommer de ut i jobb etter endt kurs? 
-    
-    Takker de fleste som får tilbud ja? 
-    
-    **Mulig historie**: en over 55 år på introduksjonsprogram
-    **Mulig historie**: en lærer på introduksjonsprogram:  
-
-    ##### Så mange ukrainere har kommet ut i jobb
-    Hvor mange har fått seg arbeid i kommunen etter introduksjonsprogrammet?  Hvilke bransjer/ hvilke bedrifter? Hvordan har dette tallet utviklet seg? Vilde Hernes, forsker ved OsloMet viser til at arbeidsgivere var mer positivt til å ansette uktainere  i starten? 
-
-    Hvor mange er ferdig med introduksjonsprogrammet, men kommer ikke i jobb. Hvorfor ? 
-    
-    En arbeidsgiver/kollega: ekstra tilrettelegging? og hva det har tilført av kompetanse? 
-    
-    **Mulig historie**: En ukrainer som er i arbeid
-    
-    ##### Ukrainerne har dårligere helse enn nordmenn, viser FHI-rapport
-    
-    Forventet levealder for ukrainske menn før krigen var 67 år. Forventet levealder for norske menn er 81 år. 
-    
-    Hvordan er sykdomsbildet til ukrainerne kommunen har bosatt, og har det påvirket presset på kommunehelsetjenestene?
-    
-    Hvordan har kommunen løst et eventuelt økt press?
-
-    I denne kommunen får de xxx ekstra i tilskudd for pleietrengende. Hva har pengene gått til? 
-    
-    **Mulig historie**: En ukrainsk flyktning som er syk/skadet.
-
-    ##### Ukrainske barn og unge har dårlig tannhelse
-    
-    Hvilken behandling får de, og hvor lenge må de vente?
-    
-    Trekker de tennene for å spare penger?
-    
-    **Mulig historie**: En ung med dårlig tannhelse. 
-    
-    ##### Hvordan er ventetiden for ørige flytninger på asylmottaket i kommunen påvirket av de høye ankomsttallene fra Ukraina? 
-    
-    Hvordan er det å ha livet på vent? 
-    
-    Hva er gjennomsnittlig ventetid? Hva føler de om at ukrainere bosettes raskt, mens de må vente? 
-    
-    Hva tenker ukrainske flyktninger om at de får forrang?
-    
-    **Mulig historie**: Ikke-ukrainsk flyktning som har ventet lenge på mottak for å få svar på asylsøknaden.    
-    
-    ##### Slik velger kommunen hvilke flyktninger de vil ha, og ikke ha
-    
-    Sorterer kommunen flyktninger basert alder, sykdomsbilde eller annet? 
-    
-    **Mulig historie**: Byråkraten som trykker ja og nei.
-    **Mulig historie**: Kommunen sier nei til flere som "Piotr"'
-    
+    Hva tenker ukrainske flyktninger om at de får prioritet? 
     
     """)
 
