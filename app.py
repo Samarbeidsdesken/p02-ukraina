@@ -415,144 +415,94 @@ use_container_width = False #st.checkbox("Full tabellbredde", value=True)
 # ----------------------- # 
 
 # create different tabs for the content
-tab1, tab2, tab6, tab3, tab4, tab5 = st.tabs(['Dette er saken', 'Slik er det i din kommune', 'Mulige nyhetssaker', 'Slik kan du gå fram', 'Tallgrunnlag', 'Ekspertkilder og rapporter'])
+tab1, tab2, tab6, tab3, tab4, tab5, tab7 = st.tabs(['Dette er saken', 'Slik er det i din kommune', 'Mulige nyhetssaker', 'Slik kan du gå fram', 'Tallgrunnlag', 'Ekspertkilder og rapporter', 'Fakta og begreper'])
 
 # In tab 1: Dette er saken
 with tab1:
     
     national_col1, national_col2 = st.columns([5, 4])
 
-    with national_col1:
-        national_text = """
-        355 kommuner har til sammen bosatt 60.134 ukrainske flyktninger siden krigen startet i 2022 (per 19.02.24). I samme periode ble det bosatt 8.465 flyktninger fra andre land.
-        
-        Til sammenligning ble det under “flyktningbølgen” i 2015-2016 bosatt i overkant av 26.000 personer.
-        
-        Sist Norge bosatte en gruppe flyktninger med kollektiv beskyttelse, var på 1990-tallet. Da kom det 14.000 flyktninger fra Balkan.
-        
-        #### Hvordan har kommunene møtt det høye antallet ukrainere?
-        
-        — Det var nokså urealistiske forventninger i starten, sier forsker ved OsloMet, Vilde Hernes.
+    #with national_col1:
+    national_text = """
+    355 kommuner har til sammen bosatt 60.134 ukrainske flyktninger siden krigen startet i 2022 (per 19.02.24). I samme periode ble det bosatt 8.465 flyktninger fra andre land.
+    
+    Til sammenligning ble det under “flyktningbølgen” i 2015-2016 bosatt i overkant av 26.000 personer.
+    
+    Sist Norge gav en gruppe flyktninger kollektiv beskyttelse var på 1990-tallet. Da kom det 16.000 flyktninger fra Balkan.
+    
+    #### Fakta om ukrainske flyktninger
+    - Tall fra IMDi viser at 30 prosent av de som er bosatt er under 18 år.  
+    - Tall fra IMDi viser at 13 prosent av de som bosettes er over 55 år. Dette utgjør rundt 7800 mennesker.
+    
+    #### Hvordan har kommunene møtt det høye antallet ukrainere?
+    
+    — Det var nokså urealistiske forventninger i starten, sier forsker ved OsloMet, Vilde Hernes.
 
-        — Ukrainerne skulle være som arbeidsinnvandrere som skulle hoppe ut i jobb, helt problemfritt, sier hun. (Forskningsrapport og intervju ligger under "Ekspertkilder og rapporter").
+    — Ukrainerne skulle være som arbeidsinnvandrere som skulle hoppe ut i jobb, helt problemfritt, sier hun. (Forskningsrapport og intervju ligger under "Ekspertkilder og rapporter").
 
-        Hernes er prosjektleder for OsloMets rapport om ukrainske flyktninger som ble publiserte i januar 2024. De har sett på flyktningenes opplevelse av mottak, bosetting og integrering, samt erfaringene til de som har tatt dem imot.
-        
-        ##### Her er mulige nyhetspoeng fra OsloMets rapport:
-        
-        - 11 prosent av ukrainerne som kommer snakker flytende engelsk.  
-        - 70 prosent av ukrainerne som kom til Norge i 2022 sier at norskkunnskapene deres enten er dårlige eller ikke-eksisterende. 
-        - De ukrainske flyktningene er mest fornøyde med tjenester som skole, barnehage og bosetting. Helsetjenester og tilgang på medisin er de minst fornøyde med.   
-        - 37 prosent oppgir at barna fortsatt følger digital undervisning fra Ukraina.  
-        - Andelen ukrainere som kommer ut i jobb etter introduksjonsprogrammet ligger helt likt med øvrige flyktninger.  
-        - Ukrainerne som kom da krigen startet hadde høy utdannelse. De som kommer nå, har lavere utdannelse og snakker dårligere engelsk.  
-        - 30 prosent av de som er bosatt er under 18 år.  
-        - 13 prosent av de som bosettes er over 55 år. Dette utgjør rundt 7800 mennesker.  
-        
+    Hernes er prosjektleder for OsloMets rapport om ukrainske flyktninger som ble publiserte i januar 2024. De har sett på flyktningenes opplevelse av mottak, bosetting og integrering, samt erfaringene til de som har tatt dem imot.
+    
+    ##### Her er mulige nyhetspoeng fra intervju med Vilde Hernes, basert på hennes forskning:
 
-        #### De ensomme eldre
-        Norge har bosatt omtrent 3.000 ukrainske flyktninger over 66 år siden krigen startet. De trenger andre tjenester enn det kommunene har vært vant med å tilby flyktninger tidligere. 
-        
-        — Det er en stor omveltning å skulle ta imot en så stor andel med eldre flyktninger, sier Vilde Hernes ved OsloMet.  
-        
-        — Ukrainske eldre er ensomme i Norge. Det er utfordrende for denne gruppen som står uten noe særlig tilbud, sier Nataliya Yeremeyeva. Hun er nestleder i Den ukrainske forening i Norge. (Intervju ligger under "Ekspertkilder og rapporter").
+    - 11 prosent av ukrainerne snakker flytende engelsk, og 60 prosent snakker nesten ikke engelsk i det hele tatt.
+    - De ukrainske flyktningene gir helsetjenestene mye dårligere vurdering enn for eksempel skole og barnehage. 
+    - 37 prosent oppgir at barna fortsatt følger digital undervisning fra Ukraina.  
+    - Andelen ukrainere som kommer ut i jobb etter introduksjonstilbud ligger omtrent likt med øvrige flyktninger.  
+    - 75 prosent av ukrainerne har høy utdannelse. Andelen ukrainske flyktninger med høy utdannelse og engelskkunnskaper går ned over tid.
 
-        ##### Her er mulige nyhetspoeng om de eldre flyktningene:
-        - Hjelpeorganisasjoner peker på de eldre flyktningene som «de glemte», ifølge OsloMet sin rapport.  
-        - Eldre som kommer alene til Norge er ensomme, og lærer seg ikke språket, sier Yeremeyeva.  
-        - Flyktninger over 55 år har ikke rett på introduksjonsprogram.
-        
-        #### Ukrainere er sykere enn nordmenn
-        
-        — Seks av ti ukrainere rapporterte at de hadde langvarige sykdommer eller plager, sier forsker ved Folkehelseinstituttet (FHI), Angela Susan Labberton. (Forskningsrapport og intervju ligger under "Ekspertkilder og rapporter").
-        
-        FHI har sett på selvrapportert helse- og helsetjenestebehov i et utvalg voksne flyktninger fra Ukraina, sammenlignet med den norske befolkningen. 
+    #### De ensomme eldre
+    Norge har bosatt omtrent 3.000 ukrainske flyktninger over 66 år siden krigen startet. De trenger andre tjenester enn det kommunene har vært vant med å tilby flyktninger tidligere. 
+    
+    — Det er en stor omveltning å skulle ta imot en så stor andel med eldre flyktninger, sier Vilde Hernes ved OsloMet.  
+    
+    — Ukrainske eldre er ensomme i Norge. Det er utfordrende for denne gruppen som står uten noe særlig tilbud, sier Nataliya Yeremeyeva. Hun er nestleder i Den ukrainske forening i Norge. (Intervju ligger under "Ekspertkilder og rapporter").
 
-        
-        ##### Her er mulige nyhetspoeng om helse:
+    ##### Her er mulige nyhetspoeng om de eldre flyktningene:
+    - Hjelpeorganisasjoner peker på de eldre flyktningene som «de glemte», ifølge Vilde Hernes fra OsloMet.  
+    - Eldre som kommer alene til Norge er ensomme, og lærer seg ikke språket, sier Yeremeyeva.  
+    - Flyktninger over 55 år har ikke rett på introduksjonsprogram.
+    
+    #### Ukrainere er sykere enn nordmenn
+    
+    — Seks av ti ukrainere rapporterte at de hadde langvarige sykdommer eller plager, sier forsker ved Folkehelseinstituttet (FHI), Angela Susan Labberton. (Forskningsrapport og intervju ligger under "Ekspertkilder og rapporter").
+    
+    FHI har sett på selvrapportert helse- og helsetjenestebehov i et utvalg voksne flyktninger fra Ukraina, sammenlignet med den norske befolkningen. 
 
-        - Ukrainere har dårligere helse enn nordmenn og betydelig dårligere tannhelse, sier rapporten til FHI.  
-        - Ingen sitter med en oversikt over hvor mange ukrainere som har mottatt behandling via primær- eller spesialisthelsetjenesten, ifølge Angela Susan Labberton ved FHI.  
-        - 70 prosent av de ukrainske flyktningene som har ønsket psykisk helsehjelp, har ikke fått det, viser en forskningsrapport fra Nasjonalt kunnskapssenter om vold og traumatisk stress (NKVTS). (Forskningsrapport ligger under "Ekspertkilder og rapporter").
-        - Tall fra Verdensbanken viser at forventet levealder for en ukrainer før krigen var 70 år. Nordmenns forventede levealder er 83 år.  
-        - Norge har per 8. mars 2024 evakuert 373 syke og skadde ukrainske pasienter.  To tredeler har kreft og en tredel skader. (Intervju med Anders Holtan, overlege ved nasjonalt medevac senter ved Oslo Universitetssykehus, ligger under "Ekspertkilder og rapporter")  
+    
+    ##### Her er mulige nyhetspoeng om helse:
+
+    - Ukrainere har dårligere helse enn nordmenn og betydelig dårligere tannhelse, sier rapporten til FHI.  
+    - Ingen sitter med en oversikt over hvor mange ukrainere som har mottatt behandling via primær- eller spesialisthelsetjenesten, ifølge Angela Susan Labberton ved FHI.  
+    - 70 prosent av de ukrainske flyktningene som har ønsket psykisk helsehjelp, har ikke fått det, viser en forskningsrapport fra Nasjonalt kunnskapssenter om vold og traumatisk stress (NKVTS). (Forskningsrapport ligger under "Ekspertkilder og rapporter").
+    - Tall fra Verdensbanken viser at forventet levealder for en ukrainer før krigen var 70 år. Nordmenns forventede levealder er 83 år.  
+    - Norge har per 8. mars 2024 evakuert 373 syke og skadde ukrainske pasienter.  To tredeler har kreft og en tredel skader. (Intervju med Anders Holtan, overlege ved nasjonalt medevac senter ved Oslo Universitetssykehus, ligger under "Ekspertkilder og rapporter")  
 
 
-        #### Midlertidighet betyr usikkerhet
-        
-        Flyktningene fra Ukraina har kollektiv, midlertidig beskyttelse. De er i Norge på ubestemt tid.
-        
-        — Å oppskalere tjenester innenfor skole, barnehage og helsetjenester er en veldig stor risiko for kommunene fordi ukrainere har midlertidig tillatelse, sier Vilde Hernes fra OsloMet.
-        
-        Dette kan være krevende for private arbeidsgivere som skal ansette, og kommunen som skal skalere opp sine tjenester. 
+    #### Midlertidighet betyr usikkerhet
+    
+    Flyktningene fra Ukraina har kollektiv, midlertidig beskyttelse. De er i Norge på ubestemt tid.
+    
+    — Å oppskalere tjenester innenfor skole, barnehage og helsetjenester er en veldig stor risiko for kommunene fordi ukrainere har midlertidig tillatelse, sier Vilde Hernes fra OsloMet.
+    
+    Dette kan være krevende for private arbeidsgivere som skal ansette, og kommunen som skal skalere opp sine tjenester. 
 
-        — Arbeidsgivere var svært positive til å ansette ukrainere da krigen startet. Nå er de mer skeptiske, sier Vilde Hernes, forsker hos OsloMet. 
+    — Arbeidsgivere var svært positive til å ansette ukrainere da krigen startet. Nå er de mer skeptiske, sier Vilde Hernes, forsker hos OsloMet. 
 
-        ##### Her er mulige nyhetspoeng om midlertidighet: 
-        
-        - Det er risikabelt for kommunene å ansette lærere og sykepleiere i faste stillinger. Hvis ukrainerne må hjem, slutter kommunene å få tilskudd fra IMDi og taper penger.  
-        - Arbeidsgivere vegrer seg for å ansette ukrainere, sier Hernes fra OsloMet.
+    ##### Her er mulige nyhetspoeng om midlertidighet: 
+    
+    - Det er risikabelt for kommunene å ansette lærere og sykepleiere i faste stillinger. Hvis ukrainerne må hjem, slutter kommunene å få tilskudd fra IMDi og taper penger.  
+    - Hvordan påvirker midlertidigheten ukrainerne? SJEKK
 
-        """
-        
-        st.markdown(
-            national_text
-        )
+    """
+    
+    st.markdown(
+        national_text
+    )
 
-    with national_col2:
-        with st.expander("Fakta og begreper om bosetting av ukrainere"):
+    #with national_col2:
+    #    with st.expander("Fakta og begreper om bosetting av ukrainere"):
             
-            st.markdown(
-                """
-                
-                Kilde: IMDi
-                ###### Kommunene kan selv velge hvem og hvor mange flyktninger de vil bosette: 
-                
-                Hvert år får kommunene en forespørsel fra IMDi om å bosette et antall flyktninger i kommunen. De kan selv velge hvor mange de ønsker å ta imot.  
-                
-                Ukrainske asylsøkere bor på asylmottak spredt rundt i landet, mens de venter på å bli bosatt i en kommune og få innvilget flyktningstatus. Gjennomsnittligventetid på mottak er per 31.01.24 omtrent 100 dager.
-                
-                På mottaket blir asylsøkerne kartlagt. Hvilken oppfølging vil de trenge i kommunen? Basert på denne informasjonen kan kommunen velge å si ja eller nei til å bosette personen. 
-
-                ###### Norskopplæring og introduksjonsprogram for ukrainske flyktninger
-                Alle mellom 18 og 67 år har rett på norskopplæring i kommunen de bor i. Ukrainske flyktninger mellom 18 og 55 år har i tillegg rett på introduksjonsprogram. Det har ikke de mellom 55 og 67 år, men kommunen kan likevel velge å tilby det om de har kapasitet. 
-                
-                Introduksjonsprogrammet er et opplæringsprogram over seks måneder (maks ett år) som skal forberede flyktningen til deltakelse i arbeid eller utdanning.
-                
-                Foreldre med barn under 18 år får også foreldreveiledning. 
-                
-                ###### Integreringstilskudd ved bosetting av ukrainere
-                Kommunene har rett på integreringstilskudd når de bosetter ukrainske flyktninger.
-                
-                Det skal dekke kommunens utgifter til bosetting og integrering, inkludert introduksjonsprogrammet. 
-                
-                Jo raskere flyktningene kommer ut i arbeid eller utdanning, jo større andel av tilskuddene går rett til kommunene. 
-                
-                I bosettingsåret mottar kommunen følgende satser, alt etter hvem de bosetter:
-                - Enslig voksen: 241 000 kroner
-                - Voksen i familie 187 000 kroner
-                - Barn (0-18 år): 194 400
-                - Enslige mindreårige: 187 000 kroner
-                I tillegg kommer det enkelttilskudd, for:
-                - De over 60 år: 180 000 kroner
-                - Barn mellom 0-5 år: 27 800 kroner. 
-                - Bosetting av personer med nedsatt funksjonsevne eller atferdsvansker:
-                    - Engangstilskudd: 196 400 kroner
-                    - Årlig tilskudd: inntil 1 608 000 kroner
-                    
-                ###### Tilskudd for opplæring i norsk og samfunnskunnskap for ukrainske voksne
-                Kommunene mottar også persontilskudd på 39 700 kroner for voksne ukrainere (18-67 år) som får opplæring i norsk og samfunnskunnskap.  Hvis det er færre enn 150 personer i denne målgruppen, får kommunen et ekstra tilskudd opp mot 694 600 kroner.  
-                ###### Økonomisk støtte til ukrainere
-                Full deltakelse i introduksjonsprogrammet gir økonomisk støtte på omtrent 220 000 kroner i året. Det må skattes av støtten. Eventuell annen økonomisk støtte eller inntekt fra jobb, kan gjøre at flyktningen får mindre utbetalt.
-
-                Kilde: IMDi
-
-
-
-
-                """,
-                unsafe_allow_html=True
-            )
+    #        pass
 
 
 # Tab 2: Statistical description of the municipality
@@ -606,11 +556,11 @@ with tab2:
         
     if select_year == 2024:
         fastlege = """
-        ##### Fastlegekapasitet i {kommune} per 2023. 
+        ##### Fastlegekapasitet
         
         Det er ikke tilgjengelig tall for 2024. Derfor gjengis tall fra 2023.
         
-        I følge SSB henhold til tall fra SSB, har kommunen {lege_category} når det gjelder fastlegekapasitet.
+        Kommunen har {lege_category} når det gjelder fastlegekapasitet.
         
         I {kommune} var det {legeliste_n:,.0f} personer på venteliste i 2023. Det utgjør {legeliste_pct:.1f} prosent av alle som står på fastlegeliste. 
 
@@ -625,18 +575,15 @@ with tab2:
     else:
         
         fastlege = """
-        ##### Fastlegekapasitet i {kommune} per {year}
+        ##### Fastlegekapasitet
             
-        I henhold til tall fra SSB, har kommunen {lege_category} når det gjelder fastlegekapasitet.
-        
-        I {kommune} var det {legeliste_n:,.0f} personer på venteliste i **{year}**. Det utgjør {legeliste_pct:.1f} prosent av alle som står på fastlegeliste. 
-
+        Kommunen har {lege_category}.
         
         """.format(
             year = select_year,
-            kommune = kommuner.get(select_kommune), 
-            legeliste_n = oppsummert_komm_year['legeliste_n'].iloc[0],
-            legeliste_pct = oppsummert_komm_year['legeliste_pct'].iloc[0],
+            kommune = kommuner.get(select_kommune),
+            #legeliste_n = oppsummert komm_year['legeliste_n'].iloc[0],
+            #legeliste_pct = oppsummert_komm_year['legeliste_pct'].iloc[0],
             lege_category = oppsummert_komm_year['lege_category'].iloc[0]
         )
         
@@ -645,14 +592,19 @@ with tab2:
     st.markdown('''
             ##### Tilskudd fra IMDi
             
-            I 2022 og 2023 har kommunen mottatt totalt {sum_tilskudd:,.0f} kroner i tilskudd fra IMDi. 
+            Kommunene mottar tilskudd for flyktninger de fem første årene de er bosatt i kommunen. 
+            
+            I 2022 og 2023 har kommunen mottatt totalt {sum_tilskudd:,.0f} millioner kroner i tilskudd fra IMDi.  
+            
+            Beløpet skal dekke utgifter til bosetting og integrering av ukrainske flyktninger, i tillegg til flyktninger fra andre land.
             
             Merk at enkelte verdier kan være tilbakeholdt av IMDi av anonymiseringshensyn.
             
+            
             I **{year}** mottok kommunen følgende tilskudd: 
-            '''.format(
+            '''.format( 
                 year = select_year,
-                sum_tilskudd = tilskudd_komm_total
+                sum_tilskudd = tilskudd_komm_total/1000000
                 )
             )
     
@@ -1027,7 +979,7 @@ with tab4:
             )
             
     ema_text = """
-            ##### Bosatte enslige mindreårige (EMA) fra Ukraina
+            ##### Bosatte enslige mindreårige fra Ukraina
             """.format(
                 kommune = kommuner.get(select_kommune), 
                 year = select_year, 
@@ -1047,7 +999,7 @@ with tab4:
             column_config = {
                 'År': st.column_config.NumberColumn(format="%.0f"),
                 'ema_string': st.column_config.TextColumn(
-                    'Enslige mindreårige (EMA)', 
+                    'Enslige mindreårige', 
                     )}
             )
 
@@ -1088,16 +1040,22 @@ with tab4:
     ###### Anonymisering 
     Hvis det står *<5* i en eller flere tabeller, betyr det at antallet er mellom èn og fem. IMDi tilbakeholder eksakt antall for å unngå identifisering.            
     
-    ##### Om tallene
+    ##### Tallkilder
     Befolkningstall er hentet fra[ SSB-tabell 07459](https://www.ssb.no/statbank/table/07459). Tall hentet 22.02.2024.
     
     Fakta om venteliste hos fastlege og reservekapasitet er hentet fra [SSB-tabell 12005](https://www.ssb.no/statbank/table/12005). Tall hentet 18.03.2024.
     
-    Tall som beskriver antall ukrainere, antall øvrige øvrige og EMA er hentet fra Integrerings- og mangfolksdirektaret (IMDi). Tall hentet 19.02.2024.
+    Tall som beskriver antall ukrainere og antall øvrige flyktninger er sammenstilt av fra Integrerings- og mangfolksdirektaret. Tall mottatt 19.02.2024.
+    
+    Tall som beskriver enslige mindreårige er sammenstilt av Integrerings- og mangfolksdirektaret. Tall mottatt 09.02.2024.
     
     Anmodningstall er hentet fra [IMDis nettsider](https://www.imdi.no/planlegging-og-bosetting/bosettingstall/). Tall hentet 08.03.2024 kl. 12:20.
     
     Tilskuddstall er hentet fra [IMDis nettsider](https://www.imdi.no/om-integrering-i-norge/statistikk/F00/tilskudd). Tall hentet 11.03.2024.
+    
+    Bosettingstall fra 2015-2016 er hentet fra IMDis årsrapporter fra hhv. [2015](https://www.imdi.no/globalassets/dokumenter/arsrapporter-og-styrende-dokumenter/arsrapport-2015/imdis-arsrapport-2015.pdf) (side 4) og [2016](https://www.regjeringen.no/contentassets/59f5becfc2384dacb88e9ef4fcccba33/arsrapport-2016-imdi.pdf) (side 2).
+    
+    Tall på antall flyktninger fra Balkan på 1990-tallet er hentet fra [Store norske leksikon](https://snl.no/kollektiv_beskyttelse).
     """)
 
 # Tab 5: Expert interviews
@@ -1118,6 +1076,7 @@ with tab5:
     
     ##### Hva viser deres studie om helsesituasjonen til de ukrainske flyktningene? 
     — <span style='background-color:yellow;'>Seks av ti rapporterte at de hadde langvarig sykdommer eller plager. Omtrent en tredjedel rapporterte symptomer den siste uken som indikerer psykiske plager.</span>  
+    
     — Folkehelseinstituttet gjennomførte en spørreundersøkelse blant voksne flyktninger fra Ukraina som kom til Norge i 2022 der deltakerne vurderte sin egen helse. Det kom 731 svar, hvorav flesteparten var kvinner. Omtrent halvparten vurderte sin helse alt i alt som god eller svært god mens seks av ti rapporterte at de hadde langvarig sykdommer eller plager. Omtrent en tredjedel rapporterte symptomer den siste uken som indikerer psykiske plager. Funnene viser den selvurderte helsen til dem som har valgt å svare på undersøkelsen, og må tolkes noe forsiktig.
     
     ##### Hva viser deres studie om helsesituasjonen til ukrainske flyktninger sammenlignet med den norske befolkningen?
@@ -1181,22 +1140,30 @@ with tab5:
     
     ##### Hvem er ukrainerne som kommer? 
     — Tilstrømningen er veldig forskjellig fra 2015. Da var det en klar overvekt av menn som kom. Med ukrainerne var det i starten en stor overvekt kvinner, men etter de første månedene har andelen menn og kvinner vært mer lik, og holdt seg stabil.  
+    
     — I stor grad har ukrainerne høy utdannelse. 75 prosent har høyere utdannelse. Men her ser vi litt utvikling over tid. Større andel av de som kom i den første fasen hadde høyere utdannelse enn dem som har kommet i senere tid. Det samme gjelder engelskkunnskapene.  
+    
     — Dette er vanlig dynamikk. At de som kommer i første fase ofte er ressurssterke, mens etter hvert så kommer det mindre ressurssterke.  
     
     ##### En stor andel av de ukrainske flyktningene er eldre. Hvilke utfordringer byr dette på?
     — 5 prosent av de som kommer er over 66 år. Dette er mye høyere enn tidligere år når tallet har lagt på 1-2 prosent. Men de prosentene høres jo ikke så mye ut. Det viktige er at det totale antallet er utrolig mye høyere enn tidligere, og integreringsapparatet trenger helt annen kompetanse og et helt annet tilbud enn man har for folk i arbeidsdyktig alder som skal ut i et introduksjonsprogram.  
+    
     — Det er en stor omveltning å skulle ta imot en så stor andel med eldre flyktninger.  Det trengs andre tjenester enn det man har vært vant til tidligere.  
     
     ##### Hvordan har dette vært for kommunene?
     — Generelt har kommunene press på eldreomsorg og helsetjenester, og når det over natten kommer veldig mange flere, så blir det naturlig nok enda større press.  
+    
     — Flyktningtjenesten og introduksjonsprogrammet er ikke de eneste som skal ta imot flyktninger. Hele kommunen bosetter med hele tjenesteapparatet. Å skulle oppskalere alle tjenester er krevende.  
+    
     — Veldig mange har 2015 i tankene. De husker at de oppskalerte, men så stoppet det å komme folk. Da taper kommunene penger, for de slutter å få tilskudd for personer. Veldig mange kommuner har akkurat rukket å nedskalere etter 2015 når ukrainerne begynte å komme i 2022. 
+    
     — Normalt når vi tar imot flyktninger, tar vi for gitt at de skal bli. Man tror ikke at de skal returnere. Men denne gruppen har bare midlertidig opphold.  
+    
     — Å oppskalere tjenester innenfor skole, barnehage og helsetjenester er en veldig stor risiko for kommunene fordi ukrainere har midlertidig tillatelse.  Hadde kommunene visst at disse skulle bli i all overskuelig framtid kunne de ansatt mye leger, sykepleiere og lærere i faste stillinger fordi de hadde fått en større befolkning. Men siden man ikke vet om de skal være her i tre måneder, tre år eller resten av livet, så er det mange kommuner som ikke tør å oppskalere. I tillegg er det mangel på folk til å fylle slike stillinger som sykepleiere, lærere, leger etc. 
 
     ##### På hvilke tjenester er det størst press i kommunen? 
     — Helsevesenet og Nav er veldig presset. Lokalt NAV-personell sier at de ikke har kapasitet til å følge opp denne gruppen. De er rett og slett ikke nok ansatte til å følge opp en så stor økning av mennesker på kort tid.  
+    
     — Mitt inntrykk har vært at skole og barnehage har gått bra hittil, mens helse er et generelt problem fra før av.  
     
     ##### Hvordan løser kommunene dette?  
@@ -1205,30 +1172,44 @@ with tab5:
     ##### Har bosettingen av ukrainere vært forskjellig fra bosetting av andre flyktninger?
     
     — Det har kanskje vært flere likhetstrekk enn forskjeller i arbeidet med å ta imot ukrainere og andre flyktninger. Det var nok nokså urealistiske forventinger om i starten at dette skulle være helt annerledes.      
+    
     — Ukrainerne skulle bare gli inn, dette skulle bare være som arbeidsinnvandrere som skulle hoppe ut i jobb, helt problemfritt. Det har vist seg at denne gruppen også trenger støtte og hjelp for å komme seg ut i jobb og arbeid. Selv om de har høy utdanning får de ikke nødvendigvis brukt det i Norge når de ikke kan engelsk, og ikke norsk.    
+    
     — Ukrainere har generelt ikke gode engelskkunnskaper. Det er en myte som må avkreftes gang på gang, på gang.    
+    
     — Kun 11 prosent snakker flytende engelsk, og rundt 60 prosent kan nesten ikke engelsk i det hele tatt. Av de som kommer nå, er det en enda lavere andel som snakker engelsk.  
+    
+    ##### Skole
+    
+    — Usikkerheten for framtiden er framtredende for denne gruppen. 37 prosent svarer at barna fortsatt følger online ukrainsk skole. Oftest i tillegg til å følge norsk skole.
     
     ##### Så det har ikke vært enklere å få en ukrainer ut i jobb enn øvrige flyktninger? 
     — Ukrainere som har gått introduksjonstilbudet har cirka samme resultater som andre flyktninggrupper har hatt når det kommer til å komme seg ut i arbeid.  
+    
     — Når du ikke kan språket og har et annet alfabet så er det ikke nødvendigvis enkelt å få dem ut i jobb. Det er en helt urealistisk forventning.  
+    
     — I vår rapport finner vi at flere arbeidsgivere i utgangspunktet var mer positivt innstilt til å ansette ukrainske flyktninger enn øvrige flyktninger da krigen startet, men at de på en annen side sier at den midlertidig tillatelse gjør at de er mer skeptiske til å ansette dem. Det å ansette noen, og lære dem opp, tar tid og koster penger.  
+    
     — Det er en stor vilje for å lære seg norsk og komme ut i arbeidslivet, men det er veldig mange som møter på utfordringer. Språk trekkes frem som den største barrieren.
     
     ##### Hvilke tilbud gir kommunene til de over 55 år?
     
     — Det er veldig forskjellig om kommunen tilbyr norskopplæring og introduksjonsprogram til denne gruppen. Det handler om kapasitet. Små kommuner tilbyr i større grad. Det handler nok om at når de først har opprettet en klasse, kan de like gjerne fylle den opp. I større kommuner er det færre som tilbyr norskopplæring til denne gruppen som de ikke har plikt til å tilby.  
+    
     — Halvparten av kommunene opplyser at de ukrainske flyktningene har fått mindre norskundervisning og introduksjonsprogram enn hva de har hatt rett til. De har ikke hatt klasserom, de har ikke hatt nok lærere, de har ikke hatt mulighet til å oppskalere så raskt som behovet var.  
+    
     — Mange påpeker at dette er en gruppe vi ikke har vært vant til å ha en så høy andel av. Dette er en gruppe som blir litt glemt med at man ikke har så mye tilbud.  
+    
     — En del av de frivillige organisasjonene sier at de eldre er glemt, det er ikke noe tilbud for dem.
     
     ##### Hva vet dere om helsesituasjonen til de som kommer? 
     — Ukrainerne gir helsetjenesten mye dårligere score enn for eksempel skole og barnehage.  
+    
     — Det er en kulturkræsj på hva man er vant til i helsevesenet.  
+    
     — I Ukraina er de mye mer vant til å bli sendt til en spesialist direkte, de har ingen fastlegeordning. Det er også mye mer vanlig å få utskrevet medisiner for ting vi her i Norge er mer restriktive på.  
+    
     — Det var noen som ble sjokkert da de ble bedt om å drikke Cola fordi de hadde feber og vondt i magen. De ville ha medisin.  
-
-
     """
     
     with st.expander('Intervju med Vilde Hernes, forsker ved NIBR.'):
@@ -1250,9 +1231,12 @@ with tab5:
     Anders Holtan, overlege og leder for koordineringssenter for medisinsk evakuering ved Oslo Universitetssykehus.
           
     — Norge har per 8. mars 2024 evakuert 373 syke og skadde ukrainske pasienter til Norge. Medevac pasienter utgjør en liten andel ift det totale antallet ukrainske flyktninger som har kommet til Norge, men dette er mennesker vi vet er syke og som er mer krevende for helsevesenet enn en gjennomsnittlig asylsøker.    
+    
     — Av de 373 ukrainerne som har kommet via medisinsk evakuering har to tredeler kreft og en tredel skader.
+    
     ##### Pasientene bosettes i de forskjellige kommunene:     
     — Arbeidsbyrden for helsevesenet, både for kommunehelsetjenesten og spesialisthelsetjenesten, er vesentlig større for medevac pasienter enn for de andre ukrainerne som kommer.  
+    
     — Dette er som andre kreftpasienter og skadde som bor i kommunen; de kan være i behov av legetjenester, hjemmesykepleie, fysioterapi, pasientreiser, behov resepter, attester etc.  
     """
     
@@ -1276,20 +1260,77 @@ with tab5:
         
         ##### Hva vet du om de eldre ukrainerne som kommer til Norge?
         — Eldre mennesker er en spesielt sårbar gruppe. Det er utfordrende for denne gruppen uten noe særlig tilbud. Ukrainske eldre er ensomme i Norge.  
+        
         — Noen eldre kommer med familien sin, de blir ikke nødvendigvis integrert i Norge, men de har det nok psykisk bedre enn de som kom alene. De som kom alene det ganske vanskelig.  
+        
         — Om de har eller ikke har mulighet til å lære språket er det likevel alltid vanskeligere for eldre å lære seg et nytt språk.  
+        
         — Folk pensjonerer seg tidligere i Ukraina, og de har dårligere helse enn nordmenn.  
 
         ##### Løsning? 
 
         — Frivillige organisasjoner burde fått mer tilskudd slik at de kunne arrangert sosiale aktiviteter der eldre ukrainere de kan lære seg språket, ha et fellesskap og føle seg som en del av samfunnet.  
+        
         — Hvis de ikke går på introduksjonsprogram lærer de ikke om det norske samfunnet, og hvis de ikke kan språket kan de ikke snakke med naboen eller med folk på butikken. Det begrenser alle muligheter for deltakelse i samfunnet dramatisk.  
+        
         — Alle kommuner burde tilby introduksjonsprogram til de som ønsker det som en integreringsstrategi. 
 
 
         ##### Ekstra: tannlege.
         — Folk forteller at det tar lang tid å komme til tannlegen.  Når det for eksempel er snakk om tannregulering, drar flere tilbake til Ukraina for å gå til tannlege.  
+        
         — De få akuttbehandling i Norge, men behandlinger som kan vente blir ikke dekket - som for eksempel implantat eller krone. Flere velger derfor å dra på turer hjem til Ukraina å fikse dette.     
         """
 
         st.markdown(natyer_string)
+        
+with tab7: 
+    st.markdown(
+                """
+                
+                Kilde: IMDi
+                ##### Kommunene kan selv velge hvem og hvor mange flyktninger de vil bosette: 
+                
+                Hvert år får kommunene en forespørsel fra IMDi om å bosette et antall flyktninger i kommunen. De kan selv velge hvor mange de ønsker å ta imot.  
+                
+                Majoriteten av ukrainske asylsøkere bor på asylmottak spredt rundt i landet, mens de venter på å bli bosatt i en kommune og få innvilget flyktningstatus. Gjennomsnittlig ventetid for personer som bodde på mottak var per 31.01.24 omtrent 72 dager.
+                
+                På mottaket blir asylsøkerne kartlagt. Hvilken oppfølging vil de trenge i kommunen? Basert på denne informasjonen kan kommunen velge å si ja eller nei til å bosette personen. 
+
+                ##### Norskopplæring og introduksjonsprogram for ukrainske flyktninger
+                Alle mellom 18 og 67 år har rett på norskopplæring i kommunen de bor i. Ukrainske flyktninger mellom 18 og 55 år har i tillegg rett på introduksjonsprogram. Det har ikke de mellom 55 og 67 år, men kommunen kan likevel velge å tilby introduksjonsprogram dersom kommunen har kapasitet til det. 
+                
+                Introduksjonsprogrammet er et opplæringsprogram over seks måneder (maks ett år) som skal forberede flyktningen til deltakelse i arbeid eller utdanning.
+                
+                Foreldre med barn under 18 år får også foreldreveiledning. 
+                
+                ##### Integreringstilskudd ved bosetting av ukrainere
+                Kommunene har rett på integreringstilskudd når de bosetter ukrainske flyktninger. I tillegg kommer tilskuddene i årene etter bosettingsåret, i inntil fem år totalt. 
+                
+                Det skal dekke kommunens utgifter til bosetting og integrering, inkludert introduksjonsprogrammet. 
+                
+                Jo raskere flyktningene kommer ut i arbeid eller utdanning, jo større andel av tilskuddene går rett til kommunene. 
+                
+                I bosettingsåret mottar kommunen følgende satser, alt etter hvem de bosetter:
+                - Enslig voksen: 241 000 kroner
+                - Voksen i familie 187 000 kroner
+                - Barn (0-18 år): 194 400
+                - Enslige mindreårige: 187 000 kroner
+                I tillegg kommer det enkelttilskudd, for:
+                - De over 60 år: 180 000 kroner
+                - Barn mellom 0-5 år: 27 800 kroner. 
+                - Bosetting av personer med nedsatt funksjonsevne eller atferdsvansker:
+                    - Engangstilskudd: 196 400 kroner
+                    - Årlig tilskudd: inntil 1 608 000 kroner
+                    
+                Kommunene mottar de samme satsene for ukrainere som for andre flyktninger kommunen bosetter etter avtale med IMDi. 
+                    
+                ##### Tilskudd for opplæring i norsk og samfunnskunnskap for ukrainske voksne
+                Kommunene mottar også persontilskudd på 39 700 kroner for voksne ukrainere (18-67 år) som får opplæring i norsk og samfunnskunnskap.  Hvis det er færre enn 150 personer i denne målgruppen, får kommunen et ekstra tilskudd opp mot 694 600 kroner.  
+                
+                ##### Økonomisk støtte til ukrainere
+                Full deltakelse i introduksjonsprogrammet gir økonomisk støtte på omtrent 237 000 kroner i året. Det må skattes av støtten. Eventuell annen økonomisk støtte eller inntekt fra jobb, kan gjøre at flyktningen får mindre utbetalt.
+
+                Kilde: IMDi
+                """
+            )
