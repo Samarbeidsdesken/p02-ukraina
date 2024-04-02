@@ -135,7 +135,7 @@ oppsummert_komm_year = oppsummert_komm[oppsummert_komm['År'] == select_year]
 oppsummert_year = oppsummert[oppsummert['År'] == 2023] 
 
 oppsummert_year = oppsummert[oppsummert['Kommune'] == 'Aremark'] 
-print(oppsummert_year['ukrainere'])
+#print(oppsummert_year['ukrainere'])
 
 # Dataframe with 4 lines (gender x age) per year, per municipality
 flyktninger_fylke = flyktninger[flyktninger['Fylkenummer'].isin([select_fylke])] 
@@ -562,9 +562,7 @@ with tab2:
         
         Det er ikke tilgjengelig tall for 2024. Derfor gjengis tall fra 2023.
         
-        Kommunen har {lege_category} når det gjelder fastlegekapasitet.
-        
-        I {kommune} var det {legeliste_n:,.0f} personer på venteliste i 2023. Det utgjør {legeliste_pct:.1f} prosent av alle som står på fastlegeliste. 
+        {lege_category}.
 
         """.format(
             year = select_year,
@@ -579,7 +577,7 @@ with tab2:
         fastlege = """
         ##### Fastlegekapasitet
             
-        Kommunen har {lege_category}.
+        {lege_category}.
         
         """.format(
             year = select_year,
