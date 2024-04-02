@@ -430,7 +430,7 @@ with tab1:
     
     Til sammenligning ble det under “flyktningbølgen” i 2015-2016 bosatt i overkant av 26.000 personer.
     
-    Sist Norge gav flyktninger kollektiv beskyttelse var på 1990-tallet. Da kom det 16.000 flyktninger fra Balkan.
+    Sist Norge gav asylsøkere kollektiv beskyttelse var på 1990-tallet. Da kom det 16.000 flyktninger fra Balkan.
     
     #### Hvordan har kommunene møtt det høye antallet ukrainere?
     
