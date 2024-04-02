@@ -134,6 +134,9 @@ oppsummert_komm = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
 oppsummert_komm_year = oppsummert_komm[oppsummert_komm['År'] == select_year] 
 oppsummert_year = oppsummert[oppsummert['År'] == 2023] 
 
+oppsummert_year = oppsummert[oppsummert['Kommune'] == 'Aremark'] 
+print(oppsummert_year['ukrainere'])
+
 # Dataframe with 4 lines (gender x age) per year, per municipality
 flyktninger_fylke = flyktninger[flyktninger['Fylkenummer'].isin([select_fylke])] 
 flyktninger_komm = flyktninger[flyktninger['Kommunenummer'].isin([select_kommune])] 
