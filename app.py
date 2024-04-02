@@ -1298,7 +1298,8 @@ with tab5:
         — De få akuttbehandling i Norge, men behandlinger som kan vente blir ikke dekket - som for eksempel implantat eller krone. Flere velger derfor å dra på turer hjem til Ukraina å fikse dette.     
         """
 
-        st.markdown(natyer_string)
+        #st.markdown(natyer_string)
+        st.markdown("Intervjuet publiseres 03.04.24")
         
 with tab7: 
     st.markdown(
