@@ -132,9 +132,9 @@ select_year = st.sidebar.selectbox(
 # dataframe with one line per year, per municipality. 
 oppsummert_komm = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
 oppsummert_komm_year = oppsummert_komm[oppsummert_komm['År'] == select_year] 
-oppsummert_year = oppsummert[oppsummert['År'] == 2023] 
+oppsummert_komm_2024 = oppsummert_komm[oppsummert_komm['År'] == 2024] 
 
-oppsummert_year = oppsummert[oppsummert['Kommune'] == 'Aremark'] 
+#oppsummert_year = oppsummert[oppsummert['Kommune'] == 'Aremark'] 
 #print(oppsummert_year['ukrainere'])
 
 # Dataframe with 4 lines (gender x age) per year, per municipality
@@ -512,16 +512,16 @@ with tab2:
 
     summarized = """
     
-    {kommune} har bosatt {sum_total_ukr:,.0f} ukrainske flyktninger siden krigen brøt ut. De utgjør {ukr_pct_pop:.1f} prosent av befolkningen, og {ukr_pct_ovr:.1f} prosent av alle bosatte flyktninger i samme periode. 
+    {kommune} har bosatt {sum_total_ukr:,.0f} ukrainske flyktninger siden krigen brøt ut. De utgjør {ukr_pct_pop:.2f} prosent av befolkningen, og {ukr_pct_ovr:.2f} prosent av alle bosatte flyktninger i samme periode. 
     
-    I **{year}** ble det bosatt {sum_total_ukr_year} ukrainere i kommunen, noe som utgjør {ukr_pct_pop_year:.1f} prosent av befolkningen.  
+    I **{year}** ble det bosatt {sum_total_ukr_year} ukrainere i kommunen, noe som utgjør {ukr_pct_pop_year:.2f} prosent av befolkningen.  
     
     """.format(
                 kommune = kommuner.get(select_kommune), 
                 year = select_year, 
                 sum_total_ukr = oppsummert_komm['ukrainere'].sum(),
                 sum_total_ukr_year = oppsummert_komm_year['ukrainere'].sum(),  
-                ukr_pct_pop_year = oppsummert_komm_year['ukr_pct_pop'].sum(),  
+                ukr_pct_pop_year = oppsummert_komm_2024['ukr_pct_pop'].sum(),  
                 #sum_total_pop = oppsummert_komm['pop'].sum(),
                 ukr_pct_pop = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm_year['pop'].sum())*100,
                 ukr_pct_ovr = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm['innvandr'].sum())*100
