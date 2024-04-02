@@ -638,7 +638,8 @@ with tab6:
     Hvilken psykisk helsehjelp har de fått i Norge? 
 
     Hvordan er dette sammenlignet med asylsøkerne som kommer fra for eksempel Gaza?  
-      
+       
+       
       
     ##### Hvor blir det av pengene?
     
@@ -650,7 +651,9 @@ with tab6:
     
     Sitter kommunen igjen med økonomisk overskudd, og hva gjør de eventuelt med pengene? 
     
-    Se pengebruken opp mot hvilke tjenester flyktningene faktisk har fått i kommunen. Er flyktningene misfornøyd med tjenestene? Har Statsforvalter avdekket avvik? 
+    Se pengebruken opp mot hvilke tjenester flyktningene faktisk har fått i kommunen. Er flyktningene misfornøyd med tjenestene? Har Statsforvalter avdekket avvik?  
+       
+       
     
     ##### Vil bosette færre flyktninger enn kommunen er anmodet om
     
@@ -658,7 +661,9 @@ with tab6:
     
     **Mulig historie**: En ukrainsk flyktning som sitter på asylmottak og venter på å få tildelt en kommune. Eventuelt en som er bosatt, men som ventet lenge på mottak.
     
-    Hva er grunnen til at kommunen ikke ønsker å bosette antallet flyktninger de er bedt om? Burde de ta imot flere? Se på kommunens fastlegekapasitet, økonomi etc.
+    Hva er grunnen til at kommunen ikke ønsker å bosette antallet flyktninger de er bedt om? Burde de ta imot flere? Se på kommunens fastlegekapasitet, økonomi etc.  
+       
+       
     
     ##### Vil bosette flere flyktninger enn kommunen er anmodet om 
     **Mulig sak**: Kommunen ble anmodet om å bosette x antall flyktninger, men har selv bedt om å ta imot x.
@@ -670,12 +675,16 @@ with tab6:
     Hvor mange flyktninger har flyttet fra kommunen?  
     
     Er penger et insentiv for å ta imot flere?  
+       
+       
 
     ##### Hvor mange flyktninger har kommunen bosatt sammenlignet med nabokommunene? 
     
     **Mulig sak**: Kommunen tar imot mange flyktninger i forhold til befolkningstallet.  Kommunen er på x plass i fylket.  
     
-    Sammenlign din kommune med sammenlignbare kommuner (folketall, økonomi og sentralitet). Velg relevante grupperinger i venstre marg på nettsiden.
+    Sammenlign din kommune med sammenlignbare kommuner (folketall, økonomi og sentralitet). Velg relevante grupperinger i venstre marg på nettsiden.  
+       
+       
     
     ##### Ukrainske flyktninger over 55 år får ikke tilbud om introduksjonsprogram
     
@@ -688,6 +697,8 @@ with tab6:
     Hva gjør kommunen for å integrere dem i samfunnet?  Hva gjør frivillige organisasjoner?
     
     Hva er den langsiktige planen for denne gruppen?  
+       
+       
     
     ##### Kommunen gir tilbud til ukrainske flyktninger over 55 år, selv om de ikke må
     
@@ -700,6 +711,8 @@ with tab6:
     Kommer de over 55 år ut i jobb etter endt introduksjonsprogram? 
     
     Hvor mange av de over 55 år benytter seg av introduksjonsprogrammet?  
+       
+       
 
     ##### Så mange ukrainere har kommet ut i jobb 
     
@@ -711,7 +724,9 @@ with tab6:
     
     Hvor mange har fullført introduksjonsprogrammet, men ikke kommet i jobb? Hva er grunnen til det? 
     
-    Hvilken tilrettelegging kreves ved ansettelse, og hvilken kunnskap tilfører de eventuelt bedriften?
+    Hvilken tilrettelegging kreves ved ansettelse, og hvilken kunnskap tilfører de eventuelt bedriften?  
+       
+       
     
     ##### Ukrainerne har dårligere helse enn nordmenn 
     
@@ -723,7 +738,9 @@ with tab6:
     
     Har det påvirket kommunehelsetjenestene? Hvordan har kommunen løst et eventuelt økt press? 
     
-    I denne kommunen får de x kroner ekstra i tilskudd for pleietrengende. Hva har pengene gått til? 
+    I denne kommunen får de x kroner ekstra i tilskudd for pleietrengende. Hva har pengene gått til?  
+       
+       
 
     ##### Økt ventetid på mottak for andre asylsøkere  
     
@@ -789,12 +806,12 @@ with tab3:
     
     ##### Tips til historier
     * Finner dere løsningsorienterte historier som viser hvordan kommunen har løst sine utfordringer? Jobber det ukrainere på sykehjem, på den lokale matbutikken, i barnehager/skoler? Er det noen ukrainere som selv hjelper til med å få hjulene til å gå rundt i kommunen? 
-    * Har det kommet noen som har tjenestegjort i krigen? Hvilken historie har de å fortelle? Hvem er han? Hvordan ble han rekruttert? Hvorfor endte han opp i din kommune?
+    * Har det kommet noen som har tjenestegjort i krigen? Hvilken historie har de å fortelle? Hvem er hen? Hvordan ble hen rekruttert? Hvorfor endte hen opp i din kommune?
     * Er det noen eldre som bor på sykehjem, sammen med nordmenn med erfaring fra andre verdenskrig?
-    * Finn en sykepleiere som kjenner på det økte presset i kommunen. 
-    * Finn en rektor/lærer som har fått en ukrainsk elev i klasserommet. 
+    * Snakk med sykepleiere som kjenner på det økte presset i kommunen. 
+    * Eller en rektor/lærer som har fått en ukrainsk elev i klasserommet. 
     * Lærer på introduksjonsprogram.
-    * Hvis din kommune har asylmottak, 
+    * Oppsøk et asylmottak hvis det finnes i din kommune. 
 
     """)
     
@@ -1094,7 +1111,7 @@ with tab5:
     ##### Hvorfor er helsen til ukrainere dårligere enn helsen til den norske befolkningen?
     — Undersøkelsen kan ikke si noe om årsaken til dårligere helse, men det kan være flere årsaker til at helsen til flyktningene kan være dårligere enn den norske befolkningen, og bildet er sammensatt. Fra før vet vi at flyktninger er en gruppe med dårligere helse sammenlignet med personer som har innvandret av andre grunner. Situasjonen i hjemlandet, samt hendelser før og under migrasjonen, kan påvirke en persons helse, i tillegg til levekår, livstils- og miljøfaktorer, og bruk av helsetjenester.
     I Europa sammenheng skårer Ukraina dårligere på flere helseindikatorer, også før fullskala invasjonen. Det er rapportert om regionale forskjeller i tilgang og kvaliteten på helsetjenester i Ukraina og pågående reformer har mål om å forbedre helsetjenesten. <span style='background-color:yellow;'>Fullskala invasjonen i Ukraina har i tillegg ført til redusert tilgang til helsehjelp og medisiner som kan ha resultert i behandlingsavbrudd.</span>
-    Til slutt har geografiske og juridiske faktorer noe å si om helsen til de som ankommer. De som flykter ofte er friskere og yngre enn den øvrige befolkningen i opprinnelseslandet. Imidlertid kan den korte reiseveien fra Ukraina og færre juridiske hindringer bidra til at flere ukrainske flyktninger med dårligere helse ankommer, sammenlignet med flyktninger fra andre land.
+    Til slutt har geografiske og juridiske faktorer noe å si om helsen til de som ankommer. <span style='background-color:yellow;'>De som flykter ofte er friskere og yngre enn den øvrige befolkningen i opprinnelseslandet. Imidlertid kan den korte reiseveien fra Ukraina og færre juridiske hindringer bidra til at flere ukrainske flyktninger med dårligere helse ankommer, sammenlignet med flyktninger fra andre land.</span>
     
     ##### Hvilke utfordringer byr dette på?
     — Vi har ikke undersøkt dette spesifikt. Det har kommet særlig mange kvinner og barn fra Ukraina og de kan ha ulike behov enn andre flyktninggrupper Norge tidligere har erfaring med å motta. Så det har nok vært en bratt læringskurve bare på grunn av den annerledes demografien. <span style='background-color:yellow;'>Undersøkelsen vår, samt erfaringer fra mottaksapparat og kommunen, viser at en andel av flyktningene har behov for oppfølging av ulike typer helseplager, inkludert langvarige sykdommer, tannhelse og psykiske plager. Så det kan være behov for ulike type helsetjenester. I tillegg er det et stort behov for oversettelser og tolk fordi kun en mindre del av ukrainere kan engelsk (eller norsk) ved ankomst.</p>
