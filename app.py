@@ -509,7 +509,9 @@ with tab1:
 
 # Tab 2: Statistical description of the municipality
 with tab2:
-
+    
+    print(oppsummert_komm)
+    
     summarized = """
     
     {kommune} har bosatt {sum_total_ukr:,.0f} ukrainske flyktninger siden krigen brøt ut. De utgjør {ukr_pct_pop:.2f} prosent av befolkningen, og {ukr_pct_ovr:.2f} prosent av alle bosatte flyktninger i samme periode. 
@@ -521,9 +523,9 @@ with tab2:
                 year = select_year, 
                 sum_total_ukr = oppsummert_komm['ukrainere'].sum(),
                 sum_total_ukr_year = oppsummert_komm_year['ukrainere'].sum(),  
-                ukr_pct_pop_year = oppsummert_komm_2024['ukr_pct_pop'].sum(),  
+                ukr_pct_pop_year = oppsummert_komm_year['ukr_pct_pop'].sum(),  
                 #sum_total_pop = oppsummert_komm['pop'].sum(),
-                ukr_pct_pop = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm_year['pop'].sum())*100,
+                ukr_pct_pop = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm_2024['pop'].sum())*100,
                 ukr_pct_ovr = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm['innvandr'].sum())*100
                 )
     summarized_anmodning = """
@@ -636,6 +638,7 @@ with tab6:
     Hvilken psykisk helsehjelp har de fått i Norge? 
 
     Hvordan er dette sammenlignet med asylsøkerne som kommer fra for eksempel Gaza?  
+      
       
     ##### Hvor blir det av pengene?
     
