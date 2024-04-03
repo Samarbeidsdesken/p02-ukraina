@@ -1078,6 +1078,11 @@ with tab5:
     
     st.markdown(
         """
+        Rapporter: 
+        - Angela Labberton  mfl. (FHI) - [Helsetjenestebehov blant flyktninger fra Ukraina som kom til Norge i 2022](https://www.fhi.no/nyheter/2023/ukrainske-flyktninger-darligere-helse-og-betydelig-darligere-tannhelse/).  
+        - Vilde Hernes mfl. (OsloMet) - [Ukrainian refugees – experiences from the first phase in Norway](https://oda.oslomet.no/oda-xmlui/handle/11250/3029151).
+        - Institutt for samfunnsforskning - [Tilrettelegging for integrering av flyktninger i Norge](https://samfunnsforskning.brage.unit.no/samfunnsforskning-xmlui/bitstream/handle/11250/3116715/ISF_Rapport_3_24_UUweb.pdf).  
+        
         Samarbeidsdesken har gjennomført intervjuer og sitatsjekk med ekspertkilder. Sitatene kan brukes fritt. 
         """
     )
@@ -1087,7 +1092,7 @@ with tab5:
     
     Det er viktig at nyansene og forbehold kommer frem og at ikke svarene klippes ut på en måte som gjør at meningen blir endret. Også skillet mellom det som er funnet i undersøkelsen versus andre vurderinger.
     
-    Rapporten er tilgjengelig [her](https://www.fhi.no/nyheter/2023/ukrainske-flyktninger-darligere-helse-og-betydelig-darligere-tannhelse/).
+    Du finne rapporten i punktlisten øverst på siden. 
     
     ##### Hva viser deres studie om helsesituasjonen til de ukrainske flyktningene? 
     — <span style='background-color:yellow;'>Seks av ti rapporterte at de hadde langvarig sykdommer eller plager. Omtrent en tredjedel rapporterte symptomer den siste uken som indikerer psykiske plager.</span>  
@@ -1151,7 +1156,7 @@ with tab5:
     
     Vilde Hernes med flere har undersøkt erfaringene til ukrainske flyktninger som har kommet til Norge etter Russlands invasjon i 2022. 
     
-    Rapporten er tilgjengelig [her](https://oda.oslomet.no/oda-xmlui/handle/11250/3029151).
+    Du finne rapporten i punktlisten øverst på siden.  
     
     ##### Hvem er ukrainerne som kommer? 
     — Tilstrømningen er veldig forskjellig fra 2015. Da var det en klar overvekt av menn som kom. Med ukrainerne var det i starten en stor overvekt kvinner, men etter de første månedene har andelen menn og kvinner vært mer lik, og holdt seg stabil.  
@@ -1267,38 +1272,76 @@ with tab5:
                 )
         st.markdown(ous_string)
         
-    with st.expander('Intervju med Nataliya Yeremeyeva, nestleder i ukrainsk forening'):
+    with st.expander('Intervju med Nataliya Yeremeyeva, sosiolog og medlem i ukrainsk forening.'):
         
         natyer_string = """
         
-        Nataliya Yeremeyeva, nestleder i ukrainsk forening.
+        ##### Eldre er ensomme: 
+        — Eldre flyktninger er en spesielt sårbar gruppe som består av mange med relativt lave norskkunnskaper og et begrenset sosialt nettverk.  
         
-        ##### Hva vet du om de eldre ukrainerne som kommer til Norge?
-        — Eldre mennesker er en spesielt sårbar gruppe. Det er utfordrende for denne gruppen uten noe særlig tilbud. Ukrainske eldre er ensomme i Norge.  
+        — Det er ikke uvanlig at eldre innvandrere opplever ensomhet i enda større grad enn den øvrige befolkningen i Norge, men eldre fra Ukraina som har kommet til Norge på grunn av krigen befinner seg i en enda vanskeligere situasjon. De fleste måtte forlate hjemmet mot sin vilje.  
         
-        — Noen eldre kommer med familien sin, de blir ikke nødvendigvis integrert i Norge, men de har det nok psykisk bedre enn de som kom alene. De som kom alene det ganske vanskelig.  
+        — Det å vite at hjemlandet er i krig, og at det kanskje aldri blir mulig for dem å komme tilbake til der de hører til, er vanskelig.  
         
-        — Om de har eller ikke har mulighet til å lære språket er det likevel alltid vanskeligere for eldre å lære seg et nytt språk.  
+        — Det å starte et nytt liv, og bygge opp et sosiale nettverket er ikke lett når man blir eldre.  
         
-        — Folk pensjonerer seg tidligere i Ukraina, og de har dårligere helse enn nordmenn.  
+        — Det er vanskelig å lære et nytt språk og bli godt integrert i det nye samfunnet for mange eldre innvandrere, men det er enda vanskeligere å håndtere psykiske lidelser forårsaket av ensomhet og ekskludering. Eldre innvandrere kan være en viktig ressurs for det norske samfunnet. For å ivareta deres psykiske helse betyr det også å investere i mangfoldige Norge.
 
-        ##### Løsning? 
+       ##### Aktiviteter for dem over 55 år: 
 
-        — Frivillige organisasjoner burde fått mer tilskudd slik at de kunne arrangert sosiale aktiviteter der eldre ukrainere de kan lære seg språket, ha et fellesskap og føle seg som en del av samfunnet.  
-        
-        — Hvis de ikke går på introduksjonsprogram lærer de ikke om det norske samfunnet, og hvis de ikke kan språket kan de ikke snakke med naboen eller med folk på butikken. Det begrenser alle muligheter for deltakelse i samfunnet dramatisk.  
-        
-        — Alle kommuner burde tilby introduksjonsprogram til de som ønsker det som en integreringsstrategi. 
+        — Ukrainske eldre i Norge, som alle andre, trenger å føle seg som en del av felleskapet. De som bor i kommuner som har mulighet til å tilby dem introduksjonsprogrammet er heldige. Da får de sjansen til å være sammen med andre og delta i aktiviteter. 
 
+        — Noen prøver å skape disse mulighetene selv ved å etablere sosiale arenaer der de kan være sammen med andre. De har for eksempel et ukrainsk kor i Oslo organisert av og for de eldre, og en annen gruppe eldre ukrainere deltar daglig i pro-ukrainske demonstrasjoner i Oslo sentrum. 
 
-        ##### Ekstra: tannlege.
-        — Folk forteller at det tar lang tid å komme til tannlegen.  Når det for eksempel er snakk om tannregulering, drar flere tilbake til Ukraina for å gå til tannlege.  
-        
-        — De få akuttbehandling i Norge, men behandlinger som kan vente blir ikke dekket - som for eksempel implantat eller krone. Flere velger derfor å dra på turer hjem til Ukraina å fikse dette.     
+        ##### Tilbud til de eldre: 
+        — Hvis de eldre ikke går på introduksjonsprogram, så lærer de ikke om det norske samfunnet, og hvis de ikke kan språket kan de ikke snakke med naboen eller med folk på butikken. 
+
+        — Det er alltid en fordel hvis kommuner kan tilby et tilpasset introduksjonsprogram til alle uansett alder som kan åpne flere muligheter for sosial deltakelse
+
+        — Introduksjonsprogrammet er en mulighet til å lære om det norske samfunnet og bli integrert i samfunnet.  Der en viktig investering Norge gjør i den framtidige gjenoppbyggingen av Ukraina. Dette er viktig kunnskap som ukrainere kan ta med seg tilbake til hjemlandet når krigen er slutt. 
+
+        — Det er også en måte å forebygge psykisk uhelse og gjøre hverdagen mer meningsfull. 
+
+        — Frivillige organisasjoner bør fått mer tilskudd slik at de kan arrangere sosiale aktiviteter der eldre ukrainere de kan lære seg språket, ha et fellesskap og føle seg som en del av samfunnet. 
+
+        — Det er kjempeviktig at både donorer og frivillige organisasjoner er oppmerksomme på at ensomhet og ekskludering kan være et stort problem for eldre innvandrere, ukrainere er ingen unntak. 
+
+        — Sosiale aktiviteter for folk med dårlige norskkunnskaper og et begrenset sosiale nettverk, er utrolig viktig for både mental og fysisk helse. Aktiviteter som tilbys må selvfølgelig tilpasses målgruppes behov, men må skape en integreringsarena som eldre innvandrere ikke kan organisere selv. 
+
+        — Sosiale aktiviteter kan hjelpe eldre innvandrere å lære norsk, få nye venner og føle seg en del av det norske samfunnet. Det er ikke minst en mulighet til å dele sin kultur med andre.
+
+        ##### Verst for de eldre som ikke har familie: 
+        — Noen eldre kommer med familien sin, de blir ikke nødvendigvis integrert i det norske samfunnet, men de har det trolig bedre psykisk enn de som har kommet alene. 
+
+        — Mange ukrainere fortsatt husker tiden da det var ganske vanlig for flere generasjoner å bo under samme tak som resultatet av den sovjetiske boligpolitikken. Selv om situasjonen har begynt å endre seg ila siste 20 år, er mange ukrainske eldre likevel i stor grad involvert i livene til sine barn og barnebarn. Det er ikke uvanlig at de hjelper å lage mat, passe på huset og oppdra barnebarn. 
+
+        — De som kom til Norge med eller til sin familie har i hvert fall en mulighet til å kompensere mangel på det sosiale livet med familieaktiviteter. De som kom alene, har dessverre ikke det, og er i stor grad avhengig av eksterne tilbud.  
+
+        ##### Pensjon og helse: 
+        — Før 2018 var pensjonsalderen i Ukraina 55 år for kvinner og 60 år for menn. Pensjonssystemet har endret seg siden da, og nå kan man tidligst pensjonere seg etter fylte 60 år uavhengig kjønn. Så pensjonsalderen i Ukraina er likevel lavere enn i Norge. 
+
+        — Det å forlate arbeidsmarkedet såpass tidlig påvirker luten tvil livstilen.  Ukrainske eldre er mer aktive nå enn i min barndom for cirka 30 år siden, men likevel er det fortsatt mange fordommer og barrierer som forhindrer aktiv aldring. 
+
+        — Helse er selvfølgelig en viktig faktor her. La oss ikke glemme at gjennomsnittlig levealder i Ukraina har lenge vært en av de laveste i Europa, og Russlands fullskala krig har gjort situasjonen betydelig verre. 
+
+        — Allerede før krigen viste forskning at alderdom i Ukraina begynte allerede ved 57 års-alderen, hvis man ser på sykdomsutvikling. 
+
         """
 
-        #st.markdown(natyer_string)
-        st.markdown("Intervjuet publiseres 03.04.24")
+        
+        
+        _, imgcol = st.columns([5, 1])
+        with imgcol:
+            with open("img/Nataliya Yeremeyeva.jpg", "rb") as file:
+                btn = st.download_button(
+                    label="Last ned pressebilde",
+                    data=file,
+                    file_name="Nataliya Yeremeyeva kredittering privat.jpg",
+                    mime="image/jpg"
+                )
+                
+        st.markdown(natyer_string)
+        #st.markdown("Intervjuet publiseres 03.04.24")
         
 with tab7: 
     st.markdown(
