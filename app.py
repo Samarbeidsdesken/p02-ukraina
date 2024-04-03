@@ -463,7 +463,7 @@ with tab1:
     
     #### Ukrainere er sykere enn nordmenn
     
-    — Seks av ti ukrainere rapporterte at de hadde langvarige sykdommer eller plager, sier forsker ved Folkehelseinstituttet (FHI), Angela Susan Labberton. (Forskningsrapport og intervju ligger under "Ekspertkilder og rapporter").
+    — Seks av ti ukrainere rapporterte at de hadde langvarige sykdommer eller plager, sier forsker ved Folkehelseinstituttet (FHI), Angela Labberton. (Forskningsrapport og intervju ligger under "Ekspertkilder og rapporter").
     
     FHI har sett på selvrapportert helse- og helsetjenestebehov i et utvalg voksne flyktninger fra Ukraina, sammenlignet med den norske befolkningen. 
 
@@ -471,7 +471,7 @@ with tab1:
     ##### Her er mulige nyhetspoeng om helse:
 
     - Ukrainere har dårligere helse enn nordmenn og betydelig dårligere tannhelse, sier rapporten til FHI.  
-    - Ingen sitter med en oversikt over hvor mange ukrainere som har mottatt behandling via primær- eller spesialisthelsetjenesten, ifølge Angela Susan Labberton ved FHI.  
+    - Ingen sitter med en oversikt over hvor mange ukrainere som har mottatt behandling via primær- eller spesialisthelsetjenesten, ifølge Angela Labberton ved FHI.  
     - 70 prosent av de ukrainske flyktningene som har ønsket psykisk helsehjelp, har ikke fått det, viser en forskningsrapport fra Nasjonalt kunnskapssenter om vold og traumatisk stress (NKVTS). (Forskningsrapport ligger under "Ekspertkilder og rapporter").
     - Tall fra Verdensbanken viser at forventet levealder for en ukrainer før krigen var 70 år. Nordmenns forventede levealder er 83 år.  
     - Norge har per 8. mars 2024 evakuert 373 syke og skadde ukrainske pasienter.  To tredeler har kreft og en tredel skader. (Intervju med Anders Holtan, overlege ved nasjonalt medevac senter ved Oslo Universitetssykehus, ligger under "Ekspertkilder og rapporter")  
@@ -1137,7 +1137,7 @@ with tab5:
 
     """
     
-    with st.expander('Intervju med Angela S. Labberton ved Folkehelseinstituttet'):
+    with st.expander('Intervju med Angela Labberton ved Folkehelseinstituttet.'):
         _, imgcol = st.columns([5, 1])
         with imgcol:
             with open("img/Angela Labberton kredittering Simen Gald.jpg", "rb") as file:
@@ -1260,7 +1260,7 @@ with tab5:
     — Dette er som andre kreftpasienter og skadde som bor i kommunen; de kan være i behov av legetjenester, hjemmesykepleie, fysioterapi, pasientreiser, behov resepter, attester etc.  
     """
     
-    with st.expander('Intervju med Anders Holtan, Oslo universitetssykehus'):
+    with st.expander('Intervju med Anders Holtan, Oslo universitetssykehus.'):
         _, imgcol = st.columns([5, 1])
         with imgcol:
             with open("img/Anders Holtan.jpg", "rb") as file:
