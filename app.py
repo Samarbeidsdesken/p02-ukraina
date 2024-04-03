@@ -453,7 +453,7 @@ with tab1:
     
     — Det er en stor omveltning å skulle ta imot en så stor andel med eldre flyktninger, sier Vilde Hernes ved OsloMet.  
     
-    — Ukrainske eldre er ensomme i Norge. Det er utfordrende for denne gruppen som står uten noe særlig tilbud, sier Nataliya Yeremeyeva. Hun er nestleder i Den ukrainske forening i Norge. (Intervju ligger under "Ekspertkilder og rapporter").
+    — Ukrainske eldre er ensomme i Norge. Det er utfordrende for denne gruppen som står uten noe særlig tilbud, sier Nataliya Yeremeyeva. Hun er medlem i Den ukrainske forening i Norge. (Intervju ligger under "Ekspertkilder og rapporter").
 
     ##### Her er mulige nyhetspoeng om de eldre flyktningene:
     - Hjelpeorganisasjoner peker på de eldre flyktningene som «de glemte», ifølge Vilde Hernes fra OsloMet.  
