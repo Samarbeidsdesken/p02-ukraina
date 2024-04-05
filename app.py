@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import streamlit.components.v1 as components
 from datetime import date
-import time
+#import time
 import functions
 apptitle = 'Ukrainske flyktninger i norske kommuner'
 
