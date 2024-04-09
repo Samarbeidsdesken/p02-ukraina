@@ -4,7 +4,9 @@ import streamlit.components.v1 as components
 from datetime import date
 #import time
 import functions
+import io
 apptitle = 'Ukrainske flyktninger i norske kommuner'
+
 
 
 st.set_page_config(
@@ -128,6 +130,11 @@ select_year = st.sidebar.selectbox(
 # Filter data and create different dataframes #
 # ------------------------------------------- # 
 
+# Downloadable data frame
+dfdownload = oppsummert[['Kommunenummer', 'Kommune', 'År', 'innvandr', 'innvandr_pct_pop', 'ukrainere', 'ukr_pct_pop']]
+dfdownload = dfdownload.rename(columns={'innvandr': 'Øvrige innvandrere', 'innvandr_pct_pop': 'Øvrige innvandrere som andel av befolkning', 'ukrainere': 'Ukrainere', 'ukr_pct_pop': 'Ukrainere som andel av befolkning'})
+dfdownload = dfdownload.sort_values(['Kommunenummer', 'År'])
+
 # dataframe with one line per year, per municipality. 
 oppsummert_komm = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
 oppsummert_komm_year = oppsummert_komm[oppsummert_komm['År'] == select_year] 
@@ -178,6 +185,20 @@ tilskudd_komm_total = tilskudd_komm_total['Antall'].sum()
 # In the sidebar, make a top list for the selected group #
 # ------------------------------------------------------ #
 with st.sidebar:
+    
+    buffer = io.BytesIO()
+    
+    with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+         
+        dfdownload.to_excel(writer, sheet_name='Ark1', index = False)
+        writer._save()
+        
+        download = st.download_button(
+            label = 'Last ned alle data',
+            data = buffer,
+            file_name = 'ukraina.xlsx',
+            mime = 'application/vnd.ms-excel'
+        )
     
     toplist = """
     ### Lag toppliste for {year}
@@ -508,8 +529,6 @@ with tab1:
 
 # Tab 2: Statistical description of the municipality
 with tab2:
-    
-    print(oppsummert_komm)
     
     summarized = """
     
