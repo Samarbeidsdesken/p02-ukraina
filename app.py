@@ -130,6 +130,8 @@ select_year = st.sidebar.selectbox(
 # Filter data and create different dataframes #
 # ------------------------------------------- # 
 
+# test
+
 # Downloadable data frame
 dfdownload = oppsummert[['Kommunenummer', 'Kommune', 'År', 'innvandr', 'innvandr_pct_pop', 'ukrainere', 'ukr_pct_pop']]
 dfdownload = dfdownload.rename(columns={'innvandr': 'Øvrige innvandrere', 'innvandr_pct_pop': 'Øvrige innvandrere som andel av befolkning', 'ukrainere': 'Ukrainere', 'ukr_pct_pop': 'Ukrainere som andel av befolkning'})
