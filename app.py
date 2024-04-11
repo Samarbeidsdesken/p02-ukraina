@@ -5,6 +5,7 @@ from datetime import date
 #import time
 import functions
 import io
+import math
 apptitle = 'Ukrainske flyktninger i norske kommuner'
 
 
@@ -133,8 +134,8 @@ select_year = st.sidebar.selectbox(
 # test
 
 # Downloadable data frame
-dfdownload = oppsummert[['Kommunenummer', 'Kommune', 'År', 'innvandr', 'innvandr_pct_pop', 'ukrainere', 'ukr_pct_pop']]
-dfdownload = dfdownload.rename(columns={'innvandr': 'Øvrige innvandrere', 'innvandr_pct_pop': 'Øvrige innvandrere som andel av befolkning', 'ukrainere': 'Ukrainere', 'ukr_pct_pop': 'Ukrainere som andel av befolkning'})
+dfdownload = oppsummert[['Kommunenummer', 'Kommune', 'År', 'ovrige', 'ovr_prikket', 'innvandr_pct_pop', 'ukrainere', 'ukr_prikket', 'ukr_pct_pop']]
+dfdownload = dfdownload.rename(columns={'ovrige': 'Øvrige innvandrere', 'ovr_pct_pop': 'Øvrige innvandrere som andel av befolkning', 'ovr_prikket': 'Øvrige - kommentar', 'ukrainere': 'Ukrainere', 'ukr_prikket': 'Ukrainere - kommentar', 'ukr_pct_pop': 'Ukrainere som andel av befolkning'})
 dfdownload = dfdownload.sort_values(['Kommunenummer', 'År'])
 
 # dataframe with one line per year, per municipality. 
@@ -534,9 +535,11 @@ with tab2:
     
     summarized = """
     
+    ##### Bosatte
+    
     {kommune} har bosatt {sum_total_ukr:,.0f} ukrainske flyktninger siden krigen brøt ut. De utgjør {ukr_pct_pop:.2f} prosent av befolkningen, og {ukr_pct_ovr:.2f} prosent av alle bosatte flyktninger i samme periode. 
     
-    I **{year}** ble det bosatt {sum_total_ukr_year} ukrainere i kommunen, noe som utgjør {ukr_pct_pop_year:.2f} prosent av befolkningen.  
+    I **{year}** {erble} bosatt {sum_total_ukr_year} ukrainere i kommunen, noe som utgjør {ukr_pct_pop_year:.2f} prosent av befolkningen.  
     
     """.format(
                 kommune = kommuner.get(select_kommune), 
@@ -546,12 +549,13 @@ with tab2:
                 ukr_pct_pop_year = oppsummert_komm_year['ukr_pct_pop'].sum(),  
                 #sum_total_pop = oppsummert_komm['pop'].sum(),
                 ukr_pct_pop = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm_2024['pop'].sum())*100,
-                ukr_pct_ovr = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm['innvandr'].sum())*100
+                ukr_pct_ovr = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm['innvandr'].sum())*100,
+                erble = 'ble det' if select_year != 2024 else 'er det så langt'
                 )
     summarized_anmodning = """
     
     ##### Anmodninger
-     Integrerings- og mangfoldsdirektoratet (IMDi) har anmodet kommunen om å bosette {innvandr_anmodet:,.0f} flyktninger i  2024. Det inkluderer både ukrainske og øvrige flyktninger. Kommunen {innvandr_vedtak_string}. 
+    Integrerings- og mangfoldsdirektoratet (IMDi) har anmodet kommunen om å bosette {innvandr_anmodet:,.0f} flyktninger i  2024. Det inkluderer både ukrainske og øvrige flyktninger. Kommunen {innvandr_vedtak_string}. 
      
      {kommune} {ema_vedtak_2024_string}
     """.format(
@@ -563,19 +567,23 @@ with tab2:
     
     summarized_rank = """
     
-    I **{year}** kom {kommune} på {fylke_rank:.0f}. plass i fylket, og {national_rank:.0f}. plass i hele landet i en rangering over hvilke kommuner som tar imot flest ukrainske flyktninger etter befolkningsstørrelse. 
+    I **{year}** {erkom} {kommune} på {fylke_rank:}plass i fylket, og {national_rank}plass i hele landet i en rangering over hvilke kommuner som tar imot flest ukrainske flyktninger etter befolkningsstørrelse. 
     """.format(
                 kommune = kommuner.get(select_kommune), 
                 year = select_year, 
-                fylke_rank = oppsummert_komm_year['fylke_rank'].sum(),
-                national_rank = oppsummert_komm_year['national_rank'].sum(),                
+                fylke_rank = 'jumbo' if math.isnan(oppsummert_komm_year['fylke_rank'].iloc[0]) else str('{:.0f}'.format(oppsummert_komm_year['fylke_rank'].iloc[0])) + '. ',
+                national_rank = 'jumbo' if math.isnan(oppsummert_komm_year['national_rank'].iloc[0]) else str('{:.0f}'.format(oppsummert_komm_year['national_rank'].iloc[0])) + '. ',
+                erkom = 'kom' if select_year != 2024 else 'er'                
                 )
+    
+    if select_year == 2024:
+        st.markdown(summarized_anmodning)
     
     st.markdown(summarized)
     st.markdown(summarized_rank)
     if ukr_mottak_bool:
         st.markdown(ukr_mottak_string)
-    st.markdown(summarized_anmodning)
+        
     
         
     if select_year == 2024:
@@ -622,10 +630,12 @@ with tab2:
             
             Merk at enkelte verdier kan være tilbakeholdt av IMDi av anonymiseringshensyn.
             
-            Tabellen viser tilskudd gitt i **{year}** for alle flyktninger bosatt i kommunen de siste fem årene.
+            {tabellen}
+            
             '''.format( 
                 year = select_year,
-                sum_tilskudd = tilskudd_komm_total/1000000
+                sum_tilskudd = tilskudd_komm_total/1000000,
+                tabellen = 'Tabellen viser tilskudd gitt i **' + str(select_year) + '** for alle flyktninger bosatt i kommunen de siste fem årene.' if select_year != 2024 else 'Vi vet ennå ikke hvor mye tilskuddspenger kommunen får i 2024.'
                 )
             )
     
