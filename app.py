@@ -539,7 +539,7 @@ with tab2:
     
     {kommune} har bosatt {sum_total_ukr:,.0f} ukrainske flyktninger siden krigen brøt ut. De utgjør {ukr_pct_pop:.2f} prosent av befolkningen, og {ukr_pct_ovr:.2f} prosent av alle bosatte flyktninger i samme periode. 
     
-    I **{year}** {erble} bosatt {sum_total_ukr_year} ukrainere i kommunen, noe som utgjør {ukr_pct_pop_year:.2f} prosent av befolkningen.  
+    I **{year}** {erble} bosatt {sum_total_ukr_year} ukrainere i kommunen, noe som utgjør {ukr_pct_pop_year:.2f} prosent av befolkningen.  {anonym}
     
     """.format(
                 kommune = kommuner.get(select_kommune), 
@@ -550,7 +550,8 @@ with tab2:
                 #sum_total_pop = oppsummert_komm['pop'].sum(),
                 ukr_pct_pop = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm_2024['pop'].sum())*100,
                 ukr_pct_ovr = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm['innvandr'].sum())*100,
-                erble = 'ble det' if select_year != 2024 else 'er det så langt'
+                erble = 'ble det' if select_year != 2024 else 'er det så langt',
+                anonym = '' if oppsummert_komm_year['ukr_prikket'].isnull().iloc[0] else 'Merk at vi ikke vet eksakt antall på grunn av anonymisering. Se fanen Tallgrunnlag.'
                 )
     summarized_anmodning = """
     
