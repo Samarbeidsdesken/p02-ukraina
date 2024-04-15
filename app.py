@@ -52,7 +52,7 @@ with st.sidebar:
 
 @st.cache_data
 def load_data(file):
-    return  pd.read_excel('data/'+ file +'.xlsx', dtype={'Kommunenummer':object, 'Fylkenummer': object})
+    return  pd.read_excel('data/'+ file +'.xlsx', dtype={'Kommunenummer':object, 'kommnr':object, 'Fylkenummer': object})
 
 def format_selection(_dict, option):
     return _dict[option]
@@ -378,6 +378,8 @@ with st.sidebar:
         #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+        
+        print(type(coverage[select_paper][0]))
     
         st.sidebar.dataframe(
             oppsummert_sidebar,
@@ -543,8 +545,6 @@ with tab2:
     
     I **{year}** {erble} bosatt {sum_total_ukr_year} ukrainere i kommunen, noe som utgjør {ukr_pct_pop_year:.2f} prosent av befolkningen.  {anonym}
     
-    Tall mottatt fra IMDi {data_imdi_received_date}.
-    
     """.format(
                 kommune = kommuner.get(select_kommune), 
                 year = select_year, 
@@ -574,12 +574,15 @@ with tab2:
     summarized_rank = """
     
     I **{year}** {erkom} {kommune} på {fylke_rank:}plass i fylket, og {national_rank}plass i hele landet i en rangering over hvilke kommuner som tar imot flest ukrainske flyktninger etter befolkningsstørrelse. 
+    
+    Tall mottatt fra IMDi {data_imdi_received_date}.
     """.format(
                 kommune = kommuner.get(select_kommune), 
                 year = select_year, 
                 fylke_rank = 'jumbo' if math.isnan(oppsummert_komm_year['fylke_rank'].iloc[0]) else str('{:.0f}'.format(oppsummert_komm_year['fylke_rank'].iloc[0])) + '. ',
                 national_rank = 'jumbo' if math.isnan(oppsummert_komm_year['national_rank'].iloc[0]) else str('{:.0f}'.format(oppsummert_komm_year['national_rank'].iloc[0])) + '. ',
-                erkom = 'kom' if select_year != 2024 else 'er'                
+                erkom = 'kom' if select_year != 2024 else 'er',
+                data_imdi_received_date = data_imdi_received_date                
                 )
     
     if select_year == 2024:
@@ -1087,7 +1090,7 @@ with tab4:
                 )}
             )
     
-    st.markdown("""
+    anon_numbers_source = """
                 
     ###### Anonymisering 
     Hvis det står *<5* i en eller flere tabeller, betyr det at antallet er mellom èn og fem. IMDi tilbakeholder eksakt antall for å unngå identifisering.            
@@ -1108,9 +1111,11 @@ with tab4:
     Bosettingstall fra 2015-2016 er hentet fra IMDis årsrapporter fra hhv. [2015](https://www.imdi.no/globalassets/dokumenter/arsrapporter-og-styrende-dokumenter/arsrapport-2015/imdis-arsrapport-2015.pdf) (side 4) og [2016](https://www.regjeringen.no/contentassets/59f5becfc2384dacb88e9ef4fcccba33/arsrapport-2016-imdi.pdf) (side 2).
     
     Tall på antall flyktninger fra Balkan på 1990-tallet er hentet fra [Store norske leksikon](https://snl.no/kollektiv_beskyttelse).
-    """).format(
-        data_imdi_recevied_date = data_imdi_received_date
+    """.format(
+        data_imdi_received_date = data_imdi_received_date
     )
+    
+    st.markdown(anon_numbers_source)
 
 # Tab 5: Expert interviews
 with tab5:
