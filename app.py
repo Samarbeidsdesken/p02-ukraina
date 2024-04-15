@@ -18,6 +18,8 @@ st.set_page_config(
 
 end_time = date(2024, 4, 22)
 
+data_imdi_received_date = '19.02.2024'
+
 
 with st.sidebar:
     
@@ -541,6 +543,8 @@ with tab2:
     
     I **{year}** {erble} bosatt {sum_total_ukr_year} ukrainere i kommunen, noe som utgjør {ukr_pct_pop_year:.2f} prosent av befolkningen.  {anonym}
     
+    Tall mottatt fra IMDi {data_imdi_received_date}.
+    
     """.format(
                 kommune = kommuner.get(select_kommune), 
                 year = select_year, 
@@ -551,7 +555,8 @@ with tab2:
                 ukr_pct_pop = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm_2024['pop'].sum())*100,
                 ukr_pct_ovr = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm['innvandr'].sum())*100,
                 erble = 'ble det' if select_year != 2024 else 'er det så langt',
-                anonym = '' if oppsummert_komm_year['ukr_prikket'].isnull().iloc[0] else 'Merk at vi ikke vet eksakt antall på grunn av anonymisering. Se fanen Tallgrunnlag.'
+                anonym = '' if oppsummert_komm_year['ukr_prikket'].isnull().iloc[0] else 'Merk at vi ikke vet eksakt antall på grunn av anonymisering. Se fanen Tallgrunnlag.',
+                data_imdi_received_date = data_imdi_received_date
                 )
     summarized_anmodning = """
     
@@ -850,7 +855,7 @@ with tab3:
         """
         #### Slik gjorde vi det i Sortland
         
-        Epost til NAV i Sortland kommune fra Samarbeidsdesken 23.02.2024
+        Epost til Nav i Sortland kommune fra Samarbeidsdesken 23.02.2024
         
         <div style='border:1px solid;margin:10px;padding:20px;'>
         
@@ -1092,7 +1097,7 @@ with tab4:
     
     Fakta om venteliste hos fastlege og reservekapasitet er hentet fra [SSB-tabell 12005](https://www.ssb.no/statbank/table/12005). Tall hentet 18.03.2024.
     
-    Tall som beskriver antall ukrainere og antall øvrige flyktninger er sammenstilt av fra Integrerings- og mangfolksdirektaret. Tall mottatt 19.02.2024.
+    Tall som beskriver antall ukrainere og antall øvrige flyktninger er sammenstilt av fra Integrerings- og mangfolksdirektaret. Tall mottatt {data_imdi_received_date}.
     
     Tall som beskriver enslige mindreårige er sammenstilt av Integrerings- og mangfolksdirektaret. Tall mottatt 09.02.2024.
     
@@ -1103,7 +1108,9 @@ with tab4:
     Bosettingstall fra 2015-2016 er hentet fra IMDis årsrapporter fra hhv. [2015](https://www.imdi.no/globalassets/dokumenter/arsrapporter-og-styrende-dokumenter/arsrapport-2015/imdis-arsrapport-2015.pdf) (side 4) og [2016](https://www.regjeringen.no/contentassets/59f5becfc2384dacb88e9ef4fcccba33/arsrapport-2016-imdi.pdf) (side 2).
     
     Tall på antall flyktninger fra Balkan på 1990-tallet er hentet fra [Store norske leksikon](https://snl.no/kollektiv_beskyttelse).
-    """)
+    """).format(
+        data_imdi_recevied_date = data_imdi_received_date
+    )
 
 # Tab 5: Expert interviews
 with tab5:
@@ -1214,7 +1221,7 @@ with tab5:
     — Å oppskalere tjenester innenfor skole, barnehage og helsetjenester er en veldig stor risiko for kommunene fordi ukrainere har midlertidig tillatelse.  Hadde kommunene visst at disse skulle bli i all overskuelig framtid kunne de ansatt mye leger, sykepleiere og lærere i faste stillinger fordi de hadde fått en større befolkning. Men siden man ikke vet om de skal være her i tre måneder, tre år eller resten av livet, så er det mange kommuner som ikke tør å oppskalere. I tillegg er det mangel på folk til å fylle slike stillinger som sykepleiere, lærere, leger etc. 
 
     ##### På hvilke tjenester er det størst press i kommunen? 
-    — Helsevesenet og Nav er veldig presset. Lokalt NAV-personell sier at de ikke har kapasitet til å følge opp denne gruppen. De er rett og slett ikke nok ansatte til å følge opp en så stor økning av mennesker på kort tid.  
+    — Helsevesenet og Nav er veldig presset. Lokalt Nav-personell sier at de ikke har kapasitet til å følge opp denne gruppen. De er rett og slett ikke nok ansatte til å følge opp en så stor økning av mennesker på kort tid.  
     
     — Mitt inntrykk har vært at skole og barnehage har gått bra hittil, mens helse er et generelt problem fra før av.  
     
