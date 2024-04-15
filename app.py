@@ -378,8 +378,6 @@ with st.sidebar:
         #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
         oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
-        
-        print(type(coverage[select_paper][0]))
     
         st.sidebar.dataframe(
             oppsummert_sidebar,
