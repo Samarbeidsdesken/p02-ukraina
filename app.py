@@ -6,7 +6,7 @@ from datetime import date
 import functions
 import io
 import math
-apptitle = 'Ukrainske flyktninger i norske kommuner'
+apptitle = ''
 
 
 
@@ -22,6 +22,20 @@ data_imdi_received_date = '19.02.2024'
 
 
 with st.sidebar:
+    
+    
+    
+    imgcol1, imgcol2, imgcol3 = st.columns([1, 4, 1])
+
+    with imgcol1:
+        st.write(' ')
+
+    with imgcol2:
+        st.image("img/logo-bok.png")
+
+    with imgcol3:
+        st.write(' ')
+
     
     st.title(apptitle) 
     
@@ -180,7 +194,7 @@ for mottak, ukr in ukr_mottak_komm.itertuples(index=False):
 tilskudd_komm = tilskudd[tilskudd['Kommunenummer'].isin([select_kommune])]
 tilskudd_komm_year = tilskudd_komm[tilskudd_komm['År'] == select_year] 
 tilskudd_komm_year = tilskudd_komm_year[['Tilskuddstype', 'Antall', 'Kommentar']]
-tilskudd_string = 'I ' + str(select_year) +' mottok kommunen følgende tilskudd fra IMDi: \n'
+tilskudd_string = 'I ' + str(select_year) +' mottok kommunen følgende tilskudd fra Imdi: \n'
 
 tilskudd_komm_total = tilskudd_komm[tilskudd_komm['Tilskuddstype'] == 'Totalt']
 tilskudd_komm_total = tilskudd_komm_total['Antall'].sum()
@@ -191,20 +205,44 @@ tilskudd_komm_total = tilskudd_komm_total['Antall'].sum()
 # ------------------------------------------------------ #
 with st.sidebar:
     
+    st.markdown('### Last ned ')
+    
     buffer = io.BytesIO()
     
-    with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-         
-        dfdownload.to_excel(writer, sheet_name='Ark1', index = False)
-        writer._save()
-        
-        download = st.download_button(
-            label = 'Last ned alle data',
-            data = buffer,
-            file_name = 'ukraina.xlsx',
-            mime = 'application/vnd.ms-excel'
-        )
+    downloadcol1, downloadcol2, _ = st.columns([1, 1, 4])
     
+    
+    with downloadcol1:
+        
+    
+        with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+            
+            dfdownload.to_excel(writer, sheet_name='Ark1', index = False)
+            writer._save()
+            
+            download = st.download_button(
+                label = 'Data',
+                data = buffer,
+                file_name = 'ukraina.xlsx',
+                mime = 'application/vnd.ms-excel'
+            )
+    with downloadcol2:
+        #with open("img/logo.jpg", "rb") as file:
+        #        btn = st.download_button(
+        #            label="Logo",
+        #            data=file,
+        #            file_name="samarbeidsdesken_logo_ukraina.jpg",
+        #            mime="image/jpg"
+        #        )
+                
+        with open("img/logo.zip", "rb") as fp:
+            btn = st.download_button(
+                label="Logo", 
+                data=fp, 
+                file_name="logo.zip", 
+                mime="application/zip"
+                ) 
+        
     toplist = """
     ### Lag toppliste for {year}
     """.format(year = select_year)
@@ -484,7 +522,7 @@ with tab1:
     ##### Her er mulige nyhetspoeng om de eldre flyktningene:
     - Hjelpeorganisasjoner peker på de eldre flyktningene som «de glemte», ifølge Vilde Hernes fra OsloMet.  
     - Eldre som kommer alene til Norge er ensomme, og lærer seg ikke språket, sier Yeremeyeva.
-    - Tall fra IMDi viser at 13 prosent av de som bosettes er over 55 år. Dette utgjør rundt 7800 mennesker. Disse har ikke rett på introduksjonsprogram.
+    - Tall fra Imdi viser at 13 prosent av de som bosettes er over 55 år. Dette utgjør rundt 7800 mennesker. Disse har ikke rett på introduksjonsprogram.
     
     
     #### Ukrainere er sykere enn nordmenn
@@ -507,7 +545,7 @@ with tab1:
     
     Flyktningene fra Ukraina har kollektiv, midlertidig beskyttelse. De er i Norge på ubestemt tid.
     
-    Tall fra IMDi viser at 30 prosent av de som er bosatt er under 18 år.  
+    Tall fra Imdi viser at 30 prosent av de som er bosatt er under 18 år.  
     
     — Å oppskalere tjenester innenfor skole, barnehage og helsetjenester er en veldig stor risiko for kommunene fordi ukrainere har midlertidig tillatelse, sier Vilde Hernes fra OsloMet.
     
@@ -517,7 +555,7 @@ with tab1:
 
     ##### Her er mulige nyhetspoeng om midlertidighet: 
     
-    - Det er risikabelt for kommunene å ansette lærere og sykepleiere i faste stillinger. Hvis ukrainerne må hjem, slutter kommunene å få tilskudd fra IMDi og taper penger.  
+    - Det er risikabelt for kommunene å ansette lærere og sykepleiere i faste stillinger. Hvis ukrainerne må hjem, slutter kommunene å få tilskudd fra Imdi og taper penger.  
     - 54 prosent av ukrainere er usikker på om de kommer til å returnere til Ukraina når krigen er over, i følge forskningsrapport fra OsloMet. 
 
     """
@@ -559,7 +597,7 @@ with tab2:
     summarized_anmodning = """
     
     ##### Anmodninger
-    Integrerings- og mangfoldsdirektoratet (IMDi) har anmodet kommunen om å bosette {innvandr_anmodet:,.0f} flyktninger i  2024. Det inkluderer både ukrainske og øvrige flyktninger. Kommunen {innvandr_vedtak_string}. 
+    Integrerings- og mangfoldsdirektoratet (Imdi) har anmodet kommunen om å bosette {innvandr_anmodet:,.0f} flyktninger i  2024. Det inkluderer både ukrainske og øvrige flyktninger. Kommunen {innvandr_vedtak_string}. 
      
      {kommune} {ema_vedtak_2024_string}
     """.format(
@@ -573,7 +611,7 @@ with tab2:
     
     I **{year}** {erkom} {kommune} på {fylke_rank:}plass i fylket, og {national_rank}plass i hele landet i en rangering over hvilke kommuner som tar imot flest ukrainske flyktninger etter befolkningsstørrelse. 
     
-    Tall mottatt fra IMDi {data_imdi_received_date}.
+    Tall mottatt fra Imdi {data_imdi_received_date}.
     """.format(
                 kommune = kommuner.get(select_kommune), 
                 year = select_year, 
@@ -627,15 +665,15 @@ with tab2:
     st.markdown(fastlege)
     
     st.markdown('''
-            ##### Tilskudd fra IMDi
+            ##### Tilskudd fra Imdi
             
             Kommunene mottar tilskudd for flyktninger de fem første årene de er bosatt i kommunen. 
             
-            I 2022 og 2023 har kommunen mottatt totalt {sum_tilskudd:,.0f} millioner kroner i tilskudd fra IMDi.  
+            I 2022 og 2023 har kommunen mottatt totalt {sum_tilskudd:,.0f} millioner kroner i tilskudd fra Imdi.  
             
             Beløpet skal dekke utgifter til bosetting og integrering av ukrainske flyktninger, i tillegg til flyktninger fra andre land.
             
-            Merk at enkelte verdier kan være tilbakeholdt av IMDi av anonymiseringshensyn.
+            Merk at enkelte verdier kan være tilbakeholdt av Imdi av anonymiseringshensyn.
             
             {tabellen}
             
@@ -808,10 +846,10 @@ with tab3:
     * Du kan bruke tolk via telefon (se Nasjonalt tolkeregister). I noen tilfeller kan flyktningkontoret bistå.
     
     ##### Politikere/kommuneadministrasjon
-    * Hvorfor tar kommunen imot færre/flere enn IMDi har anmodet? (sjekk tall for din kommune i talloversikten).
+    * Hvorfor tar kommunen imot færre/flere enn Imdi har anmodet? (sjekk tall for din kommune i talloversikten).
     * Hvor mange enkeltpersoner har kommunen ikke villet bosette?
     * Har kommunen vært nødt til å ansette flere (lærere, sykepleiere, saksbehandlere) for å opprettholde et godt tjenestetilbud? Er det utfordrende å ansette folk i faste stillinger siden det er uvisst hvor lenge ukrainere blir i Norge?
-    * Be kommunen om en oversikt om hvordan tilskuddene fra IMDi er brukt.
+    * Be kommunen om en oversikt om hvordan tilskuddene fra Imdi er brukt.
     
     ##### Flyktningtjenesten i kommunen
     * Hva er kommunens erfaring med å ta imot ukrainske flyktninger?
@@ -922,7 +960,7 @@ with tab3:
 
         <p>Svar:</br>
         Per nå er det ingen økning i behov for sykehjemsplasser eller hjemmesykepleietjenester siden 2022, da det ikke har vært en betydelig tilstrømning 
-        av eldre fra IMDi.</p>
+        av eldre fra Imdi.</p>
         
         ##### 5. Er det andre sektorer som påvirkes av at flyktningene er eldre og sykere?
 
@@ -1091,7 +1129,7 @@ with tab4:
     anon_numbers_source = """
                 
     ###### Anonymisering 
-    Hvis det står *<5* i en eller flere tabeller, betyr det at antallet er mellom èn og fem. IMDi tilbakeholder eksakt antall for å unngå identifisering.            
+    Hvis det står *<5* i en eller flere tabeller, betyr det at antallet er mellom èn og fem. Imdi tilbakeholder eksakt antall for å unngå identifisering.            
     
     ##### Tallkilder
     Befolkningstall er hentet fra[ SSB-tabell 07459](https://www.ssb.no/statbank/table/07459). Tall hentet 22.02.2024.
@@ -1102,11 +1140,11 @@ with tab4:
     
     Tall som beskriver enslige mindreårige er sammenstilt av Integrerings- og mangfolksdirektaret. Tall mottatt 09.02.2024.
     
-    Anmodningstall er hentet fra [IMDis nettsider](https://www.imdi.no/planlegging-og-bosetting/bosettingstall/). Tall hentet 08.03.2024 kl. 12:20.
+    Anmodningstall er hentet fra [Imdis nettsider](https://www.imdi.no/planlegging-og-bosetting/bosettingstall/). Tall hentet 08.03.2024 kl. 12:20.
     
-    Tilskuddstall er hentet fra [IMDis nettsider](https://www.imdi.no/om-integrering-i-norge/statistikk/F00/tilskudd). Tall hentet 11.03.2024.
+    Tilskuddstall er hentet fra [Imdis nettsider](https://www.imdi.no/om-integrering-i-norge/statistikk/F00/tilskudd). Tall hentet 11.03.2024.
     
-    Bosettingstall fra 2015-2016 er hentet fra IMDis årsrapporter fra hhv. [2015](https://www.imdi.no/globalassets/dokumenter/arsrapporter-og-styrende-dokumenter/arsrapport-2015/imdis-arsrapport-2015.pdf) (side 4) og [2016](https://www.regjeringen.no/contentassets/59f5becfc2384dacb88e9ef4fcccba33/arsrapport-2016-imdi.pdf) (side 2).
+    Bosettingstall fra 2015-2016 er hentet fra Imdis årsrapporter fra hhv. [2015](https://www.imdi.no/globalassets/dokumenter/arsrapporter-og-styrende-dokumenter/arsrapport-2015/imdis-arsrapport-2015.pdf) (side 4) og [2016](https://www.regjeringen.no/contentassets/59f5becfc2384dacb88e9ef4fcccba33/arsrapport-2016-imdi.pdf) (side 2).
     
     Tall på antall flyktninger fra Balkan på 1990-tallet er hentet fra [Store norske leksikon](https://snl.no/kollektiv_beskyttelse).
     """.format(
@@ -1389,10 +1427,10 @@ with tab7:
     st.markdown(
                 """
                 
-                Kilde: IMDi
+                Kilde: Imdi
                 ##### Kommunene kan selv velge hvem og hvor mange flyktninger de vil bosette: 
                 
-                Hvert år får kommunene en forespørsel fra IMDi om å bosette et antall flyktninger i kommunen. De kan selv velge hvor mange de ønsker å ta imot.  
+                Hvert år får kommunene en forespørsel fra Imdi om å bosette et antall flyktninger i kommunen. De kan selv velge hvor mange de ønsker å ta imot.  
                 
                 Majoriteten av ukrainske asylsøkere bor på asylmottak spredt rundt i landet, mens de venter på å bli bosatt i en kommune og få innvilget flyktningstatus. Gjennomsnittlig ventetid for personer som bodde på mottak var per 31.01.24 omtrent 72 dager.
                 
@@ -1424,7 +1462,7 @@ with tab7:
                     - Engangstilskudd: 196 400 kroner
                     - Årlig tilskudd: inntil 1 608 000 kroner
                     
-                Kommunene mottar de samme satsene for ukrainere som for andre flyktninger kommunen bosetter etter avtale med IMDi. 
+                Kommunene mottar de samme satsene for ukrainere som for andre flyktninger kommunen bosetter etter avtale med Imdi. 
                     
                 ##### Tilskudd for opplæring i norsk og samfunnskunnskap for ukrainske voksne
                 Kommunene mottar også persontilskudd på 39 700 kroner for voksne ukrainere (18-67 år) som får opplæring i norsk og samfunnskunnskap.  Hvis det er færre enn 150 personer i denne målgruppen, får kommunen et ekstra tilskudd opp mot 694 600 kroner.  
@@ -1432,6 +1470,6 @@ with tab7:
                 ##### Økonomisk støtte til ukrainere
                 Full deltakelse i introduksjonsprogrammet gir økonomisk støtte på omtrent 237 000 kroner i året. Det må skattes av støtten. Eventuell annen økonomisk støtte eller inntekt fra jobb, kan gjøre at flyktningen får mindre utbetalt.
 
-                Kilde: IMDi
+                Kilde: Imdi
                 """
             )
