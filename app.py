@@ -236,7 +236,7 @@ with st.sidebar:
         #        )
                 
         with open("img/logo.zip", "rb") as fp:
-            btn = st.download_button(
+            btnzip1 = st.download_button(
                 label="Logo", 
                 data=fp, 
                 file_name="logo.zip", 
@@ -481,7 +481,7 @@ use_container_width = False #st.checkbox("Full tabellbredde", value=True)
 # ----------------------- # 
 
 # create different tabs for the content
-tab1, tab2, tab6, tab3, tab4, tab5, tab7 = st.tabs(['Dette er saken', 'Slik er det i din kommune', 'Mulige nyhetssaker', 'Slik kan du gå fram', 'Tallgrunnlag', 'Ekspertkilder og rapporter', 'Fakta og begreper'])
+tab1, tab2, tab6, tab3, tab4, tab5, tab7, tab8 = st.tabs(['Dette er saken', 'Slik er det i din kommune', 'Mulige nyhetssaker', 'Slik kan du gå fram', 'Tallgrunnlag', 'Ekspertkilder og rapporter', 'Fakta og begreper', 'Publisering'])
 
 # In tab 1: Dette er saken
 with tab1:
@@ -1473,3 +1473,34 @@ with tab7:
                 Kilde: Imdi
                 """
             )
+    
+with tab8:
+    
+    sperrefrist2 = """
+    {time}
+    """.format(time = functions.countdown(end_time))
+    st.markdown(sperrefrist2.format('%d'))
+   
+    
+    st.markdown("""
+                ##### Forslag til kreditering av Samarbeidsdesken
+                """)
+     
+    st.markdown("""
+                Fakta og tallgrunnlag i denne saken er utarbeidet av Samarbeidsdesken, et journalistisk fellesprosjekt mellom Landslaget for lokalaviser (LLA), Senter for undersøkende journalistikk (SUJO) og NRK.
+                """)
+    
+    with open("img/logo2.zip", "rb") as zip2:
+        btnzip2 = st.download_button(
+            label="Last ned logo", 
+            data=zip2, 
+            file_name="logo2.zip", 
+            mime="application/zip"
+            ) 
+    
+    st.markdown("""
+                ##### Ting å være obs på
+                Ukraina-nettsiden inneholder research dere alle kan bruke, men som vi ikke ønsker å dele med andre uten redaksjonell bearbeiding. Del derfor ikke lenken til nettsiden, verken i sakene dere skriver eller i kildehenvisningen i Datawrapper.
+                
+                
+                """)
