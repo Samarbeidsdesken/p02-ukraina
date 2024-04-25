@@ -18,7 +18,7 @@ st.set_page_config(
 
 end_time = date(2024, 4, 22)
 
-data_imdi_received_date = '19.04.2024'
+data_imdi_received_date = '24.04.2024'
 
 
 with st.sidebar:
@@ -490,7 +490,7 @@ with tab1:
 
     #with national_col1:
     national_text = """
-    355 kommuner har til sammen bosatt 65.087 ukrainske flyktninger siden krigen startet i 2022 (per {data_imdi_received_date}). I samme periode ble det bosatt 8.971 flyktninger fra andre land.
+    355 kommuner har til sammen bosatt 65.214 ukrainske flyktninger siden krigen startet i 2022 (per {data_imdi_received_date}). I samme periode ble det bosatt 9.003 flyktninger fra andre land.
     
     Til sammenligning ble det under “flyktningbølgen” i 2015-2016 bosatt i overkant av 26.000 personer.
     
