@@ -246,7 +246,7 @@ with st.sidebar:
     toplist = """
     ### Lag toppliste for {year}
     
-    *Inkluderer ikke anonymiserte grupper. 
+    *Inkluderer ikke anonymiserte grupper. Se fanen Tallgrunnlag. 
     """.format(year = select_year)
     st.markdown(toplist)
 
