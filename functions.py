@@ -21,3 +21,11 @@ def countdown(end):
  
 def right_align(s, props='text-align: right;'):
   return props
+
+def make_asterix(row):
+  
+  if row['ukr_prikket'] == 'Obs! Inkluderer ikke anonymiserte tall. Se fanen Tallgrunnlag på nettsiden.':
+    val = '*'
+  else:
+    val = ''
+  return val

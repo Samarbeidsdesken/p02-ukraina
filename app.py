@@ -245,6 +245,8 @@ with st.sidebar:
         
     toplist = """
     ### Lag toppliste for {year}
+    
+    *Inkluderer ikke anonymiserte grupper. 
     """.format(year = select_year)
     st.markdown(toplist)
 
@@ -269,7 +271,9 @@ with st.sidebar:
     if select_group == 'Hele landet':
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
+        
+        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
 
         st.dataframe(
             oppsummert_sidebar,
@@ -281,6 +285,9 @@ with st.sidebar:
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
                     'Andel av befolkning', format='%.2f %%'
+                ),
+                'asterix': st.column_config.TextColumn(
+                    ''
                 )}
             )
     
@@ -289,8 +296,12 @@ with st.sidebar:
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Valgdistrikt'] == kommuner_valgdistrikt[select_kommune]]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+        #oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'ukr_prikket']]
 
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
+        
+        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
+        
         st.sidebar.dataframe(
             oppsummert_sidebar,
             hide_index = True,
@@ -301,7 +312,11 @@ with st.sidebar:
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
                     'Andel av befolkning', format='%.2f %%'
-                )}
+                ),
+                'asterix': st.column_config.TextColumn(
+                    ''
+                )
+                }
             )
     
         
@@ -311,7 +326,9 @@ with st.sidebar:
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
+        
+        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
 
         st.sidebar.dataframe(
             oppsummert_sidebar,
@@ -323,6 +340,9 @@ with st.sidebar:
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
                     'Andel av befolkning', format='%.2f %%'
+                ),
+                'asterix': st.column_config.TextColumn(
+                    ''
                 )}
             )
     
@@ -332,7 +352,9 @@ with st.sidebar:
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['År'] == select_year]
         #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
+        
+        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
         
         sentralitet_description = """
         Sentralitetsindeksen er en måte å måle hvor sentral en kommune er med grunnlag i befolkning, arbeidsplasser og servicetilbud. Indeksen er utviklet av SSB.
@@ -357,6 +379,9 @@ with st.sidebar:
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
                     'Andel av befolkning', format='%.2f %%'
+                ),
+                'asterix': st.column_config.TextColumn(
+                    ''
                 )}
             )
     
@@ -367,7 +392,9 @@ with st.sidebar:
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['År'] == select_year]
         #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
+        
+        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
         
         kostra_about_komm = kostra_about[kostra_about['kostragruppe'] == kommuner_kostra[select_kommune]]
                 
@@ -400,6 +427,9 @@ with st.sidebar:
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
                     'Andel av befolkning', format='%.2f %%'
+                ),
+                'asterix': st.column_config.TextColumn(
+                    ''
                 )}
             )
         
@@ -415,7 +445,9 @@ with st.sidebar:
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['År'] == select_year]
         #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
+        
+        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
     
         st.sidebar.dataframe(
             oppsummert_sidebar,
@@ -427,6 +459,9 @@ with st.sidebar:
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
                     'Andel av befolkning', format='%.2f %%'
+                ),
+                'asterix': st.column_config.TextColumn(
+                    ''
                 )}
             )
         
@@ -434,7 +469,9 @@ with st.sidebar:
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['robek'] == 'robek']
         oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop']]
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
+        
+        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
         
         if oppsummert_komm_year['robek'].str.contains('ikke robek').iloc[0]:
             robek_string = """
@@ -469,6 +506,9 @@ with st.sidebar:
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
                     'Andel av befolkning', format='%.2f %%'
+                ), 
+                'asterix': st.column_config.TextColumn(
+                    ''
                 )}
             )
 
