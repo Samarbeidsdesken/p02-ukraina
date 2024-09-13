@@ -2,18 +2,17 @@ import streamlit as st
 import pandas as pd
 import streamlit.components.v1 as components
 from datetime import date
-#import time
+# import time
 import functions
 import io
 import math
 apptitle = ''
 
 
-
 st.set_page_config(
-    #page_title='',
+    # page_title='',
     layout='wide'
-    )
+)
 
 
 end_time = date(2024, 4, 22)
@@ -22,9 +21,7 @@ data_imdi_received_date = '19.06.2024'
 
 
 with st.sidebar:
-    
-    
-    
+
     imgcol1, imgcol2, imgcol3 = st.columns([1, 4, 1])
 
     with imgcol1:
@@ -36,14 +33,13 @@ with st.sidebar:
     with imgcol3:
         st.write(' ')
 
-    
-    st.title(apptitle) 
-    
+    st.title(apptitle)
+
     sperrefrist = """
     {time}
-    """.format(time = functions.countdown(end_time))
+    """.format(time=functions.countdown(end_time))
     st.markdown(sperrefrist.format('%d'))
-    
+
     st.markdown(
         """
         <p style='color:red;font-weight:bold;'>Ikke publiser saker før sperrefristen. </p>
@@ -66,17 +62,20 @@ with st.sidebar:
 
 @st.cache_data
 def load_data(file):
-    return  pd.read_excel('data/'+ file +'.xlsx', dtype={'Kommunenummer':object, 'kommnr':object, 'Fylkenummer': object})
+    return pd.read_excel('data/' + file + '.xlsx', dtype={'Kommunenummer': object, 'kommnr': object, 'Fylkenummer': object})
+
 
 def format_selection(_dict, option):
     return _dict[option]
 
+
 def check_ano(vec):
-        x = vec.str.contains('<5').sum()
-        if x > 0:
-            return 'Merk at det er {count} celler som er anonymisert (mindre enn fem flyktninger.)'.format(count= x)
-        else:
-            return ''
+    x = vec.str.contains('<5').sum()
+    if x > 0:
+        return 'Merk at det er {count} celler som er anonymisert (mindre enn fem flyktninger.)'.format(count=x)
+    else:
+        return ''
+
 
 # ----------- #
 # IMPORT DATA #
@@ -88,9 +87,9 @@ ukr_mottak = load_data('ukrainere_mottak_310124')
 kostra_about = load_data('kostra_description')
 tilskudd = load_data('tilskudd')
 
-#folketall = load_data('app_flyktninger_folketall')
+# folketall = load_data('app_flyktninger_folketall')
 
-# ------------------------------------------------------------------- # 
+# ------------------------------------------------------------------- #
 # Create a dictionary describing the coverage area of each news paper #
 # ------------------------------------------------------------------- #
 
@@ -102,84 +101,98 @@ coverage = {g: d['kommnr'].values for g, d in lla.groupby('avis')}
 # ----------------------------- #
 
 # Create a dictionary of unique municipalities, counties, electional districts
-kommuner = pd.Series(oppsummert.Kommune.values,index=oppsummert.Kommunenummer).to_dict()
-fylker = pd.Series(oppsummert.Fylke.values,index=oppsummert.Fylkenummer).to_dict()
-valgdistrikt = pd.Series(oppsummert.Valgdistrikt.values, index = oppsummert.Valgdistriktnummer).to_dict()
-kommuner_valgdistrikt = pd.Series(oppsummert.Valgdistrikt.values, index = oppsummert.Kommunenummer).to_dict()
-kommuner_sentralitet = pd.Series(oppsummert.sentralitet.values, index = oppsummert.Kommunenummer).to_dict()
-kommuner_kostra = pd.Series(oppsummert.kostranavn.values, index = oppsummert.Kommunenummer).to_dict()
+kommuner = pd.Series(oppsummert.Kommune.values,
+                     index=oppsummert.Kommunenummer).to_dict()
+fylker = pd.Series(oppsummert.Fylke.values,
+                   index=oppsummert.Fylkenummer).to_dict()
+valgdistrikt = pd.Series(oppsummert.Valgdistrikt.values,
+                         index=oppsummert.Valgdistriktnummer).to_dict()
+kommuner_valgdistrikt = pd.Series(
+    oppsummert.Valgdistrikt.values, index=oppsummert.Kommunenummer).to_dict()
+kommuner_sentralitet = pd.Series(
+    oppsummert.sentralitet.values, index=oppsummert.Kommunenummer).to_dict()
+kommuner_kostra = pd.Series(
+    oppsummert.kostranavn.values, index=oppsummert.Kommunenummer).to_dict()
 
 
-
-# Use tuples to alphabetically sort the municipalities and counties 
+# Use tuples to alphabetically sort the municipalities and counties
 kommuner_sorted = sorted(kommuner.items(), key=lambda kv: (kv[1], kv[0]))
 fylker_sorted = sorted(fylker.items(), key=lambda kv: (kv[1], kv[0]))
-valgdistrikt_sorted = sorted(valgdistrikt.items(), key=lambda kv: (kv[1], kv[0]))
+valgdistrikt_sorted = sorted(
+    valgdistrikt.items(), key=lambda kv: (kv[1], kv[0]))
 
 
 select_fylke = st.sidebar.selectbox(
     'Velg fylke',
     # using lambda in order to get the first element (municipality code) in tuple
-    options = map(lambda x: x[0], fylker_sorted), 
+    options=map(lambda x: x[0], fylker_sorted),
     # display the names of the counties, not the codes
-    format_func = lambda x: fylker.get(x)
+    format_func=lambda x: fylker.get(x)
 )
 
 select_kommune = st.sidebar.selectbox(
     'Velg kommune (2024)',
     # get the municipalities for the selected county
-    options = [j for i in kommuner_sorted for j in i if j[:2] == select_fylke],
+    options=[j for i in kommuner_sorted for j in i if j[:2] == select_fylke],
     # display the names of the municipalities, not the codes
-    format_func = lambda x: kommuner.get(x)
+    format_func=lambda x: kommuner.get(x)
 )
 
 if select_kommune == '1508' or select_kommune == '1580':
-        st.sidebar.markdown("""
+    st.sidebar.markdown("""
         Merk: Ålesund ble delt i Ålesund og Haram kommuner 01.01.2024. Tallene for 2022 og 2023 er forbundet med 1507-Ålesund.
         """)
 
 select_year = st.sidebar.selectbox(
     'Velg år',
-    options = [2022, 2023, 2024]
+    options=[2022, 2023, 2024]
 )
 
 # ------------------------------------------- #
 # Filter data and create different dataframes #
-# ------------------------------------------- # 
+# ------------------------------------------- #
 
 # test
 
 # Downloadable data frame
-dfdownload = oppsummert[['Kommunenummer', 'Kommune', 'År', 'ovrige', 'ovr_prikket', 'innvandr_pct_pop', 'ukrainere', 'ukr_prikket', 'ukr_pct_pop']]
-dfdownload = dfdownload.rename(columns={'ovrige': 'Øvrige innvandrere', 'ovr_pct_pop': 'Øvrige innvandrere som andel av befolkning', 'ovr_prikket': 'Øvrige - kommentar', 'ukrainere': 'Ukrainere', 'ukr_prikket': 'Ukrainere - kommentar', 'ukr_pct_pop': 'Ukrainere som andel av befolkning'})
+dfdownload = oppsummert[['Kommunenummer', 'Kommune', 'År', 'ovrige',
+                         'ovr_prikket', 'innvandr_pct_pop', 'ukrainere', 'ukr_prikket', 'ukr_pct_pop']]
+dfdownload = dfdownload.rename(columns={'ovrige': 'Øvrige innvandrere', 'ovr_pct_pop': 'Øvrige innvandrere som andel av befolkning',
+                               'ovr_prikket': 'Øvrige - kommentar', 'ukrainere': 'Ukrainere', 'ukr_prikket': 'Ukrainere - kommentar', 'ukr_pct_pop': 'Ukrainere som andel av befolkning'})
 dfdownload = dfdownload.sort_values(['Kommunenummer', 'År'])
 
-# dataframe with one line per year, per municipality. 
-oppsummert_komm = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
-oppsummert_komm_year = oppsummert_komm[oppsummert_komm['År'] == select_year] 
-oppsummert_komm_2024 = oppsummert_komm[oppsummert_komm['År'] == 2024] 
+# dataframe with one line per year, per municipality.
+oppsummert_komm = oppsummert[oppsummert['Kommunenummer'].isin([
+                                                              select_kommune])]
+oppsummert_komm_year = oppsummert_komm[oppsummert_komm['År'] == select_year]
+oppsummert_komm_2024 = oppsummert_komm[oppsummert_komm['År'] == 2024]
 
-#oppsummert_year = oppsummert[oppsummert['Kommune'] == 'Aremark'] 
-#print(oppsummert_year['ukrainere'])
+# oppsummert_year = oppsummert[oppsummert['Kommune'] == 'Aremark']
+# print(oppsummert_year['ukrainere'])
 
 # Dataframe with 4 lines (gender x age) per year, per municipality
-flyktninger_fylke = flyktninger[flyktninger['Fylkenummer'].isin([select_fylke])] 
-flyktninger_komm = flyktninger[flyktninger['Kommunenummer'].isin([select_kommune])] 
-flyktninger_komm_year = flyktninger_komm[flyktninger_komm['År'] == select_year] 
-flyktninger_cols = ['Kommune', 'År', 'Kjønn', 'Aldersgruppe', 'ukrainere', 'ukr_pct', 'ukr_prikket', 'ovrige', 'ovr_pct', 'ovr_prikket', 'pop', 'pop_pct']
+flyktninger_fylke = flyktninger[flyktninger['Fylkenummer'].isin([
+                                                                select_fylke])]
+flyktninger_komm = flyktninger[flyktninger['Kommunenummer'].isin([
+                                                                 select_kommune])]
+flyktninger_komm_year = flyktninger_komm[flyktninger_komm['År'] == select_year]
+flyktninger_cols = ['Kommune', 'År', 'Kjønn', 'Aldersgruppe', 'ukrainere',
+                    'ukr_pct', 'ukr_prikket', 'ovrige', 'ovr_pct', 'ovr_prikket', 'pop', 'pop_pct']
 
-# Dataframe with enslige mindreårige. Both ukrainians and other refugees. 
+# Dataframe with enslige mindreårige. Both ukrainians and other refugees.
 ema_komm = ema[ema['Kommunenummer'].isin([select_kommune])]
-ema_komm_year = ema_komm[ema_komm['År'] == select_year] 
+ema_komm_year = ema_komm[ema_komm['År'] == select_year]
 
 # Dataframe with anmodningstall for the selcted kommune.
 # Note: Only available for 2024
 anmodninger = oppsummert[oppsummert['Kommunenummer'].isin([select_kommune])]
-anmodninger = anmodninger[anmodninger['År'] == 2024] 
-anmodninger = anmodninger[['Kommune', 'Kommunenummer', 'ema_anmodet_2024', 'ema_vedtak_2024', 'ema_vedtak_2024_string', 'innvandr_anmodet', 'innvandr_vedtak', 'innvandr_vedtak_string', 'innvandr_bosatt', 'ukr_bosatt',  'innvandr_avtalt_bosatt', 'ukr_avtalt_bosatt']]
+anmodninger = anmodninger[anmodninger['År'] == 2024]
+anmodninger = anmodninger[['Kommune', 'Kommunenummer', 'ema_anmodet_2024', 'ema_vedtak_2024', 'ema_vedtak_2024_string', 'innvandr_anmodet',
+                           'innvandr_vedtak', 'innvandr_vedtak_string', 'innvandr_bosatt', 'ukr_bosatt',  'innvandr_avtalt_bosatt', 'ukr_avtalt_bosatt']]
 
 # dataframe with asylmottak in selected kommune
-ukr_mottak_komm = ukr_mottak[ukr_mottak['Kommunenummer'].isin([select_kommune])]
+ukr_mottak_komm = ukr_mottak[ukr_mottak['Kommunenummer'].isin([
+                                                              select_kommune])]
 ukr_mottak_komm = ukr_mottak_komm[['mottak_navn', 'ukr_mottak']]
 
 # Create bullet points of asylmottak in the selected municipality
@@ -192,9 +205,11 @@ for mottak, ukr in ukr_mottak_komm.itertuples(index=False):
 
 # Dataframe with tilskudd the municipality has received from IMDi
 tilskudd_komm = tilskudd[tilskudd['Kommunenummer'].isin([select_kommune])]
-tilskudd_komm_year = tilskudd_komm[tilskudd_komm['År'] == select_year] 
-tilskudd_komm_year = tilskudd_komm_year[['Tilskuddstype', 'Antall', 'Kommentar']]
-tilskudd_string = 'I ' + str(select_year) +' mottok kommunen følgende tilskudd fra Imdi: \n'
+tilskudd_komm_year = tilskudd_komm[tilskudd_komm['År'] == select_year]
+tilskudd_komm_year = tilskudd_komm_year[[
+    'Tilskuddstype', 'Antall', 'Kommentar']]
+tilskudd_string = 'I ' + str(select_year) + \
+    ' mottok kommunen følgende tilskudd fra Imdi: \n'
 
 tilskudd_komm_total = tilskudd_komm[tilskudd_komm['Tilskuddstype'] == 'Totalt']
 tilskudd_komm_total = tilskudd_komm_total['Antall'].sum()
@@ -204,82 +219,84 @@ tilskudd_komm_total = tilskudd_komm_total['Antall'].sum()
 # In the sidebar, make a top list for the selected group #
 # ------------------------------------------------------ #
 with st.sidebar:
-    
+
     st.markdown('### Last ned ')
-    
+
     buffer = io.BytesIO()
-    
+
     downloadcol1, downloadcol2, _ = st.columns([1, 1, 4])
-    
-    
+
     with downloadcol1:
-        
-    
+
         with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-            
-            dfdownload.to_excel(writer, sheet_name='Ark1', index = False)
+
+            dfdownload.to_excel(writer, sheet_name='Ark1', index=False)
             writer._save()
-            
+
             download = st.download_button(
-                label = 'Data',
-                data = buffer,
-                file_name = 'ukraina.xlsx',
-                mime = 'application/vnd.ms-excel'
+                label='Data',
+                data=buffer,
+                file_name='ukraina.xlsx',
+                mime='application/vnd.ms-excel'
             )
     with downloadcol2:
-        #with open("img/logo.jpg", "rb") as file:
+        # with open("img/logo.jpg", "rb") as file:
         #        btn = st.download_button(
         #            label="Logo",
         #            data=file,
         #            file_name="samarbeidsdesken_logo_ukraina.jpg",
         #            mime="image/jpg"
         #        )
-                
+
         with open("img/logo.zip", "rb") as fp:
             btnzip1 = st.download_button(
-                label="Logo", 
-                data=fp, 
-                file_name="logo.zip", 
+                label="Logo",
+                data=fp,
+                file_name="logo.zip",
                 mime="application/zip"
-                ) 
-        
+            )
+
     toplist = """
     ### Lag toppliste for {year}
     
     *Inkluderer ikke anonymiserte grupper. Se fanen Tallgrunnlag. 
-    """.format(year = select_year)
+    """.format(year=select_year)
     st.markdown(toplist)
 
     select_group = st.selectbox(
         'Velg gruppering',
-        options=[fylker.get(select_fylke), kommuner_valgdistrikt[select_kommune], 'SSBs sentralitetsindeks', 'KOSTRA-gruppe', 'Hele landet', 'Lokalavis (dekningsområde)', 'ROBEK']
+        options=[fylker.get(select_fylke), kommuner_valgdistrikt[select_kommune], 'SSBs sentralitetsindeks',
+                 'KOSTRA-gruppe', 'Hele landet', 'Lokalavis (dekningsområde)', 'ROBEK']
     )
 
     if select_group == 'Lokalavis (dekningsområde)':
         select_paper = st.selectbox(
             'Velg lokalavis',
-            options = coverage.keys()
+            options=coverage.keys()
         )
-    
-    #if select_group == 'SSBs sentralitetsindeks':
+
+    # if select_group == 'SSBs sentralitetsindeks':
     #    select_centrality = st.selectbox(
-    ##        'Velg indeks',
+    # 'Velg indeks',
      #       options=['1 - Mest sentrale', '2', '3', '4', '5', '6 - Minst sentrale']
      #   )
-        
+
     # If the user wants a top list for the whole country
     if select_group == 'Hele landet':
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
-        oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
-        
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
+        oppsummert_sidebar = oppsummert_sidebar.sort_values(
+            'ukr_pct_pop', ascending=False)
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(
+            functions.make_asterix, axis=1)
+
+        oppsummert_sidebar = oppsummert_sidebar[[
+            'Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
 
         st.dataframe(
             oppsummert_sidebar,
-            hide_index = True,
-            use_container_width = True,
-            column_config = {
+            hide_index=True,
+            use_container_width=True,
+            column_config={
                 'ukrainere': st.column_config.NumberColumn(
                     'Antall ukrainere', format='%.0f'
                 ),
@@ -289,24 +306,28 @@ with st.sidebar:
                 'asterix': st.column_config.TextColumn(
                     ''
                 )}
-            )
-    
+        )
+
     # If the user wants a top list by county
     if select_group == kommuner_valgdistrikt[select_kommune]:
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
-        oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Valgdistrikt'] == kommuner_valgdistrikt[select_kommune]]
-        oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        #oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'ukr_prikket']]
+        oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Valgdistrikt']
+                                                == kommuner_valgdistrikt[select_kommune]]
+        oppsummert_sidebar = oppsummert_sidebar.sort_values(
+            'ukr_pct_pop', ascending=False)
+        # oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'ukr_prikket']]
 
-        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
-        
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
-        
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(
+            functions.make_asterix, axis=1)
+
+        oppsummert_sidebar = oppsummert_sidebar[[
+            'Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
+
         st.sidebar.dataframe(
             oppsummert_sidebar,
-            hide_index = True,
-            use_container_width = True,
-            column_config = {
+            hide_index=True,
+            use_container_width=True,
+            column_config={
                 'ukrainere': st.column_config.NumberColumn(
                     'Antall ukrainere', format='%.0f'
                 ),
@@ -316,25 +337,26 @@ with st.sidebar:
                 'asterix': st.column_config.TextColumn(
                     ''
                 )
-                }
-            )
-    
-        
-    
+            }
+        )
+
     # If the user wants a top list by county
     if select_group == fylker.get(select_fylke):
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
-        oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
-        
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
+        oppsummert_sidebar = oppsummert_sidebar.sort_values(
+            'ukr_pct_pop', ascending=False)
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(
+            functions.make_asterix, axis=1)
+
+        oppsummert_sidebar = oppsummert_sidebar[[
+            'Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
 
         st.sidebar.dataframe(
             oppsummert_sidebar,
-            hide_index = True,
-            use_container_width = True,
-            column_config = {
+            hide_index=True,
+            use_container_width=True,
+            column_config={
                 'ukrainere': st.column_config.NumberColumn(
                     'Antall ukrainere', format='%.0f'
                 ),
@@ -344,18 +366,22 @@ with st.sidebar:
                 'asterix': st.column_config.TextColumn(
                     ''
                 )}
-            )
-    
+        )
+
     # If the user wants a top list by SSBs centrality index
     if select_group == 'SSBs sentralitetsindeks':
-        oppsummert_sidebar = oppsummert[oppsummert['sentralitet'] == kommuner_sentralitet[select_kommune]]
+        oppsummert_sidebar = oppsummert[oppsummert['sentralitet']
+                                        == kommuner_sentralitet[select_kommune]]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['År'] == select_year]
-        #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
-        oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
-        
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
-        
+        # oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
+        oppsummert_sidebar = oppsummert_sidebar.sort_values(
+            'ukr_pct_pop', ascending=False)
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(
+            functions.make_asterix, axis=1)
+
+        oppsummert_sidebar = oppsummert_sidebar[[
+            'Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
+
         sentralitet_description = """
         Sentralitetsindeksen er en måte å måle hvor sentral en kommune er med grunnlag i befolkning, arbeidsplasser og servicetilbud. Indeksen er utviklet av SSB.
         
@@ -363,17 +389,17 @@ with st.sidebar:
         
         {kommune} har sentralitet {sentralitet}.
         """.format(
-            kommune = kommuner.get(select_kommune),
-            sentralitet = kommuner_sentralitet[select_kommune]
+            kommune=kommuner.get(select_kommune),
+            sentralitet=kommuner_sentralitet[select_kommune]
         )
-        
+
         st.sidebar.markdown(sentralitet_description)
 
         st.sidebar.dataframe(
             oppsummert_sidebar,
-            hide_index = True,
-            use_container_width = True,
-            column_config = {
+            hide_index=True,
+            use_container_width=True,
+            column_config={
                 'ukrainere': st.column_config.NumberColumn(
                     'Antall ukrainere', format='%.0f'
                 ),
@@ -383,21 +409,26 @@ with st.sidebar:
                 'asterix': st.column_config.TextColumn(
                     ''
                 )}
-            )
-    
+        )
+
     # If the user wants a top list by SSBs centrality index
     if select_group == 'KOSTRA-gruppe':
-        
-        oppsummert_sidebar = oppsummert[oppsummert['kostranavn'] == kommuner_kostra[select_kommune]]
+
+        oppsummert_sidebar = oppsummert[oppsummert['kostranavn']
+                                        == kommuner_kostra[select_kommune]]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['År'] == select_year]
-        #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
-        oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
-        
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
-        
-        kostra_about_komm = kostra_about[kostra_about['kostragruppe'] == kommuner_kostra[select_kommune]]
-                
+        # oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
+        oppsummert_sidebar = oppsummert_sidebar.sort_values(
+            'ukr_pct_pop', ascending=False)
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(
+            functions.make_asterix, axis=1)
+
+        oppsummert_sidebar = oppsummert_sidebar[[
+            'Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
+
+        kostra_about_komm = kostra_about[kostra_about['kostragruppe']
+                                         == kommuner_kostra[select_kommune]]
+
         sentralitet_description = """
         KOSTRA-gruppene er utviklet av SSB for å enklere sammenligne like kommuner. Gruppene er satt sammen basert på folkemengde og økonomiske rammebetingelser. 
         
@@ -408,20 +439,20 @@ with st.sidebar:
         * Bundne kostnader: {kostnader}
         * Frie disponible inntekter: {inntekter}
         """.format(
-            kommune = kommuner.get(select_kommune),
-            kostra_gruppe = kommuner_kostra[select_kommune],
-            folkemengde = kostra_about_komm['folkemengde'].iloc[0],
-            kostnader = kostra_about_komm['bundekostnader'].iloc[0],
-            inntekter = kostra_about_komm['frie_disponible_inntekter'].iloc[0]
+            kommune=kommuner.get(select_kommune),
+            kostra_gruppe=kommuner_kostra[select_kommune],
+            folkemengde=kostra_about_komm['folkemengde'].iloc[0],
+            kostnader=kostra_about_komm['bundekostnader'].iloc[0],
+            inntekter=kostra_about_komm['frie_disponible_inntekter'].iloc[0]
         )
-        
+
         st.sidebar.markdown(sentralitet_description)
 
         st.sidebar.dataframe(
             oppsummert_sidebar,
-            hide_index = True,
-            use_container_width = True,
-            column_config = {
+            hide_index=True,
+            use_container_width=True,
+            column_config={
                 'ukrainere': st.column_config.NumberColumn(
                     'Antall ukrainere', format='%.0f'
                 ),
@@ -431,29 +462,32 @@ with st.sidebar:
                 'asterix': st.column_config.TextColumn(
                     ''
                 )}
-            )
-        
-    
+        )
+
     if select_group == 'Lokalavis (dekningsområde)':
         if pd.isna(coverage[select_paper][0]):
             st.markdown('''
                         Dekningsområdet for denne avisen er ikke klart. Hvis avisen er riksdekkende, velg "Norge" i stedet for "Lokalavis" i velgeren.
                         Hvis avisens dekningsområdet må defineres med postnummer eller andre geografiske kjennetegn (feks kyst), arbeider vi med å sammenstille dette. 
                         ''')
-        
-        oppsummert_sidebar = oppsummert[oppsummert['Kommunenummer'].isin(coverage[select_paper])]
+
+        oppsummert_sidebar = oppsummert[oppsummert['Kommunenummer'].isin(
+            coverage[select_paper])]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['År'] == select_year]
-        #oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
-        oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
-        
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
-    
+        # oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['Fylkenummer'] == select_fylke]
+        oppsummert_sidebar = oppsummert_sidebar.sort_values(
+            'ukr_pct_pop', ascending=False)
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(
+            functions.make_asterix, axis=1)
+
+        oppsummert_sidebar = oppsummert_sidebar[[
+            'Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
+
         st.sidebar.dataframe(
             oppsummert_sidebar,
-            hide_index = True,
-            use_container_width = True,
-            column_config = {
+            hide_index=True,
+            use_container_width=True,
+            column_config={
                 'ukrainere': st.column_config.NumberColumn(
                     'Antall ukrainere', format='%.0f'
                 ),
@@ -463,33 +497,36 @@ with st.sidebar:
                 'asterix': st.column_config.TextColumn(
                     ''
                 )}
-            )
-        
+        )
+
     if select_group == 'ROBEK':
         oppsummert_sidebar = oppsummert[oppsummert['År'] == select_year]
         oppsummert_sidebar = oppsummert_sidebar[oppsummert_sidebar['robek'] == 'robek']
-        oppsummert_sidebar = oppsummert_sidebar.sort_values('ukr_pct_pop', ascending = False)
-        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(functions.make_asterix, axis = 1)
-        
-        oppsummert_sidebar = oppsummert_sidebar[['Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
-        
+        oppsummert_sidebar = oppsummert_sidebar.sort_values(
+            'ukr_pct_pop', ascending=False)
+        oppsummert_sidebar['asterix'] = oppsummert_sidebar.apply(
+            functions.make_asterix, axis=1)
+
+        oppsummert_sidebar = oppsummert_sidebar[[
+            'Kommune', 'ukrainere', 'ukr_pct_pop', 'asterix']]
+
         if oppsummert_komm_year['robek'].str.contains('ikke robek').iloc[0]:
             robek_string = """
             Liste med alle ROBEK-kommuner. {kommune} er ikke en ROBEK-kommune.
             
             """.format(
-                kommune = kommuner.get(select_kommune)
+                kommune=kommuner.get(select_kommune)
             )
         else:
             robek_string = """
             Liste med alle ROBEK-kommuner. {kommune} er en ROBEK-kommune.
             
             """.format(
-                kommune = kommuner.get(select_kommune)
+                kommune=kommuner.get(select_kommune)
             )
-        
+
         st.markdown(robek_string)
-        
+
         st.markdown('''
                     ROBEK er et register over kommuner som er i økonomisk ubalanse eller som ikke har vedtatt økonomiplanen, årsbudsjettet eller årsregnskapet innenfor de fristene som gjelder.
                     
@@ -498,38 +535,40 @@ with st.sidebar:
 
         st.dataframe(
             oppsummert_sidebar,
-            hide_index = True,
-            use_container_width = True,
-            column_config = {
+            hide_index=True,
+            use_container_width=True,
+            column_config={
                 'ukrainere': st.column_config.NumberColumn(
                     'Antall ukrainere', format='%.0f'
                 ),
                 'ukr_pct_pop': st.column_config.NumberColumn(
                     'Andel av befolkning', format='%.2f %%'
-                ), 
+                ),
                 'asterix': st.column_config.TextColumn(
                     ''
                 )}
-            )
+        )
 
 
-use_container_width = False #st.checkbox("Full tabellbredde", value=True)
+use_container_width = False  # st.checkbox("Full tabellbredde", value=True)
 
 
 # ----------------------- #
 # Main content of the app #
-# ----------------------- # 
+# ----------------------- #
 
 # create different tabs for the content
-tab1, tab2, tab6, tab3, tab4, tab5, tab7, tab8 = st.tabs(['Dette er saken', 'Slik er det i din kommune', 'Mulige nyhetssaker', 'Slik kan du gå fram', 'Tallgrunnlag', 'Ekspertkilder og rapporter', 'Fakta og begreper', 'Publisering'])
+tab1, tab2, tab6, tab3, tab4, tab5, tab7, tab8 = st.tabs(['Dette er saken', 'Slik er det i din kommune', 'Mulige nyhetssaker',
+                                                         'Slik kan du gå fram', 'Tallgrunnlag', 'Ekspertkilder og rapporter', 'Fakta og begreper', 'Publisering'])
 
 # In tab 1: Dette er saken
 with tab1:
-    
+
     national_col1, national_col2 = st.columns([5, 4])
 
-    #with national_col1:
+    # with national_col1:
     national_text = """
+    
     355 kommuner har til sammen bosatt 68.849 ukrainske flyktninger siden krigen startet i 2022 (per {data_imdi_received_date}). I samme periode ble det bosatt 9.616 flyktninger fra andre land.
     
     Til sammenligning ble det under “flyktningbølgen” i 2015-2016 bosatt i overkant av 26.000 personer.
@@ -599,22 +638,28 @@ with tab1:
     - 54 prosent av ukrainere er usikker på om de kommer til å returnere til Ukraina når krigen er over, i følge forskningsrapport fra OsloMet. 
 
     """.format(
-        data_imdi_received_date = data_imdi_received_date
+        data_imdi_received_date=data_imdi_received_date
     )
-    
+
+    st.markdown("""
+                Denne researchen ble gjort vinter/vår 2024. Ny kunnskap kan ha kommet til. For eksempel har [SSB](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/en-av-tre-ukrainere-er-i-jobb) publisert en rapport som viser at Ukrainere blir raskere sysselsatt, sammenlignet med andre flyktninger.
+                
+                Samarbeidsdesken, 13.09.24
+                """)
+    st.divider()
     st.markdown(
         national_text
     )
 
-    #with national_col2:
+    # with national_col2:
     #    with st.expander("Fakta og begreper om bosetting av ukrainere"):
-            
+
     #        pass
 
 
 # Tab 2: Statistical description of the municipality
 with tab2:
-    
+
     summarized = """
     
     ##### Bosatte
@@ -624,18 +669,21 @@ with tab2:
     I **{year}** {erble} bosatt {sum_total_ukr_year} ukrainere i kommunen, noe som utgjør {ukr_pct_pop_year:.2f} prosent av befolkningen.  {anonym}
     
     """.format(
-                kommune = kommuner.get(select_kommune), 
-                year = select_year, 
-                sum_total_ukr = oppsummert_komm['ukrainere'].sum(),
-                sum_total_ukr_year = oppsummert_komm_year['ukrainere'].sum(),  
-                ukr_pct_pop_year = oppsummert_komm_year['ukr_pct_pop'].sum(),  
-                #sum_total_pop = oppsummert_komm['pop'].sum(),
-                ukr_pct_pop = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm_2024['pop'].sum())*100,
-                ukr_pct_ovr = (oppsummert_komm['ukrainere'].sum()/oppsummert_komm['innvandr'].sum())*100,
-                erble = 'ble det' if select_year != 2024 else 'er det så langt',
-                anonym = '' if oppsummert_komm_year['ukr_prikket'].isnull().iloc[0] else 'Merk at vi ikke vet eksakt antall på grunn av anonymisering. Se fanen Tallgrunnlag.',
-                data_imdi_received_date = data_imdi_received_date
-                )
+        kommune=kommuner.get(select_kommune),
+        year=select_year,
+        sum_total_ukr=oppsummert_komm['ukrainere'].sum(),
+        sum_total_ukr_year=oppsummert_komm_year['ukrainere'].sum(),
+        ukr_pct_pop_year=oppsummert_komm_year['ukr_pct_pop'].sum(),
+        # sum_total_pop = oppsummert_komm['pop'].sum(),
+        ukr_pct_pop=(oppsummert_komm['ukrainere'].sum(
+        )/oppsummert_komm_2024['pop'].sum())*100,
+        ukr_pct_ovr=(oppsummert_komm['ukrainere'].sum(
+        )/oppsummert_komm['innvandr'].sum())*100,
+        erble='ble det' if select_year != 2024 else 'er det så langt',
+        anonym='' if oppsummert_komm_year['ukr_prikket'].isnull(
+        ).iloc[0] else 'Merk at vi ikke vet eksakt antall på grunn av anonymisering. Se fanen Tallgrunnlag.',
+        data_imdi_received_date=data_imdi_received_date
+    )
     summarized_anmodning = """
     
     ##### Anmodninger
@@ -643,36 +691,36 @@ with tab2:
      
      {kommune} {ema_vedtak_2024_string}
     """.format(
-        kommune = kommuner.get(select_kommune), 
-        innvandr_anmodet = anmodninger['innvandr_anmodet'].iloc[0],
-        innvandr_vedtak_string = anmodninger['innvandr_vedtak_string'].iloc[0],
-        ema_vedtak_2024_string = anmodninger['ema_vedtak_2024_string'].iloc[0],
+        kommune=kommuner.get(select_kommune),
+        innvandr_anmodet=anmodninger['innvandr_anmodet'].iloc[0],
+        innvandr_vedtak_string=anmodninger['innvandr_vedtak_string'].iloc[0],
+        ema_vedtak_2024_string=anmodninger['ema_vedtak_2024_string'].iloc[0],
     )
-    
+
     summarized_rank = """
     
     I **{year}** {erkom} {kommune} på {fylke_rank:}plass i fylket, og {national_rank}plass i hele landet i en rangering over hvilke kommuner som tar imot flest ukrainske flyktninger etter befolkningsstørrelse. 
     
     Tall mottatt fra Imdi {data_imdi_received_date}.
     """.format(
-                kommune = kommuner.get(select_kommune), 
-                year = select_year, 
-                fylke_rank = 'jumbo' if math.isnan(oppsummert_komm_year['fylke_rank'].iloc[0]) else str('{:.0f}'.format(oppsummert_komm_year['fylke_rank'].iloc[0])) + '. ',
-                national_rank = 'jumbo' if math.isnan(oppsummert_komm_year['national_rank'].iloc[0]) else str('{:.0f}'.format(oppsummert_komm_year['national_rank'].iloc[0])) + '. ',
-                erkom = 'kom' if select_year != 2024 else 'er',
-                data_imdi_received_date = data_imdi_received_date                
-                )
-    
+        kommune=kommuner.get(select_kommune),
+        year=select_year,
+        fylke_rank='jumbo' if math.isnan(oppsummert_komm_year['fylke_rank'].iloc[0]) else str(
+            '{:.0f}'.format(oppsummert_komm_year['fylke_rank'].iloc[0])) + '. ',
+        national_rank='jumbo' if math.isnan(oppsummert_komm_year['national_rank'].iloc[0]) else str(
+            '{:.0f}'.format(oppsummert_komm_year['national_rank'].iloc[0])) + '. ',
+        erkom='kom' if select_year != 2024 else 'er',
+        data_imdi_received_date=data_imdi_received_date
+    )
+
     if select_year == 2024:
         st.markdown(summarized_anmodning)
-    
+
     st.markdown(summarized)
     st.markdown(summarized_rank)
     if ukr_mottak_bool:
         st.markdown(ukr_mottak_string)
-        
-    
-        
+
     if select_year == 2024:
         fastlege = """
         ##### Fastlegekapasitet
@@ -682,30 +730,30 @@ with tab2:
         {lege_category}.
 
         """.format(
-            year = select_year,
-            kommune = kommuner.get(select_kommune), 
-            legeliste_n = oppsummert_komm_year['legeliste_n'].iloc[0],
-            legeliste_pct = oppsummert_komm_year['legeliste_pct'].iloc[0],
-            lege_category = oppsummert_komm_year['lege_category'].iloc[0]
-            )
-    
+            year=select_year,
+            kommune=kommuner.get(select_kommune),
+            legeliste_n=oppsummert_komm_year['legeliste_n'].iloc[0],
+            legeliste_pct=oppsummert_komm_year['legeliste_pct'].iloc[0],
+            lege_category=oppsummert_komm_year['lege_category'].iloc[0]
+        )
+
     else:
-        
+
         fastlege = """
         ##### Fastlegekapasitet
             
         {lege_category}.
         
         """.format(
-            year = select_year,
-            kommune = kommuner.get(select_kommune),
-            #legeliste_n = oppsummert komm_year['legeliste_n'].iloc[0],
-            #legeliste_pct = oppsummert_komm_year['legeliste_pct'].iloc[0],
-            lege_category = oppsummert_komm_year['lege_category'].iloc[0]
+            year=select_year,
+            kommune=kommuner.get(select_kommune),
+            # legeliste_n = oppsummert komm_year['legeliste_n'].iloc[0],
+            # legeliste_pct = oppsummert_komm_year['legeliste_pct'].iloc[0],
+            lege_category=oppsummert_komm_year['lege_category'].iloc[0]
         )
-        
+
     st.markdown(fastlege)
-    
+
     st.markdown('''
             ##### Tilskudd fra Imdi
             
@@ -719,29 +767,30 @@ with tab2:
             
             {tabellen}
             
-            '''.format( 
-                year = select_year,
-                sum_tilskudd = tilskudd_komm_total/1000000,
-                tabellen = 'Tabellen viser tilskudd gitt i **' + str(select_year) + '** for alle flyktninger bosatt i kommunen de siste fem årene.' if select_year != 2024 else 'Vi vet ennå ikke hvor mye tilskuddspenger kommunen får i 2024.'
+            '''.format(
+                year=select_year,
+                sum_tilskudd=tilskudd_komm_total/1000000,
+                tabellen='Tabellen viser tilskudd gitt i **' +
+                str(select_year) + '** for alle flyktninger bosatt i kommunen de siste fem årene.' if select_year != 2024 else 'Vi vet ennå ikke hvor mye tilskuddspenger kommunen får i 2024.'
                 )
-            )
-    
+                )
+
     st.dataframe(
         tilskudd_komm_year.style.format(thousands=" ", precision=0),
         hide_index=True,
         column_config={
             'Antall': st.column_config.NumberColumn(
                 'Sum',
-                #format="kr %:,f",
-                #format = None,
-                #min_value = 0,
-                #max_value = tilskudd_komm_total
-                ),
+                # format="kr %:,f",
+                # format = None,
+                # min_value = 0,
+                # max_value = tilskudd_komm_total
+            ),
             'Kommentar': st.column_config.TextColumn(
                 'Kommentar'
             )
         },
-        use_container_width= True
+        use_container_width=True
     )
 
 with tab6:
@@ -931,7 +980,7 @@ with tab3:
     * Oppsøk et asylmottak hvis det finnes i din kommune. 
 
     """)
-    
+
     st.markdown(
         """
         #### Slik gjorde vi det i Sortland
@@ -1041,8 +1090,8 @@ with tab3:
     )
 
 # Tab 4: Source data for the municipality
-with tab4: 
-    
+with tab4:
+
     tablecol1, tablecol2 = st.columns([4, 5])
     tablecol3, tablecol4 = st.columns([4, 5])
     tablecol5, tablecol6 = st.columns([4, 5])
@@ -1051,123 +1100,122 @@ with tab4:
     pop_text = """
             ##### Befolkningen i  {kommune}
             """.format(
-                kommune = kommuner.get(select_kommune), 
-                year = select_year, 
-                sum_year = flyktninger_komm_year['pop'].sum(),  
-                sum_total = flyktninger_komm['pop'].sum()
-                )
+        kommune=kommuner.get(select_kommune),
+        year=select_year,
+        sum_year=flyktninger_komm_year['pop'].sum(),
+        sum_total=flyktninger_komm['pop'].sum()
+    )
 
     with st.container():
         with tablecol1:
             st.markdown(pop_text)
-    
+
         with tablecol2:
             st.dataframe(
-            flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'pop', 'pop_pct']],
-            use_container_width = use_container_width,
-            hide_index = True,
-            column_config = {
-                'År': st.column_config.NumberColumn(format="%.0f"),
-                'pop': st.column_config.NumberColumn(
-                    'Antall', format='%.0f', step=".01"
-                ),
-                'pop_pct': st.column_config.NumberColumn(
-                    'Andel', format='%.1f %%'
-                )}
+                flyktninger_komm_year[['År', 'Kjønn',
+                                       'Aldersgruppe', 'pop', 'pop_pct']],
+                use_container_width=use_container_width,
+                hide_index=True,
+                column_config={
+                    'År': st.column_config.NumberColumn(format="%.0f"),
+                    'pop': st.column_config.NumberColumn(
+                        'Antall', format='%.0f', step=".01"
+                    ),
+                    'pop_pct': st.column_config.NumberColumn(
+                        'Andel', format='%.1f %%'
+                    )}
             )
-        
-    
+
     ukr_text = """
             ##### Ukrainske flyktninger (kollektiv beskyttelse)
             """.format(
-                kommune = kommuner.get(select_kommune), 
-                year = select_year, 
-                sum_year = flyktninger_komm_year['ukrainere'].sum(),  
-                sum_total = flyktninger_komm['ukrainere'].sum(),
-                prikking = check_ano(flyktninger_komm_year['ukrainere_string'])
-                )
+        kommune=kommuner.get(select_kommune),
+        year=select_year,
+        sum_year=flyktninger_komm_year['ukrainere'].sum(),
+        sum_total=flyktninger_komm['ukrainere'].sum(),
+        prikking=check_ano(flyktninger_komm_year['ukrainere_string'])
+    )
 
     with st.container():
         with tablecol3:
             st.markdown(ukr_text)
-    
+
         with tablecol4:
             st.dataframe(
-            flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'ukrainere_string', 'ukr_pct']],
-            use_container_width = use_container_width,
-            hide_index = True,
-            column_config = {
-                'År': st.column_config.NumberColumn(format="%.0f"),
-                'ukrainere_string': st.column_config.TextColumn(
-                    'Antall'
-                ),
-                'ukr_pct': st.column_config.NumberColumn(
-                    'Andel', format='%.1f %%'
-                )#,
-                #'ukr_prikket': st.column_config.TextColumn(
-                #    'Prikket', 
-                #    help = 'Prikkede data betyr at kommunen har tatt i mot mindre enn fem EMA. Data tilbakeholdes av IMDi av personvernhensyn.'
-                #   )
-            }
+                flyktninger_komm_year[[
+                    'År', 'Kjønn', 'Aldersgruppe', 'ukrainere_string', 'ukr_pct']],
+                use_container_width=use_container_width,
+                hide_index=True,
+                column_config={
+                    'År': st.column_config.NumberColumn(format="%.0f"),
+                    'ukrainere_string': st.column_config.TextColumn(
+                        'Antall'
+                    ),
+                    'ukr_pct': st.column_config.NumberColumn(
+                        'Andel', format='%.1f %%'
+                    )  # ,
+                    # 'ukr_prikket': st.column_config.TextColumn(
+                    #    'Prikket',
+                    #    help = 'Prikkede data betyr at kommunen har tatt i mot mindre enn fem EMA. Data tilbakeholdes av IMDi av personvernhensyn.'
+                    #   )
+                }
             )
-            
+
     ema_text = """
             ##### Bosatte enslige mindreårige fra Ukraina
             """.format(
-                kommune = kommuner.get(select_kommune), 
-                year = select_year, 
-                sum_year = ema_komm_year['ema'].sum(),  
-                sum_total = ema_komm['ema'].sum()
-                )
+        kommune=kommuner.get(select_kommune),
+        year=select_year,
+        sum_year=ema_komm_year['ema'].sum(),
+        sum_total=ema_komm['ema'].sum()
+    )
 
     with st.container():
         with tablecol5:
             st.markdown(ema_text)
-    
+
         with tablecol6:
             st.dataframe(
-            ema_komm_year[['År', 'ema_string']],
-            use_container_width = use_container_width,
-            hide_index = True,
-            column_config = {
-                'År': st.column_config.NumberColumn(format="%.0f"),
-                'ema_string': st.column_config.TextColumn(
-                    'Enslige mindreårige', 
+                ema_komm_year[['År', 'ema_string']],
+                use_container_width=use_container_width,
+                hide_index=True,
+                column_config={
+                    'År': st.column_config.NumberColumn(format="%.0f"),
+                    'ema_string': st.column_config.TextColumn(
+                        'Enslige mindreårige',
                     )}
             )
 
-            
     ovr_text = """
             ##### Øvrige flyktninger (ikke kollektiv beskyttelse)
             """.format(
-                kommune = kommuner.get(select_kommune), 
-                year = select_year, 
-                sum_year = flyktninger_komm_year['ovrige'].sum(),  
-                sum_total = flyktninger_komm['ovrige'].sum()
-                )
-            
-
+        kommune=kommuner.get(select_kommune),
+        year=select_year,
+        sum_year=flyktninger_komm_year['ovrige'].sum(),
+        sum_total=flyktninger_komm['ovrige'].sum()
+    )
 
     with st.container():
         with tablecol7:
-            
+
             st.markdown(ovr_text)
-    
+
         with tablecol8:
             st.dataframe(
-            flyktninger_komm_year[['År', 'Kjønn', 'Aldersgruppe', 'ovrige_string', 'ovr_pct']],
-            use_container_width = use_container_width,
-            hide_index = True,
-            column_config = {
-                'År': st.column_config.NumberColumn(format="%.0f"),
-                'ovrige_string': st.column_config.TextColumn(
-                    'Antall'
-                ),
-                'ovr_pct': st.column_config.NumberColumn(
-                    'Andel', format='%.1f %%'
-                )}
+                flyktninger_komm_year[[
+                    'År', 'Kjønn', 'Aldersgruppe', 'ovrige_string', 'ovr_pct']],
+                use_container_width=use_container_width,
+                hide_index=True,
+                column_config={
+                    'År': st.column_config.NumberColumn(format="%.0f"),
+                    'ovrige_string': st.column_config.TextColumn(
+                        'Antall'
+                    ),
+                    'ovr_pct': st.column_config.NumberColumn(
+                        'Andel', format='%.1f %%'
+                    )}
             )
-    
+
     anon_numbers_source = """
                 
     ###### Anonymisering 
@@ -1190,14 +1238,14 @@ with tab4:
     
     Tall på antall flyktninger fra Balkan på 1990-tallet er hentet fra [Store norske leksikon](https://snl.no/kollektiv_beskyttelse).
     """.format(
-        data_imdi_received_date = data_imdi_received_date
+        data_imdi_received_date=data_imdi_received_date
     )
-    
+
     st.markdown(anon_numbers_source)
 
 # Tab 5: Expert interviews
 with tab5:
-    
+
     st.markdown(
         """
         Rapporter: 
@@ -1258,7 +1306,7 @@ with tab5:
     — Det er veldig viktig å formidle god informasjon om helsetjenesten i Norge på en forståelig måte til de nyankomne flyktningene. Særlig de mest nyankomne flyktningene rapporterte i større grad at de ikke hadde fått forståelig informasjon om helsetjenester, visste hvordan de skulle kontakte helsevesenet, eller hadde fått den helsehjelpen de følte de hadde hatt behov for i Norge. Det norske helsevesenet er organisert noe annerledes enn i mange andre land og dette kan føre til at tilgang, bruk og/eller forventningene blant flyktninger er nokså annerledes.
 
     """
-    
+
     with st.expander('Intervju med Angela Labberton ved Folkehelseinstituttet.'):
         _, imgcol = st.columns([5, 1])
         with imgcol:
@@ -1269,11 +1317,11 @@ with tab5:
                     file_name="Angela Labberton kredittering Simen Gald.jpg",
                     mime="image/jpg"
                 )
-                
+
             st.markdown('Foto: Simen Gald')
 
         st.markdown(fhi_string, unsafe_allow_html=True)
-    
+
     nibr_string = """
     
     Vilde Hernes med flere har undersøkt erfaringene til ukrainske flyktninger som har kommet til Norge etter Russlands invasjon i 2022. 
@@ -1353,9 +1401,9 @@ with tab5:
     
     — Det var noen som ble sjokkert da de ble bedt om å drikke Cola fordi de hadde feber og vondt i magen. De ville ha medisin.  
     """
-    
+
     with st.expander('Intervju med Vilde Hernes, forsker ved NIBR.'):
-        
+
         _, imgcol = st.columns([5, 1])
         with imgcol:
             with open("img/Vilde Hernes kredittering Sonja Balci.jpg", "rb") as file:
@@ -1366,9 +1414,9 @@ with tab5:
                     mime="image/jpg"
                 )
             st.markdown('Foto: Sonja Balci')
-                
+
         st.markdown(nibr_string)
-    
+
     ous_string = """
     Anders Holtan, overlege og leder for koordineringssenter for medisinsk evakuering ved Oslo Universitetssykehus.
           
@@ -1381,7 +1429,7 @@ with tab5:
     
     — Dette er som andre kreftpasienter og skadde som bor i kommunen; de kan være i behov av legetjenester, hjemmesykepleie, fysioterapi, pasientreiser, behov resepter, attester etc.  
     """
-    
+
     with st.expander('Intervju med Anders Holtan, Oslo universitetssykehus.'):
         _, imgcol = st.columns([5, 1])
         with imgcol:
@@ -1393,9 +1441,9 @@ with tab5:
                     mime="image/jpg"
                 )
         st.markdown(ous_string)
-        
+
     with st.expander('Intervju med Nataliya Yeremeyeva, sosiolog og medlem i ukrainsk forening.'):
-        
+
         natyer_string = """
         
         ##### Eldre er ensomme: 
@@ -1450,8 +1498,6 @@ with tab5:
 
         """
 
-        
-        
         _, imgcol = st.columns([5, 1])
         with imgcol:
             with open("img/Nataliya Yeremeyeva.jpg", "rb") as file:
@@ -1461,13 +1507,13 @@ with tab5:
                     file_name="Nataliya Yeremeyeva kredittering privat.jpg",
                     mime="image/jpg"
                 )
-                
+
         st.markdown(natyer_string)
-        #st.markdown("Intervjuet publiseres 03.04.24")
-        
-with tab7: 
+        # st.markdown("Intervjuet publiseres 03.04.24")
+
+with tab7:
     st.markdown(
-                """
+        """
                 
                 Kilde: Imdi
                 ##### Kommunene kan selv velge hvem og hvor mange flyktninger de vil bosette: 
@@ -1514,32 +1560,31 @@ with tab7:
 
                 Kilde: Imdi
                 """
-            )
-    
+    )
+
 with tab8:
-    
+
     sperrefrist2 = """
     {time}
-    """.format(time = functions.countdown(end_time))
+    """.format(time=functions.countdown(end_time))
     st.markdown(sperrefrist2.format('%d'))
-   
-    
+
     st.markdown("""
                 ##### Forslag til kreditering av Samarbeidsdesken
                 """)
-     
+
     st.markdown("""
                 Fakta og tallgrunnlag i denne saken er utarbeidet av Samarbeidsdesken, et journalistisk fellesprosjekt mellom Landslaget for lokalaviser (LLA), Senter for undersøkende journalistikk (SUJO) og NRK.
                 """)
-    
+
     with open("img/logo2.zip", "rb") as zip2:
         btnzip2 = st.download_button(
-            label="Last ned logo", 
-            data=zip2, 
-            file_name="logo2.zip", 
+            label="Last ned logo",
+            data=zip2,
+            file_name="logo2.zip",
             mime="application/zip"
-            ) 
-    
+        )
+
     st.markdown("""
                 ##### Ting å være obs på
                 Ukraina-nettsiden inneholder research dere alle kan bruke, men som vi ikke ønsker å dele med andre uten redaksjonell bearbeiding. Del derfor ikke lenken til nettsiden, verken i sakene dere skriver eller i kildehenvisningen i Datawrapper.
