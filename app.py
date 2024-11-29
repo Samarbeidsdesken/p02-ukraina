@@ -35,17 +35,17 @@ with st.sidebar:
 
     st.title(apptitle)
 
-    sperrefrist = """
-    {time}
-    """.format(time=functions.countdown(end_time))
-    st.markdown(sperrefrist.format('%d'))
+    #sperrefrist = """
+    #{time}
+    #""".format(time=functions.countdown(end_time))
+    #st.markdown(sperrefrist.format('%d'))
 
-    st.markdown(
-        """
-        <p style='color:red;font-weight:bold;'>Ikke publiser saker før sperrefristen. </p>
-        """,
-        unsafe_allow_html=True
-    )
+    #st.markdown(
+    #    """
+    #    <p style='color:red;font-weight:bold;'>Ikke publiser saker før sperrefristen. </p>
+    #    """,
+    #    unsafe_allow_html=True
+    #)
 
     st.markdown(
         """
@@ -1552,10 +1552,10 @@ with tab7:
 
 with tab8:
 
-    sperrefrist2 = """
-    {time}
-    """.format(time=functions.countdown(end_time))
-    st.markdown(sperrefrist2.format('%d'))
+    #sperrefrist2 = """
+    #{time}
+    #""".format(time=functions.countdown(end_time))
+    #st.markdown(sperrefrist2.format('%d'))
 
     st.markdown("""
                 ##### Forslag til kreditering av Samarbeidsdesken
