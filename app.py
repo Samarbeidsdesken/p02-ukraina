@@ -580,7 +580,7 @@ Researchpakken blir jevnlig oppdatert ettersom asylfeltet stadig er i bevegelse.
 --------
 
 
-355 kommuner har til sammen bosatt **76.126** ukrainske flyktninger siden krigen startet i 2022 (per. xxx). I samme periode ble det bosatt 10.965 flyktninger fra andre land. 
+355 kommuner har til sammen bosatt **76.126** ukrainske flyktninger siden krigen startet i 2022 (per. 13.11.2024). I samme periode ble det bosatt 10.965 flyktninger fra andre land. 
 
 **Etter å ha bosatt rundt 30.000 i året, forventes det nå en klar nedgang.**
 
@@ -1336,7 +1336,7 @@ with tab5:
 
     nibr_string = """
     
-        
+         
     **Nedskalering i kommunene**
 
     – Manglende norskferdigheter er fortsatt den klart største barrieren for å få jobb i Norge. 
