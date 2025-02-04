@@ -35,7 +35,7 @@ with st.sidebar:
 
     st.title(apptitle)
 
-    #sperrefrist = """
+    #st = """
     #{time}
     #""".format(time=functions.countdown(end_time))
     #st.markdown(sperrefrist.format('%d'))
@@ -569,17 +569,27 @@ with tab1:
     # with national_col1:
     national_text = """
 
-Denne research-pakken ble publisert i april 2024. Ettersom asylfeltet stadig er i bevegelse, har vi nå fjernet intervjuer og nyhetspoeng som ikke lenger er relevante. Vi har lagt til oppdaterte bosettingstall på kommunenivå fra Imdi, intervju med direktør i Imdi som kan brukes fritt, og nye nyhetspoeng - som speiler dagens situasjon. 
+Researchpakken blir jevnlig oppdatert ettersom asylfeltet stadig er i bevegelse.
 
-*Samarbeidsdesken, 28.11.24*
+**Logg:**
 
--------
+- April 24: Først publisert. 
+- 28.11.24: Oppdaterte tall fra Imdi og intervju med direktør i Imdi. 
+- 03.02.25: Ny rapport fra OsloMet, og intervju med forsker Vilde Hernes. 
 
-355 kommuner har til sammen bosatt **76.126** ukrainske flyktninger siden krigen startet i 2022 (per {data_imdi_received_date}). I samme periode ble det bosatt 10.965 flyktninger fra andre land. 
+--------
 
-**Etter å ha bosatt rundt 30.000 i året, forventes det nå en klar nedgang.**  
 
-27\. november sendte Imdi ut et brev til alle kommuner i landet.  De ba dem bosette 18.900 flyktninger i løpet av 2025. 15 500 av dem fra Ukraina. 
+355 kommuner har til sammen bosatt **76.126** ukrainske flyktninger siden krigen startet i 2022 (per. xxx). I samme periode ble det bosatt 10.965 flyktninger fra andre land. 
+
+**Etter å ha bosatt rundt 30.000 i året, forventes det nå en klar nedgang.**
+
+De siste to årene har nesten samtlige kommuner rustet opp tjenesteapparatet for å ta imot rekordhøye antall som skal bosettes. Med UDIs prognoser om færre ankomster fra Ukraina i 2025 er det mange kommuner som nå må nedskalere flyktningtjenestene sine. Hva skal de da gjøre med alle de nylig har ansatt? Lærere for eksempel? 
+
+Andre kommuner har fortsatt sprengt kapasitet.
+
+
+Imdi har bedt kommunen bosette 18.900 flyktninger i løpet av 2025. Av dem er 15 500 fra Ukraina.
 
 Nå er det opp til hver enkelt kommune å avgjøre hvor mange og hvilke flyktninger de klarer å bosette. 
 
@@ -587,58 +597,72 @@ Sjekk hvor mange Imdi har [anmodet din kommune om å bosette.](https://www.imdi.
 
 -------
 
-#### Store kapasitetsutfordringer i kommunene
+**Store kapasitetsutfordringer i kommunene**
 
 – Det er klart at etter tre år med historisk høy bosetting, opplever kommunene kapasitetsutfordringer på ulike områder, sier Libe Rieber-Mohn, direktør i Integrerings- og mangfoldsdirektoratet (Imdi, [klikk her](https://kommunikasjon.ntb.no/presserom/89626/imdi/mi?item=image-17983499) for pressebilde). 
 
 – Vi ser at flere kommuner nå sliter med å oppdrive boliger som ligger nær kollektivtransport og kommunale tilbud. Helsesektoren, skoler og barnehager har også store kapasitetsutfordringer.  
 
-#### En økning av barn og unge som kommer alene
+**En økning av barn og unge som kommer alene**
 
 Mens det totale antallet flyktninger går ned neste år, forventes det en 20 prosent økning i bosetting av enslige mindreårige flyktninger, ifølge Imdi. I overkant av halvparten av disse kommer fra Ukraina. 
 
 – Vi anmoder nå en rekke kommuner om å ta imot barn og unge som kommer hit uten foreldre eller andre omsorgspersoner. De er i en spesielt sårbar situasjon, men vi skal ikke glemme at det er mange ressurssterke ungdommer blant dem, sier Rieber-Mohn. 
 
-Totalt er i overkant av 160 av barna 15 år eller yngre. Det er en gruppe som er ressurskrevende for en kommune å bosette. 
+– Blant de under 18 år, ser vi en dobling av andelen 16-17-åringer fra 2022 til 2024, og det er hovedsakelig en økning i unge gutter, sier Vilde Hernes, forsker ved OsloMet. 
+ 
+– Vi antar at disse ungdommene reiser eller blir sendt fra Ukraina mens det fortsatt er lovlig, med tanke på reiseforbudet for ukrainske menn mellom 18-60 år, sier hun. 
 
-– Noen kommuner har lang erfaring med å bosette enslige mindreårige og har god kompetanse på det. Men siden det nå er en såpass kraftig økning, må vi spørre noen flere kommuner som ikke har bosatt enslige mindreårige de siste årene. Disse må også spesifisere hva slags boløsninger kommunene har tilgjengelig, sier hun. 
+Mange av barna som kommer alene er også 15 år eller yngre. Det er en gruppe som er ressurskrevende for en kommune å bosette. 
 
-#### Flere eldre legger mer press på kommunene
+– Noen kommuner har lang erfaring med å bosette enslige mindreårige og har god kompetanse på det. Men siden det nå er en såpass kraftig økning, må vi spørre noen flere kommuner som ikke har bosatt enslige mindreårige de siste årene. Disse må også spesifisere hva slags boløsninger kommunene har tilgjengelig, sier Rieber-Mohn.
+
+**Flere eldre legger mer press på kommunene**
+
 Cirka fire prosent av de bosatte flyktningene fra Ukraina  er over 66 år. Dette er en annen gruppe enn Norge vanligvis bosetter, og de trenger gjerne andre tjenester enn det kommunene har vært vant med å tilby tidligere. 
    
 – Det er en stor omveltning å skulle ta imot en så stor andel med eldre flyktninger, sier Vilde Hernes ved OsloMet.  
 
 – Det er flere 80- og 90-åringer som har kommet fra Ukraina. Som alle andre eldre vil behovene variere, det gjelder også eldre flyktningers behov for helsetjenester, omsorgstilbud og andre typer tiltak, sier Rieber-Mohn.  
 
-#### Midlertidighet gjør det vanskelig å skalere opp
+**Midlertidighet gjør det vanskelig å skalere opp** 
     
 I to og et halvt år har flyktningene fra Ukraina fått midlertidig kollektiv beskyttelse i Norge. 
 
-Men i september 2024 endret regjeringen på dette. De som kommer fra områder i Ukraina som UDI vurderer som trygge, får ikke lenger kollektiv beskyttelse, men kan søke om asyl. 
+Men i september 2024 endret regjeringen på dette. De som kommer fra områder i Ukraina som UDI vurderer som trygge, får ikke lenger kollektiv beskyttelse, men kan søke om asyl på lik linje med andre asylsøkere. 
 
-De som har fått kollektiv beskyttelse, er fortsatt i landet på ubestemt tid, noe som fører til flere utfordringer for kommunene: 
+De som har fått kollektiv beskyttelse, er fortsatt i landet på ubestemt tid, noe som fører til flere utfordringer for ukrainerne: 
 
-— Å oppskalere tjenester innenfor skole, barnehage og helsetjenester er en veldig stor risiko for kommunene fordi ukrainere har midlertidig tillatelse, sier Vilde Hernes fra OsloMet. 
+— Ukrainere opplever at den midlertidige oppholdstillatelsen gjør at arbeidsgivere er mer skeptiske til å ansette dem i faste stillinger, sier Vilde Hernes ved OsloMet. 
+ 
+— Mange ønsker en fast fulltidsjobb, og sier at midlertidige stillinger gjør den generelle usikkerheten de lever med enda større, sier hun. 
+ 
+— Usikkerheten rundt om og hvor lenge de vil får bli i Norge gjør det vanskelig å planlegge livet og tenke langsiktig. 
+
+For kommunen er det også problematisk: 
+
+— Å oppskalere tjenester innenfor skole, barnehage og helsetjenester er en veldig stor risiko for kommunene fordi ukrainere har midlertidig tillatelse, sier Hernes. 
     
-Hvis ukrainerne må hjem, slutter kommunene å få tilskudd fra Imdi, og de taper dermed penger. 
+— Hvis ukrainerne må hjem, slutter kommunene å få tilskudd fra Imdi, og de taper dermed penger. 
 
-#### En av tre ukrainere i jobb
+
+**En av tre ukrainere i jobb**
 
 – Sammenlignet med andre grupper av flyktninger blir ukrainerne raskere sysselsatt, viser ny [forskning fra SSB.](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/en-av-tre-ukrainere-er-i-jobb) 
 
 – Andelen ukrainere i jobb er omtrent 38 prosent for dem som har bodd i Norge ett år, og omtrent 48 prosent for dem som kom for to år siden, ifølge rapporten. 
 
-– Ukrainere har et kortere introduksjonsprogram enn flyktninger fra andre land. Hvis de ikke kommer seg ut i jobb, innebærer det økte sosialhjelpeutgifter, sier Libe Rieber-Mohn. 
+– Manglende norskferdigheter er fortsatt den klart største barrieren for å få jobb i Norge, sier Vilde Hernes fra OsloMet. 
+ 
+– Ukrainere har et kortere introduksjonsprogram enn flyktninger fra andre land. Hvis de ikke kommer seg ut i jobb, innebærer det økte sosialhjelpeutgifter, sier Libe Rieber-Mohn fra Imdi. 
 
 Kommunen mottar integreringstilskudd fra Imdi i fem år. Hvis flyktningen kommer ut i jobb etter introduksjonsprogrammet, kan kommunen selv benytte store deler av dette tilskuddet til andre ting. 
 
 – Det er en vinn-vinn-situasjon, både for dem som kommer ut i arbeid og for kommunens økonomi, sier Rieber-Mohn. 
 
-Av de som ikke kommer seg i jobb, peker hun på at dårlige norskkunnskaper er en barriere for å delta i arbeidslivet.  
+**De over 55 år får ikke introduksjonsprogram**
 
-#### De over 55 år får ikke introduksjonsprogram
-
-Siden krigen startet, har Norge bosatt 9 500 ukrainske flyktninger over 55 år.  Denne gruppen har ikke rett på introduksjonsprogram. 
+Siden krigen startet, har Norge bosatt 9500 ukrainske flyktninger over 55 år.  Denne gruppen har ikke rett på introduksjonsprogram. 
 
 – Regjeringen har nå et forslag ute til høring om å øke aldersgrensen til 60 år, sier Rieber-Mohn. 
 
@@ -1238,7 +1262,7 @@ with tab5:
         """
         Rapporter: 
         - Angela Labberton  mfl. (FHI) - [Helsetjenestebehov blant flyktninger fra Ukraina som kom til Norge i 2022](https://www.fhi.no/nyheter/2023/ukrainske-flyktninger-darligere-helse-og-betydelig-darligere-tannhelse/).  
-        - Vilde Hernes mfl. (OsloMet) - [Ukrainian refugees – experiences from the first phase in Norway](https://oda.oslomet.no/oda-xmlui/handle/11250/3029151).
+        - Intervju med forsker ved OsloMet, Vilde Hernes, som kommenterer på funn i [ny rapport](https://www.imdi.no/om-imdi/rapporter/2024/ukrainske-flyktningers-erfaringer-med-integrering-og-offentlige-tjenester-i-norge/). Rapporten er skrevet på oppdrag fra Imdi. 
         - Institutt for samfunnsforskning - [Tilrettelegging for integrering av flyktninger i Norge](https://samfunnsforskning.brage.unit.no/samfunnsforskning-xmlui/bitstream/handle/11250/3116715/ISF_Rapport_3_24_UUweb.pdf).  
         
         Samarbeidsdesken har gjennomført intervjuer og sitatsjekk med ekspertkilder. Sitatene kan brukes fritt. 
@@ -1312,82 +1336,96 @@ with tab5:
 
     nibr_string = """
     
-    Vilde Hernes med flere har undersøkt erfaringene til ukrainske flyktninger som har kommet til Norge etter Russlands invasjon i 2022. 
-    
-    Du finne rapporten i punktlisten øverst på siden.  
-    
-    ##### Hvem er ukrainerne som kommer? 
-    — Tilstrømningen er veldig forskjellig fra 2015. Da var det en klar overvekt av menn som kom. Med ukrainerne var det i starten en stor overvekt kvinner, men etter de første månedene har andelen menn og kvinner vært mer lik, og holdt seg stabil.  
-    
-    — I stor grad har ukrainerne høy utdannelse. 75 prosent har høyere utdannelse. Men her ser vi litt utvikling over tid. Større andel av de som kom i den første fasen hadde høyere utdannelse enn dem som har kommet i senere tid. Det samme gjelder engelskkunnskapene.  
-    
-    — Dette er vanlig dynamikk. At de som kommer i første fase ofte er ressurssterke, mens etter hvert så kommer det mindre ressurssterke.  
-    
-    ##### En stor andel av de ukrainske flyktningene er eldre. Hvilke utfordringer byr dette på?
-    — 5 prosent av de som kommer er over 66 år. Dette er mye høyere enn tidligere år når tallet har lagt på 1-2 prosent. Men de prosentene høres jo ikke så mye ut. Det viktige er at det totale antallet er utrolig mye høyere enn tidligere, og integreringsapparatet trenger helt annen kompetanse og et helt annet tilbud enn man har for folk i arbeidsdyktig alder som skal ut i et introduksjonsprogram.  
-    
-    — Det er en stor omveltning å skulle ta imot en så stor andel med eldre flyktninger.  Det trengs andre tjenester enn det man har vært vant til tidligere.  
-    
-    ##### Hvordan har dette vært for kommunene?
-    — Generelt har kommunene press på eldreomsorg og helsetjenester, og når det over natten kommer veldig mange flere, så blir det naturlig nok enda større press.  
-    
-    — Flyktningtjenesten og introduksjonsprogrammet er ikke de eneste som skal ta imot flyktninger. Hele kommunen bosetter med hele tjenesteapparatet. Å skulle oppskalere alle tjenester er krevende.  
-    
-    — Veldig mange har 2015 i tankene. De husker at de oppskalerte, men så stoppet det å komme folk. Da taper kommunene penger, for de slutter å få tilskudd for personer. Veldig mange kommuner har akkurat rukket å nedskalere etter 2015 når ukrainerne begynte å komme i 2022. 
-    
-    — Normalt når vi tar imot flyktninger, tar vi for gitt at de skal bli. Man tror ikke at de skal returnere. Men denne gruppen har bare midlertidig opphold.  
-    
-    — Å oppskalere tjenester innenfor skole, barnehage og helsetjenester er en veldig stor risiko for kommunene fordi ukrainere har midlertidig tillatelse.  Hadde kommunene visst at disse skulle bli i all overskuelig framtid kunne de ansatt mye leger, sykepleiere og lærere i faste stillinger fordi de hadde fått en større befolkning. Men siden man ikke vet om de skal være her i tre måneder, tre år eller resten av livet, så er det mange kommuner som ikke tør å oppskalere. I tillegg er det mangel på folk til å fylle slike stillinger som sykepleiere, lærere, leger etc. 
+        
+    **Nedskalering i kommunene**
 
-    ##### På hvilke tjenester er det størst press i kommunen? 
-    — Helsevesenet og Nav er veldig presset. Lokalt Nav-personell sier at de ikke har kapasitet til å følge opp denne gruppen. De er rett og slett ikke nok ansatte til å følge opp en så stor økning av mennesker på kort tid.  
-    
-    — Mitt inntrykk har vært at skole og barnehage har gått bra hittil, mens helse er et generelt problem fra før av.  
-    
-    ##### Hvordan løser kommunene dette?  
-    — Det er veldig forskjellig hvordan kommunene løser det. Noen har unntak for midlertidige stillinger, noen tenker at de skal ri av seg stormen og håper at det skal fungere, men tør ikke å ansette. Andre prøver å bruke private tjenester i større grad, da kan de eventuelt nedskalere fort. Men det er et helt reelt dilemma som kommunene uttrykker veldig sterkt, at det er krevende. 
+    – Manglende norskferdigheter er fortsatt den klart største barrieren for å få jobb i Norge. 
 
-    ##### Har bosettingen av ukrainere vært forskjellig fra bosetting av andre flyktninger?
+    – En bekymring for kommunene nå er hvordan de skal få til en god nedskaleringsprosess, der f.eks. ansatte i flyktningtjenester og norskopplæring må omplasseres eller sies opp.
+
     
-    — Det har kanskje vært flere likhetstrekk enn forskjeller i arbeidet med å ta imot ukrainere og andre flyktninger. Det var nok nokså urealistiske forventinger om i starten at dette skulle være helt annerledes.      
+
+    **Ukrainere i jobb**
+
+    – Én av tre ukrainere oppgir at de er økonomisk selvstendige og klarer seg selv.
+
+    – 30 prosent av ukrainerne oppgir at de er i arbeid, mens 70 prosent mottar en eller annen form for offentlig, økonomisk støtte. 
+
+    – Manglende norskferdigheter er fortsatt den klart største barrieren for å få jobb i Norge. 
+
+
+    **Jobbmatch og kvalifisering**
+
+    – Majoriteten av ukrainerne har høyere utdanning eller tidligere arbeidserfaring. Cirka halvparten får, ikke eller i liten grad, brukt dette i jobben i Norge.
+
+    – 43% er villig til å ta «hvilken som helst jobb», mens 45% er villig til å ta arbeid som ikke matcher tidligere erfaring eller utdanning, men det avhenger av type arbeid.
+
+    – Mange planlegger videre utdanning eller kompetanseheving i Norge, ofte med mål om å kvalifisere seg til yrker som trengs på det norske arbeidsmarkedet.
+                
+
+    **Varierende erfaring med arbeidspraksis**
+
+    Med regjeringens krav om mer arbeidsrettede introduksjonsprogram er arbeidspraksis blitt et mye brukt tiltak.
+
+    – En bekymring blant noen ukrainere er at visse arbeidsgivere utnytter situasjonen med arbeidspraksis for å få gratis arbeidskraft.
+
+
+    **Midlertidig jobb**
+
+    – Ukrainere opplever at den midlertidige oppholdstillatelsen gjør at arbeidsgivere er mer skeptiske til å ansette dem i faste stillinger. 
     
-    — Ukrainerne skulle bare gli inn, dette skulle bare være som arbeidsinnvandrere som skulle hoppe ut i jobb, helt problemfritt. Det har vist seg at denne gruppen også trenger støtte og hjelp for å komme seg ut i jobb og arbeid. Selv om de har høy utdanning får de ikke nødvendigvis brukt det i Norge når de ikke kan engelsk, og ikke norsk.    
+    – Mange ønsker en fast fulltidsjobb, og sier at midlertidige stillinger gjør den generelle usikkerheten de lever med enda større. 
     
-    — Ukrainere har generelt ikke gode engelskkunnskaper. Det er en myte som må avkreftes gang på gang, på gang.    
     
-    — Kun 11 prosent snakker flytende engelsk, og rundt 60 prosent kan nesten ikke engelsk i det hele tatt. Av de som kommer nå, er det en enda lavere andel som snakker engelsk.  
+    – Usikkerheten rundt om og hvor lenge de vil får bli i Norge gjør det vanskelig å planlegge livet og tenke langsiktig.
+
     
-    ##### Skole
+    **Vil bli i Norge**
+
+    – Bare 10 % av ukrainerne ønsker å dra tilbake. Det er en klar økning i andelen som sier at de ikke ønsker å returnere når krigen er over.
     
-    — Usikkerheten for framtiden er framtredende for denne gruppen. 37 prosent svarer at barna fortsatt følger online ukrainsk skole. Oftest i tillegg til å følge norsk skole.
+    – Flere forsøker nå å finne strategier for å bli i Norge, f.eks. å søke om arbeidstillatelse i stedet for midlertidig beskyttelse hvis de oppfyller betingelsene.
+
     
-    ##### Så det har ikke vært enklere å få en ukrainer ut i jobb enn øvrige flyktninger? 
-    — Ukrainere som har gått introduksjonstilbudet har cirka samme resultater som andre flyktninggrupper har hatt når det kommer til å komme seg ut i arbeid.  
+    **Derfor vil de ikke tilbake til Ukraina**
+
+    – En åpenbar grunn til at man ikke vil returnere er rett og slett at noen ikke har noe å returnere til.
+
+
+    – Et ønske om et stabilt og trygt liv for barna trekkes ofte frem av foreldre som bakgrunnen for at de ikke ønsker å returnere etter krigen.
+
+
+    – En ny tendens er at vi ser en større splittelse blant ukrainerne. Flere som har flyktet fra Ukraina er engstelige for hvordan de vil bli tatt imot av ukrainere som ble igjen hvis de returnerer.
+
     
-    — Når du ikke kan språket og har et annet alfabet så er det ikke nødvendigvis enkelt å få dem ut i jobb. Det er en helt urealistisk forventning.  
+    **Flere enslige mindreårige gutter på 16-17 år**
+
+    – Blant de under 18 år, ser vi en dobling av andelen 16-17-åringer fra 2022 til 2024, og det er hovedsakelig en økning i unge gutter.
     
-    — I vår rapport finner vi at flere arbeidsgivere i utgangspunktet var mer positivt innstilt til å ansette ukrainske flyktninger enn øvrige flyktninger da krigen startet, men at de på en annen side sier at den midlertidig tillatelse gjør at de er mer skeptiske til å ansette dem. Det å ansette noen, og lære dem opp, tar tid og koster penger.  
+    – Vi antar at disse ungdommene reiser eller blir sendt fra Ukraina mens det fortsatt er lovlig, med tanke på reiseforbudet for ukrainske menn mellom 18-60 år.
     
-    — Det er en stor vilje for å lære seg norsk og komme ut i arbeidslivet, men det er veldig mange som møter på utfordringer. Språk trekkes frem som den største barrieren.
+    – En økning i andelen ungdommer påvirker hvilke tjenester kommunene må ha tilgjengelig, spesielt siden en del av disse kommer som enslige mindreårige.
+
+
+    **Barn og skolegang**
+
+    – Så og si alle barn fra Ukraina deltar på norske skoler
     
-    ##### Hvilke tilbud gir kommunene til de over 55 år?
+    – Spesielt de yngre barna trives og integreres godt, men at det er mer variasjon og utfordringer for ungdommen.
     
-    — Det er veldig forskjellig om kommunen tilbyr norskopplæring og introduksjonsprogram til denne gruppen. Det handler om kapasitet. Små kommuner tilbyr i større grad. Det handler nok om at når de først har opprettet en klasse, kan de like gjerne fylle den opp. I større kommuner er det færre som tilbyr norskopplæring til denne gruppen som de ikke har plikt til å tilby.  
+    – Selv om nesten alle går på norsk skole, deltar også 58% på en eller annen form for ukrainsk skolegang eller undervisning i tillegg.
     
-    — Halvparten av kommunene opplyser at de ukrainske flyktningene har fått mindre norskundervisning og introduksjonsprogram enn hva de har hatt rett til. De har ikke hatt klasserom, de har ikke hatt nok lærere, de har ikke hatt mulighet til å oppskalere så raskt som behovet var.  
     
-    — Mange påpeker at dette er en gruppe vi ikke har vært vant til å ha en så høy andel av. Dette er en gruppe som blir litt glemt med at man ikke har så mye tilbud.  
+    – Foreldrenes dilemma er frykten for at barna skal falle mellom to skoleløp hvis de må returnere til Ukraina opp mot belastningen det kan være for barna med doble løp når de samtidig skal følge norsk skole, lære et nytt språk og få nye venner.
+
+
+    **Sekundærflytting**
+
+    – Når vi spør om de har planer om å flytte til en annen norsk kommune er det store forskjeller mellom de som bor sentralt og ruralt.
     
-    — En del av de frivillige organisasjonene sier at de eldre er glemt, det er ikke noe tilbud for dem.
+    – Blant de som er bosatt i rurale strøk svarer én av tre at de har planer om å flytte til en annen kommune.
     
-    ##### Hva vet dere om helsesituasjonen til de som kommer? 
-    — Ukrainerne gir helsetjenesten mye dårligere score enn for eksempel skole og barnehage.  
-    
-    — Det er en kulturkræsj på hva man er vant til i helsevesenet.  
-    
-    — I Ukraina er de mye mer vant til å bli sendt til en spesialist direkte, de har ingen fastlegeordning. Det er også mye mer vanlig å få utskrevet medisiner for ting vi her i Norge er mer restriktive på.  
-    
-    — Det var noen som ble sjokkert da de ble bedt om å drikke Cola fordi de hadde feber og vondt i magen. De ville ha medisin.  
+    – De som ønsker å flytte peker ofte på dårlige muligheter på arbeidsmarkedet i kommunen som årsak.
     """
 
     with st.expander('Intervju med Vilde Hernes, forsker ved NIBR.'):
