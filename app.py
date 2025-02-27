@@ -1262,7 +1262,7 @@ with tab5:
         """
         Rapporter: 
         - Angela Labberton  mfl. (FHI) - [Helsetjenestebehov blant flyktninger fra Ukraina som kom til Norge i 2022](https://www.fhi.no/nyheter/2023/ukrainske-flyktninger-darligere-helse-og-betydelig-darligere-tannhelse/).  
-        - Intervju med forsker ved OsloMet, Vilde Hernes, som kommenterer på funn i [ny rapport](https://www.imdi.no/om-imdi/rapporter/2024/ukrainske-flyktningers-erfaringer-med-integrering-og-offentlige-tjenester-i-norge/). Rapporten er skrevet på oppdrag fra Imdi. 
+        - Intervju med forsker ved OsloMet, Vilde Hernes, som kommenterer på funn i [ny rapport](https://oda.oslomet.no/oda-xmlui/handle/11250/3172723). Rapporten er skrevet på oppdrag fra Imdi. 
         - Institutt for samfunnsforskning - [Tilrettelegging for integrering av flyktninger i Norge](https://samfunnsforskning.brage.unit.no/samfunnsforskning-xmlui/bitstream/handle/11250/3116715/ISF_Rapport_3_24_UUweb.pdf).  
         
         Samarbeidsdesken har gjennomført intervjuer og sitatsjekk med ekspertkilder. Sitatene kan brukes fritt. 
