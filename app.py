@@ -568,14 +568,19 @@ with tab1:
 
     # with national_col1:
     national_text = """
+    
 
-Researchpakken blir jevnlig oppdatert ettersom asylfeltet stadig er i bevegelse.
+
+Dette er researchpakken om Ukrainere i Norge publisert april 2024.
+
+April 2025 publiserte Samarbeidsdesken en ny researchpakke om Ukrainere i Norge. Den finner du [her](https://sd-ukraina-2025.streamlit.app/).
 
 **Logg:**
 
 - April 24: Først publisert. 
 - 28.11.24: Oppdaterte tall fra Imdi og intervju med direktør i Imdi. 
 - 03.02.25: Ny rapport fra OsloMet, og intervju med forsker Vilde Hernes. 
+- 
 
 --------
 
